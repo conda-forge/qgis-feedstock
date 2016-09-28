@@ -1,6 +1,6 @@
 {% set name = "qgis" %}
-{% set version = "2.16.2" %}
-{% set md5 = "e2a24b2c41af83dcc5b26fcd0e63366b" %}
+{% set version = "2.16.3" %}
+{% set md5 = "50a1799c6eb8c90eeeda4affedeea49c" %}
 
 
 package:
