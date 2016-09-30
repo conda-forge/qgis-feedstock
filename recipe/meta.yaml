@@ -17,7 +17,7 @@ source:
     - plugins_path.patch  # [linux]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not linux or py3k]
 
 requirements:
@@ -44,7 +44,7 @@ requirements:
     - proj.4
     # GSL for georeferencer
     - gsl
-    - sqlite
+    - sqlite 3.13.*
     - libspatialindex
     - libspatialite
     # For PostgreSQL support
@@ -64,7 +64,7 @@ requirements:
     - geos 3.4.*
     - proj.4
     - gsl
-    - sqlite
+    - sqlite 3.13.*
     - libspatialindex
     - libspatialite
     - psycopg2
