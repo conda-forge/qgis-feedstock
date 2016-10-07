@@ -4,7 +4,7 @@
 
 
 package:
-  name: qgis 
+  name: qgis
   version: {{ version }}
 
 source:
@@ -17,7 +17,7 @@ source:
     - plugins_path.patch  # [linux]
 
 build:
-  number: 1
+  number: 2
   skip: true  # [not linux or py3k]
 
 requirements:
@@ -41,7 +41,7 @@ requirements:
     # GDAL stack
     - gdal 2.1.*
     - geos 3.4.*
-    - proj.4
+    - proj.4 4.9.3
     # GSL for georeferencer
     - gsl
     - sqlite 3.13.*
@@ -62,7 +62,7 @@ requirements:
     - qwtpolar
     - gdal 2.1.*
     - geos 3.4.*
-    - proj.4
+    - proj.4 4.9.3
     - gsl
     - sqlite 3.13.*
     - libspatialindex
