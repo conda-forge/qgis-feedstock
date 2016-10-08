@@ -31,8 +31,8 @@ requirements:
     - expat
     - icu 56.*
     # Qt stack
-    - qt
-    - pyqt
+    - qt 4.8.*
+    - pyqt 4.11.*
     - qscintilla2
     - qca
     - qjson
@@ -53,8 +53,8 @@ requirements:
   run:
     - python
     - icu 56.*
-    - qt
-    - pyqt
+    - qt 4.8.*
+    - pyqt 4.11.*
     - qscintilla2
     - qca
     - qjson
