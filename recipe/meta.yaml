@@ -17,7 +17,7 @@ source:
     - plugins_path.patch  # [linux]
 
 build:
-  number: 2
+  number: 3
   skip: true  # [not linux or py3k]
 
 requirements:
@@ -80,6 +80,7 @@ requirements:
     - pygments
     - pytz
     - six
+    - pyyaml
     - yaml
 
 # test:
