@@ -30,7 +30,7 @@ requirements:
     - sip
     - expat
     - icu 56.*
-    # Qt stack
+    # Qt stack.
     - qt 4.8.*
     - pyqt 4.11.*
     - qscintilla2
@@ -42,12 +42,12 @@ requirements:
     - gdal 2.1.*
     - geos 3.4.*
     - proj4 4.9.3
-    # GSL for georeferencer
+    # GSL for georeferencer.
     - gsl
     - sqlite 3.13.*
     - libspatialindex
     - libspatialite
-    # For PostgreSQL support
+    # For PostgreSQL support.
     - postgresql
     - psycopg2
   run:
@@ -69,7 +69,7 @@ requirements:
     - libspatialite
     - psycopg2
     - postgresql
-    # Runtime deps QGIS can include internally
+    # Runtime deps QGIS can include internally.
     - future
     - dateutil
     - httplib2
@@ -85,8 +85,8 @@ requirements:
 
 test:
   commands:
-    - conda inspect linkages -p $PREFIX pynio  # [not win]
-    - conda inspect objects -p $PREFIX pynio  # [osx]
+    #- conda inspect linkages -p $PREFIX pynio  # [not win]
+    #- conda inspect objects -p $PREFIX pynio  # [osx]
 
 about:
   home: http://qgis.org/
