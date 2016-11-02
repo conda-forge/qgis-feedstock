@@ -17,7 +17,7 @@ source:
     - plugins_path.patch  # [linux]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not linux or py3k]
 
 requirements:
@@ -41,7 +41,7 @@ requirements:
     # GDAL stack
     - gdal 2.1.*
     - geos 3.4.*
-    - proj.4 4.9.3
+    - proj4 4.9.3
     # GSL for georeferencer
     - gsl
     - sqlite 3.13.*
@@ -62,7 +62,7 @@ requirements:
     - qwtpolar
     - gdal 2.1.*
     - geos 3.4.*
-    - proj.4 4.9.3
+    - proj4 4.9.3
     - gsl
     - sqlite 3.13.*
     - libspatialindex
@@ -83,23 +83,16 @@ requirements:
     - pyyaml
     - yaml
 
-# test:
-# This test currently comes up as lint
-#   commands:
-#     # QGIS has no --version, and --help exists 2, so make it exit 0
-#     - qgis --help || [[ "$?" == "2" ]]
-# QGIS Python bindings in non-standard place and require PYTHONPATH
-# change (per docs). Hesistant to do so in activate/deactivate,
-# so test import in run_test.sh
-#    imports:
-#     - qgis.core
-#     - qgis.utils
+test:
+  commands:
+    - conda inspect linkages -p $PREFIX pynio  # [not win]
+    - conda inspect objects -p $PREFIX pynio  # [osx]
 
 about:
   home: http://qgis.org/
   license: GPLv2
   license_file: COPYING
-  summary: A free and open source Geographic Information System (GIS)
+  summary: 'A free and open source Geographic Information System (GIS).'
   description: |
     QGIS is a user friendly Open Source Geographic Information System (GIS)
     licensed under the GNU General Public License. QGIS is an official
@@ -112,3 +105,4 @@ about:
 extra:
   recipe-maintainers:
     - ceholden
+    - ocefpaf
