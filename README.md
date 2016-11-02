@@ -7,7 +7,7 @@ Package license: GPLv2
 
 Feedstock license: BSD 3-Clause
 
-Summary: A free and open source Geographic Information System (GIS)
+Summary: A free and open source Geographic Information System (GIS).
 
 QGIS is a user friendly Open Source Geographic Information System (GIS)
 licensed under the GNU General Public License. QGIS is an official
