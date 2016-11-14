@@ -3,7 +3,7 @@ About qgis
 
 Home: http://qgis.org/
 
-Package license: GPLv2
+Package license: GPL-2.0
 
 Feedstock license: BSD 3-Clause
 
@@ -36,7 +36,6 @@ It is possible to list all of the versions of `qgis` available on your platform 
 ```
 conda search qgis --channel conda-forge
 ```
-
 
 
 About conda-forge
