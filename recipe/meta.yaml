@@ -1,7 +1,6 @@
 {% set name = "qgis" %}
 {% set version = "2.18.0" %}
-{% set md5 = "861c4af53113158581b42df2acbc3773" %}
-
+{% set sha256 = "32bd260a9a9e18de718d97735c58261255ba39172a8a2e5389887fc1ac02b8ba" %}
 
 package:
   name: qgis
@@ -10,14 +9,14 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.bz2
   url: http://qgis.org/downloads/{{ name }}-{{ version }}.tar.bz2
-  md5: {{ md5 }}
+  sha256: {{ sha256 }}
   patches:
     # QGIS inserts Qt plugin locations into PATH relative to build location
     # This patch fixes it so PATH is relative to install location
     - plugins_path.patch  # [linux]
 
 build:
-  number: 1
+  number: 2
   skip: true  # [not linux or py3k]
 
 requirements:
@@ -38,9 +37,9 @@ requirements:
     - qjson
     - qwt
     - qwtpolar
-    # GDAL stack
+    # GDAL stack.
     - gdal 2.1.*
-    - geos 3.4.*
+    - geos 3.5.*
     - proj4 4.9.3
     # GSL for georeferencer.
     - gsl
@@ -61,7 +60,7 @@ requirements:
     - qwt
     - qwtpolar
     - gdal 2.1.*
-    - geos 3.4.*
+    - geos 3.5.*
     - proj4 4.9.3
     - gsl
     - sqlite 3.13.*
@@ -83,14 +82,14 @@ requirements:
     - pyyaml
     - yaml
 
-test:
-  commands:
-    #- conda inspect linkages -p $PREFIX pynio  # [not win]
-    #- conda inspect objects -p $PREFIX pynio  # [osx]
+#test:
+  #commands:
+    #- conda inspect linkages -p $PREFIX qgis  # [not win]
+    #- conda inspect objects -p $PREFIX qgis  # [osx]
 
 about:
   home: http://qgis.org/
-  license: GPLv2
+  license: GPL-2.0
   license_file: COPYING
   summary: 'A free and open source Geographic Information System (GIS).'
   description: |
