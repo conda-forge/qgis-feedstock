@@ -1,6 +1,6 @@
 {% set name = "qgis" %}
-{% set version = "2.18.0" %}
-{% set sha256 = "32bd260a9a9e18de718d97735c58261255ba39172a8a2e5389887fc1ac02b8ba" %}
+{% set version = "2.18.2" %}
+{% set sha256 = "e218ecc2c0b983a95bba0dc46788661e803cf870f5740cbcfaa1ea39a71f02a0" %}
 
 package:
   name: qgis
@@ -16,7 +16,7 @@ source:
     - plugins_path.patch  # [linux]
 
 build:
-  number: 2
+  number: 0
   skip: true  # [not linux or py3k]
 
 requirements:
