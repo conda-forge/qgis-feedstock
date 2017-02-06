@@ -14,7 +14,7 @@ config=$(cat <<CONDARC
 
 channels:
  - conda-forge
- - defaults # As we need conda-build
+ - defaults
 
 conda-build:
  root-dir: /feedstock_root/build_artefacts
@@ -25,8 +25,8 @@ CONDARC
 )
 
 cat << EOF | docker run -i \
-                        -v ${RECIPE_ROOT}:/recipe_root \
-                        -v ${FEEDSTOCK_ROOT}:/feedstock_root \
+                        -v "${RECIPE_ROOT}":/recipe_root \
+                        -v "${FEEDSTOCK_ROOT}":/feedstock_root \
                         -a stdin -a stdout -a stderr \
                         condaforge/linux-anvil \
                         bash || exit $?
