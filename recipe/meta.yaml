@@ -16,7 +16,7 @@ source:
     - plugins_path.patch  # [linux]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not linux or py3k]
 
 requirements:
@@ -28,7 +28,7 @@ requirements:
     - python
     - sip
     - expat
-    - icu 56.*
+    - icu 58.*
     # Qt stack.
     - qt 4.8.*
     - pyqt 4.11.*
@@ -51,7 +51,7 @@ requirements:
     - psycopg2
   run:
     - python
-    - icu 56.*
+    - icu 58.*
     - qt 4.8.*
     - pyqt 4.11.*
     - qscintilla2
@@ -82,10 +82,10 @@ requirements:
     - pyyaml
     - yaml
 
-#test:
-  #commands:
+test:
+  commands:
     #- conda inspect linkages -p $PREFIX qgis  # [not win]
-    #- conda inspect objects -p $PREFIX qgis  # [osx]
+    - conda inspect objects -p $PREFIX qgis  # [osx]
 
 about:
   home: http://qgis.org/
