@@ -84,7 +84,7 @@ requirements:
 
 test:
   commands:
-    - conda inspect linkages -p $PREFIX qgis  # [not win]
+    #- conda inspect linkages -p $PREFIX qgis  # [not win]
     - conda inspect objects -p $PREFIX qgis  # [osx]
 
 about:
