@@ -30,8 +30,8 @@ requirements:
     - expat
     - icu 58.*
     # Qt stack.
-    - qt 4.8.*
-    - pyqt 4.11.*
+    - qt 5.6.*
+    - pyqt 5.6.*
     - qscintilla2
     - qca
     - qjson
@@ -52,8 +52,8 @@ requirements:
   run:
     - python
     - icu 58.*
-    - qt 4.8.*
-    - pyqt 4.11.*
+    - qt 5.6.*
+    - pyqt 5.6.*
     - qscintilla2
     - qca
     - qjson
@@ -84,7 +84,7 @@ requirements:
 
 test:
   commands:
-    #- conda inspect linkages -p $PREFIX qgis  # [not win]
+    - conda inspect linkages -p $PREFIX qgis  # [not win]
     - conda inspect objects -p $PREFIX qgis  # [osx]
 
 about:
