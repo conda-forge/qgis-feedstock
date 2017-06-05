@@ -15,7 +15,7 @@ source:
     - plugins_path.patch  # [linux]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not linux or py3k]
 
 requirements:
@@ -37,8 +37,8 @@ requirements:
     - qwt
     - qwtpolar
     # GDAL stack.
-    - gdal 2.1.*
-    - geos 3.5.*
+    - gdal 2.2.*
+    - geos 3.5.1
     - proj4 4.9.3
     # GSL for georeferencer.
     - gsl
@@ -58,8 +58,8 @@ requirements:
     - qjson
     - qwt
     - qwtpolar
-    - gdal 2.1.*
-    - geos 3.5.*
+    - gdal 2.2.*
+    - geos 3.5.1
     - proj4 4.9.3
     - gsl
     - sqlite 3.13.*
