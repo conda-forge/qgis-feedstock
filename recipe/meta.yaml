@@ -20,11 +20,11 @@ build:
 
 requirements:
   build:
+    - python
     - cmake
     - flex
     - bison
     - m4
-    - python
     - sip
     - expat
     - icu 58.*
@@ -37,7 +37,7 @@ requirements:
     - qwt
     - qwtpolar
     # GDAL stack.
-    - gdal 2.2.*
+    - gdal 2.1.*
     - geos 3.5.1
     - proj4 4.9.3
     # GSL for georeferencer.
@@ -58,7 +58,7 @@ requirements:
     - qjson
     - qwt
     - qwtpolar
-    - gdal 2.2.*
+    - gdal 2.1.*
     - geos 3.5.1
     - proj4 4.9.3
     - gsl
@@ -83,7 +83,9 @@ requirements:
 
 test:
   commands:
-    #- conda inspect linkages -p $PREFIX qgis  # [not win]
+    # cannot execute this at the moment:
+    # raise ImportError('This package should not be accessible on Python 3.
+    # - conda inspect linkages -p $PREFIX qgis  # [not win]
     - conda inspect objects -p $PREFIX qgis  # [osx]
 
 about:
