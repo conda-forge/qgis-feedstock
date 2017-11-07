@@ -6,7 +6,6 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.bz2
   url: http://qgis.org/downloads/{{ name }}-{{ version }}.tar.bz2
   sha256: b2754daa6870008132702008c285dc94830e92ef0bd64e548ce5b47f2dec3fef
   patches:
@@ -15,7 +14,7 @@ source:
     - plugins_path.patch  # [linux]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not linux or py3k]
 
 requirements:
@@ -38,7 +37,7 @@ requirements:
     - qwtpolar
     # GDAL stack.
     - gdal 2.1.*
-    - geos 3.5.1
+    - geos 3.6.2
     - proj4 4.9.3
     # GSL for georeferencer.
     - gsl
@@ -59,7 +58,7 @@ requirements:
     - qwt
     - qwtpolar
     - gdal 2.1.*
-    - geos 3.5.1
+    - geos 3.6.2
     - proj4 4.9.3
     - gsl
     - sqlite 3.13.*
@@ -85,8 +84,8 @@ test:
   commands:
     # cannot execute this at the moment:
     # raise ImportError('This package should not be accessible on Python 3.
-    # - conda inspect linkages -p $PREFIX qgis  # [not win]
-    - conda inspect objects -p $PREFIX qgis  # [osx]
+    # - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://qgis.org/
