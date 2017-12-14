@@ -14,8 +14,8 @@ source:
     - plugins_path.patch  # [linux]
 
 build:
-  number: 1
-  skip: true  # [not linux or py3k]
+  number: 0
+  skip: True  # [py3k or win]
 
 requirements:
   build:
