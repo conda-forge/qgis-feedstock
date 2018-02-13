@@ -1,5 +1,5 @@
 {% set name = "qgis" %}
-{% set version = "2.18.15" %}
+{% set version = "2.18.16" %}
 
 package:
   name: qgis
@@ -7,14 +7,14 @@ package:
 
 source:
   url: http://qgis.org/downloads/{{ name }}-{{ version }}.tar.bz2
-  sha256: eb2c0475b6a844255d4aa7a92586fea258db9fd596e21841e75ce890e6ccf7ca
+  sha256: 8989e0f9003cfec41ff6cf984bb52866dd0f4d97fe88ec2326f1cf1140050835
   patches:
     # QGIS inserts Qt plugin locations into PATH relative to build location
     # This patch fixes it so PATH is relative to install location
     - plugins_path.patch  # [linux]
 
 build:
-  number: 1
+  number: 0
   skip: true  # [not linux or py3k]
 
 requirements:
@@ -25,7 +25,7 @@ requirements:
     - bison
     - m4
     - sip
-    - expat
+    - expat 2.2.*
     - icu 58.*
     # Qt stack.
     - qt 4.8.*
@@ -36,12 +36,12 @@ requirements:
     - qwt
     - qwtpolar
     # GDAL stack.
-    - gdal 2.1.*
+    - gdal 2.2.*
     - geos 3.6.2
     - proj4 4.9.3
     # GSL for georeferencer.
     - gsl
-    - sqlite 3.13.*
+    - sqlite 3.20.*
     - libspatialindex
     - libspatialite
     # For PostgreSQL support.
@@ -57,11 +57,11 @@ requirements:
     - qjson
     - qwt
     - qwtpolar
-    - gdal 2.1.*
+    - gdal 2.2.*
     - geos 3.6.2
     - proj4 4.9.3
     - gsl
-    - sqlite 3.13.*
+    - sqlite 3.20.*
     - libspatialindex
     - libspatialite
     - psycopg2
