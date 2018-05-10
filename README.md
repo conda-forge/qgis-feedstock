@@ -19,7 +19,7 @@ raster, and database formats and functionalities.
 Current build status
 ====================
 
-[![OSX](https://img.shields.io/travis/conda-forge/qgis-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/qgis-feedstock)
+[![OSX](https://img.shields.io/circleci/project/github/conda-forge/qgis-feedstock/master.svg?label=OSX)](https://circleci.com/gh/conda-forge/qgis-feedstock)
 [![Windows](https://img.shields.io/appveyor/ci/conda-forge/qgis-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/qgis-feedstock/branch/master)
 ![Linux disabled](https://img.shields.io/badge/linux-disabled-lightgrey.svg)
 
