@@ -1,0 +1,11 @@
+--- "src\\crashhandler\\qgsstacktrace.cpp.orig"	2018-03-24 14:37:12.893448900 +1000
++++ "src\\crashhandler\\qgsstacktrace.cpp"	2018-03-24 14:37:18.596616900 +1000
+@@ -773,7 +773,7 @@
+ {
+   QgsStackTrace *trace = new QgsStackTrace();
+ #ifndef QGISDEBUG
+-  return stack;
++  return trace;
+ #endif
+   EXCEPTION_POINTERS remoteException = { 0 };
+   CONTEXT remoteContextRecord = { 0 };

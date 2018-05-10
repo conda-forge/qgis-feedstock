@@ -1,0 +1,11 @@
+--- "cmake\\FindGEOS.cmake.orig"	2018-03-23 17:01:58.764953800 +1000
++++ "cmake\\FindGEOS.cmake"	2018-03-23 17:02:04.471317400 +1000
+@@ -27,7 +27,7 @@
+ 
+   IF (MSVC)
+     FIND_PATH(GEOS_INCLUDE_DIR geos_c.h $ENV{LIB_DIR}/include $ENV{INCLUDE})
+-    FIND_LIBRARY(GEOS_LIBRARY NAMES geos geos_c_i geos_c PATHS
++    FIND_LIBRARY(GEOS_LIBRARY NAMES geos_c geos_c_i PATHS
+       "$ENV{LIB_DIR}/lib"
+       $ENV{LIB}
+       )
