@@ -19,14 +19,16 @@ raster, and database formats and functionalities.
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/qgis-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/qgis-feedstock)
-OSX: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
-Windows: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/qgis-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/qgis-feedstock/branch/master)
+![Linux disabled](https://img.shields.io/badge/linux-disabled-lightgrey.svg)
+![OSX disabled](https://img.shields.io/badge/OSX-disabled-lightgrey.svg)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/qgis/badges/version.svg)](https://anaconda.org/conda-forge/qgis)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/qgis/badges/downloads.svg)](https://anaconda.org/conda-forge/qgis)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-qgis-green.svg)](https://anaconda.org/conda-forge/qgis) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/qgis.svg)](https://anaconda.org/conda-forge/qgis) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/qgis.svg)](https://anaconda.org/conda-forge/qgis) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/qgis.svg)](https://anaconda.org/conda-forge/qgis) |
 
 Installing qgis
 ===============

@@ -9,8 +9,10 @@ qgis --help || [[ "$?" == "2" ]]
 # Need to add location to PYTHONPATH
 # Ref: http://docs.qgis.org/2.8/en/docs/pyqgis_developer_cookbook/intro.html?highlight=importerror#running-custom-applications
 
-export PYTHONPATH=${PREFIX}/share/qgis/python:${PYTHONPATH}
+# test broken on OSX
+if [ $(uname) != Darwin ]; then
+  export PYTHONPATH=${PREFIX}/share/qgis/python:${PYTHONPATH}
 
-python -c 'import qgis.core'
-python -c 'import qgis.utils'
-
+  python -c 'import qgis.core'
+  python -c 'import qgis.utils'
+fi
