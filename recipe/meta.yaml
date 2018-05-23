@@ -1,5 +1,5 @@
 {% set name = "qgis" %}
-{% set version = "3.0.2" %}
+{% set version = "3.0.3" %}
 
 package:
   name: qgis
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/{{ name }}-{{ version }}.tar.bz2
-  sha256: 4293f45753599fcce1e9cc8985104486d80eb8422e9c2647d9b7cde78a54ab11
+  sha256: b647468a3c7b78a25fee19a731c6bcf1efc6c1ebc98780d071573561e7abd2a7
   patches:
     # QGIS inserts Qt plugin locations into PATH relative to build location
     # This patch fixes it so PATH is relative to install location
@@ -28,7 +28,7 @@ build:
     - vc9  # [win and py27]
     - vc10  # [win and py34]
     - vc14  # [win and py>=35]
-    
+
 requirements:
   build:
     - python
@@ -118,7 +118,7 @@ requirements:
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
     - vc 14  # [win and py>=35]
-    
+
 test:
   commands:
     # cannot execute this at the moment:
