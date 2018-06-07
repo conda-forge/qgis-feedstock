@@ -1,14 +1,13 @@
 {% set name = "qgis" %}
-{% set version = "2.18.10" %}
+{% set version = "2.18.19" %}
 
 package:
   name: qgis
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.bz2
   url: http://qgis.org/downloads/{{ name }}-{{ version }}.tar.bz2
-  sha256: b2754daa6870008132702008c285dc94830e92ef0bd64e548ce5b47f2dec3fef
+  sha256: f8385a0ff3bac4317cc6274ce072aa9d862ab163a01ad6c27ca9c3165c0a302c
   patches:
     # QGIS inserts Qt plugin locations into PATH relative to build location
     # This patch fixes it so PATH is relative to install location
@@ -20,13 +19,13 @@ build:
 
 requirements:
   build:
+    - python
     - cmake
     - flex
     - bison
     - m4
-    - python
     - sip
-    - expat
+    - expat 2.2.*
     - icu 58.*
     # Qt stack.
     - qt 4.8.*
@@ -38,11 +37,11 @@ requirements:
     - qwtpolar
     # GDAL stack.
     - gdal 2.2.*
-    - geos 3.5.1
+    - geos 3.6.2
     - proj4 4.9.3
     # GSL for georeferencer.
     - gsl
-    - sqlite 3.13.*
+    - sqlite 3.20.*
     - libspatialindex
     - libspatialite
     # For PostgreSQL support.
@@ -59,10 +58,10 @@ requirements:
     - qwt
     - qwtpolar
     - gdal 2.2.*
-    - geos 3.5.1
+    - geos 3.6.2
     - proj4 4.9.3
     - gsl
-    - sqlite 3.13.*
+    - sqlite 3.20.*
     - libspatialindex
     - libspatialite
     - psycopg2
@@ -83,8 +82,10 @@ requirements:
 
 test:
   commands:
-    #- conda inspect linkages -p $PREFIX qgis  # [not win]
-    - conda inspect objects -p $PREFIX qgis  # [osx]
+    # cannot execute this at the moment:
+    # raise ImportError('This package should not be accessible on Python 3.
+    # - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://qgis.org/
