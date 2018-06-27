@@ -1,7 +1,7 @@
 c_compiler:
-- toolchain_c
+- vs2015
 cxx_compiler:
-- toolchain_cxx
+- vs2015
 expat:
 - '2.2'
 gdal:
@@ -39,11 +39,12 @@ proj4:
 pyqt:
 - '5.6'
 python:
-- '3.5'
+- '3.6'
 qt:
 - '5.6'
 sqlite:
 - '3'
 zip_keys:
-- - pyqt
-  - qt
+- - c_compiler
+  - cxx_compiler
+  - python
