@@ -24,30 +24,32 @@ source:
 build:
   number: 0
   skip: true  # [osx or py2k]
+  features:
+    - vc9  # [win and py27]
+    - vc10  # [win and py34]
+    - vc14  # [win and py>=35]
 
 requirements:
   build:
-    - cmake
-    - ninja
-    - m2-flex  # [win]
-    - m2-bison  # [win]
-    - m2-m4  # [win]
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-  host:
     - python
     - six
+    - toolchain
+    - cmake
+    - ninja
     - flex  # [unix]
+    - m2-flex  # [win]
     - bison  # [unix]
+    - m2-bison  # [win]
     - m4  # [unix]
+    - m2-m4  # [win]
     - sip
-    - expat
-    - icu
+    - expat 2.2.*
+    - icu 58.*
     - libzip
     - libtasn1  # [osx]
     # Qt stack.
-    - qt
-    - pyqt
+    - qt 5.6.*
+    - pyqt 5.6.*
     - qtwebkit  # [osx]
     - qscintilla2
     - qca
@@ -57,24 +59,27 @@ requirements:
     - qtkeychain
     - qtlocation
     # GDAL stack.
-    - gdal
-    - geos
-    - proj4
+    - gdal 2.2.*
+    - geos 3.6.2
+    - proj4 4.9.3
     # GSL for georeferencer.
     - gsl
-    - sqlite
+    - sqlite 3.20.*
     - libspatialindex
     - libspatialite
     # For PostgreSQL support.
     - postgresql
     - psycopg2
+    - vc 9  # [win and py27]
+    - vc 10  # [win and py34]
+    - vc 14  # [win and py>=35]
   run:
     - python
-    - icu
+    - icu 58.*
     - libzip
     - libtasn1  # [osx]
-    - qt
-    - pyqt
+    - qt 5.6.*
+    - pyqt 5.6.*
     - qtwebkit  # [osx]
     - qscintilla2
     - qca
@@ -83,11 +88,11 @@ requirements:
     - qwtpolar
     - qtkeychain
     - qtlocation
-    - gdal
-    - geos
-    - proj4
+    - gdal 2.2.*
+    - geos 3.6.2
+    - proj4 4.9.3
     - gsl
-    - sqlite
+    - sqlite 3.20.*
     - libspatialindex
     - libspatialite
     - psycopg2
@@ -110,6 +115,9 @@ requirements:
     - pytz
     - pyyaml
     - yaml
+    - vc 9  # [win and py27]
+    - vc 10  # [win and py34]
+    - vc 14  # [win and py>=35]
 
 test:
   commands:
