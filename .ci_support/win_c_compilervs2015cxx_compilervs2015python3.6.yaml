@@ -1,0 +1,52 @@
+c_compiler:
+- vs2015
+cxx_compiler:
+- vs2015
+expat:
+- '2.2'
+gdal:
+- '2.2'
+geos:
+- 3.6.2
+gsl:
+- '2.2'
+icu:
+- '58'
+pin_run_as_build:
+  expat:
+    max_pin: x.x
+  gdal:
+    max_pin: x.x
+  geos:
+    max_pin: x.x.x
+  gsl:
+    max_pin: x.x
+  icu:
+    max_pin: x
+  proj4:
+    max_pin: x.x.x
+  pyqt:
+    max_pin: x.x
+  python:
+    min_pin: x.x
+    max_pin: x.x
+  qt:
+    max_pin: x.x
+  sqlite:
+    max_pin: x
+proj4:
+- 4.9.3
+pyqt:
+- '5.6'
+python:
+- '3.6'
+qt:
+- '5.6'
+sqlite:
+- '3'
+zip_keys:
+- - pyqt
+  - qt
+- - python
+  - c_compiler
+  - cxx_compiler

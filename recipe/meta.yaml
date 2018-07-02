@@ -22,34 +22,32 @@ source:
     - CMakeLists.nosyslibs.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not win or py2k]
-  features:
-    - vc9  # [win and py27]
-    - vc10  # [win and py34]
-    - vc14  # [win and py>=35]
-    
+
 requirements:
   build:
-    - python
-    - six
-    - toolchain
     - cmake
     - ninja
-    - flex  # [unix]
     - m2-flex  # [win]
-    - bison  # [unix]
     - m2-bison  # [win]
-    - m4  # [unix]
     - m2-m4  # [win]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - python
+    - six
+    - flex  # [unix]
+    - bison  # [unix]
+    - m4  # [unix]
     - sip
-    - expat 2.2.*
-    - icu 58.*
+    - expat
+    - icu
     - libzip
     - libtasn1  # [osx]
     # Qt stack.
-    - qt 5.6.*
-    - pyqt 5.6.*
+    - qt
+    - pyqt
     - qtwebkit  # [osx]
     - qscintilla2
     - qca
@@ -59,27 +57,24 @@ requirements:
     - qtkeychain
     - qtlocation
     # GDAL stack.
-    - gdal 2.2.*
-    - geos 3.6.2
-    - proj4 4.9.3
+    - gdal
+    - geos
+    - proj4
     # GSL for georeferencer.
     - gsl
-    - sqlite 3.20.*
+    - sqlite
     - libspatialindex
     - libspatialite
     # For PostgreSQL support.
     - postgresql
     - psycopg2
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py>=35]
   run:
     - python
-    - icu 58.*
+    - icu
     - libzip
     - libtasn1  # [osx]
-    - qt 5.6.*
-    - pyqt 5.6.*
+    - qt
+    - pyqt
     - qtwebkit  # [osx]
     - qscintilla2
     - qca
@@ -88,11 +83,11 @@ requirements:
     - qwtpolar
     - qtkeychain
     - qtlocation
-    - gdal 2.2.*
-    - geos 3.6.2
-    - proj4 4.9.3
+    - gdal
+    - geos
+    - proj4
     - gsl
-    - sqlite 3.20.*
+    - sqlite
     - libspatialindex
     - libspatialite
     - psycopg2
@@ -115,10 +110,7 @@ requirements:
     - pytz
     - pyyaml
     - yaml
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py>=35]
-    
+
 test:
   commands:
     # cannot execute this at the moment:
