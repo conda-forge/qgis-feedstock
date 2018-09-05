@@ -1,1 +1,1 @@
-gtk2-devel
+libXcomposite
