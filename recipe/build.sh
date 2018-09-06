@@ -13,6 +13,9 @@
 #   QGIS Travis CI: https://github.com/qgis/QGIS/blob/10044fb1ddef990a1f4f7f4dddb20762077525ae/.ci/travis/linux/docker-build-test.sh
 #   QGIS Docker build: https://github.com/qgis/QGIS/blob/master/.docker/qgis.dockerfile
 
+# https://github.com/conda-forge/bison-feedstock/issues/7
+export M4="${PREFIX}/bin/m4"
+
 # BUILD
 [[ -d build ]] || mkdir build
 cd build/
