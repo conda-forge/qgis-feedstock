@@ -9,11 +9,11 @@ channel_targets:
 cxx_compiler:
 - gxx
 docker_image:
-- conda/c3i-linux-64
+- condaforge/linux-anvil-comp7
 expat:
 - '2.2'
 gdal:
-- '2.2'
+- '2.3'
 geos:
 - 3.6.2
 gsl:

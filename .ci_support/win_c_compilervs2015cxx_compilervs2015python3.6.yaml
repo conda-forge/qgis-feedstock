@@ -9,7 +9,7 @@ cxx_compiler:
 expat:
 - '2.2'
 gdal:
-- '2.2'
+- '2.3'
 geos:
 - 3.6.2
 gsl:
