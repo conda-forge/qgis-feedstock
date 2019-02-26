@@ -23,7 +23,7 @@ source:
 
 build:
   number: 1
-  skip: true  # [not win or py2k]
+  skip: true  # [py2k]
 
 requirements:
   build:
