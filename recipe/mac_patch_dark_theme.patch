@@ -1,0 +1,22 @@
+diff --git a/src/native/mac/qgsmacnative.mm b/src/native/mac/qgsmacnative.mm
+index 6d23b168..95335b27 100644
+--- a/src/native/mac/qgsmacnative.mm
++++ b/src/native/mac/qgsmacnative.mm
+@@ -121,6 +121,9 @@ QgsNative::NotificationResult QgsMacNative::showDesktopNotification( const QStri
+ 
+ bool QgsMacNative::hasDarkTheme()
+ {
++// Macro evals True if building on Mojave but using 10.9SDK
++// so we disable.
++/*
+ #if __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_14
+   if ( [NSApp respondsToSelector:@selector( effectiveAppearance )] )
+   {
+@@ -136,6 +139,7 @@ bool QgsMacNative::hasDarkTheme()
+     return false;
+   }
+ #endif
++*/
+   // compiled on macos 10.13-
+   // NSAppearanceNameDarkAqua is not in SDK headers
+   // fallback to light theme
