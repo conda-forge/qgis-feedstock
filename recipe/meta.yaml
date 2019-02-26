@@ -1,5 +1,5 @@
 {% set name = "qgis" %}
-{% set version = "3.0.2" %}
+{% set version = "3.4.5" %}
 
 package:
   name: qgis
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/{{ name }}-{{ version }}.tar.bz2
-  sha256: 4293f45753599fcce1e9cc8985104486d80eb8422e9c2647d9b7cde78a54ab11
+  sha256: fd753aec10e6430c090b4800eb1424a853df63b25f6b992bb31c6df49f0cdc57
   patches:
     # QGIS needs to #include <functional> for GCC7 & VC14, at least
     - gcc7-function-include.patch
@@ -26,7 +26,7 @@ source:
     - CMakeLists.nosyslibs.patch  # [win]
 
 build:
-  number: 1
+  number: 1000
   skip: true  # [py2k]
 
 requirements:
