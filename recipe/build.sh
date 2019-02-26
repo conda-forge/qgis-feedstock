@@ -17,18 +17,24 @@
 [[ -d build ]] || mkdir build
 cd build/
 
+# https://github.com/conda-forge/bison-feedstock/issues/7
+export M4="${PREFIX}/bin/m4"
+
+echo "Current work directory: $(pwd)"
+echo "PREFIX: $PREFIX"
+
 if [ $(uname) == Darwin ]; then
   # disable thread local on OSX as build fails otherwise
   # can remove when we update XCode
-  THREADLOCAL="-D WITH_THREAD_LOCAL=OFF -D QGIS_MACAPP_BUNDLE=0"
-
-  # also rename this header as it seems to cause problems
-  # with system headers
-  mv $PREFIX/include/uuid/uuid.h $PREFIX/include/uuid/uuid.h.bak
+  PLATFORM_OPTS="-D WITH_THREAD_LOCAL=OFF -D QGIS_MACAPP_BUNDLE=0 -D WITH_QSPATIALITE:BOOL=OFF"
 else
-  THREADLOCAL=""
+  # Needed to find libGL.so
+  export LDFLAGS="$LDFLAGS -Wl,-rpath-link,${BUILD_PREFIX}/${HOST}/sysroot"
+  PLATFORM_OPTS=""
 fi
 
+# TODO: enable tests
+# TODO: enable QSPATIALITE on OSX
 cmake \
     -G Ninja \
     -D CMAKE_BUILD_TYPE=Release \
@@ -42,19 +48,15 @@ cmake \
     -D WITH_SERVER=OFF \
     -D WITH_GRASS=OFF \
     -D WITH_STAGED_PLUGINS=ON \
-    -D WITH_QSPATIALITE=ON \
     -D EXPAT_INCLUDE_DIR=$PREFIX/include \
     -D EXPAT_LIBRARY=$PREFIX/lib/libexpat${SHLIB_EXT} \
-    $THREADLOCAL \
+    $PLATFORM_OPTS \
     ..
 
 ninja -j$CPU_COUNT
 ninja install
 
 if [ $(uname) == Darwin ]; then
-  # rename it back
-  mv $PREFIX/include/uuid/uuid.h.bak $PREFIX/include/uuid/uuid.h
-
   # also create this dir or creating the conda package failes due to broken link
   mkdir -p $PREFIX/QGIS.app/Contents/MacOS/share
 

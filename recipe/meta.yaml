@@ -44,6 +44,7 @@ requirements:
     - flex  # [unix]
     - bison  # [unix]
     - m4  # [unix]
+    - pkgconfig
     - sip
     - expat
     - icu
@@ -60,6 +61,8 @@ requirements:
     - qwtpolar
     - qtkeychain
     - qtlocation
+    # included in win-64 Qt already but needed for linux/osx
+    - qtserialport  # [unix]
     # GDAL stack.
     - gdal
     - geos
@@ -87,6 +90,7 @@ requirements:
     - qwtpolar
     - qtkeychain
     - qtlocation
+    - qtserialport  # [unix]
     - gdal
     - geos
     - proj4
@@ -103,7 +107,7 @@ requirements:
     - jinja2
     - markupsafe
     - mock
-    - nose
+    - nose2
     - owslib
     - plotly
     - pygments
@@ -114,6 +118,7 @@ requirements:
     - pytz
     - pyyaml
     - yaml
+    - owslib
 
 test:
   commands:
