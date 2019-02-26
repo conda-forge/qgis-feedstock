@@ -18,8 +18,6 @@ source:
     - mac_patch_dark_theme.patch  # [osx]
     # by default looks for pyrcc5.bat on Windows, but we have pyrcc5.exe
     - pyrcc.patch  # [win]
-    # spatialindex.lib is weirdly named on Windows
-    - spatialindex.patch  # [win]
     # gets the wrong geos lib
     - geoscmake.patch  # [win]
     # don't try and install MSVC runtime libs as they already exist
