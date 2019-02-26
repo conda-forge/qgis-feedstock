@@ -38,6 +38,17 @@ requirements:
     - m2-m4  # [win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    # The CDT packages below are those used in qt-feedstock
+    - {{ cdt('mesa-libgl-devel') }}  # [linux]
+    - {{ cdt('mesa-dri-drivers') }}  # [linux]
+    - {{ cdt('libselinux') }}  # [linux]
+    - {{ cdt('libxdamage') }}  # [linux]
+    - {{ cdt('libxfixes') }}  # [linux]
+    - {{ cdt('libxxf86vm') }}  # [linux]
+    - {{ cdt('libxcb') }}  # [linux]
+    - {{ cdt('libxext') }}  # [linux]
+    - {{ cdt('xorg-x11-server-xvfb') }}  # [linux]
+    - {{ cdt('libxau') }}  # [linux]
   host:
     - python
     - six
@@ -75,6 +86,15 @@ requirements:
     # For PostgreSQL support.
     - postgresql
     - psycopg2
+    # XOrg CDT packages used in qt-feedstock
+    - xorg-libice      # [linux]
+    - xorg-libsm       # [linux]
+    - xorg-libx11      # [linux]
+    - xorg-libxext     # [linux]
+    - xorg-libxrender  # [linux]
+    - xorg-libxt       # [linux]
+    - xorg-inputproto  # [linux]
+    - gtk2  # [linux]
   run:
     - python
     - icu
@@ -119,6 +139,15 @@ requirements:
     - pyyaml
     - yaml
     - owslib
+    # XOrg CDT packages used in qt-feedstock
+    - xorg-libice      # [linux]
+    - xorg-libsm       # [linux]
+    - xorg-libx11      # [linux]
+    - xorg-libxext     # [linux]
+    - xorg-libxrender  # [linux]
+    - xorg-libxt       # [linux]
+    - xorg-inputproto  # [linux]
+    - gtk2  # [linux]
 
 test:
   commands:
