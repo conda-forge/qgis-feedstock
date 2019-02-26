@@ -1,0 +1,27 @@
+diff --git a/src/providers/arcgisrest/qgsarcgisrestutils.cpp b/src/providers/arcgisrest/qgsarcgisrestutils.cpp
+index df4b0d0821..2210b5d3e0 100644
+--- a/src/providers/arcgisrest/qgsarcgisrestutils.cpp
++++ b/src/providers/arcgisrest/qgsarcgisrestutils.cpp
+@@ -12,6 +12,8 @@
+  *   (at your option) any later version.                                   *
+  *                                                                         *
+  ***************************************************************************/
++// Needed for GCC 7 since no longer implicitly included
++#include <functional>
+ 
+ #include "qgsarcgisrestutils.h"
+ #include "qgsfields.h"
+diff --git a/src/providers/arcgisrest/qgsarcgisrestutils.h b/src/providers/arcgisrest/qgsarcgisrestutils.h
+index da557f52f7..d6cbcb0176 100644
+--- a/src/providers/arcgisrest/qgsarcgisrestutils.h
++++ b/src/providers/arcgisrest/qgsarcgisrestutils.h
+@@ -15,6 +15,9 @@
+ #ifndef QGSARCGISRESTUTILS_H
+ #define QGSARCGISRESTUTILS_H
+ 
++// Needed for GCC 7 since no longer implicitly included
++#include <functional>
++
+ #include <QStringList>
+ #include <QVariant>
+ #include "qgswkbtypes.h"
