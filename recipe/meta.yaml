@@ -9,8 +9,6 @@ source:
   url: https://qgis.org/downloads/{{ name }}-{{ version }}.tar.bz2
   sha256: fd753aec10e6430c090b4800eb1424a853df63b25f6b992bb31c6df49f0cdc57
   patches:
-    # QGIS needs to #include <functional> for GCC7 & VC14, at least
-    - gcc7-function-include.patch
     # QGIS inserts Qt plugin locations into PATH relative to build location
     # This patch fixes it so PATH is relative to install location
     - plugins_path.patch  # [linux]
@@ -22,6 +20,10 @@ source:
     - geoscmake.patch  # [win]
     # don't try and install MSVC runtime libs as they already exist
     - CMakeLists.nosyslibs.patch  # [win]
+    # QGIS needs to #include <functional> for GCC7 & VC14, at least
+    - gcc7-function-include.patch
+    # missing a sqlite3 library reference
+    - CMakeLists.providers.spatialite.patch
 
 build:
   number: 0
