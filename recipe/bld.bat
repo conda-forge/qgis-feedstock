@@ -6,10 +6,6 @@ if errorlevel 1 exit 1
 
 set BUILDCONF=Release
 
-
-REM -D WITH_INTERNAL_SPATIALITE=FALSE ^
-REM -D SPATIALITE_LIBRARY=%LIBRARY_LIB%\spatialite_i.lib ^
-
 cmake -G Ninja ^
     -D CMAKE_BUILD_TYPE=%BUILDCONF% ^
     -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^

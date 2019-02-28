@@ -22,11 +22,12 @@ source:
     - CMakeLists.nosyslibs.patch  # [win]
     # QGIS needs to #include <functional> for GCC7 & VC14, at least
     - gcc7-function-include.patch
-    # missing a sqlite3 library reference
-    - CMakeLists.providers.spatialite.patch
+    # Need to set "H5_BUILT_AS_DYNAMIC_LIB" to use the shared libs on Windows
+    # https://trac.osgeo.org/gdal/wiki/HDF#BuildingonWindowswithMSVC
+    - CMakeLists.providers_mdal_hdf5.patch  # [win]
 
 build:
-  number: 1000
+  number: 0
   skip: true  # [py2k]
 
 requirements:
