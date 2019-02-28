@@ -10,9 +10,11 @@ qgis --help || [[ "$?" == "2" ]]
 # Ref: http://docs.qgis.org/2.8/en/docs/pyqgis_developer_cookbook/intro.html?highlight=importerror#running-custom-applications
 
 # test broken on OSX
-if [ $(uname) != Darwin ]; then
+if [ $(uname) == Darwin ]; then
+  echo "Need to figure this out..."
+else
   export PYTHONPATH=${PREFIX}/share/qgis/python:${PYTHONPATH}
-
   python -c 'import qgis.core'
+  python -c 'import qgis.gui'
   python -c 'import qgis.utils'
 fi
