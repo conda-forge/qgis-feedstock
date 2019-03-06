@@ -49,12 +49,19 @@ set "O4W_QT_LIBRARIES=%LIBRARY_PREFIX%\lib"
 set "O4W_QT_TRANSLATIONS=%LIBRARY_PREFIX%\translations"
 set "O4W_QT_HEADERS=%LIBRARY_PREFIX%\include"
 
+:: Rename qgis.exe and add wrapper
+move %LIBRARY_PREFIX%\qgis\bin\qgis.exe %LIBRARY_PREFIX%\qgis\bin\qgis-bin.exe
+if errorlevel 1 exit 1
+
+copy %RECIPE_DIR%\scripts\qgis.bat %LIBRARY_PREFIX%\bin\qgis.bat
+if errorlevel 1 exit 1
+
 :: Copy qgis.vars
-copy %SRC_DIR%\ms-windows\osgeo4w\qgis.vars %LIBRARY_PREFIX%\qgis\bin\qgis.vars
+copy %SRC_DIR%\ms-windows\osgeo4w\qgis.vars %LIBRARY_PREFIX%\qgis\bin\qgis-bin.vars
 if errorlevel 1 exit 1
 
 :: Generate qgis.env
-%LIBRARY_PREFIX%\qgis\bin\qgis.exe --postinstall
+%LIBRARY_PREFIX%\qgis\bin\qgis-bin.exe --postinstall
 if errorlevel 1 exit 1
 
 :: Copy activate/deactivate scripts
