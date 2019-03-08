@@ -11,10 +11,8 @@
 @if defined QT_PLUGIN_PATH (
     @set "_CONDA_QT_PLUGIN_PATH=%QT_PLUGIN_PATH%"
 )
-@if exist %CONDA_PREFIX%\Library\qgis\qtplugins (
-    @set "QT_PLUGIN_PATH=%CONDA_PREFIX%\Library\plugins;%QT_PLUGIN_PATH%"
-    @set "QT_PLUGIN_PATH=%CONDA_PREFIX%\Library\qgis\qtplugins;%QT_PLUGIN_PATH%"
-)
+@set "QT_PLUGIN_PATH=%CONDA_PREFIX%\Library\plugins;%QT_PLUGIN_PATH%"
+@set "QT_PLUGIN_PATH=%CONDA_PREFIX%\Library\qgis\qtplugins;%QT_PLUGIN_PATH%"
 
 :: Path to QGIS Python bindings
 @if defined PYTHONPATH (
