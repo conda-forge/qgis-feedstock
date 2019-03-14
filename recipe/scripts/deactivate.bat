@@ -20,12 +20,3 @@
     @set "PYTHONPATH=%_CONDA_PYTHONPATH%"
     @set "_CONDA_PYTHONPATH="
 )
-
-:: :: Remove path to QGIS exe
-:: ::
-:: :: Following example from: https://ss64.com/nt/endlocal.html
-:: :: we determine path inside setlocal & set outside
-:: @setlocal EnableDelayedExpansion
-:: @set "_TMP_PATH=!PATH:%CONDA_PREFIX%\Library\qgis\bin;=!"
-:: @endlocal & @set "_PATH=%_TMP_PATH%"
-:: path %_PATH%

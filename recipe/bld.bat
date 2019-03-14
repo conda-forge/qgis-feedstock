@@ -8,7 +8,7 @@ set BUILDCONF=Release
 
 cmake -G Ninja ^
     -D CMAKE_BUILD_TYPE=%BUILDCONF% ^
-    -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%\qgis ^
+    -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
     -D CMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
     -D PYTHON_EXECUTABLE=%PYTHON% ^
     -D WITH_GUI=TRUE ^
@@ -40,7 +40,7 @@ if errorlevel 1 exit 1
 :: OSGEO4W_ROOT and --postinstall turn on "qgis.env" generation
 set "OSGEO4W_ROOT=%LIBRARY_PREFIX%"
 :: Set a few variables to include in export
-set "QGIS_PREFIX_PATH=%LIBRARY_PREFIX%\qgis"
+set "QGIS_PREFIX_PATH=%LIBRARY_PREFIX%"
 set "QT_PLUGIN_PATH=%LIBRARY_PREFIX%\qgis\qtplugins;%LIBRARY_PREFIX%\plugins;%QT_PLUGIN_PATH%"
 set "O4W_QT_PREFIX=%LIBRARY_PREFIX%"
 set "O4W_QT_BINARIES=%LIBRARY_PREFIX%\bin"
@@ -49,19 +49,12 @@ set "O4W_QT_LIBRARIES=%LIBRARY_PREFIX%\lib"
 set "O4W_QT_TRANSLATIONS=%LIBRARY_PREFIX%\translations"
 set "O4W_QT_HEADERS=%LIBRARY_PREFIX%\include"
 
-:: Rename qgis.exe and add wrapper
-move %LIBRARY_PREFIX%\qgis\bin\qgis.exe %LIBRARY_PREFIX%\qgis\bin\qgis-bin.exe
-if errorlevel 1 exit 1
-
-copy %RECIPE_DIR%\scripts\qgis.bat %LIBRARY_PREFIX%\bin\qgis.bat
-if errorlevel 1 exit 1
-
 :: Copy qgis.vars
-copy %SRC_DIR%\ms-windows\osgeo4w\qgis.vars %LIBRARY_PREFIX%\qgis\bin\qgis-bin.vars
+copy %SRC_DIR%\ms-windows\osgeo4w\qgis.vars %LIBRARY_PREFIX%\bin\qgis.vars
 if errorlevel 1 exit 1
 
 :: Generate qgis.env
-%LIBRARY_PREFIX%\qgis\bin\qgis-bin.exe --postinstall
+%LIBRARY_PREFIX%\bin\qgis.exe --postinstall
 if errorlevel 1 exit 1
 
 :: Copy activate/deactivate scripts
