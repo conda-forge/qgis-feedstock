@@ -4,7 +4,7 @@ if errorlevel 1 exit 1
 cd build
 if errorlevel 1 exit 1
 
-set BUILDCONF=Release
+set BUILDCONF=MinSizeRel
 
 set "CMAKE_COMPILER_PATH=%VSINSTALLDIR:\=/%/VC/bin/amd64"
 
