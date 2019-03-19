@@ -52,7 +52,14 @@ set "DEACTIVATE_DIR=%PREFIX%\etc\conda\deactivate.d"
 mkdir %ACTIVATE_DIR%
 mkdir %DEACTIVATE_DIR%
 
+:: For batch
 copy %RECIPE_DIR%\scripts\activate.bat %ACTIVATE_DIR%\qgis-activate.bat
 if errorlevel 1 exit 1
 copy %RECIPE_DIR%\scripts\deactivate.bat %DEACTIVATE_DIR%\qgis-deactivate.bat
+if errorlevel 1 exit 1
+
+:: For Cygwin
+copy %RECIPE_DIR%\scripts\activate.sh %ACTIVATE_DIR%\qgis-activate.sh
+if errorlevel 1 exit 1
+copy %RECIPE_DIR%\scripts\deactivate.sh %DEACTIVATE_DIR%\qgis-deactivate.sh
 if errorlevel 1 exit 1

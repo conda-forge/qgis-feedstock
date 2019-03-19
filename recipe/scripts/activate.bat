@@ -5,7 +5,7 @@
 @if defined QGIS_PREFIX_PATH (
     @set "_CONDA_QGIS_PREFIX_PATH=%QGIS_PREFIX_PATH%"
 )
-@set "QGIS_PREFIX_PATH=%CONDA_PREFIX%\Library"
+@set "QGIS_PREFIX_PATH=%CONDA_PREFIX:\=/%/Library"
 
 :: Qt plugins might not be built by QGIS
 @if defined QT_PLUGIN_PATH (
@@ -18,4 +18,4 @@
 @if defined PYTHONPATH (
     @set "_CONDA_PYTHONPATH=%PYTHONPATH%"
 )
-@set "PYTHONPATH=%CONDA_PREFIX%\Library\python;%PYTHONPATH%"
+@set "PYTHONPATH=%CONDA_PREFIX%\Library\python;%CONDA_PREFIX%\Library\python\plugins;%PYTHONPATH%"
