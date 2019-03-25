@@ -6,17 +6,17 @@ jobs:
 - job: win
   pool:
     vmImage: vs2017-win2016
-  timeoutInMinutes: 240
+  timeoutInMinutes: 360
   strategy:
     maxParallel: 4
     matrix:
       win_c_compilervs2015cxx_compilervs2015python3.6:
         CONFIG: win_c_compilervs2015cxx_compilervs2015python3.6
-        CONDA_BLD_PATH: C:\\bld\\
+        CONDA_BLD_PATH: D:\\bld\\
         UPLOAD_PACKAGES: False
       win_c_compilervs2015cxx_compilervs2015python3.7:
         CONFIG: win_c_compilervs2015cxx_compilervs2015python3.7
-        CONDA_BLD_PATH: C:\\bld\\
+        CONDA_BLD_PATH: D:\\bld\\
         UPLOAD_PACKAGES: False
   steps:
     # TODO: Fast finish on azure pipelines?
@@ -69,7 +69,7 @@ jobs:
 
     # Configure the VM
     - script: setup_conda_rc .\ .\recipe .\.ci_support\%CONFIG%.yaml
-    
+
     # Configure the VM.
     - script: |
         run_conda_forge_build_setup
