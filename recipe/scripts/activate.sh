@@ -9,13 +9,13 @@ fi
 
 if [ -d $CONDA_PREFIX/share/qgis/python ]; then
     # On Linux
-    export PYTHONPATH="$CONDA_PREFIX/share/qgis/python:$PYTHONPATH"
-elif [ -d $CONDA_PREFIX/QGIS.app/Contents/Resources/python ]; then
+    export PYTHONPATH="$CONDA_PREFIX/share/qgis/python:$CONDA_PREFIX/share/qgis/python/plugins:$PYTHONPATH"
+elif [ -d $CONDA_PREFIX/QGIS.app ]; then
     # On MacOS
-    export PYTHONPATH="$CONDA_PREFIX/QGIS.app/Contents/Resources/python:$PYTHONPATH"
+    export PYTHONPATH="$CONDA_PREFIX/QGIS.app/Contents/Resources/python:$CONDA_PREFIX/QGIS.app/Contents/Resources/python/plugins:$PYTHONPATH"
 elif [ -d $CONDA_PREFIX/Library/python ]; then
     # On Windows
-    export PYTHONPATH="$CONDA_PREFIX/Library/python:$PYTHONPATH"
+    export PYTHONPATH="$CONDA_PREFIX/Library/python:$CONDA_PREFIX/Library/python/plugins:$PYTHONPATH"
 
     # Windows needs more paths...
     if [[ -n "$QGIS_PREFIX_PATH" ]]; then
