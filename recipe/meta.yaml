@@ -149,11 +149,12 @@ requirements:
     - gtk2  # [linux]
 
 test:
+  files:
+    - test_data
+    - test_py_qgis.py
   commands:
-    # cannot execute this at the moment:
-    # raise ImportError('This package should not be accessible on Python 3.
-    # - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
+    - {{ RECIPE_DIR }}/run_test.bat  # [win]
+    - bash {{ RECIPE_DIR }}/run_test.sh  # [not win]
 
 about:
   home: http://qgis.org/

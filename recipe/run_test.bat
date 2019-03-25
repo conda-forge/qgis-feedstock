@@ -10,3 +10,9 @@ if errorlevel 1 exit /b 1
 if errorlevel 1 exit /b 1
 %PYTHON% -c "import qgis.utils"
 if errorlevel 1 exit /b 1
+
+:: Test actual use of Python API
+:: First tell Qt we don't have a display
+set QT_QPA_PLATFORM=offscreen
+python test_py_qgis.py
+if errorlevel 1 exit /b 1
