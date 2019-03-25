@@ -38,5 +38,3 @@ if __name__ == '__main__':
     # Shut down
     app.exitQgis()
     print('Ran `app.exitQgis()`')
-    app.exit()
-    print('Ran `app.exit()`')
