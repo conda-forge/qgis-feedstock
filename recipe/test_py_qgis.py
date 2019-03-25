@@ -13,9 +13,9 @@ def test(vector_file):
     if not valid:
         print('Could not even validate the vector file... ')
         print('Printing environment\n')
-        for k, v in os.environ:
+        for k, v in os.environ.items():
             print('{k}: {v}'.format(k=k, v=v))
-        sys.exit(1)
+        raise Exception("QGIS Python API not functional")
     else:
         nfeat = vl.featureCount()
         print('Feature count?: {nfeat}'.format(nfeat=nfeat))
@@ -28,7 +28,12 @@ if __name__ == '__main__':
     app.initQgis()
     print('Ran `app.initQgis`')
 
-    test(fname)
+    try:
+        test(fname)
+    except Exception as e:
+        print(e)
+        print('QGIS prefixPath(): "{0}"'.format(app.prefixPath()))
+        sys.exit(1)
 
     # Shut down
     app.exitQgis()
