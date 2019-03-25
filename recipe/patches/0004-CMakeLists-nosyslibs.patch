@@ -1,0 +1,25 @@
+From e815e212d2fb70e02bcaa5edc1201b42ea929b0d Mon Sep 17 00:00:00 2001
+From: Chris Holden <ceholden@gmail.com>
+Date: Mon, 25 Mar 2019 09:43:52 -0400
+Subject: [PATCH] CMakeLists-nosyslibs
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 969c4dd56c..bad7482613 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -903,7 +903,7 @@ IF (WITH_CORE)
+   IF(NOT DEFINED CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS_NO_WARNINGS)
+     SET(CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS_NO_WARNINGS ON)
+   ENDIF()
+-  INCLUDE(InstallRequiredSystemLibraries)
++  #INCLUDE(InstallRequiredSystemLibraries)
+ 
+   SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "QGIS")
+   SET(CPACK_PACKAGE_VENDOR "Open Source Geospatial Foundation")
+-- 
+2.20.1
+
