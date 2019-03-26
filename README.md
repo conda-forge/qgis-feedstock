@@ -20,21 +20,7 @@ Current build status
 ====================
 
 
-<table><tr>
-    <td>CircleCI</td>
-    <td>
-      <a href="https://circleci.com/gh/conda-forge/qgis-feedstock">
-        <img alt="OSX" src="https://img.shields.io/circleci/project/github/conda-forge/qgis-feedstock/master.svg?label=OSX">
-      </a>
-    </td>
-  </tr><tr>
-    <td>Appveyor</td>
-    <td>
-      <a href="https://ci.appveyor.com/project/conda-forge/qgis-feedstock/branch/master">
-        <img alt="windows" src="https://img.shields.io/appveyor/ci/conda-forge/qgis-feedstock/master.svg?label=Windows">
-      </a>
-    </td>
-  </tr>
+<table>
     
   <tr>
     <td>Azure</td>

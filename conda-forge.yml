@@ -8,4 +8,6 @@ compiler_stack: comp7
 max_py_ver: 'py37'
 max_r_ver: '35'
 provider:
-  osx: circle
+  osx: azure
+  linux: azure
+  win: azure
