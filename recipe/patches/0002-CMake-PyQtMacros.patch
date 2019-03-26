@@ -1,0 +1,25 @@
+From f28a2c2d25852db4107d8463fe86a0da79de3382 Mon Sep 17 00:00:00 2001
+From: Chris Holden <ceholden@gmail.com>
+Date: Mon, 25 Mar 2019 09:41:05 -0400
+Subject: [PATCH] CMake-PyQtMacros
+
+---
+ cmake/PyQtMacros.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/PyQtMacros.cmake b/cmake/PyQtMacros.cmake
+index 35132ec37e..b31c75ee4b 100644
+--- a/cmake/PyQtMacros.cmake
++++ b/cmake/PyQtMacros.cmake
+@@ -55,7 +55,7 @@ ENDMACRO(PYQT_WRAP_UI)
+ IF(NOT PYRCC_PROGRAM)
+   IF (MSVC)
+     FIND_PROGRAM(PYRCC_PROGRAM
+-      NAMES ${PYRCC_PROG_NAME}.bat
++      NAMES ${PYRCC_PROG_NAME}.bat ${PYRCC_PROG_NAME}.exe
+       PATHS $ENV{LIB_DIR}/bin
+     )
+   ELSE(MSVC)
+-- 
+2.20.1
+

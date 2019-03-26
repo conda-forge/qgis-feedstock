@@ -1,15 +1,25 @@
 c_compiler:
-- vs2015
+- gcc
+c_compiler_version:
+- '7'
+channel_sources:
+- conda-forge,defaults
+channel_targets:
+- conda-forge main
 cxx_compiler:
-- vs2015
+- gxx
+cxx_compiler_version:
+- '7'
+docker_image:
+- condaforge/linux-anvil-comp7
 expat:
 - '2.2'
 gdal:
-- '2.2'
+- '2.4'
 geos:
-- 3.6.2
+- 3.7.1
 gsl:
-- '2.2'
+- '2.4'
 icu:
 - '58'
 pin_run_as_build:
@@ -35,11 +45,11 @@ pin_run_as_build:
   sqlite:
     max_pin: x
 proj4:
-- 4.9.3
+- 5.2.0
 pyqt:
 - '5.6'
 python:
-- '3.5'
+- '3.7'
 qt:
 - '5.6'
 sqlite:
@@ -47,6 +57,3 @@ sqlite:
 zip_keys:
 - - pyqt
   - qt
-- - python
-  - c_compiler
-  - cxx_compiler

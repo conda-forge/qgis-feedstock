@@ -1,5 +1,5 @@
 {% set name = "qgis" %}
-{% set version = "3.0.2" %}
+{% set version = "3.4.6" %}
 
 package:
   name: qgis
@@ -7,23 +7,27 @@ package:
 
 source:
   url: https://qgis.org/downloads/{{ name }}-{{ version }}.tar.bz2
-  sha256: 4293f45753599fcce1e9cc8985104486d80eb8422e9c2647d9b7cde78a54ab11
+  # md5 comes from https://qgis.org/downloads/{{ name }}-{{ version }}.tar.bz2.md5
+  md5: 0a777a11ab99a95154d21ccc290c82a8
   patches:
     # QGIS inserts Qt plugin locations into PATH relative to build location
     # This patch fixes it so PATH is relative to install location
-    - plugins_path.patch  # [linux]
+    - patches/0001-linux-fix-plugins-path.patch  # [linux]
     # by default looks for pyrcc5.bat on Windows, but we have pyrcc5.exe
-    - pyrcc.patch  # [win]
-    # spatialindex.lib is weirdly named on Windows
-    - spatialindex.patch  # [win]
+    - patches/0002-CMake-PyQtMacros.patch  # [win]
     # gets the wrong geos lib
-    - geoscmake.patch  # [win]
+    - patches/0003-CMake-GEOS.patch  # [win]
     # don't try and install MSVC runtime libs as they already exist
-    - CMakeLists.nosyslibs.patch  # [win]
+    - patches/0004-CMakeLists-nosyslibs.patch  # [win]
+    # QGIS needs to #include <functional> for GCC7 & VC14, at least
+    - patches/0005-include-functional.patch
+    # Need to set "H5_BUILT_AS_DYNAMIC_LIB" to use the shared libs on Windows
+    # https://trac.osgeo.org/gdal/wiki/HDF#BuildingonWindowswithMSVC
+    - patches/0006-CMakeLists-providers-MDAL-HDF5.patch  # [win]
 
 build:
-  number: 1
-  skip: true  # [not win or py2k]
+  number: 0
+  skip: true  # [py2k]
 
 requirements:
   build:
@@ -34,12 +38,24 @@ requirements:
     - m2-m4  # [win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    # The CDT packages below are those used in qt-feedstock
+    - {{ cdt('mesa-libgl-devel') }}  # [linux]
+    - {{ cdt('mesa-dri-drivers') }}  # [linux]
+    - {{ cdt('libselinux') }}  # [linux]
+    - {{ cdt('libxdamage') }}  # [linux]
+    - {{ cdt('libxfixes') }}  # [linux]
+    - {{ cdt('libxxf86vm') }}  # [linux]
+    - {{ cdt('libxcb') }}  # [linux]
+    - {{ cdt('libxext') }}  # [linux]
+    - {{ cdt('xorg-x11-server-xvfb') }}  # [linux]
+    - {{ cdt('libxau') }}  # [linux]
   host:
     - python
     - six
     - flex  # [unix]
     - bison  # [unix]
     - m4  # [unix]
+    - pkgconfig
     - sip
     - expat
     - icu
@@ -56,6 +72,8 @@ requirements:
     - qwtpolar
     - qtkeychain
     - qtlocation
+    # included in win-64 Qt already but needed for linux/osx
+    - qtserialport  # [unix]
     # GDAL stack.
     - gdal
     - geos
@@ -68,6 +86,15 @@ requirements:
     # For PostgreSQL support.
     - postgresql
     - psycopg2
+    # XOrg CDT packages used in qt-feedstock
+    - xorg-libice      # [linux]
+    - xorg-libsm       # [linux]
+    - xorg-libx11      # [linux]
+    - xorg-libxext     # [linux]
+    - xorg-libxrender  # [linux]
+    - xorg-libxt       # [linux]
+    - xorg-inputproto  # [linux]
+    - gtk2  # [linux]
   run:
     - python
     - icu
@@ -83,6 +110,7 @@ requirements:
     - qwtpolar
     - qtkeychain
     - qtlocation
+    - qtserialport  # [unix]
     - gdal
     - geos
     - proj4
@@ -99,7 +127,7 @@ requirements:
     - jinja2
     - markupsafe
     - mock
-    - nose
+    - nose2
     - owslib
     - plotly
     - pygments
@@ -110,13 +138,24 @@ requirements:
     - pytz
     - pyyaml
     - yaml
+    - owslib
+    # XOrg CDT packages used in qt-feedstock
+    - xorg-libice      # [linux]
+    - xorg-libsm       # [linux]
+    - xorg-libx11      # [linux]
+    - xorg-libxext     # [linux]
+    - xorg-libxrender  # [linux]
+    - xorg-libxt       # [linux]
+    - xorg-inputproto  # [linux]
+    - gtk2  # [linux]
 
 test:
+  files:
+    - test_data
+    - test_py_qgis.py
   commands:
-    # cannot execute this at the moment:
-    # raise ImportError('This package should not be accessible on Python 3.
-    # - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
+    - {{ RECIPE_DIR }}/run_test.bat  # [win]
+    - bash {{ RECIPE_DIR }}/run_test.sh  # [not win]
 
 about:
   home: http://qgis.org/

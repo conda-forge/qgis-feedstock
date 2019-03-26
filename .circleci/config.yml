@@ -1,12 +1,13 @@
+# This file was generated automatically from conda-smithy. To update this configuration,
+# update the conda-forge.yml and/or the recipe/meta.yaml.
+# -*- mode: yaml -*-
+
 version: 2
 
 jobs:
   build:
     working_directory: ~/test
     machine: true
-    branches:
-      ignore:
-        - /.*/
     steps:
       - run:
           # The Circle-CI build should not be active, but if this is not true for some reason, do a fast finish.

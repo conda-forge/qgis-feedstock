@@ -4,5 +4,10 @@ travis:
 appveyor:
   secure:
     BINSTAR_TOKEN: tumuXLL8PU75WMnRDemRy02ruEq2RpNxeK3dz0MjFssnosPm2v4EFjfNB4PTotA1
+compiler_stack: comp7
+max_py_ver: 'py37'
+max_r_ver: '35'
 provider:
-  osx: circle
+  osx: azure
+  linux: azure
+  win: azure

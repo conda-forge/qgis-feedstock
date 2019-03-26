@@ -1,0 +1,25 @@
+From 69afb459ff1f44220414ef121970bbe707faef38 Mon Sep 17 00:00:00 2001
+From: Chris Holden <ceholden@gmail.com>
+Date: Mon, 25 Mar 2019 09:42:56 -0400
+Subject: [PATCH] CMake-GEOS
+
+---
+ cmake/FindGEOS.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/FindGEOS.cmake b/cmake/FindGEOS.cmake
+index cd51d52584..56130cfb5b 100644
+--- a/cmake/FindGEOS.cmake
++++ b/cmake/FindGEOS.cmake
+@@ -24,7 +24,7 @@ IF(WIN32)
+ 
+   IF (MSVC)
+     FIND_PATH(GEOS_INCLUDE_DIR geos_c.h $ENV{LIB_DIR}/include $ENV{INCLUDE})
+-    FIND_LIBRARY(GEOS_LIBRARY NAMES geos geos_c_i geos_c PATHS
++    FIND_LIBRARY(GEOS_LIBRARY NAMES geos_c geos_c_i PATHS
+       "$ENV{LIB_DIR}/lib"
+       $ENV{LIB}
+       )
+-- 
+2.20.1
+
