@@ -1,12 +1,14 @@
-{% set version = "3.4.14" %}
+{% set name = "qgis" %}
+{% set version = "3.6.1" %}
 
 package:
   name: qgis
   version: {{ version }}
 
 source:
-  url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: e138716c7ea84011d3b28fb9c75e6a79322fb66f532246393571906a595d7261
+  url: https://qgis.org/downloads/{{ name }}-{{ version }}.tar.bz2
+  # md5 comes from https://qgis.org/downloads/{{ name }}-{{ version }}.tar.bz2.md5
+  md5: 2c31a64c7a6f0ef2189a436d076a4977
   patches:
     # QGIS inserts Qt plugin locations into PATH relative to build location
     # This patch fixes it so PATH is relative to install location
@@ -62,6 +64,7 @@ requirements:
     # Qt stack.
     - qt
     - pyqt
+    - qtwebkit  # [osx]
     - qscintilla2
     - qca
     - qjson
@@ -74,7 +77,7 @@ requirements:
     # GDAL stack.
     - gdal
     - geos
-    - proj
+    - proj4
     # GSL for georeferencer.
     - gsl
     - sqlite
@@ -99,6 +102,7 @@ requirements:
     - libtasn1  # [osx]
     - qt
     - pyqt
+    - qtwebkit  # [osx]
     - qscintilla2
     - qca
     - qjson
@@ -109,7 +113,7 @@ requirements:
     - qtserialport  # [unix]
     - gdal
     - geos
-    - proj
+    - proj4
     - gsl
     - sqlite
     - libspatialindex
@@ -171,6 +175,3 @@ extra:
   recipe-maintainers:
     - ceholden
     - ocefpaf
-    - kmuehlbauer
-    - SrNetoChan
-    - gillins
