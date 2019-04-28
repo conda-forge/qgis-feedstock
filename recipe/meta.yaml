@@ -9,6 +9,7 @@ source:
   url: https://qgis.org/downloads/{{ name }}-{{ version }}.tar.bz2
   # md5 comes from https://qgis.org/downloads/{{ name }}-{{ version }}.tar.bz2.md5
   md5: 2c31a64c7a6f0ef2189a436d076a4977
+
   patches:
     # QGIS inserts Qt plugin locations into PATH relative to build location
     # This patch fixes it so PATH is relative to install location
@@ -175,3 +176,6 @@ extra:
   recipe-maintainers:
     - ceholden
     - ocefpaf
+    - kmuehlbauer
+    - SrNetoChan
+    - gillins
