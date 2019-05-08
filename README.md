@@ -176,7 +176,7 @@ Feedstock Maintainers
 =====================
 
 * [@gillins](https://github.com/gillins)
-* [@SrNetoChan](https://github.com/SrNetoChan/)
+* [@SrNetoChan](https://github.com/SrNetoChan)
 * [@ceholden](https://github.com/ceholden/)
 * [@kmuehlbauer](https://github.com/kmuehlbauer/)
 * [@ocefpaf](https://github.com/ocefpaf/)
