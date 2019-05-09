@@ -9,7 +9,7 @@ set "OSGEO4W_ROOT=%LIBRARY_PREFIX%"
 :: N.B. QGIS_PREFIX_PATH needs to be forward slashed
 set "QGIS_PREFIX_PATH=%LIBRARY_PREFIX:\=/%"
 :: Add what will be in our PATH once activated
-set "PATH=%PREFIX%;%LIBRARY_PREFIX%\mingw-w64\bin;%LIBRARY_PREFIX%\usr\bin;%LIBRARY_PREFIX%\Library\bin;%PATH%"
+set "PATH=%PREFIX%;%LIBRARY_PREFIX%\mingw-w64\bin;%LIBRARY_PREFIX%\usr\bin;%LIBRARY_PREFIX%\bin;%PATH%"
 :: Set locations for Qt and Python QGIS files
 set "QT_PLUGIN_PATH=%LIBRARY_PREFIX%\qgis\qtplugins;%LIBRARY_PREFIX%\plugins;%QT_PLUGIN_PATH%"
 set "PYTHONPATH=%LIBRARY_PREFIX%\python;%LIBRARY_PREFIX%\python\plugins;%PYTHONPATH%"
