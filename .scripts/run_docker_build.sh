@@ -39,7 +39,7 @@ if [ -z "$CONFIG" ]; then
 fi
 
 if [ -z "${DOCKER_IMAGE}" ]; then
-    SHYAML_INSTALLED="$(shyaml -h || echo NO)"
+    SHYAML_INSTALLED="$(shyaml --version || echo NO)"
     if [ "${SHYAML_INSTALLED}" == "NO" ]; then
         echo "WARNING: DOCKER_IMAGE variable not set and shyaml not installed. Falling back to condaforge/linux-anvil-comp7"
         DOCKER_IMAGE="condaforge/linux-anvil-comp7"
@@ -51,10 +51,8 @@ fi
 mkdir -p "$ARTIFACTS"
 DONE_CANARY="$ARTIFACTS/conda-forge-build-done-${CONFIG}"
 rm -f "$DONE_CANARY"
-
-if [ -z "${CI}" ]; then
-    DOCKER_RUN_ARGS="-it "
-fi
+# Not all providers run with a real tty.  Disable using one
+DOCKER_RUN_ARGS=" "
 
 export UPLOAD_PACKAGES="${UPLOAD_PACKAGES:-True}"
 docker run ${DOCKER_RUN_ARGS} \
@@ -64,9 +62,6 @@ docker run ${DOCKER_RUN_ARGS} \
            -e BINSTAR_TOKEN \
            -e HOST_USER_ID \
            -e UPLOAD_PACKAGES \
-           -e GIT_BRANCH \
-           -e UPLOAD_ON_BRANCH \
-           -e CI \
            $DOCKER_IMAGE \
            bash \
            /home/conda/feedstock_root/${PROVIDER_DIR}/build_steps.sh
