@@ -1,5 +1,5 @@
 {% set name = "qgis" %}
-{% set version = "3.4.7" %}
+{% set version = "3.4.8" %}
 
 package:
   name: qgis
@@ -8,7 +8,7 @@ package:
 source:
   url: https://qgis.org/downloads/{{ name }}-{{ version }}.tar.bz2
   # md5 comes from https://qgis.org/downloads/{{ name }}-{{ version }}.tar.bz2.md5
-  md5: cfb18f87ebb4f292ba0d6a979ba2fe69
+  md5: d1fa97e8e278f2767c0ee68a5e297596
   patches:
     # QGIS inserts Qt plugin locations into PATH relative to build location
     # This patch fixes it so PATH is relative to install location
