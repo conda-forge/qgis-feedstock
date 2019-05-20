@@ -64,7 +64,6 @@ requirements:
     # Qt stack.
     - qt
     - pyqt
-    - qtwebkit  # [osx]
     - qscintilla2
     - qca
     - qjson
@@ -102,7 +101,6 @@ requirements:
     - libtasn1  # [osx]
     - qt
     - pyqt
-    - qtwebkit  # [osx]
     - qscintilla2
     - qca
     - qjson
