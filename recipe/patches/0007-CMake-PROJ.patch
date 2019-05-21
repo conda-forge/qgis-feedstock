@@ -1,0 +1,11 @@
+--- cmake/FindProj.cmake.orig	2019-05-21 15:12:20.634427729 +1000
++++ cmake/FindProj.cmake	2019-05-21 15:13:47.931046787 +1000
+@@ -41,7 +41,7 @@
+   "$ENV{LIB_DIR}/include"
+   )
+ 
+-FIND_LIBRARY(PROJ_LIBRARY NAMES proj_i proj PATHS
++FIND_LIBRARY(PROJ_LIBRARY NAMES proj_6_0 PATHS
+   "$ENV{LIB}"
+   "$ENV{LIB_DIR}/lib"
+   )
