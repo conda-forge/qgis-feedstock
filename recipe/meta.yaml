@@ -24,6 +24,8 @@ source:
     # Need to set "H5_BUILT_AS_DYNAMIC_LIB" to use the shared libs on Windows
     # https://trac.osgeo.org/gdal/wiki/HDF#BuildingonWindowswithMSVC
     - patches/0006-CMakeLists-providers-MDAL-HDF5.patch  # [win]
+    # PROJ 6 renamed the lib 
+    - patches/0007-CMake-PROJ.patch  # [win]
 
 build:
   number: 0
