@@ -1,5 +1,5 @@
 {% set name = "qgis" %}
-{% set version = "3.6.1" %}
+{% set version = "3.6.3" %}
 
 package:
   name: qgis
@@ -8,7 +8,7 @@ package:
 source:
   url: https://qgis.org/downloads/{{ name }}-{{ version }}.tar.bz2
   # md5 comes from https://qgis.org/downloads/{{ name }}-{{ version }}.tar.bz2.md5
-  md5: 2c31a64c7a6f0ef2189a436d076a4977
+  md5: f514634821e95cc27108e8770a5982fa
   patches:
     # QGIS inserts Qt plugin locations into PATH relative to build location
     # This patch fixes it so PATH is relative to install location
@@ -24,8 +24,6 @@ source:
     # Need to set "H5_BUILT_AS_DYNAMIC_LIB" to use the shared libs on Windows
     # https://trac.osgeo.org/gdal/wiki/HDF#BuildingonWindowswithMSVC
     - patches/0006-CMakeLists-providers-MDAL-HDF5.patch  # [win]
-    # PROJ 6 renamed the lib 
-    - patches/0007-CMake-PROJ.patch  # [win]
 
 build:
   number: 0
@@ -66,6 +64,7 @@ requirements:
     # Qt stack.
     - qt
     - pyqt
+    - qtwebkit  # [osx]
     - qscintilla2
     - qca
     - qjson
@@ -103,6 +102,7 @@ requirements:
     - libtasn1  # [osx]
     - qt
     - pyqt
+    - qtwebkit  # [osx]
     - qscintilla2
     - qca
     - qjson
@@ -175,3 +175,6 @@ extra:
   recipe-maintainers:
     - ceholden
     - ocefpaf
+    - kmuehlbauer
+    - SrNetoChan
+    - gillins
