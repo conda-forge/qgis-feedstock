@@ -21,7 +21,7 @@ Current build status
 
 
 <table>
-
+    
   <tr>
     <td>Azure</td>
     <td>
@@ -81,6 +81,7 @@ Current build status
       </details>
     </td>
   </tr>
+![ppc64le disabled](https://img.shields.io/badge/ppc64le-disabled-lightgrey.svg)
 </table>
 
 Current release info
@@ -175,8 +176,9 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
-* [@gillins](https://github.com/gillins)
 * [@SrNetoChan](https://github.com/SrNetoChan/)
 * [@ceholden](https://github.com/ceholden/)
+* [@gillins](https://github.com/gillins/)
 * [@kmuehlbauer](https://github.com/kmuehlbauer/)
 * [@ocefpaf](https://github.com/ocefpaf/)
+
