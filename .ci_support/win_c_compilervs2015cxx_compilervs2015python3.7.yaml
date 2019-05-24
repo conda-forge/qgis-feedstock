@@ -16,6 +16,8 @@ gsl:
 - '2.4'
 icu:
 - '58'
+libspatialindex:
+- '1.9'
 pin_run_as_build:
   expat:
     max_pin: x.x
@@ -27,6 +29,8 @@ pin_run_as_build:
     max_pin: x.x
   icu:
     max_pin: x
+  libspatialindex:
+    max_pin: x.x
   proj4:
     max_pin: x.x.x
   pyqt:
@@ -39,13 +43,13 @@ pin_run_as_build:
   sqlite:
     max_pin: x
 proj4:
-- 5.2.0
+- 6.1.0
 pyqt:
-- '5.6'
+- '5.9'
 python:
 - '3.7'
 qt:
-- '5.6'
+- '5.9'
 sqlite:
 - '3'
 zip_keys:
