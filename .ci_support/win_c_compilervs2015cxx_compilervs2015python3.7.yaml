@@ -43,7 +43,7 @@ pin_run_as_build:
   sqlite:
     max_pin: x
 proj4:
-- 6.0.0
+- 6.1.0
 pyqt:
 - '5.9'
 python:
