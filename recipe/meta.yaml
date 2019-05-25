@@ -1,14 +1,12 @@
-{% set name = "qgis" %}
-{% set version = "3.4.7" %}
+{% set version = "3.6.3" %}
 
 package:
   name: qgis
   version: {{ version }}
 
 source:
-  url: https://qgis.org/downloads/{{ name }}-{{ version }}.tar.bz2
-  # md5 comes from https://qgis.org/downloads/{{ name }}-{{ version }}.tar.bz2.md5
-  md5: cfb18f87ebb4f292ba0d6a979ba2fe69
+  url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
+  sha256: b77790b47d978035e24d4652c5ad4227ae68205c056db54fa0fd2da6bf6f7b7d
   patches:
     # QGIS inserts Qt plugin locations into PATH relative to build location
     # This patch fixes it so PATH is relative to install location
@@ -26,8 +24,8 @@ source:
     - patches/0006-CMakeLists-providers-MDAL-HDF5.patch  # [win]
 
 build:
-  number: 1
-  skip: true  # [py2k or osx]
+  number: 0
+  skip: true  # [py2k]
 
 requirements:
   build:
@@ -64,6 +62,7 @@ requirements:
     # Qt stack.
     - qt
     - pyqt
+    - qtwebkit  # [osx]
     - qscintilla2
     - qca
     - qjson
@@ -101,6 +100,7 @@ requirements:
     - libtasn1  # [osx]
     - qt
     - pyqt
+    - qtwebkit  # [osx]
     - qscintilla2
     - qca
     - qjson
