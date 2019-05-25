@@ -28,7 +28,8 @@ cmake -G Ninja ^
     -D WITH_QSPATIALITE=FALSE ^
     -D EXPAT_INCLUDE_DIR=%LIBRARY_INC% ^
     -D EXPAT_LIBRARY=%LIBRARY_LIB%\expat.lib ^
-    ..
+    -D WITH_QTWEBKIT=FALSE ^
+    %SRC_DIR%
 if errorlevel 1 exit 1
 
 ninja -j%CPU_COUNT%
