@@ -26,8 +26,8 @@ source:
     - patches/0006-CMakeLists-providers-MDAL-HDF5.patch  # [win]
 
 build:
-  number: 0
-  skip: true  # [py2k]
+  number: 1
+  skip: true  # [py2k or osx]
 
 requirements:
   build:
@@ -64,7 +64,6 @@ requirements:
     # Qt stack.
     - qt
     - pyqt
-    - qtwebkit  # [osx]
     - qscintilla2
     - qca
     - qjson
@@ -102,7 +101,6 @@ requirements:
     - libtasn1  # [osx]
     - qt
     - pyqt
-    - qtwebkit  # [osx]
     - qscintilla2
     - qca
     - qjson
