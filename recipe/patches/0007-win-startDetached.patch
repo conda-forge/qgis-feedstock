@@ -1,0 +1,22 @@
+--- src/native/win/qgswinnative.cpp.orig	2019-05-28 07:51:23.531285482 +1000
++++ src/native/win/qgswinnative.cpp	2019-05-28 08:03:05.937436717 +1000
+@@ -210,17 +210,8 @@
+     windir = QStringLiteral( "C:\\Windows" );
+   const QString term = QStringLiteral( "%1\\%2\\cmd.exe" ).arg( windir, isWow64 ? QStringLiteral( "Sysnative" ) : QStringLiteral( "System32" ) );
+ 
+-  QProcess process;
+-  process.setProgram( term );
+-  process.setCreateProcessArgumentsModifier( []( QProcess::CreateProcessArguments * args )
+-  {
+-    args->flags |= CREATE_NEW_CONSOLE;
+-    args->startupInfo->dwFlags &= ~ STARTF_USESTDHANDLES;
+-  } );
+-  process.setWorkingDirectory( path );
+-
+-  qint64 pid;
+-  return process.startDetached( &pid );
++  QStringList args;
++  return QProcess.startDetached( term, args, path );
+ }
+ 
+ bool QgsWinNativeEventFilter::nativeEventFilter( const QByteArray &eventType, void *message, long * )
