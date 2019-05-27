@@ -59,6 +59,7 @@ requirements:
     - icu
     - libzip
     - libtasn1  # [osx]
+    - exiv2
     # Qt stack.
     - qt
     - pyqt
@@ -118,6 +119,7 @@ requirements:
     - libspatialite
     - psycopg2
     - postgresql
+    - exiv2
     # Runtime Python library deps
     - python-dateutil
     - future
