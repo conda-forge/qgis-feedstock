@@ -26,8 +26,8 @@ source:
     - patches/0007-win-startDetached.patch  # [win]
 
 build:
-  number: 1
-  skip: true  # [py2k or osx]
+  number: 2
+  skip: true  # [py2k]
 
 requirements:
   build:
