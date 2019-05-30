@@ -24,8 +24,8 @@ source:
     - patches/0006-CMakeLists-providers-MDAL-HDF5.patch  # [win]
 
 build:
-  number: 0
-  skip: true  # [py2k or osx]
+  number: 1
+  skip: true  # [py2k]
 
 requirements:
   build:
