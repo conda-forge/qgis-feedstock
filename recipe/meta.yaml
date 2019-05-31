@@ -24,6 +24,8 @@ source:
     - patches/0006-CMakeLists-providers-MDAL-HDF5.patch  # [win]
     # workaround for QProcess.startDetached working differently in Qt 5.9
     - patches/0007-win-startDetached.patch  # [win]
+    # Fix for building on OSX < 10.14 (__MAC_10_14 is not defined)
+    - patches/0008-mac-dark-theme.patch
 
 build:
   number: 2
