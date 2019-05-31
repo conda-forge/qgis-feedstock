@@ -1,0 +1,22 @@
+From 508817d6344cb9fb7215209db7994b97ad8c5162 Mon Sep 17 00:00:00 2001
+From: David Marteau <david@innophi.com>
+Date: Tue, 22 Jan 2019 09:28:17 +0100
+Subject: [PATCH] Fix MAC build for OSX < 10.14
+
+---
+ src/native/mac/qgsmacnative.mm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/native/mac/qgsmacnative.mm b/src/native/mac/qgsmacnative.mm
+index 6d23b16868d..9c35c056b88 100644
+--- a/src/native/mac/qgsmacnative.mm
++++ b/src/native/mac/qgsmacnative.mm
+@@ -121,7 +121,7 @@ - ( BOOL )userNotificationCenter:( NSUserNotificationCenter * )center shouldPres
+ 
+ bool QgsMacNative::hasDarkTheme()
+ {
+-#if __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_14
++#if __MAC_OS_X_VERSION_MAX_ALLOWED >= 101400
+   if ( [NSApp respondsToSelector:@selector( effectiveAppearance )] )
+   {
+     // compiled on macos 10.14+ AND running on macos 10.14+
