@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  md5: 81af2b33732ac4fa21ea2adf8bf72d4e
+  sha256: a28ff8cec27e1160ddfd331bc58f190f4dd581222a51b32eece7cd7ca8b8fc03
   patches:
     # QGIS inserts Qt plugin locations into PATH relative to build location
     # This patch fixes it so PATH is relative to install location
