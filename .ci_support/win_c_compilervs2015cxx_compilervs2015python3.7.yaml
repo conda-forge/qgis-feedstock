@@ -11,9 +11,9 @@ expat:
 gdal:
 - '2.4'
 geos:
-- 3.7.1
+- 3.7.2
 gsl:
-- '2.4'
+- '2.5'
 icu:
 - '58'
 libspatialindex:
@@ -23,18 +23,12 @@ pin_run_as_build:
     max_pin: x.x
   gdal:
     max_pin: x.x
-  geos:
-    max_pin: x.x.x
-  gsl:
-    max_pin: x.x
   icu:
     max_pin: x
   libspatialindex:
     max_pin: x.x
   proj4:
     max_pin: x.x.x
-  pyqt:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
@@ -44,8 +38,6 @@ pin_run_as_build:
     max_pin: x
 proj4:
 - 6.1.0
-pyqt:
-- '5.9'
 python:
 - '3.7'
 qt:
@@ -53,8 +45,6 @@ qt:
 sqlite:
 - '3'
 zip_keys:
-- - pyqt
-  - qt
 - - python
   - c_compiler
   - cxx_compiler
