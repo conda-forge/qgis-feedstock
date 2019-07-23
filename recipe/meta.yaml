@@ -1,4 +1,4 @@
-{% set version = "3.8.0" %}
+{% set version = "3.8.1" %}
 
 package:
   name: qgis
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: a28ff8cec27e1160ddfd331bc58f190f4dd581222a51b32eece7cd7ca8b8fc03
+  sha256: d65c8e1c7471bba46f5017f261ebbef81dffb5843a24f0e7713a00f70785ea99
   patches:
     # QGIS inserts Qt plugin locations into PATH relative to build location
     # This patch fixes it so PATH is relative to install location
@@ -24,11 +24,9 @@ source:
     - patches/0006-CMakeLists-providers-MDAL-HDF5.patch  # [win]
     # workaround for QProcess.startDetached working differently in Qt 5.9
     - patches/0007-win-startDetached.patch  # [win]
-    # Fix for building on OSX < 10.14 (__MAC_10_14 is not defined)
-    - patches/0008-mac-dark-theme.patch
 
 build:
-  number: 1
+  number: 0
   skip: true  # [py2k]
 
 requirements:
