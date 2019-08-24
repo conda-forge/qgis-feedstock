@@ -15,7 +15,7 @@ cxx_compiler_version:
 expat:
 - '2.2'
 gdal:
-- '3.0'
+- 2.4.2
 geos:
 - 3.7.2
 gsl:
