@@ -15,7 +15,7 @@ docker_image:
 expat:
 - '2.2'
 gdal:
-- '2.4'
+- 2.4.2
 geos:
 - 3.7.2
 gsl:
@@ -43,10 +43,10 @@ pin_run_as_build:
   sqlite:
     max_pin: x
 proj4:
-- 6.1.0
+- 6.1.1
 python:
 - '3.6'
 qt:
-- '5.9.7'
+- '5.12'
 sqlite:
 - '3'
