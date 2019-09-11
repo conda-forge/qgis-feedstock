@@ -15,7 +15,7 @@ docker_image:
 expat:
 - '2.2'
 gdal:
-- '2.4'
+- 2.4.2
 geos:
 - 3.7.2
 gsl:
