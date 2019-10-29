@@ -23,7 +23,7 @@ gsl:
 icu:
 - '64.2'
 libspatialindex:
-- '1.9'
+- 1.9.3
 pin_run_as_build:
   expat:
     max_pin: x.x
