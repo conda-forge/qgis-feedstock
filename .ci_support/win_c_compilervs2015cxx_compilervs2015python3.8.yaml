@@ -1,17 +1,11 @@
 c_compiler:
-- gcc
-c_compiler_version:
-- '7'
+- vs2015
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- gxx
-cxx_compiler_version:
-- '7'
-docker_image:
-- condaforge/linux-anvil-comp7
+- vs2015
 expat:
 - '2.2'
 gdal:
@@ -41,8 +35,12 @@ pin_run_as_build:
 proj4:
 - 6.1.0
 python:
-- '3.6'
+- '3.8'
 qt:
 - '5.9'
 sqlite:
 - '3'
+zip_keys:
+- - python
+  - c_compiler
+  - cxx_compiler
