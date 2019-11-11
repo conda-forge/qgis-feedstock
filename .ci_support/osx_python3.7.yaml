@@ -15,7 +15,7 @@ cxx_compiler_version:
 expat:
 - '2.2'
 gdal:
-- 2.4.2
+- 3.0.2
 geos:
 - 3.7.2
 gsl:
@@ -35,8 +35,6 @@ pin_run_as_build:
     max_pin: x.x
   icu:
     max_pin: x
-  libspatialindex:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
