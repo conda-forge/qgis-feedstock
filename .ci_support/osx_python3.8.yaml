@@ -1,0 +1,52 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '10.9'
+c_compiler:
+- clang
+c_compiler_version:
+- '9'
+channel_sources:
+- conda-forge,defaults
+channel_targets:
+- conda-forge main
+cxx_compiler:
+- clangxx
+cxx_compiler_version:
+- '9'
+expat:
+- '2.2'
+gdal:
+- '3.0'
+geos:
+- 3.8.0
+gsl:
+- '2.5'
+icu:
+- '64.2'
+libspatialindex:
+- 1.9.3
+macos_machine:
+- x86_64-apple-darwin13.4.0
+macos_min_version:
+- '10.9'
+pin_run_as_build:
+  expat:
+    max_pin: x.x
+  gdal:
+    max_pin: x.x
+  icu:
+    max_pin: x
+  python:
+    min_pin: x.x
+    max_pin: x.x
+  qt:
+    max_pin: x.x
+  sqlite:
+    max_pin: x
+proj:
+- 6.2.1
+python:
+- '3.8'
+qt:
+- '5.9'
+sqlite:
+- '3'
