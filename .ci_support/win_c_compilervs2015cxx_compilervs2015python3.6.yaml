@@ -25,6 +25,8 @@ pin_run_as_build:
     max_pin: x.x
   icu:
     max_pin: x
+  libspatialindex:
+    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
