@@ -24,7 +24,7 @@ source:
     - patches/0006-CMakeLists-providers-MDAL-HDF5.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py2k]
 
 requirements:
@@ -75,7 +75,7 @@ requirements:
     # GDAL stack.
     - gdal
     - geos
-    - proj4
+    - proj
     # GSL for georeferencer.
     - gsl
     - sqlite
@@ -110,7 +110,7 @@ requirements:
     - qtserialport  # [unix]
     - gdal
     - geos
-    - proj4
+    - proj
     - gsl
     - sqlite
     - libspatialindex
