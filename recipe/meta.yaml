@@ -74,7 +74,7 @@ requirements:
     # GDAL stack.
     - gdal
     - geos
-    - proj4
+    - proj
     # GSL for georeferencer.
     - gsl
     - sqlite
@@ -109,7 +109,7 @@ requirements:
     - qtserialport  # [unix]
     - gdal
     - geos
-    - proj4
+    - proj
     - gsl
     - sqlite
     - libspatialindex
