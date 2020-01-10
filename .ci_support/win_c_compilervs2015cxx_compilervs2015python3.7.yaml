@@ -9,7 +9,7 @@ cxx_compiler:
 expat:
 - '2.2'
 gdal:
-- '2.4'
+- '3.0'
 geos:
 - 3.8.0
 gsl:
@@ -37,7 +37,7 @@ proj:
 python:
 - '3.7'
 qt:
-- 5.9.7
+- '5.12'
 sqlite:
 - '3'
 zip_keys:
