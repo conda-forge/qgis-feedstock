@@ -38,8 +38,8 @@ pin_run_as_build:
     max_pin: x.x
   sqlite:
     max_pin: x
-proj4:
-- 6.1.0
+proj:
+- 6.2.1
 python:
 - '3.8'
 qt:
