@@ -15,15 +15,15 @@ docker_image:
 expat:
 - '2.2'
 gdal:
-- '2.4'
+- '3.0'
 geos:
-- 3.7.2
+- 3.8.0
 gsl:
 - '2.5'
 icu:
 - '64.2'
 libspatialindex:
-- '1.9'
+- 1.9.3
 pin_run_as_build:
   expat:
     max_pin: x.x
@@ -31,8 +31,6 @@ pin_run_as_build:
     max_pin: x.x
   icu:
     max_pin: x
-  libspatialindex:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
@@ -40,11 +38,11 @@ pin_run_as_build:
     max_pin: x.x
   sqlite:
     max_pin: x
-proj4:
-- 6.1.0
+proj:
+- 6.2.1
 python:
 - '3.7'
 qt:
-- 5.9.7
+- '5.12'
 sqlite:
 - '3'
