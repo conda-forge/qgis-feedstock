@@ -22,6 +22,24 @@ def test(vector_file):
         assert nfeat == 1
 
 
+def test_srs_db():
+    # test if the srs.db can be found
+    # see https://github.com/conda-forge/qgis-feedstock/issues/107 for details
+
+    app = QgsApplication.instance()
+    assert isinstance(app, QgsApplication)
+
+    # import re
+    # app.setPkgDataPath(re.sub(r'(/envs/[^/]+)/\.$', r'\1/Library', app.pkgDataPath()))
+
+    assert os.path.isfile(app.srsDatabaseFilePath()) , \
+        'QgsApplication::srsDatabaseFilePath() does not exist: {}'.format(app.srsDatabaseFilePath())
+
+    assert os.path.isdir(app.iconsPath()), \
+        'QgsApplication::iconsPath() directory does not exist: {}'.format(app.iconsPath())
+
+
+
 if __name__ == '__main__':
     # Initialize QGIS API -- we shouldn't have to fuss with paths
     app = QgsApplication([], False)
@@ -30,6 +48,7 @@ if __name__ == '__main__':
 
     try:
         test(fname)
+        test_srs_db()
     except Exception as e:
         print(e)
         print('QGIS prefixPath(): "{0}"'.format(app.prefixPath()))
