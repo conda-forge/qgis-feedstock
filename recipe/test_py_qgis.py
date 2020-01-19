@@ -31,10 +31,11 @@ def test_srs_db():
 
     # import re
     # app.setPkgDataPath(re.sub(r'(/envs/[^/]+)/\.$', r'\1/Library', app.pkgDataPath()))
-
+    print('QgsApplication::srsDatabaseFilePath()? : {}'.format(app.srsDatabaseFilePath()))
     assert os.path.isfile(app.srsDatabaseFilePath()) , \
         'QgsApplication::srsDatabaseFilePath() does not exist: {}'.format(app.srsDatabaseFilePath())
 
+    print('QgsApplication::iconsPath()? : {}'.format(app.iconsPath()))
     assert os.path.isdir(app.iconsPath()), \
         'QgsApplication::iconsPath() directory does not exist: {}'.format(app.iconsPath())
 
