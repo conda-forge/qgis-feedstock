@@ -76,8 +76,8 @@ jobs:
 
     # Configure the VM.
     - script: |
+        set "CI=azure"
         run_conda_forge_build_setup
-
       displayName: conda-forge build setup
     
 
@@ -103,7 +103,9 @@ jobs:
       condition: not(contains(variables['CONFIG'], 'vs2008'))
 
     - script: |
+        set "GIT_BRANCH=%BUILD_SOURCEBRANCHNAME%"
         upload_package .\ .\recipe .ci_support\%CONFIG%.yaml
+      displayName: Upload package
       env:
         BINSTAR_TOKEN: $(BINSTAR_TOKEN)
       condition: and(succeeded(), not(eq(variables['UPLOAD_PACKAGES'], 'False')))
