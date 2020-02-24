@@ -12,21 +12,21 @@ jobs:
     matrix:
       win_c_compilervs2015cxx_compilervs2015python3.6:
         CONFIG: win_c_compilervs2015cxx_compilervs2015python3.6
-        CONDA_BLD_PATH: D:\\bld\\
+        CONDA_BLD_PATH: C:\\bld\\
         UPLOAD_PACKAGES: True
       win_c_compilervs2015cxx_compilervs2015python3.7:
         CONFIG: win_c_compilervs2015cxx_compilervs2015python3.7
-        CONDA_BLD_PATH: D:\\bld\\
+        CONDA_BLD_PATH: C:\\bld\\
         UPLOAD_PACKAGES: True
       win_c_compilervs2015cxx_compilervs2015python3.8:
         CONFIG: win_c_compilervs2015cxx_compilervs2015python3.8
-        CONDA_BLD_PATH: D:\\bld\\
+        CONDA_BLD_PATH: C:\\bld\\
         UPLOAD_PACKAGES: True
   steps:
     # TODO: Fast finish on azure pipelines?
     - script: |
         ECHO ON
-        
+
 
     - script: |
         choco install vcpython27 -fdv -y --debug
@@ -79,7 +79,7 @@ jobs:
         set "CI=azure"
         run_conda_forge_build_setup
       displayName: conda-forge build setup
-    
+
 
     - script: |
         rmdir C:\strawberry /s /q
