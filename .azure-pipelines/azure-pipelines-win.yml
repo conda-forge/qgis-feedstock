@@ -10,16 +10,16 @@ jobs:
   strategy:
     maxParallel: 4
     matrix:
-      win_c_compilervs2015cxx_compilervs2015python3.6:
-        CONFIG: win_c_compilervs2015cxx_compilervs2015python3.6
+      win_c_compilervs2015cxx_compilervs2015python3.6.____cpython:
+        CONFIG: win_c_compilervs2015cxx_compilervs2015python3.6.____cpython
         CONDA_BLD_PATH: C:\\bld\\
         UPLOAD_PACKAGES: True
-      win_c_compilervs2015cxx_compilervs2015python3.7:
-        CONFIG: win_c_compilervs2015cxx_compilervs2015python3.7
+      win_c_compilervs2015cxx_compilervs2015python3.7.____cpython:
+        CONFIG: win_c_compilervs2015cxx_compilervs2015python3.7.____cpython
         CONDA_BLD_PATH: C:\\bld\\
         UPLOAD_PACKAGES: True
-      win_c_compilervs2015cxx_compilervs2015python3.8:
-        CONFIG: win_c_compilervs2015cxx_compilervs2015python3.8
+      win_c_compilervs2015cxx_compilervs2015python3.8.____cpython:
+        CONFIG: win_c_compilervs2015cxx_compilervs2015python3.8.____cpython
         CONDA_BLD_PATH: C:\\bld\\
         UPLOAD_PACKAGES: True
   steps:
@@ -66,7 +66,7 @@ jobs:
       inputs:
         packageSpecs: 'python=3.6 conda-build conda conda-forge::conda-forge-ci-setup=2' # Optional
         installOptions: "-c conda-forge"
-        updateConda: false
+        updateConda: true
       displayName: Install conda-build and activate environment
 
     - script: set PYTHONUNBUFFERED=1

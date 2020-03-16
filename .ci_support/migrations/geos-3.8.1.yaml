@@ -3,7 +3,7 @@
 # The timestamp of when the migration was made
 # Can be obtained by copying the output of
 # python -c "import time; print(f'{time.time():.0f}')"
-migrator_ts: 1574860028
+migrator_ts: 1583932366
 __migrator:
   kind:
     version
@@ -17,6 +17,7 @@ __migrator:
   build_number:
     1
 
-# The name of the feedstock you wish to migrate
+# The name of the feedstock you wish to migrate with dashes replaced by
+# underscores
 geos:
-  - 3.8.0    # new version to build against
+  - 3.8.1    # new version to build against
