@@ -37,7 +37,7 @@ proj:
 python:
 - 3.7.* *_cpython
 qt:
-- '5.12'
+- '5.14'
 sqlite:
 - '3'
 zip_keys:
