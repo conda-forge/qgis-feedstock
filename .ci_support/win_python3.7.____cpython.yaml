@@ -40,7 +40,3 @@ qt:
 - '5.12'
 sqlite:
 - '3'
-zip_keys:
-- - python
-  - c_compiler
-  - cxx_compiler
