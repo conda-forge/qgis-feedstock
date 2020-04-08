@@ -12,15 +12,15 @@ jobs:
     matrix:
       win_python3.6.____cpython:
         CONFIG: win_python3.6.____cpython
-        CONDA_BLD_PATH: D:\\bld\\
+        CONDA_BLD_PATH: C:\\bld\\
         UPLOAD_PACKAGES: True
       win_python3.7.____cpython:
         CONFIG: win_python3.7.____cpython
-        CONDA_BLD_PATH: D:\\bld\\
+        CONDA_BLD_PATH: C:\\bld\\
         UPLOAD_PACKAGES: True
       win_python3.8.____cpython:
         CONFIG: win_python3.8.____cpython
-        CONDA_BLD_PATH: D:\\bld\\
+        CONDA_BLD_PATH: C:\\bld\\
         UPLOAD_PACKAGES: True
   steps:
     # TODO: Fast finish on azure pipelines?
