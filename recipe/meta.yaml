@@ -1,4 +1,4 @@
-{% set version = "3.12.1" %}
+{% set version = "3.12.2" %}
 
 package:
   name: qgis
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: a7dc7af768b8960c08ce72a06c1f4ca4664f4197ce29c7fe238429e48b2881a8
+  sha256: 501f81715672205afd2c1a289ffc765aff96eaa8ecb49d079a58ef4d907467b8
   patches:
     # QGIS inserts Qt plugin locations into PATH relative to build location
     # This patch fixes it so PATH is relative to install location
@@ -24,7 +24,7 @@ source:
     - patches/0006-CMakeLists-providers-MDAL-HDF5.patch  # [win]
 
 build:
-  number: 3
+  number: 0
   skip: true  # [py2k]
 
 requirements:
@@ -159,7 +159,7 @@ about:
   home: http://qgis.org/
   license: GPL-2.0
   license_file: COPYING
-  summary: 'A free and open source Geographic Information System (GIS).'
+  summary: A free and open source Geographic Information System (GIS).
   description: |
     QGIS is a user friendly Open Source Geographic Information System (GIS)
     licensed under the GNU General Public License. QGIS is an official
