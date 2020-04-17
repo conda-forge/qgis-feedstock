@@ -12,15 +12,15 @@ jobs:
     matrix:
       win_python3.6.____cpython:
         CONFIG: win_python3.6.____cpython
-        CONDA_BLD_PATH: C:\\bld\\
+        CONDA_BLD_PATH: D:\\bld\\
         UPLOAD_PACKAGES: True
       win_python3.7.____cpython:
         CONFIG: win_python3.7.____cpython
-        CONDA_BLD_PATH: C:\\bld\\
+        CONDA_BLD_PATH: D:\\bld\\
         UPLOAD_PACKAGES: True
       win_python3.8.____cpython:
         CONFIG: win_python3.8.____cpython
-        CONDA_BLD_PATH: C:\\bld\\
+        CONDA_BLD_PATH: D:\\bld\\
         UPLOAD_PACKAGES: True
   steps:
     # TODO: Fast finish on azure pipelines?
@@ -77,6 +77,7 @@ jobs:
     # Configure the VM.
     - script: |
         set "CI=azure"
+        call activate base
         run_conda_forge_build_setup
       displayName: conda-forge build setup
     
@@ -88,6 +89,7 @@ jobs:
 
     # Special cased version setting some more things!
     - script: |
+        call activate base
         conda.exe build "recipe" -m .ci_support\%CONFIG%.yaml
       displayName: Build recipe (vs2008)
       env:
@@ -96,6 +98,7 @@ jobs:
       condition: contains(variables['CONFIG'], 'vs2008')
 
     - script: |
+        call activate base
         conda.exe build "recipe" -m .ci_support\%CONFIG%.yaml
       displayName: Build recipe
       env:
@@ -104,6 +107,7 @@ jobs:
 
     - script: |
         set "GIT_BRANCH=%BUILD_SOURCEBRANCHNAME%"
+        call activate base
         upload_package .\ ".\recipe" .ci_support\%CONFIG%.yaml
       displayName: Upload package
       env:
