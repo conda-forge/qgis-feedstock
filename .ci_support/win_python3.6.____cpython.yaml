@@ -1,11 +1,11 @@
 c_compiler:
-- vs2017
+- vs2015
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2017
+- vs2015
 expat:
 - '2.2'
 gdal:
