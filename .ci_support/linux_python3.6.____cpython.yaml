@@ -42,6 +42,8 @@ pin_run_as_build:
     max_pin: x
 proj:
 - 7.0.0
+pyqt:
+- '5.9'
 python:
 - 3.6.* *_cpython
 qt:
