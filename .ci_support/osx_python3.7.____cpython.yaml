@@ -51,6 +51,6 @@ pyqt:
 python:
 - 3.7.* *_cpython
 qt:
-- '5.12'
+- '5.9'
 sqlite:
 - '3'
