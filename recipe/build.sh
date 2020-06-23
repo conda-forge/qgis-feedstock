@@ -51,7 +51,7 @@ cmake \
     -D EXPAT_INCLUDE_DIR=$PREFIX/include \
     -D EXPAT_LIBRARY=$PREFIX/lib/libexpat${SHLIB_EXT} \
     -D WITH_PY_COMPILE=FALSE \
-    -D WITH_QTWEBKIT=FALSE \
+    -D WITH_QTWEBKIT=TRUE \
     $PLATFORM_OPTS \
     ..
 

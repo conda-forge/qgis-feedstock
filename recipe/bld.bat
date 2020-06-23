@@ -23,7 +23,7 @@ cmake -G Ninja ^
     -D WITH_QSPATIALITE=FALSE ^
     -D EXPAT_INCLUDE_DIR=%LIBRARY_INC% ^
     -D EXPAT_LIBRARY=%LIBRARY_LIB%\expat.lib ^
-    -D WITH_QTWEBKIT=FALSE ^
+    -D WITH_QTWEBKIT=TRUE ^
     ..
 if errorlevel 1 exit 1
 
