@@ -5,7 +5,7 @@ Home: http://qgis.org/
 
 Package license: GPL-2.0
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: A free and open source Geographic Information System (GIS).
 

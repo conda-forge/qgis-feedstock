@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
-- '9'
+- '10'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -11,7 +11,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '9'
+- '10'
 expat:
 - '2.2'
 gdal:
@@ -23,7 +23,7 @@ gsl:
 icu:
 - '64.2'
 libprotobuf:
-- '3.11'
+- '3.12'
 libspatialindex:
 - 1.9.3
 macos_machine:
