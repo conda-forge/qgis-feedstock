@@ -43,7 +43,7 @@ pin_run_as_build:
   sqlite:
     max_pin: x
 proj:
-- 6.3.1
+- 7.0.0
 python:
 - 3.6.* *_cpython
 qt:
