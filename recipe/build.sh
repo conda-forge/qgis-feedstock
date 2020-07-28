@@ -55,7 +55,7 @@ cmake \
     $PLATFORM_OPTS \
     $SRC_DIR
 
-ninja -j$CPU_COUNT
+ninja -j$CPU_COUNT || (ninja -j1 -v)
 ninja install
 
 # QGIS gets bundled as a QGIS.app on MacOS (unless we creeate our own cmake)
