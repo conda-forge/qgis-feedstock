@@ -55,7 +55,8 @@ cmake \
     $PLATFORM_OPTS \
     $SRC_DIR
 
-ninja -j$CPU_COUNT
+# There are some issues with parallel compiling.
+ninja -j$CPU_COUNT || (ninja -j$CPU_COUNT -v)
 ninja install
 
 # QGIS gets bundled as a QGIS.app on MacOS (unless we creeate our own cmake)
