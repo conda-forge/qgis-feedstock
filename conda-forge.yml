@@ -1,9 +1,3 @@
-travis:
-  secure:
-    BINSTAR_TOKEN: xb5tkjrqgwtqWynoHNPWF2VJhVNFvbJApNP4nkSJtATzOHqa3y/EVbBNS1cQtno60GnL3/XEwpTj6de/O0iyXqEBdMWr/nlp3OE5WwPcFs6pBqbTagYNNxkdlOM2/knjiGEbVdFtyjIWPl2ZTkw9SYVus+QbHtcHzMO2dF7E1EgnFfSZXdA+vso5L04QNuvJ1OHxQIbPGg+Z2Rp6BEEdeCxbZRRVgrWabNZWzCYZoxIdMlICXOg7mF02fFdiqhM0o6IscW3AaQi8Jjg7sgKYqesjEgig47mxGu8Hrk/E8r13SWsWqGaTBcaoyPAK5bBiclM6nDqpgzurR2Nu4X4m3tYB2V330yvXIgkHq0J0E8vpUfzFEGwMrfCyullEbd7cR61wMdJ2azgJvG/PgYvuDcVxhf/5QlqqDXEYqCewmf+uUhtVQMjTurEnk/ZwPz4Sx3MNEaOErJei4HqOTUWeuf4c/6GN/A5rbpV77ih6MhjvcGtj6FeQCu5Uag79rFxheJM39a1xwszKpaoJkhe9YfxwPn5YbONmXD6ZtzsiEMQIO0cPwuhk/GqWDHocNv/NV+K0oFa6cYkPtYfZ2kTxhz2ywfVk+raMd9uSjKnhzqi2d9bNdEDMYcDQa6RCybLQin9zLKvQrdwIicfvGie8yRBiP52n2s6YhfoC2CrAp7Q=
-appveyor:
-  secure:
-    BINSTAR_TOKEN: tumuXLL8PU75WMnRDemRy02ruEq2RpNxeK3dz0MjFssnosPm2v4EFjfNB4PTotA1
 provider:
   osx: azure
   linux: azure
@@ -12,4 +6,4 @@ conda_forge_output_validation: true
 azure:
   settings_win:
     variables:
-      CONDA_BLD_PATH: "C:\\bld\\"
+      CONDA_BLD_PATH: C:\bld\
