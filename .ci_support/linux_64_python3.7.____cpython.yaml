@@ -39,7 +39,11 @@ pin_run_as_build:
   sqlite:
     max_pin: x
 proj:
+<<<<<<< HEAD:.ci_support/linux_64_python3.7.____cpython.yaml
 - 7.1.0
+=======
+- '7.0'
+>>>>>>> MNT: Re-rendered with conda-build 3.19.1, conda-smithy 3.7.10, and conda-forge-pinning 2020.08.14.17.10.59:.ci_support/linux_python3.7.____cpython.yaml
 python:
 - 3.7.* *_cpython
 qt:
