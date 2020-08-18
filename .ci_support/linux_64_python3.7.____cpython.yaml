@@ -15,7 +15,7 @@ docker_image:
 expat:
 - '2.2'
 gdal:
-- '3.0'
+- 3.0.4
 geos:
 - 3.8.1
 gsl:
@@ -46,3 +46,5 @@ qt:
 - '5.12'
 sqlite:
 - '3'
+target_platform:
+- linux-64

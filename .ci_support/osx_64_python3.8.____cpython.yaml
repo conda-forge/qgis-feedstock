@@ -1,15 +1,21 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '10.9'
 c_compiler:
-- vs2017
+- clang
+c_compiler_version:
+- '10'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2017
+- clangxx
+cxx_compiler_version:
+- '10'
 expat:
 - '2.2'
 gdal:
-- '3.0'
+- 3.0.4
 geos:
 - 3.8.1
 gsl:
@@ -18,6 +24,10 @@ icu:
 - '64.2'
 libspatialindex:
 - 1.9.3
+macos_machine:
+- x86_64-apple-darwin13.4.0
+macos_min_version:
+- '10.9'
 pin_run_as_build:
   expat:
     max_pin: x.x
@@ -40,3 +50,5 @@ qt:
 - '5.12'
 sqlite:
 - '3'
+target_platform:
+- osx-64

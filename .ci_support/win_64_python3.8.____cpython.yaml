@@ -9,7 +9,7 @@ cxx_compiler:
 expat:
 - '2.2'
 gdal:
-- '3.0'
+- 3.0.4
 geos:
 - 3.8.1
 gsl:
@@ -35,8 +35,10 @@ pin_run_as_build:
 proj:
 - 7.0.0
 python:
-- 3.7.* *_cpython
+- 3.8.* *_cpython
 qt:
 - '5.12'
 sqlite:
 - '3'
+target_platform:
+- win-64
