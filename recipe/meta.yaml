@@ -26,7 +26,7 @@ source:
     - patches/0007-CMakeLists-vectortilewriter-dll.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py2k]
 
 requirements:
