@@ -31,8 +31,6 @@ pin_run_as_build:
     max_pin: x.x
   gdal:
     max_pin: x.x
-  icu:
-    max_pin: x
   python:
     min_pin: x.x
     max_pin: x.x
@@ -41,7 +39,7 @@ pin_run_as_build:
   sqlite:
     max_pin: x
 proj:
-- 7.0.0
+- 7.1.1
 python:
 - 3.6.* *_cpython
 qt:
