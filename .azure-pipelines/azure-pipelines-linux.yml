@@ -20,7 +20,6 @@ jobs:
         CONFIG: linux_64_python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-    maxParallel: 8
   timeoutInMinutes: 360
 
   steps:

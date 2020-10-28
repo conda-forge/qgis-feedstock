@@ -15,7 +15,7 @@ geos:
 gsl:
 - '2.6'
 icu:
-- '64.2'
+- '67'
 libspatialindex:
 - 1.9.3
 pin_run_as_build:
@@ -23,8 +23,6 @@ pin_run_as_build:
     max_pin: x.x
   gdal:
     max_pin: x.x
-  icu:
-    max_pin: x
   python:
     min_pin: x.x
     max_pin: x.x
