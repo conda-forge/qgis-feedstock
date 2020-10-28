@@ -21,7 +21,7 @@ geos:
 gsl:
 - '2.6'
 icu:
-- '67'
+- '64.2'
 libspatialindex:
 - 1.9.3
 macos_machine:
