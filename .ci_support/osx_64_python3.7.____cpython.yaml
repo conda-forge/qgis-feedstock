@@ -41,7 +41,7 @@ pin_run_as_build:
   sqlite:
     max_pin: x
 proj:
-- 7.1.1
+- 7.0.0
 python:
 - 3.7.* *_cpython
 qt:
@@ -50,3 +50,6 @@ sqlite:
 - '3'
 target_platform:
 - osx-64
+zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
