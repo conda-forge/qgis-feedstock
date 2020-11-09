@@ -42,7 +42,10 @@ cmake \
     -D PYTHON_EXECUTABLE="${PYTHON}" \
     -D ENABLE_TESTS=FALSE \
     -D WITH_BINDINGS=TRUE \
-    -D WITH_3D=FALSE \
+    -D WITH_3D=TRUE \
+    -D CMAKE_PREFIX_PATH="${PREFIX}/external/qt3dextra-headers/cmake" \
+    -D QT5_3DEXTRA_INCLUDE_DIR="${PREFIX}/external/qt3dextra-headers" \
+    -D QT5_3DEXTRA_LIBRARY="/usr/lib/x86_64-linux-gnu/libQt53DExtras.so" \
     -D WITH_DESKTOP=TRUE \
     -D WITH_SERVER=FALSE \
     -D WITH_GRASS=FALSE \
