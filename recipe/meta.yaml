@@ -26,7 +26,7 @@ source:
     - patches/0007-CMakeLists-vectortilewriter-dll.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py2k]
 
 requirements:
@@ -66,6 +66,7 @@ requirements:
     # Qt stack.
     - qt
     - pyqt
+    - qtwebkit
     - qscintilla2
     - qca
     - qjson
@@ -103,6 +104,7 @@ requirements:
     - libtasn1  # [osx]
     - qt
     - pyqt
+    - qtwebkit
     - qscintilla2
     - qca
     - qjson
