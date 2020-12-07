@@ -193,7 +193,7 @@ test:
 
 about:
   home: http://qgis.org/
-  license: GPL-2.0
+  license: GPL-2.0-only
   license_file: COPYING
   summary: A free and open source Geographic Information System (GIS).
   description: |
