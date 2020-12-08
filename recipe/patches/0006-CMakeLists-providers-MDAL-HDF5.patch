@@ -1,27 +1,13 @@
-From 7fba4c82e1742aeb76fc35eb5c26c1e9d4c3862a Mon Sep 17 00:00:00 2001
-From: Chris Holden <ceholden@gmail.com>
-Date: Mon, 25 Mar 2019 09:48:00 -0400
-Subject: [PATCH] CMakeLists-providers-MDAL-HDF5
-
----
- src/providers/mdal/CMakeLists.txt | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/src/providers/mdal/CMakeLists.txt b/src/providers/mdal/CMakeLists.txt
-index 4e2c50c52e..4a44428f52 100644
---- a/src/providers/mdal/CMakeLists.txt
-+++ b/src/providers/mdal/CMakeLists.txt
-@@ -144,6 +144,10 @@ IF (WITH_GUI)
- ENDIF (WITH_GUI)
+--- src/providers/mdal/CMakeLists.txt.orig	2020-12-08 11:38:48.854134819 +1000
++++ src/providers/mdal/CMakeLists.txt	2020-12-08 11:39:21.714572399 +1000
+@@ -199,6 +199,10 @@
+ endif()
  
- IF (HDF5_FOUND)
+ if (HDF5_FOUND)
 +  IF(WIN32)
 +    # https://trac.osgeo.org/gdal/wiki/HDF#BuildingonWindowswithMSVC
 +    ADD_DEFINITIONS(-DH5_BUILT_AS_DYNAMIC_LIB)
 +  ENDIF(WIN32)
-   TARGET_INCLUDE_DIRECTORIES(mdalprovider PRIVATE ${HDF5_INCLUDE_DIRS})
-   TARGET_LINK_LIBRARIES(mdalprovider ${HDF5_C_LIBRARIES} )
- ENDIF (HDF5_FOUND)
--- 
-2.20.1
-
+   target_include_directories(mdalprovider PRIVATE ${HDF5_INCLUDE_DIRS})
+   target_link_libraries(mdalprovider ${HDF5_C_LIBRARIES} )
+ endif()

@@ -23,7 +23,8 @@ source:
     # https://trac.osgeo.org/gdal/wiki/HDF#BuildingonWindowswithMSVC
     - patches/0006-CMakeLists-providers-MDAL-HDF5.patch  # [win]
     # Fix linking with libprotobuf
-    - patches/0007-CMakeLists-vectortilewriter-dll.patch  # [win]
+    # (not needed?)
+    #- patches/0007-CMakeLists-vectortilewriter-dll.patch  # [win]
 
 build:
   number: 2
