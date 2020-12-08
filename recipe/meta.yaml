@@ -154,7 +154,10 @@ requirements:
     - yaml
     - owslib
     - pyqtwebkit
-
+    
+  run_constrained:                                            # [osx]
+    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
+    
 test:
   requires:
     - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
@@ -183,7 +186,6 @@ test:
     - {{ cdt('libxfixes-devel') }}       # [linux]
     - {{ cdt('libxxf86vm') }}            # [linux]
     - {{ cdt('libxcb') }}                # [linux]
-    - {{ cdt('expat-devel') }}        # [linux]  
   files:
     - test_data
     - test_py_qgis.py
