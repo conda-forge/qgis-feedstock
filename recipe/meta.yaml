@@ -22,9 +22,6 @@ source:
     # Need to set "H5_BUILT_AS_DYNAMIC_LIB" to use the shared libs on Windows
     # https://trac.osgeo.org/gdal/wiki/HDF#BuildingonWindowswithMSVC
     - patches/0006-CMakeLists-providers-MDAL-HDF5.patch  # [win]
-    # Fix linking with libprotobuf
-    # (not needed?)
-    #- patches/0007-CMakeLists-vectortilewriter-dll.patch  # [win]
 
 build:
   number: 2
