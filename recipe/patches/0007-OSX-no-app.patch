@@ -1,11 +1,12 @@
 diff --git a/CMakeLists.txt.orig b/CMakeLists.txt
-index f581b2c..9280194 100644
+index f581b2c..36c0003 100644
 --- a/CMakeLists.txt.orig
 +++ b/CMakeLists.txt
-@@ -678,68 +678,6 @@ if (WITH_CORE)
+@@ -677,69 +677,12 @@ if (WITH_CORE)
+       set (DEFAULT_CGIBIN_SUBDIR .)
      endif()
    else()
- 
+-
 -    if (APPLE)
 -      if (POLICY CMP0042) # in CMake 3.0.0+
 -        set (CMAKE_MACOSX_RPATH OFF) # otherwise ON by default
@@ -34,8 +35,12 @@ index f581b2c..9280194 100644
 -          set (OSX_HAVE_LOADERPATH 1)
 -      else()
 -          set (OSX_HAVE_LOADERPATH 0)
--      endif()
--
++  
++      if(APPLE)
++        set (QGIS_FW_SUBDIR          ../Frameworks)
++        set (QGIS_MACAPP_BUNDLE -1)
+       endif()
+ 
 -      set (DEFAULT_BIN_SUBDIR      bin)
 -      set (QGIS_BIN_SUBDIR_REV     ..)
 -      set (DEFAULT_CGIBIN_SUBDIR   fcgi-bin)
@@ -71,7 +76,7 @@ index f581b2c..9280194 100644
        # UNIX
        set (DEFAULT_BIN_SUBDIR     bin)
        set (DEFAULT_CGIBIN_SUBDIR  bin)
-@@ -751,7 +689,6 @@ if (WITH_CORE)
+@@ -751,7 +694,6 @@ if (WITH_CORE)
        set (DEFAULT_QML_SUBDIR     qml)
  
        set (DEFAULT_SERVER_MODULE_SUBDIR ${DEFAULT_LIBEXEC_SUBDIR}/server)
