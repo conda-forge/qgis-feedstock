@@ -24,7 +24,7 @@ echo "Current work directory: $(pwd)"
 echo "PREFIX: $PREFIX"
 
 if [ $(uname) == Darwin ]; then
-  PLATFORM_OPTS="-D WITH_QSPATIALITE=FALSE"
+  PLATFORM_OPTS="-D WITH_QSPATIALITE=FALSE -D CMAKE_FRAMEWORK=FALSE"
 else
   # Needed to find libGL.so
   export LDFLAGS="$LDFLAGS -Wl,-rpath-link,${BUILD_PREFIX}/${HOST}/sysroot"
