@@ -257,7 +257,7 @@ diff -r -u qgis-3.16.1-old/src/core/CMakeLists.txt qgis-3.16.1/src/core/CMakeLis
  if (NOT ANDROID)
 diff -r -u qgis-3.16.1-old/src/gui/CMakeLists.txt qgis-3.16.1/src/gui/CMakeLists.txt
 --- qgis-3.16.1-old/src/gui/CMakeLists.txt	2020-12-18 13:18:29.532715586 +1000
-+++ qgis-3.16.1/src/gui/CMakeLists.txt	2020-12-18 13:49:00.897723157 +1000
++++ qgis-3.16.1/src/gui/CMakeLists.txt	2020-12-18 14:00:31.479137564 +1000
 @@ -1383,36 +1383,38 @@
  
  set(QGIS_GUI_HDRS ${QGIS_GUI_HDRS} ${CMAKE_CURRENT_BINARY_DIR}/qgis_gui.h)
@@ -270,7 +270,7 @@ diff -r -u qgis-3.16.1-old/src/gui/CMakeLists.txt qgis-3.16.1/src/gui/CMakeLists
 -  if (UNIX)
 +  if (APPLE)
 +    include_directories(${CMAKE_SOURCE_DIR}/src/native/mac)
-+  else if (UNIX)
++  elseif (UNIX)
      include_directories(${CMAKE_SOURCE_DIR}/src/native/linux)
    endif()
    install(FILES ${QGIS_GUI_HDRS} DESTINATION ${QGIS_INCLUDE_DIR})
