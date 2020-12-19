@@ -1,439 +1,131 @@
-diff -r -u qgis-3.16.1-old/CMakeLists.txt qgis-3.16.1/CMakeLists.txt
---- qgis-3.16.1-old/CMakeLists.txt	2020-12-18 13:18:28.864704408 +1000
-+++ qgis-3.16.1/CMakeLists.txt	2020-12-18 13:21:17.867392485 +1000
-@@ -677,69 +677,13 @@
+diff -r -u qgis-3.16.1-orig/CMakeLists.txt qgis-3.16.1/CMakeLists.txt
+--- qgis-3.16.1-orig/CMakeLists.txt	2020-12-19 10:20:52.080327799 +1000
++++ qgis-3.16.1/CMakeLists.txt	2020-12-19 10:30:18.008537263 +1000
+@@ -677,8 +677,12 @@
        set (DEFAULT_CGIBIN_SUBDIR .)
      endif()
    else()
--
--    if (APPLE)
--      if (POLICY CMP0042) # in CMake 3.0.0+
--        set (CMAKE_MACOSX_RPATH OFF) # otherwise ON by default
--      endif()
--      if (POLICY CMP0068) # in CMake 3.9.0+
--        cmake_policy(SET CMP0068 NEW)
--      endif()
--      # for Mac OS X, everything is put inside an application bundle
--      # save the root install prefix for the app later
--      set (QGIS_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX})
--      set (QGIS_MACAPP_PREFIX ${CMAKE_INSTALL_PREFIX}/${QGIS_APP_NAME}.app/Contents)
--      # common prefix for components, let cmake handle it
--      set (CMAKE_INSTALL_PREFIX ${QGIS_MACAPP_PREFIX}/MacOS)
--      # 5 bundling levels, each includes previous
--      #  -1  nothing
--      #   0  fixup the library paths for all QGIS libraries with @loader_path
--      #   1  Qt frameworks
--      #   2  non-system libraries, "standard"
--      #   3  non-system frameworks, "standalone"
--      set (QGIS_MACAPP_BUNDLE 1 CACHE STRING "What to bundle into app package")
--      set (QGIS_MACAPP_BUNDLE_USER "" CACHE STRING "Path to user bundling script")
--      set (QGIS_MACAPP_INSTALL_DEV FALSE CACHE BOOL "Install developer frameworks")
--      set (QGIS_MACAPP_DEV_PREFIX "/Library/Frameworks" CACHE STRING "Path to install developer frameworks")
--      # if we have @loader_path, >=OSX 10.5 (darwin 9+)
--      if (CMAKE_SYSTEM_VERSION VERSION_GREATER 9.0.0 OR CMAKE_SYSTEM_VERSION VERSION_EQUAL 9.0.0)
--          set (OSX_HAVE_LOADERPATH 1)
--      else()
--          set (OSX_HAVE_LOADERPATH 0)
 +  
-+      if(APPLE)
-+        set (QGIS_FW_SUBDIR          ../Frameworks)
-+        set (QGIS_MACAPP_BUNDLE -1)
-+        set (QGIS_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX})
-       endif()
++    if(APPLE)
++        set(QGIS_MACAPP_FRAMEWORK TRUE CACHE BOOL "Build as a framework on OSX")
++    endif()
  
--      set (DEFAULT_BIN_SUBDIR      bin)
--      set (QGIS_BIN_SUBDIR_REV     ..)
--      set (DEFAULT_CGIBIN_SUBDIR   fcgi-bin)
--      set (QGIS_CGIBIN_SUBDIR_REV  ..)
--      set (DEFAULT_LIB_SUBDIR      lib)
--      set (QGIS_LIB_SUBDIR_REV     ..)
--      set (QGIS_FW_SUBDIR          ../Frameworks)
--      set (QGIS_FW_SUBDIR_REV      ../MacOS)
--      set (DEFAULT_DATA_SUBDIR     ../Resources)
--      set (QGIS_DATA_SUBDIR_REV    ../MacOS)
--      set (DEFAULT_LIBEXEC_SUBDIR  lib/qgis)
--      set (QGIS_LIBEXEC_SUBDIR_REV ../..)
--      set (DEFAULT_PLUGIN_SUBDIR   ../PlugIns/qgis)
--      set (QGIS_PLUGIN_SUBDIR_REV  ../../MacOS)
--      set (DEFAULT_INCLUDE_SUBDIR  include/qgis)
--      set (DEFAULT_QML_SUBDIR     qml)
--
--      # Set server moodules path to DEFAULT_LIBEXEC_SUBDIR+'/server'
--      set (DEFAULT_SERVER_MODULE_SUBDIR ${DEFAULT_LIBEXEC_SUBDIR}/server)
--
--      # path for framework references when running from build directory
--      # changed later to reference in-app resources upon install
--      set (CMAKE_INSTALL_NAME_DIR ${CMAKE_BINARY_DIR}/output/lib)
--      # recent cmakes force SDKs, recent SDKs don't have user symlinks
--      # need to find non-system frameworks
--      # cmake bug #0007250 - CMAKE_SHARED_LINKER_FLAGS ignored when creating
--      # a framework, so these need to be manually handled with LINK_FLAGS options
--      set (CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -F/Library/Frameworks")
--      set (CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} -F/Library/Frameworks")
--      set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -F/Library/Frameworks")
--
--    else()
-       # UNIX
-       set (DEFAULT_BIN_SUBDIR     bin)
-       set (DEFAULT_CGIBIN_SUBDIR  bin)
-@@ -751,7 +695,6 @@
+-    if (APPLE)
++    if (APPLE AND QGIS_MACAPP_FRAMEWORK)
+       if (POLICY CMP0042) # in CMake 3.0.0+
+         set (CMAKE_MACOSX_RPATH OFF) # otherwise ON by default
+       endif()
+@@ -751,6 +755,13 @@
        set (DEFAULT_QML_SUBDIR     qml)
  
        set (DEFAULT_SERVER_MODULE_SUBDIR ${DEFAULT_LIBEXEC_SUBDIR}/server)
--    endif()
++      
++      # QGIS_MACAPP_FRAMEWORK=FALSE
++      if(APPLE)
++        set (QGIS_MACAPP_BUNDLE -1)
++        set (CMAKE_FRAMEWORK FALSE)
++      endif()
++ 
+     endif()
  
    endif()
- 
-diff -r -u qgis-3.16.1-old/src/3d/CMakeLists.txt qgis-3.16.1/src/3d/CMakeLists.txt
---- qgis-3.16.1-old/src/3d/CMakeLists.txt	2020-12-18 13:18:29.436713980 +1000
-+++ qgis-3.16.1/src/3d/CMakeLists.txt	2020-12-18 13:22:08.680153095 +1000
-@@ -222,30 +222,30 @@
+diff -r -u qgis-3.16.1-orig/src/3d/CMakeLists.txt qgis-3.16.1/src/3d/CMakeLists.txt
+--- qgis-3.16.1-orig/src/3d/CMakeLists.txt	2020-12-19 10:20:52.640335998 +1000
++++ qgis-3.16.1/src/3d/CMakeLists.txt	2020-12-19 10:29:07.623522527 +1000
+@@ -222,7 +222,7 @@
  
  set(QGIS_3D_HDRS ${QGIS_3D_HDRS} ${CMAKE_CURRENT_BINARY_DIR}/qgis_3d.h)
  
 -if(NOT APPLE)
-+#if(NOT APPLE)
++if(NOT APPLE OR NOT QGIS_MACAPP_FRAMEWORK)
    install(FILES ${QGIS_3D_HDRS} DESTINATION ${QGIS_INCLUDE_DIR})
--else()
--  set_target_properties(qgis_3d PROPERTIES
--    # no moc headers, messes up PROPERTIES syntax
--    CLEAN_DIRECT_OUTPUT 1
--    FRAMEWORK 1
--    FRAMEWORK_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}"
--    MACOSX_FRAMEWORK_INFO_PLIST "${CMAKE_SOURCE_DIR}/mac/framework.info.plist.in"
--    MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${COMPLETE_VERSION}
--    MACOSX_FRAMEWORK_IDENTIFIER org.qgis.qgis3_3d
--    BUILD_WITH_INSTALL_RPATH TRUE
--    PUBLIC_HEADER "${QGIS_3D_HDRS}"
--    LINK_FLAGS "${CMAKE_SHARED_LINKER_FLAGS}"
--  )
--  # generated export header does not get copied with PUBLIC_HEADER files
--  add_custom_command(TARGET qgis_3d
--    POST_BUILD
--    COMMAND ${CMAKE_COMMAND} -E copy qgis_3d.h
--            "${QGIS_OUTPUT_DIRECTORY}/${QGIS_LIB_SUBDIR}/qgis_3d.framework/Headers"
--    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
--    DEPENDS qgis_3d.h
--  )
--endif()
-+#else()
-+#  set_target_properties(qgis_3d PROPERTIES
-+#    # no moc headers, messes up PROPERTIES syntax
-+#    CLEAN_DIRECT_OUTPUT 1
-+#    FRAMEWORK 1
-+#    FRAMEWORK_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}"
-+#    MACOSX_FRAMEWORK_INFO_PLIST "${CMAKE_SOURCE_DIR}/mac/framework.info.plist.in"
-+#    MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${COMPLETE_VERSION}
-+#    MACOSX_FRAMEWORK_IDENTIFIER org.qgis.qgis3_3d
-+#    BUILD_WITH_INSTALL_RPATH TRUE
-+#    PUBLIC_HEADER "${QGIS_3D_HDRS}"
-+#    LINK_FLAGS "${CMAKE_SHARED_LINKER_FLAGS}"
-+#  )
-+#  # generated export header does not get copied with PUBLIC_HEADER files
-+#  add_custom_command(TARGET qgis_3d
-+#    POST_BUILD
-+#    COMMAND ${CMAKE_COMMAND} -E copy qgis_3d.h
-+#            "${QGIS_OUTPUT_DIRECTORY}/${QGIS_LIB_SUBDIR}/qgis_3d.framework/Headers"
-+#    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-+#    DEPENDS qgis_3d.h
-+#  )
-+#endif()
- 
- #generate unversioned libs for android
- if (NOT ANDROID)
-diff -r -u qgis-3.16.1-old/src/analysis/CMakeLists.txt qgis-3.16.1/src/analysis/CMakeLists.txt
---- qgis-3.16.1-old/src/analysis/CMakeLists.txt	2020-12-18 13:18:29.444714114 +1000
-+++ qgis-3.16.1/src/analysis/CMakeLists.txt	2020-12-18 13:23:49.921615487 +1000
-@@ -465,30 +465,30 @@
+ else()
+   set_target_properties(qgis_3d PROPERTIES
+diff -r -u qgis-3.16.1-orig/src/analysis/CMakeLists.txt qgis-3.16.1/src/analysis/CMakeLists.txt
+--- qgis-3.16.1-orig/src/analysis/CMakeLists.txt	2020-12-19 10:20:52.648336115 +1000
++++ qgis-3.16.1/src/analysis/CMakeLists.txt	2020-12-19 10:31:03.881197981 +1000
+@@ -465,7 +465,7 @@
  
  set(QGIS_ANALYSIS_HDRS ${QGIS_ANALYSIS_HDRS} ${CMAKE_CURRENT_BINARY_DIR}/qgis_analysis.h)
  
 -if(NOT APPLE)
-+#if(NOT APPLE)
++if(NOT APPLE OR NOT QGIS_MACAPP_FRAMEWORK)
    install(FILES ${QGIS_ANALYSIS_HDRS} DESTINATION ${QGIS_INCLUDE_DIR})
--else()
--  set_target_properties(qgis_analysis PROPERTIES
--    # no moc headers, messes up PROPERTIES syntax
--    CLEAN_DIRECT_OUTPUT 1
--    FRAMEWORK 1
--    FRAMEWORK_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}"
--    MACOSX_FRAMEWORK_INFO_PLIST "${CMAKE_SOURCE_DIR}/mac/framework.info.plist.in"
--    MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${COMPLETE_VERSION}
--    MACOSX_FRAMEWORK_IDENTIFIER org.qgis.qgis3_analysis
--    BUILD_WITH_INSTALL_RPATH TRUE
--    PUBLIC_HEADER "${QGIS_ANALYSIS_HDRS}"
--    LINK_FLAGS "${CMAKE_SHARED_LINKER_FLAGS}"
--  )
--  # generated export header does not get copied with PUBLIC_HEADER files
--  add_custom_command(TARGET qgis_analysis
--    POST_BUILD
--    COMMAND ${CMAKE_COMMAND} -E copy qgis_analysis.h
--            "${QGIS_OUTPUT_DIRECTORY}/${QGIS_LIB_SUBDIR}/qgis_analysis.framework/Headers"
--    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
--    DEPENDS qgis_analysis.h
--  )
--endif()
-+#else()
-+#  set_target_properties(qgis_analysis PROPERTIES
-+#    # no moc headers, messes up PROPERTIES syntax
-+#    CLEAN_DIRECT_OUTPUT 1
-+#    FRAMEWORK 1
-+#    FRAMEWORK_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}"
-+#    MACOSX_FRAMEWORK_INFO_PLIST "${CMAKE_SOURCE_DIR}/mac/framework.info.plist.in"
-+#    MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${COMPLETE_VERSION}
-+#    MACOSX_FRAMEWORK_IDENTIFIER org.qgis.qgis3_analysis
-+#    BUILD_WITH_INSTALL_RPATH TRUE
-+#    PUBLIC_HEADER "${QGIS_ANALYSIS_HDRS}"
-+#    LINK_FLAGS "${CMAKE_SHARED_LINKER_FLAGS}"
-+#  )
-+#  # generated export header does not get copied with PUBLIC_HEADER files
-+#  add_custom_command(TARGET qgis_analysis
-+#    POST_BUILD
-+#    COMMAND ${CMAKE_COMMAND} -E copy qgis_analysis.h
-+#            "${QGIS_OUTPUT_DIRECTORY}/${QGIS_LIB_SUBDIR}/qgis_analysis.framework/Headers"
-+#    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-+#    DEPENDS qgis_analysis.h
-+#  )
-+#endif()
- 
- #generate unversioned libs for android
- if (NOT ANDROID)
-diff -r -u qgis-3.16.1-old/src/core/CMakeLists.txt qgis-3.16.1/src/core/CMakeLists.txt
---- qgis-3.16.1-old/src/core/CMakeLists.txt	2020-12-18 13:18:29.480714716 +1000
-+++ qgis-3.16.1/src/core/CMakeLists.txt	2020-12-18 13:25:23.106908208 +1000
-@@ -1654,30 +1654,30 @@
+ else()
+   set_target_properties(qgis_analysis PROPERTIES
+diff -r -u qgis-3.16.1-orig/src/core/CMakeLists.txt qgis-3.16.1/src/core/CMakeLists.txt
+--- qgis-3.16.1-orig/src/core/CMakeLists.txt	2020-12-19 10:20:52.684336642 +1000
++++ qgis-3.16.1/src/core/CMakeLists.txt	2020-12-19 10:31:35.305650339 +1000
+@@ -1654,7 +1654,7 @@
  endif()
  
  
 -if(NOT APPLE)
-+#if(NOT APPLE)
++if(NOT APPLE OR NOT QGIS_MACAPP_FRAMEWORK)
    install(FILES ${QGIS_CORE_HDRS} DESTINATION ${QGIS_INCLUDE_DIR})
--else()
--
--  set_target_properties(qgis_core PROPERTIES
--    CLEAN_DIRECT_OUTPUT 1
--    FRAMEWORK 1
--    FRAMEWORK_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}"
--    MACOSX_FRAMEWORK_INFO_PLIST "${CMAKE_SOURCE_DIR}/mac/framework.info.plist.in"
--    MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${COMPLETE_VERSION}
--    MACOSX_FRAMEWORK_IDENTIFIER org.qgis.qgis3_core
--    BUILD_WITH_INSTALL_RPATH TRUE
--    PUBLIC_HEADER "${QGIS_CORE_HDRS}"
--    LINK_FLAGS "${CMAKE_SHARED_LINKER_FLAGS}"
--  )
--  # generated export header does not get copied with PUBLIC_HEADER files
--  add_custom_command(TARGET qgis_core
--    POST_BUILD
--    COMMAND ${CMAKE_COMMAND} -E copy qgis_core.h
--            "${QGIS_OUTPUT_DIRECTORY}/${QGIS_LIB_SUBDIR}/qgis_core.framework/Headers"
--    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
--    DEPENDS qgis_core.h
--  )
--endif()
-+#else()
-+#
-+#  set_target_properties(qgis_core PROPERTIES
-+#    CLEAN_DIRECT_OUTPUT 1
-+#    FRAMEWORK 1
-+#    FRAMEWORK_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}"
-+#    MACOSX_FRAMEWORK_INFO_PLIST "${CMAKE_SOURCE_DIR}/mac/framework.info.plist.in"
-+#    MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${COMPLETE_VERSION}
-+#    MACOSX_FRAMEWORK_IDENTIFIER org.qgis.qgis3_core
-+#    BUILD_WITH_INSTALL_RPATH TRUE
-+#    PUBLIC_HEADER "${QGIS_CORE_HDRS}"
-+#    LINK_FLAGS "${CMAKE_SHARED_LINKER_FLAGS}"
-+#  )
-+#  # generated export header does not get copied with PUBLIC_HEADER files
-+#  add_custom_command(TARGET qgis_core
-+#    POST_BUILD
-+#    COMMAND ${CMAKE_COMMAND} -E copy qgis_core.h
-+#            "${QGIS_OUTPUT_DIRECTORY}/${QGIS_LIB_SUBDIR}/qgis_core.framework/Headers"
-+#    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-+#    DEPENDS qgis_core.h
-+#  )
-+#endif()
+ else()
  
- #generate unversioned libs for android
- if (NOT ANDROID)
-diff -r -u qgis-3.16.1-old/src/gui/CMakeLists.txt qgis-3.16.1/src/gui/CMakeLists.txt
---- qgis-3.16.1-old/src/gui/CMakeLists.txt	2020-12-18 13:18:29.532715586 +1000
-+++ qgis-3.16.1/src/gui/CMakeLists.txt	2020-12-18 14:00:31.479137564 +1000
-@@ -1383,36 +1383,38 @@
+diff -r -u qgis-3.16.1-orig/src/gui/CMakeLists.txt qgis-3.16.1/src/gui/CMakeLists.txt
+--- qgis-3.16.1-orig/src/gui/CMakeLists.txt	2020-12-19 10:20:52.736337405 +1000
++++ qgis-3.16.1/src/gui/CMakeLists.txt	2020-12-19 10:33:27.995270986 +1000
+@@ -1383,11 +1383,13 @@
  
  set(QGIS_GUI_HDRS ${QGIS_GUI_HDRS} ${CMAKE_CURRENT_BINARY_DIR}/qgis_gui.h)
  
 -if(NOT APPLE)
-+#if(NOT APPLE)
++if(NOT APPLE OR NOT QGIS_MACAPP_FRAMEWORK)
    if (WIN32 )
      include_directories(${CMAKE_SOURCE_DIR}/src/native/win)
    endif()
 -  if (UNIX)
-+  if (APPLE)
++  elseif (APPLE)
 +    include_directories(${CMAKE_SOURCE_DIR}/src/native/mac)
 +  elseif (UNIX)
      include_directories(${CMAKE_SOURCE_DIR}/src/native/linux)
    endif()
    install(FILES ${QGIS_GUI_HDRS} DESTINATION ${QGIS_INCLUDE_DIR})
--else()
--  include_directories(${CMAKE_SOURCE_DIR}/src/native/mac)
--  set_target_properties(qgis_gui PROPERTIES
--    CLEAN_DIRECT_OUTPUT 1
--    FRAMEWORK 1
--    FRAMEWORK_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}"
--    MACOSX_FRAMEWORK_INFO_PLIST "${CMAKE_SOURCE_DIR}/mac/framework.info.plist.in"
--    MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${COMPLETE_VERSION}
--    MACOSX_FRAMEWORK_IDENTIFIER org.qgis.qgis3_gui
--    BUILD_WITH_INSTALL_RPATH TRUE
--    PUBLIC_HEADER "${QGIS_GUI_HDRS}"
--    LINK_FLAGS "${CMAKE_SHARED_LINKER_FLAGS}"
--  )
--  # generated export header does not get copied with PUBLIC_HEADER files
--  add_custom_command(TARGET qgis_gui
--    POST_BUILD
--    COMMAND ${CMAKE_COMMAND} -E copy qgis_gui.h
--            "${QGIS_OUTPUT_DIRECTORY}/${QGIS_LIB_SUBDIR}/qgis_gui.framework/Headers"
--    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
--    DEPENDS qgis_gui.h
--  )
--endif()
-+#else()
-+#  include_directories(${CMAKE_SOURCE_DIR}/src/native/mac)
-+#  set_target_properties(qgis_gui PROPERTIES
-+#    CLEAN_DIRECT_OUTPUT 1
-+#    FRAMEWORK 1
-+#    FRAMEWORK_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}"
-+#    MACOSX_FRAMEWORK_INFO_PLIST "${CMAKE_SOURCE_DIR}/mac/framework.info.plist.in"
-+#    MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${COMPLETE_VERSION}
-+#    MACOSX_FRAMEWORK_IDENTIFIER org.qgis.qgis3_gui
-+#    BUILD_WITH_INSTALL_RPATH TRUE
-+#    PUBLIC_HEADER "${QGIS_GUI_HDRS}"
-+#    LINK_FLAGS "${CMAKE_SHARED_LINKER_FLAGS}"
-+#  )
-+#  # generated export header does not get copied with PUBLIC_HEADER files
-+#  add_custom_command(TARGET qgis_gui
-+#    POST_BUILD
-+#    COMMAND ${CMAKE_COMMAND} -E copy qgis_gui.h
-+#            "${QGIS_OUTPUT_DIRECTORY}/${QGIS_LIB_SUBDIR}/qgis_gui.framework/Headers"
-+#    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-+#    DEPENDS qgis_gui.h
-+#  )
-+#endif()
+@@ -1474,7 +1476,7 @@
+   PUBLIC_HEADER DESTINATION ${QGIS_INCLUDE_DIR})
  
- #generate unversioned libs for android
- if (NOT ANDROID)
-diff -r -u qgis-3.16.1-old/src/native/CMakeLists.txt qgis-3.16.1/src/native/CMakeLists.txt
---- qgis-3.16.1-old/src/native/CMakeLists.txt	2020-12-18 13:18:29.568716188 +1000
-+++ qgis-3.16.1/src/native/CMakeLists.txt	2020-12-18 13:23:11.509068363 +1000
-@@ -107,21 +107,21 @@
+ # ui headers to install, don't exist at target definition time, install manually
+-if (APPLE)
++if (APPLE AND QGIS_MACAPP_FRAMEWORK)
+   install(FILES ${QGIS_GUI_UI_HDRS} DESTINATION ${QGIS_FW_SUBDIR}/qgis_gui.framework/Headers)
+ else()
+   install(FILES ${QGIS_GUI_UI_HDRS} DESTINATION ${QGIS_INCLUDE_DIR})
+diff -r -u qgis-3.16.1-orig/src/native/CMakeLists.txt qgis-3.16.1/src/native/CMakeLists.txt
+--- qgis-3.16.1-orig/src/native/CMakeLists.txt	2020-12-19 10:20:52.772337932 +1000
++++ qgis-3.16.1/src/native/CMakeLists.txt	2020-12-19 10:33:52.443622308 +1000
+@@ -107,7 +107,7 @@
  
  set(QGIS_NATIVE_HDRS ${QGIS_NATIVE_HDRS} ${CMAKE_CURRENT_BINARY_DIR}/qgis_native.h)
  
 -if(NOT APPLE)
-+#if(NOT APPLE)
++if(NOT APPLE OR NOT QGIS_MACAPP_FRAMEWORK)
    install(FILES ${QGIS_NATIVE_HDRS} DESTINATION ${QGIS_INCLUDE_DIR})
--else()
--  set_target_properties(qgis_native PROPERTIES
--    CLEAN_DIRECT_OUTPUT 1
--    FRAMEWORK 1
--    FRAMEWORK_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}"
--    MACOSX_FRAMEWORK_INFO_PLIST "${CMAKE_SOURCE_DIR}/mac/framework.info.plist.in"
--    MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${COMPLETE_VERSION}
--    MACOSX_FRAMEWORK_IDENTIFIER org.qgis.qgis3_native
--    BUILD_WITH_INSTALL_RPATH TRUE
--    PUBLIC_HEADER "${QGIS_NATIVE_HDRS}"
--    LINK_FLAGS "${CMAKE_SHARED_LINKER_FLAGS}"
--  )
--endif()
-+#else()
-+#  set_target_properties(qgis_native PROPERTIES
-+#    CLEAN_DIRECT_OUTPUT 1
-+#    FRAMEWORK 1
-+#    FRAMEWORK_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}"
-+#    MACOSX_FRAMEWORK_INFO_PLIST "${CMAKE_SOURCE_DIR}/mac/framework.info.plist.in"
-+#    MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${COMPLETE_VERSION}
-+#    MACOSX_FRAMEWORK_IDENTIFIER org.qgis.qgis3_native
-+#    BUILD_WITH_INSTALL_RPATH TRUE
-+#    PUBLIC_HEADER "${QGIS_NATIVE_HDRS}"
-+#    LINK_FLAGS "${CMAKE_SHARED_LINKER_FLAGS}"
-+#  )
-+#endif()
- 
- #generate unversioned libs for android
- if(NOT ANDROID)
-diff -r -u qgis-3.16.1-old/src/providers/grass/CMakeLists.txt qgis-3.16.1/src/providers/grass/CMakeLists.txt
---- qgis-3.16.1-old/src/providers/grass/CMakeLists.txt	2020-12-18 13:18:29.608716858 +1000
-+++ qgis-3.16.1/src/providers/grass/CMakeLists.txt	2020-12-18 13:29:25.718092395 +1000
-@@ -92,12 +92,12 @@
-     endif()
+ else()
+   set_target_properties(qgis_native PROPERTIES
+diff -r -u qgis-3.16.1-orig/src/providers/grass/CMakeLists.txt qgis-3.16.1/src/providers/grass/CMakeLists.txt
+--- qgis-3.16.1-orig/src/providers/grass/CMakeLists.txt	2020-12-19 10:20:52.812338517 +1000
++++ qgis-3.16.1/src/providers/grass/CMakeLists.txt	2020-12-19 10:34:36.084249198 +1000
+@@ -93,7 +93,7 @@
  
      set_target_properties(qgisgrass${GRASS_BUILD_VERSION} PROPERTIES
--      CLEAN_DIRECT_OUTPUT 1
+       CLEAN_DIRECT_OUTPUT 1
 -      FRAMEWORK 1
--      FRAMEWORK_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}"
--      MACOSX_FRAMEWORK_INFO_PLIST "${CMAKE_SOURCE_DIR}/mac/framework.info.plist.in"
--      MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${COMPLETE_VERSION}
--      MACOSX_FRAMEWORK_IDENTIFIER org.qgis.qgis3_grass
-+      #CLEAN_DIRECT_OUTPUT 1
-+      #FRAMEWORK 1
-+      #FRAMEWORK_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}"
-+      #MACOSX_FRAMEWORK_INFO_PLIST "${CMAKE_SOURCE_DIR}/mac/framework.info.plist.in"
-+      #MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${COMPLETE_VERSION}
-+      #MACOSX_FRAMEWORK_IDENTIFIER org.qgis.qgis3_grass
-       COMPILE_FLAGS "-DGRASS_BASE=\\\"${GRASS_PREFIX}\\\" ${GRASS_OFF_T_SIZE_DEF}"
-     )
- 
-diff -r -u qgis-3.16.1-old/src/quickgui/CMakeLists.txt qgis-3.16.1/src/quickgui/CMakeLists.txt
---- qgis-3.16.1-old/src/quickgui/CMakeLists.txt	2020-12-18 13:18:29.620717058 +1000
-+++ qgis-3.16.1/src/quickgui/CMakeLists.txt	2020-12-18 13:24:42.770354296 +1000
-@@ -120,29 +120,29 @@
++      FRAMEWORK QGIS_MACAPP_FRAMEWORK
+       FRAMEWORK_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}"
+       MACOSX_FRAMEWORK_INFO_PLIST "${CMAKE_SOURCE_DIR}/mac/framework.info.plist.in"
+       MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${COMPLETE_VERSION}
+diff -r -u qgis-3.16.1-orig/src/quickgui/CMakeLists.txt qgis-3.16.1/src/quickgui/CMakeLists.txt
+--- qgis-3.16.1-orig/src/quickgui/CMakeLists.txt	2020-12-19 10:20:52.824338694 +1000
++++ qgis-3.16.1/src/quickgui/CMakeLists.txt	2020-12-19 10:35:13.260783023 +1000
+@@ -120,7 +120,7 @@
  )
  
  # Installation
 -if(NOT APPLE)
-+#if(NOT APPLE)
++if(NOT APPLE OR NOT QGIS_MACAPP_FRAMEWORK)
    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qgis_quick.h ${QGIS_QUICK_GUI_HDRS} ${QGIS_QUICK_GUI_MOC_HDRS} DESTINATION ${QGIS_INCLUDE_DIR})
--else()
--  set_target_properties(qgis_quick PROPERTIES
--    CLEAN_DIRECT_OUTPUT 1
--    FRAMEWORK 1
--    FRAMEWORK_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}"
--    MACOSX_FRAMEWORK_INFO_PLIST "${CMAKE_SOURCE_DIR}/mac/framework.info.plist.in"
--    MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${COMPLETE_VERSION}
--    MACOSX_FRAMEWORK_IDENTIFIER org.qgis.qgis3_quick
--    BUILD_WITH_INSTALL_RPATH TRUE
--    PUBLIC_HEADER "${QGIS_QUICK_GUI_HDRS};${QGIS_QUICK_GUI_MOC_HDRS}"
--    LINK_FLAGS "${CMAKE_SHARED_LINKER_FLAGS}"
--  )
--  # generated export header does not get copied with PUBLIC_HEADER files
--  add_custom_command(TARGET qgis_quick
--    POST_BUILD
--    COMMAND ${CMAKE_COMMAND} -E copy qgis_quick.h
--            "${QGIS_OUTPUT_DIRECTORY}/${QGIS_LIB_SUBDIR}/qgis_core.framework/Headers"
--    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
--    DEPENDS qgis_quick.h
--  )
--endif()
-+#else()
-+#  set_target_properties(qgis_quick PROPERTIES
-+#    CLEAN_DIRECT_OUTPUT 1
-+#    FRAMEWORK 1
-+#    FRAMEWORK_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}"
-+#    MACOSX_FRAMEWORK_INFO_PLIST "${CMAKE_SOURCE_DIR}/mac/framework.info.plist.in"
-+#    MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${COMPLETE_VERSION}
-+#    MACOSX_FRAMEWORK_IDENTIFIER org.qgis.qgis3_quick
-+#    BUILD_WITH_INSTALL_RPATH TRUE
-+#    PUBLIC_HEADER "${QGIS_QUICK_GUI_HDRS};${QGIS_QUICK_GUI_MOC_HDRS}"
-+#    LINK_FLAGS "${CMAKE_SHARED_LINKER_FLAGS}"
-+#  )
-+#  # generated export header does not get copied with PUBLIC_HEADER files
-+#  add_custom_command(TARGET qgis_quick
-+#    POST_BUILD
-+#    COMMAND ${CMAKE_COMMAND} -E copy qgis_quick.h
-+#            "${QGIS_OUTPUT_DIRECTORY}/${QGIS_LIB_SUBDIR}/qgis_core.framework/Headers"
-+#    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-+#    DEPENDS qgis_quick.h
-+#  )
-+#endif()
- 
- install(TARGETS qgis_quick
-   RUNTIME DESTINATION ${QGIS_BIN_DIR}
+ else()
+   set_target_properties(qgis_quick PROPERTIES
