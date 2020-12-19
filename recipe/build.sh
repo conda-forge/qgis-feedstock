@@ -24,9 +24,7 @@ echo "Current work directory: $(pwd)"
 echo "PREFIX: $PREFIX"
 
 if [ $(uname) == Darwin ]; then
-  # disable thread local on OSX as build fails otherwise
-  # can remove when we update XCode
-  PLATFORM_OPTS="-D WITH_THREAD_LOCAL=FALSE -D QGIS_MACAPP_BUNDLE=0 -D WITH_QSPATIALITE=FALSE"
+  PLATFORM_OPTS="-D WITH_QSPATIALITE=FALSE -D QGIS_MACAPP_FRAMEWORK=FALSE"
 else
   # Needed to find libGL.so
   export LDFLAGS="$LDFLAGS -Wl,-rpath-link,${BUILD_PREFIX}/${HOST}/sysroot"

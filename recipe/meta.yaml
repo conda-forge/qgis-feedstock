@@ -22,11 +22,11 @@ source:
     # Need to set "H5_BUILT_AS_DYNAMIC_LIB" to use the shared libs on Windows
     # https://trac.osgeo.org/gdal/wiki/HDF#BuildingonWindowswithMSVC
     - patches/0006-CMakeLists-providers-MDAL-HDF5.patch  # [win]
-    # Fix linking with libprotobuf
-    - patches/0007-CMakeLists-vectortilewriter-dll.patch  # [win]
+    # Don't create a .app - just do the usual Unix thing
+    - patches/0007-OSX-no-app.patch  # [osx]
 
 build:
-  number: 1
+  number: 2
   skip: true  # [py2k]
 
 requirements:
@@ -39,16 +39,34 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     # The CDT packages below are those used in qt-feedstock
-    - {{ cdt('mesa-libgl-devel') }}  # [linux]
-    - {{ cdt('mesa-dri-drivers') }}  # [linux]
-    - {{ cdt('libselinux') }}  # [linux]
-    - {{ cdt('libxdamage') }}  # [linux]
-    - {{ cdt('libxfixes') }}  # [linux]
-    - {{ cdt('libxxf86vm') }}  # [linux]
-    - {{ cdt('libxcb') }}  # [linux]
-    - {{ cdt('libxext') }}  # [linux]
-    - {{ cdt('xorg-x11-server-xvfb') }}  # [linux]
-    - {{ cdt('libxau') }}  # [linux]
+    - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
+    - {{ cdt('libx11-devel') }}          # [linux]
+    - {{ cdt('libxext-devel') }}         # [linux]
+    - {{ cdt('libxrender-devel') }}      # [linux]
+    - {{ cdt('mesa-libgl-devel') }}      # [linux]
+    - {{ cdt('mesa-libegl-devel') }}     # [linux]
+    - {{ cdt('mesa-dri-drivers') }}      # [linux]
+    - {{ cdt('libxau-devel') }}          # [linux]
+    - {{ cdt('alsa-lib-devel') }}        # [linux]
+    - {{ cdt('gtk2-devel') }}            # [linux]
+    - {{ cdt('gtkmm24-devel') }}         # [linux]
+    - {{ cdt('libdrm-devel') }}          # [linux]
+    - {{ cdt('libxcomposite-devel') }}   # [linux]
+    - {{ cdt('libxcursor-devel') }}      # [linux]
+    - {{ cdt('libxi-devel') }}           # [linux]
+    - {{ cdt('libxrandr-devel') }}       # [linux]
+    - {{ cdt('pciutils-devel') }}        # [linux]
+    - {{ cdt('libxscrnsaver-devel') }}   # [linux]
+    - {{ cdt('libxtst-devel') }}         # [linux]
+    - {{ cdt('libselinux-devel') }}      # [linux]
+    - {{ cdt('libxdamage') }}            # [linux]
+    - {{ cdt('libxdamage-devel') }}      # [linux]
+    - {{ cdt('libxfixes') }}             # [linux]
+    - {{ cdt('libxfixes-devel') }}       # [linux]
+    - {{ cdt('libxxf86vm') }}            # [linux]
+    - {{ cdt('libxxf86vm-devel') }}      # [linux]
+    - {{ cdt('cups-devel') }}            # [linux]
+    - {{ cdt('libxcb') }}                # [linux]
   host:
     - python
     - six
@@ -56,7 +74,6 @@ requirements:
     - bison  # [unix]
     - m4  # [unix]
     - pkgconfig
-    - sip
     - expat
     - icu
     - libzip
@@ -67,6 +84,7 @@ requirements:
     - qt
     - pyqt
     - qtwebkit
+    - pyqtwebkit
     - qscintilla2
     - qca
     - qjson
@@ -88,15 +106,6 @@ requirements:
     # For PostgreSQL support.
     - postgresql
     - psycopg2
-    # XOrg CDT packages used in qt-feedstock
-    - xorg-libice      # [linux]
-    - xorg-libsm       # [linux]
-    - xorg-libx11      # [linux]
-    - xorg-libxext     # [linux]
-    - xorg-libxrender  # [linux]
-    - xorg-libxt       # [linux]
-    - xorg-inputproto  # [linux]
-    - gtk2  # [linux]
   run:
     - python
     - icu
@@ -138,22 +147,43 @@ requirements:
     - pyproj
     - requests
     - six
-    - sip
     - pytz
     - pyyaml
     - yaml
     - owslib
-    # XOrg CDT packages used in qt-feedstock
-    - xorg-libice      # [linux]
-    - xorg-libsm       # [linux]
-    - xorg-libx11      # [linux]
-    - xorg-libxext     # [linux]
-    - xorg-libxrender  # [linux]
-    - xorg-libxt       # [linux]
-    - xorg-inputproto  # [linux]
-    - gtk2  # [linux]
-
+    - pyqtwebkit
+    
+  run_constrained:                                            # [osx]
+    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
+    
 test:
+  requires:
+    - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
+    - {{ cdt('libx11-devel') }}          # [linux]
+    - {{ cdt('libxext-devel') }}         # [linux]
+    - {{ cdt('libxrender-devel') }}      # [linux]
+    - {{ cdt('mesa-libgl-devel') }}      # [linux]
+    - {{ cdt('mesa-libegl-devel') }}     # [linux]
+    - {{ cdt('mesa-dri-drivers') }}      # [linux]
+    - {{ cdt('libxau-devel') }}          # [linux]
+    - {{ cdt('alsa-lib-devel') }}        # [linux]
+    - {{ cdt('gtk2-devel') }}            # [linux]
+    - {{ cdt('gtkmm24-devel') }}         # [linux]
+    - {{ cdt('libdrm-devel') }}          # [linux]
+    - {{ cdt('libxcomposite-devel') }}   # [linux]
+    - {{ cdt('libxcursor-devel') }}      # [linux]
+    - {{ cdt('libxi-devel') }}           # [linux]
+    - {{ cdt('libxrandr-devel') }}       # [linux]
+    - {{ cdt('pciutils-devel') }}        # [linux]
+    - {{ cdt('libxscrnsaver-devel') }}   # [linux]
+    - {{ cdt('libxtst-devel') }}         # [linux]
+    - {{ cdt('libselinux-devel') }}      # [linux]
+    - {{ cdt('libxdamage') }}            # [linux]
+    - {{ cdt('libxdamage-devel') }}      # [linux]
+    - {{ cdt('libxfixes') }}             # [linux]
+    - {{ cdt('libxfixes-devel') }}       # [linux]
+    - {{ cdt('libxxf86vm') }}            # [linux]
+    - {{ cdt('libxcb') }}                # [linux]
   files:
     - test_data
     - test_py_qgis.py
@@ -163,7 +193,7 @@ test:
 
 about:
   home: http://qgis.org/
-  license: GPL-2.0
+  license: GPL-2.0-only
   license_file: COPYING
   summary: A free and open source Geographic Information System (GIS).
   description: |
