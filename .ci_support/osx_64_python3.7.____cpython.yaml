@@ -12,6 +12,8 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '11'
+exiv2:
+- '0.27'
 expat:
 - '2.2'
 gdal:
@@ -38,6 +40,8 @@ pin_run_as_build:
     max_pin: x.x
   qt:
     max_pin: x.x
+  qtkeychain:
+    max_pin: x.x
   sqlite:
     max_pin: x
 proj:
@@ -46,6 +50,8 @@ python:
 - 3.7.* *_cpython
 qt:
 - '5.12'
+qtkeychain:
+- '0.11'
 sqlite:
 - '3'
 target_platform:
