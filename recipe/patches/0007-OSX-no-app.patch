@@ -1,6 +1,6 @@
 diff -r -u qgis-3.16.1-orig/CMakeLists.txt qgis-3.16.1/CMakeLists.txt
 --- qgis-3.16.1-orig/CMakeLists.txt	2020-12-19 10:20:52.080327799 +1000
-+++ qgis-3.16.1/CMakeLists.txt	2020-12-19 10:30:18.008537263 +1000
++++ qgis-3.16.1/CMakeLists.txt	2020-12-19 11:05:45.881051964 +1000
 @@ -677,8 +677,12 @@
        set (DEFAULT_CGIBIN_SUBDIR .)
      endif()
@@ -15,7 +15,7 @@ diff -r -u qgis-3.16.1-orig/CMakeLists.txt qgis-3.16.1/CMakeLists.txt
        if (POLICY CMP0042) # in CMake 3.0.0+
          set (CMAKE_MACOSX_RPATH OFF) # otherwise ON by default
        endif()
-@@ -751,6 +755,13 @@
+@@ -751,6 +755,14 @@
        set (DEFAULT_QML_SUBDIR     qml)
  
        set (DEFAULT_SERVER_MODULE_SUBDIR ${DEFAULT_LIBEXEC_SUBDIR}/server)
@@ -24,6 +24,7 @@ diff -r -u qgis-3.16.1-orig/CMakeLists.txt qgis-3.16.1/CMakeLists.txt
 +      if(APPLE)
 +        set (QGIS_MACAPP_BUNDLE -1)
 +        set (CMAKE_FRAMEWORK FALSE)
++        set (QGIS_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX})
 +      endif()
 + 
      endif()
