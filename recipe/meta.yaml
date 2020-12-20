@@ -26,7 +26,7 @@ source:
     - patches/0007-OSX-no-app.patch  # [osx]
 
 build:
-  number: 2
+  number: 3
   skip: true  # [py2k]
 
 requirements:
