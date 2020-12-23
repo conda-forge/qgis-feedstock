@@ -1,7 +1,7 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '7'
+- '9'
 cdt_name:
 - cos6
 channel_sources:
@@ -11,9 +11,11 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '7'
+- '9'
 docker_image:
-- condaforge/linux-anvil-comp7
+- quay.io/condaforge/linux-anvil-comp7
+exiv2:
+- '0.27'
 expat:
 - '2.2'
 gdal:
@@ -36,6 +38,8 @@ pin_run_as_build:
     max_pin: x.x
   qt:
     max_pin: x.x
+  qtkeychain:
+    max_pin: x.x
   sqlite:
     max_pin: x
 proj:
@@ -44,6 +48,8 @@ python:
 - 3.6.* *_cpython
 qt:
 - '5.12'
+qtkeychain:
+- '0.11'
 sqlite:
 - '3'
 target_platform:
