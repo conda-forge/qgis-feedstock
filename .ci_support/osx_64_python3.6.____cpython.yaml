@@ -31,8 +31,6 @@ pin_run_as_build:
     max_pin: x.x
   gdal:
     max_pin: x.x
-  icu:
-    max_pin: x
   python:
     min_pin: x.x
     max_pin: x.x
@@ -50,3 +48,6 @@ sqlite:
 - '3'
 target_platform:
 - osx-64
+zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version

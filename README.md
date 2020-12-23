@@ -5,9 +5,13 @@ Home: http://qgis.org/
 
 Package license: GPL-2.0
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/qgis-feedstock/blob/master/LICENSE.txt)
 
 Summary: A free and open source Geographic Information System (GIS).
+
+Development: https://github.com/qgis/QGIS
+
+Documentation: https://www.qgis.org/en/docs/index.html
 
 QGIS is a user friendly Open Source Geographic Information System (GIS)
 licensed under the GNU General Public License. QGIS is an official
