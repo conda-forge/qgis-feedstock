@@ -13,14 +13,12 @@ if [[ -n "$QT_PLUGIN_PATH" ]]; then
 fi
 
 if [ -d $CONDA_PREFIX/share/qgis/python ]; then
-    # Linux only needs to be able to find Python packages
+    # Unix
     export PYTHONPATH="$CONDA_PREFIX/share/qgis/python:$PYTHONPATH"
     export PYTHONPATH="$CONDA_PREFIX/share/qgis/python/plugins:$PYTHONPATH"
-    if [ -d $CONDA_PREFIX/QGIS.app ]; then
-        # OSX also needs these
-        export QGIS_PREFIX_PATH="$CONDA_PREFIX"
-        export QT_PLUGIN_PATH="$CONDA_PREFIX/plugins:$QT_PLUGIN_PATH"
-    fi
+    export QT_PLUGIN_PATH="$CONDA_PREFIX/plugins:$QT_PLUGIN_PATH"
+    # Only needed for OSX (otherwise tries to look in .app), but no harm for Linux
+    export QGIS_PREFIX_PATH="$CONDA_PREFIX"
 elif [ -d $CONDA_PREFIX/Library/python ]; then
     # On Windows
     # See: https://github.com/qgis/QGIS/blob/master/ms-windows/osgeo4w/qgis.vars
