@@ -17,9 +17,3 @@ if [[ -n "$_CONDA_SET_QT_PLUGIN_PATH" ]]; then
     export QT_PLUGIN_PATH="$_CONDA_SET_QT_PLUGIN_PATH"
     unset _CONDA_SET_QT_PLUGIN_PATH
 fi
-
-unset QGIS_BUNDLE
-if [[ -n "$_CONDA_SET_QGIS_BUNDLE" ]]; then
-    export QGIS_BUNDLE="$_CONDA_SET_QGIS_BUNDLE"
-    unset _CONDA_SET_QGIS_BUNDLE
-fi
