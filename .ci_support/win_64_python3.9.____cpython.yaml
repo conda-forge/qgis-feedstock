@@ -19,7 +19,7 @@ gsl:
 icu:
 - '67'
 libprotobuf:
-- '3.13'
+- '3.14'
 libspatialindex:
 - 1.9.3
 pin_run_as_build:
