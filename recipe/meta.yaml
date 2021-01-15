@@ -1,4 +1,4 @@
-{% set version = "3.16.2" %}
+{% set version = "3.16.3" %}
 
 package:
   name: qgis
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: 13592d8b538dcd7d7ded71c3aea0c295c0c35022885398b440f9895b0f1ef67c
+  sha256: fd57314c1913639f02b64df03eef041172aa220f249e318da3849fc71ada4d04
   patches:
     # QGIS inserts Qt plugin locations into PATH relative to build location
     # This patch fixes it so PATH is relative to install location
@@ -28,7 +28,7 @@ source:
     - patches/0008-CMakeLists-vectortilewriter-dll.patch  # [win]
 
 build:
-  number: 2
+  number: 0
   skip: true  # [py2k]
 
 requirements:
