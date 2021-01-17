@@ -17,7 +17,7 @@ geos:
 gsl:
 - '2.6'
 icu:
-- '64.2'
+- '67'
 libspatialindex:
 - 1.9.3
 pin_run_as_build:
