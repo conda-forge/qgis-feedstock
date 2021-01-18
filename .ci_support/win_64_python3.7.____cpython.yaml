@@ -6,16 +6,18 @@ channel_targets:
 - conda-forge main
 cxx_compiler:
 - vs2017
+exiv2:
+- '0.27'
 expat:
 - '2.2'
 gdal:
-- 3.0.4
+- '3.1'
 geos:
 - 3.8.1
 gsl:
 - '2.6'
 icu:
-- '64.2'
+- '67'
 libspatialindex:
 - 1.9.3
 pin_run_as_build:
@@ -28,14 +30,18 @@ pin_run_as_build:
     max_pin: x.x
   qt:
     max_pin: x.x
+  qtkeychain:
+    max_pin: x.x
   sqlite:
     max_pin: x
 proj:
-- 7.0.0
+- 7.1.1
 python:
 - 3.7.* *_cpython
 qt:
 - '5.12'
+qtkeychain:
+- '0.11'
 sqlite:
 - '3'
 target_platform:

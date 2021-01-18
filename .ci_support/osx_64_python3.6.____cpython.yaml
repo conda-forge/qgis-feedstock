@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
-- '10'
+- '11'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -11,17 +11,19 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '10'
+- '11'
+exiv2:
+- '0.27'
 expat:
 - '2.2'
 gdal:
-- 3.0.4
+- '3.1'
 geos:
 - 3.8.1
 gsl:
 - '2.6'
 icu:
-- '64.2'
+- '67'
 libspatialindex:
 - 1.9.3
 macos_machine:
@@ -36,14 +38,18 @@ pin_run_as_build:
     max_pin: x.x
   qt:
     max_pin: x.x
+  qtkeychain:
+    max_pin: x.x
   sqlite:
     max_pin: x
 proj:
-- 7.0.0
+- 7.1.1
 python:
 - 3.6.* *_cpython
 qt:
 - '5.12'
+qtkeychain:
+- '0.11'
 sqlite:
 - '3'
 target_platform:

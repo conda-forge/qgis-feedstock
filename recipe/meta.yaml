@@ -1,4 +1,4 @@
-{% set version = "3.10.12" %}
+{% set version = "3.10.13" %}
 
 package:
   name: qgis
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: a8cd61fcce2ae1df3effbdbc585af97cce8108a89d19344f11f150e80555d08d
+  sha256: 1434f64906a53caf833919a21d8664fc6712de29e519d5f439a9b1ddc325431e
   patches:
     # QGIS inserts Qt plugin locations into PATH relative to build location
     # This patch fixes it so PATH is relative to install location
@@ -54,7 +54,6 @@ requirements:
     - bison  # [unix]
     - m4  # [unix]
     - pkgconfig
-    - sip
     - expat
     - icu
     - libzip
@@ -132,7 +131,6 @@ requirements:
     - pyproj
     - requests
     - six
-    - sip
     - pytz
     - pyyaml
     - yaml
