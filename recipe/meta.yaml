@@ -54,7 +54,6 @@ requirements:
     - bison  # [unix]
     - m4  # [unix]
     - pkgconfig
-    - sip
     - expat
     - icu
     - libzip
@@ -132,7 +131,6 @@ requirements:
     - pyproj
     - requests
     - six
-    - sip
     - pytz
     - pyyaml
     - yaml
