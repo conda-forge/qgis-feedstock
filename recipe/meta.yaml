@@ -1,4 +1,4 @@
-{% set version = "3.10.13" %}
+{% set version = "3.10.14" %}
 
 package:
   name: qgis
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: 1434f64906a53caf833919a21d8664fc6712de29e519d5f439a9b1ddc325431e
+  sha256: add0a24cb6ec0ed5120cdcfceb478d5941936c7187ed85f2f7e7d22628e36131
   patches:
     # QGIS inserts Qt plugin locations into PATH relative to build location
     # This patch fixes it so PATH is relative to install location
@@ -24,7 +24,7 @@ source:
     - patches/0006-CMakeLists-providers-MDAL-HDF5.patch  # [win]
 
 build:
-  number: 1
+  number: 0
   skip: true  # [py2k]
 
 requirements:
