@@ -16,7 +16,7 @@ set "PYTHONPATH=%LIBRARY_PREFIX%\python;%LIBRARY_PREFIX%\python\plugins;%PYTHONP
 :: GIS stack variables
 set "GEOTIFF_CSV=%LIBRARY_PREFIX%\share\epsg_csv"
 set "GDAL_DATA=%LIBRARY_PREFIX%\share\gdal"
-set "PROJ_LIB=%LIBRARY_PREFIX%\share"
+set "PROJ_LIB=%LIBRARY_PREFIX%\share\proj"
 :: Probably not needed but...
 set "O4W_QT_PREFIX=%LIBRARY_PREFIX%"
 set "O4W_QT_BINARIES=%LIBRARY_PREFIX%\bin"
