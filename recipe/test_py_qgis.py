@@ -1,9 +1,34 @@
 #!/usr/bin/env python
-import os, sys
+import os
+import pathlib
+import sys
 
-from qgis.core import QgsApplication, QgsProcessingFeedback, QgsVectorLayer
+from qgis.core import \
+    QgsApplication, QgsVectorLayer, \
+    QgsProjUtils, QgsCoordinateReferenceSystem
 
 fname = os.path.join(os.path.dirname(__file__), 'test_data', 'box.geojson')
+
+
+def testPROJ():
+    """
+    Tests if PROJ library can be found
+    """
+    PROJ_LIB = pathlib.Path(os.environ.get('PROJ_LIB'))
+    assert PROJ_LIB.is_dir(), f'PROJ_LIB does not exist: {PROJ_LIB}'
+    PROJ_DB = PROJ_LIB / 'proj.db'
+    assert PROJ_DB.is_file(), f'proj.db file does not exist: {PROJ_DB}'
+
+    found = False
+    for path in QgsProjUtils.searchPaths():
+        path = pathlib.Path(path) / 'proj.db'
+        if path.is_file():
+            found = True
+            break
+    assert found, f'Unable to find proj.db in QgsProjUtils.searchPaths(): {QgsProjUtils.searchPaths()}'
+
+    wkt = QgsCoordinateReferenceSystem.fromEpsgId(4326).toWkt()
+    assert not wkt.startswith('GEOGCS["unknown"')
 
 
 def test(vector_file):
@@ -30,6 +55,8 @@ if __name__ == '__main__':
 
     try:
         test(fname)
+        testPROJ()
+
     except Exception as e:
         print(e)
         print('QGIS prefixPath(): "{0}"'.format(app.prefixPath()))
