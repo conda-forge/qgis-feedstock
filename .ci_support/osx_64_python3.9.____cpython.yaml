@@ -51,7 +51,7 @@ python:
 qt:
 - '5.12'
 qtkeychain:
-- '0.11'
+- '0.12'
 sqlite:
 - '3'
 target_platform:
