@@ -1,7 +1,7 @@
-diff -r -u qgis-3.16.1-orig/CMakeLists.txt qgis-3.16.1/CMakeLists.txt
---- qgis-3.16.1-orig/CMakeLists.txt	2020-12-19 10:20:52.080327799 +1000
-+++ qgis-3.16.1/CMakeLists.txt	2020-12-19 11:05:45.881051964 +1000
-@@ -677,8 +677,12 @@
+diff -r -u qgis-3.16.3-orig/CMakeLists.txt qgis-3.16.3/CMakeLists.txt
+--- qgis-3.16.3-orig/CMakeLists.txt	2021-02-02 13:07:10.086067332 +1000
++++ qgis-3.16.3/CMakeLists.txt	2021-02-02 13:12:26.554795900 +1000
+@@ -684,8 +684,12 @@
        set (DEFAULT_CGIBIN_SUBDIR .)
      endif()
    else()
@@ -15,7 +15,7 @@ diff -r -u qgis-3.16.1-orig/CMakeLists.txt qgis-3.16.1/CMakeLists.txt
        if (POLICY CMP0042) # in CMake 3.0.0+
          set (CMAKE_MACOSX_RPATH OFF) # otherwise ON by default
        endif()
-@@ -751,6 +755,14 @@
+@@ -758,6 +762,14 @@
        set (DEFAULT_QML_SUBDIR     qml)
  
        set (DEFAULT_SERVER_MODULE_SUBDIR ${DEFAULT_LIBEXEC_SUBDIR}/server)
@@ -30,9 +30,9 @@ diff -r -u qgis-3.16.1-orig/CMakeLists.txt qgis-3.16.1/CMakeLists.txt
      endif()
  
    endif()
-diff -r -u qgis-3.16.1-orig/src/3d/CMakeLists.txt qgis-3.16.1/src/3d/CMakeLists.txt
---- qgis-3.16.1-orig/src/3d/CMakeLists.txt	2020-12-19 10:20:52.640335998 +1000
-+++ qgis-3.16.1/src/3d/CMakeLists.txt	2020-12-19 10:29:07.623522527 +1000
+diff -r -u qgis-3.16.3-orig/src/3d/CMakeLists.txt qgis-3.16.3/src/3d/CMakeLists.txt
+--- qgis-3.16.3-orig/src/3d/CMakeLists.txt	2021-02-02 13:07:10.890079393 +1000
++++ qgis-3.16.3/src/3d/CMakeLists.txt	2021-02-02 13:12:26.558795959 +1000
 @@ -222,7 +222,7 @@
  
  set(QGIS_3D_HDRS ${QGIS_3D_HDRS} ${CMAKE_CURRENT_BINARY_DIR}/qgis_3d.h)
@@ -42,9 +42,9 @@ diff -r -u qgis-3.16.1-orig/src/3d/CMakeLists.txt qgis-3.16.1/src/3d/CMakeLists.
    install(FILES ${QGIS_3D_HDRS} DESTINATION ${QGIS_INCLUDE_DIR})
  else()
    set_target_properties(qgis_3d PROPERTIES
-diff -r -u qgis-3.16.1-orig/src/analysis/CMakeLists.txt qgis-3.16.1/src/analysis/CMakeLists.txt
---- qgis-3.16.1-orig/src/analysis/CMakeLists.txt	2020-12-19 10:20:52.648336115 +1000
-+++ qgis-3.16.1/src/analysis/CMakeLists.txt	2020-12-19 10:31:03.881197981 +1000
+diff -r -u qgis-3.16.3-orig/src/analysis/CMakeLists.txt qgis-3.16.3/src/analysis/CMakeLists.txt
+--- qgis-3.16.3-orig/src/analysis/CMakeLists.txt	2021-02-02 13:07:10.894079452 +1000
++++ qgis-3.16.3/src/analysis/CMakeLists.txt	2021-02-02 13:12:26.558795959 +1000
 @@ -465,7 +465,7 @@
  
  set(QGIS_ANALYSIS_HDRS ${QGIS_ANALYSIS_HDRS} ${CMAKE_CURRENT_BINARY_DIR}/qgis_analysis.h)
@@ -54,10 +54,10 @@ diff -r -u qgis-3.16.1-orig/src/analysis/CMakeLists.txt qgis-3.16.1/src/analysis
    install(FILES ${QGIS_ANALYSIS_HDRS} DESTINATION ${QGIS_INCLUDE_DIR})
  else()
    set_target_properties(qgis_analysis PROPERTIES
-diff -r -u qgis-3.16.1-orig/src/core/CMakeLists.txt qgis-3.16.1/src/core/CMakeLists.txt
---- qgis-3.16.1-orig/src/core/CMakeLists.txt	2020-12-19 10:20:52.684336642 +1000
-+++ qgis-3.16.1/src/core/CMakeLists.txt	2020-12-19 10:31:35.305650339 +1000
-@@ -1654,7 +1654,7 @@
+diff -r -u qgis-3.16.3-orig/src/core/CMakeLists.txt qgis-3.16.3/src/core/CMakeLists.txt
+--- qgis-3.16.3-orig/src/core/CMakeLists.txt	2021-02-02 13:07:10.934080052 +1000
++++ qgis-3.16.3/src/core/CMakeLists.txt	2021-02-02 13:12:26.558795959 +1000
+@@ -1666,7 +1666,7 @@
  endif()
  
  
@@ -66,9 +66,9 @@ diff -r -u qgis-3.16.1-orig/src/core/CMakeLists.txt qgis-3.16.1/src/core/CMakeLi
    install(FILES ${QGIS_CORE_HDRS} DESTINATION ${QGIS_INCLUDE_DIR})
  else()
  
-diff -r -u qgis-3.16.1-orig/src/gui/CMakeLists.txt qgis-3.16.1/src/gui/CMakeLists.txt
---- qgis-3.16.1-orig/src/gui/CMakeLists.txt	2020-12-19 10:20:52.736337405 +1000
-+++ qgis-3.16.1/src/gui/CMakeLists.txt	2020-12-19 12:45:34.761859857 +1000
+diff -r -u qgis-3.16.3-orig/src/gui/CMakeLists.txt qgis-3.16.3/src/gui/CMakeLists.txt
+--- qgis-3.16.3-orig/src/gui/CMakeLists.txt	2021-02-02 13:07:10.986080832 +1000
++++ qgis-3.16.3/src/gui/CMakeLists.txt	2021-02-02 13:12:26.558795959 +1000
 @@ -1383,11 +1383,12 @@
  
  set(QGIS_GUI_HDRS ${QGIS_GUI_HDRS} ${CMAKE_CURRENT_BINARY_DIR}/qgis_gui.h)
@@ -94,9 +94,9 @@ diff -r -u qgis-3.16.1-orig/src/gui/CMakeLists.txt qgis-3.16.1/src/gui/CMakeList
    install(FILES ${QGIS_GUI_UI_HDRS} DESTINATION ${QGIS_FW_SUBDIR}/qgis_gui.framework/Headers)
  else()
    install(FILES ${QGIS_GUI_UI_HDRS} DESTINATION ${QGIS_INCLUDE_DIR})
-diff -r -u qgis-3.16.1-orig/src/native/CMakeLists.txt qgis-3.16.1/src/native/CMakeLists.txt
---- qgis-3.16.1-orig/src/native/CMakeLists.txt	2020-12-19 10:20:52.772337932 +1000
-+++ qgis-3.16.1/src/native/CMakeLists.txt	2020-12-19 10:33:52.443622308 +1000
+diff -r -u qgis-3.16.3-orig/src/native/CMakeLists.txt qgis-3.16.3/src/native/CMakeLists.txt
+--- qgis-3.16.3-orig/src/native/CMakeLists.txt	2021-02-02 13:07:11.194083953 +1000
++++ qgis-3.16.3/src/native/CMakeLists.txt	2021-02-02 13:12:26.558795959 +1000
 @@ -107,7 +107,7 @@
  
  set(QGIS_NATIVE_HDRS ${QGIS_NATIVE_HDRS} ${CMAKE_CURRENT_BINARY_DIR}/qgis_native.h)
@@ -106,21 +106,46 @@ diff -r -u qgis-3.16.1-orig/src/native/CMakeLists.txt qgis-3.16.1/src/native/CMa
    install(FILES ${QGIS_NATIVE_HDRS} DESTINATION ${QGIS_INCLUDE_DIR})
  else()
    set_target_properties(qgis_native PROPERTIES
-diff -r -u qgis-3.16.1-orig/src/providers/grass/CMakeLists.txt qgis-3.16.1/src/providers/grass/CMakeLists.txt
---- qgis-3.16.1-orig/src/providers/grass/CMakeLists.txt	2020-12-19 10:20:52.812338517 +1000
-+++ qgis-3.16.1/src/providers/grass/CMakeLists.txt	2020-12-19 10:34:36.084249198 +1000
-@@ -93,7 +93,7 @@
+diff -r -u qgis-3.16.3-orig/src/providers/grass/CMakeLists.txt qgis-3.16.3/src/providers/grass/CMakeLists.txt
+--- qgis-3.16.3-orig/src/providers/grass/CMakeLists.txt	2021-02-02 13:07:11.234084553 +1000
++++ qgis-3.16.3/src/providers/grass/CMakeLists.txt	2021-02-02 13:13:22.011621388 +1000
+@@ -91,15 +91,24 @@
+       set(GRASS_OFF_T_SIZE_DEF "")
+     endif()
  
-     set_target_properties(qgisgrass${GRASS_BUILD_VERSION} PROPERTIES
-       CLEAN_DIRECT_OUTPUT 1
+-    set_target_properties(qgisgrass${GRASS_BUILD_VERSION} PROPERTIES
+-      CLEAN_DIRECT_OUTPUT 1
 -      FRAMEWORK 1
-+      FRAMEWORK QGIS_MACAPP_FRAMEWORK
-       FRAMEWORK_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}"
-       MACOSX_FRAMEWORK_INFO_PLIST "${CMAKE_SOURCE_DIR}/mac/framework.info.plist.in"
-       MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${COMPLETE_VERSION}
-diff -r -u qgis-3.16.1-orig/src/quickgui/CMakeLists.txt qgis-3.16.1/src/quickgui/CMakeLists.txt
---- qgis-3.16.1-orig/src/quickgui/CMakeLists.txt	2020-12-19 10:20:52.824338694 +1000
-+++ qgis-3.16.1/src/quickgui/CMakeLists.txt	2020-12-19 10:35:13.260783023 +1000
+-      FRAMEWORK_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}"
+-      MACOSX_FRAMEWORK_INFO_PLIST "${CMAKE_SOURCE_DIR}/mac/framework.info.plist.in"
+-      MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${COMPLETE_VERSION}
+-      MACOSX_FRAMEWORK_IDENTIFIER org.qgis.qgis3_grass
+-      COMPILE_FLAGS "-DGRASS_BASE=\\\"${GRASS_PREFIX}\\\" ${GRASS_OFF_T_SIZE_DEF}"
+-    )
++    if(QGIS_MACAPP_FRAMEWORK)
++      set_target_properties(qgisgrass${GRASS_BUILD_VERSION} PROPERTIES
++        CLEAN_DIRECT_OUTPUT 1
++        FRAMEWORK 1
++        FRAMEWORK_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}"
++        MACOSX_FRAMEWORK_INFO_PLIST "${CMAKE_SOURCE_DIR}/mac/framework.info.plist.in"
++        MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${COMPLETE_VERSION}
++        MACOSX_FRAMEWORK_IDENTIFIER org.qgis.qgis3_grass
++        COMPILE_FLAGS "-DGRASS_BASE=\\\"${GRASS_PREFIX}\\\" ${GRASS_OFF_T_SIZE_DEF}"
++      )
++    else()
++        set_target_properties(qgisgrass${GRASS_BUILD_VERSION} PROPERTIES
++        CLEAN_DIRECT_OUTPUT 1
++        FRAMEWORK 0
++        COMPILE_FLAGS "-DGRASS_BASE=\\\"${GRASS_PREFIX}\\\" ${GRASS_OFF_T_SIZE_DEF}"
++      )
++    endif()
++
+ 
+     if (APPLE)
+       set_target_properties(qgisgrass${GRASS_BUILD_VERSION} PROPERTIES
+diff -r -u qgis-3.16.3-orig/src/quickgui/CMakeLists.txt qgis-3.16.3/src/quickgui/CMakeLists.txt
+--- qgis-3.16.3-orig/src/quickgui/CMakeLists.txt	2021-02-02 13:07:11.246084733 +1000
++++ qgis-3.16.3/src/quickgui/CMakeLists.txt	2021-02-02 13:12:26.558795959 +1000
 @@ -120,7 +120,7 @@
  )
  
