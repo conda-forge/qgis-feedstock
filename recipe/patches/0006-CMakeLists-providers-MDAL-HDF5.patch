@@ -1,13 +1,10 @@
---- src/providers/mdal/CMakeLists.txt.orig	2020-12-08 11:38:48.854134819 +1000
-+++ src/providers/mdal/CMakeLists.txt	2020-12-08 11:39:21.714572399 +1000
-@@ -199,6 +199,10 @@
- endif()
- 
+--- src/providers/mdal/CMakeLists.txt.orig	2021-02-02 15:01:24.643873538 +1000
++++ src/providers/mdal/CMakeLists.txt	2021-02-02 15:02:22.980667853 +1000
+@@ -201,6 +201,7 @@
  if (HDF5_FOUND)
-+  IF(WIN32)
-+    # https://trac.osgeo.org/gdal/wiki/HDF#BuildingonWindowswithMSVC
-+    ADD_DEFINITIONS(-DH5_BUILT_AS_DYNAMIC_LIB)
-+  ENDIF(WIN32)
    target_include_directories(mdalprovider PRIVATE ${HDF5_INCLUDE_DIRS})
    target_link_libraries(mdalprovider ${HDF5_C_LIBRARIES} )
++  target_compile_definitions(mdalprovider PRIVATE ${HDF5_DEFINITIONS})
  endif()
+ 
+ if (GDAL_FOUND)
