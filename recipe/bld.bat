@@ -24,6 +24,7 @@ cmake -G Ninja ^
     -D EXPAT_INCLUDE_DIR=%LIBRARY_INC% ^
     -D EXPAT_LIBRARY=%LIBRARY_LIB%\expat.lib ^
     -D WITH_QTWEBKIT=TRUE ^
+    -D QGIS_INSTALL_SYS_LIBS=FALSE ^
     ..
 if errorlevel 1 exit 1
 
