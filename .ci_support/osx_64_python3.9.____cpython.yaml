@@ -1,11 +1,17 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '10.12'
 c_compiler:
-- vs2017
+- clang
+c_compiler_version:
+- '11'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2017
+- clangxx
+cxx_compiler_version:
+- '11'
 exiv2:
 - '0.27'
 expat:
@@ -22,6 +28,8 @@ libprotobuf:
 - '3.14'
 libspatialindex:
 - 1.9.3
+macos_machine:
+- x86_64-apple-darwin13.4.0
 pin_run_as_build:
   expat:
     max_pin: x.x
@@ -39,7 +47,7 @@ pin_run_as_build:
 proj:
 - 7.2.0
 python:
-- 3.6.* *_cpython
+- 3.9.* *_cpython
 qt:
 - '5.12'
 qtkeychain:
@@ -47,4 +55,7 @@ qtkeychain:
 sqlite:
 - '3'
 target_platform:
-- win-64
+- osx-64
+zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
