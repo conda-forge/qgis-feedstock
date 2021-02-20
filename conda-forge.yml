@@ -1,5 +1,8 @@
+provider:
+  osx: azure
+  linux: azure
+  win: azure
 conda_forge_output_validation: true
-
 azure:
   settings_win:
     variables:

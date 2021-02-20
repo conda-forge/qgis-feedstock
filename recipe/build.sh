@@ -24,9 +24,7 @@ echo "Current work directory: $(pwd)"
 echo "PREFIX: $PREFIX"
 
 if [ $(uname) == Darwin ]; then
-  # disable thread local on OSX as build fails otherwise
-  # can remove when we update XCode
-  PLATFORM_OPTS="-D WITH_THREAD_LOCAL=FALSE -D QGIS_MACAPP_BUNDLE=0 -D WITH_QSPATIALITE=FALSE"
+  PLATFORM_OPTS="-D WITH_QSPATIALITE=FALSE -D QGIS_MACAPP_FRAMEWORK=FALSE"
 else
   # Needed to find libGL.so
   export LDFLAGS="$LDFLAGS -Wl,-rpath-link,${BUILD_PREFIX}/${HOST}/sysroot"
@@ -42,7 +40,7 @@ cmake \
     -D PYTHON_EXECUTABLE="${PYTHON}" \
     -D ENABLE_TESTS=FALSE \
     -D WITH_BINDINGS=TRUE \
-    -D WITH_3D=FALSE \
+    -D WITH_3D=TRUE \
     -D WITH_DESKTOP=TRUE \
     -D WITH_SERVER=FALSE \
     -D WITH_GRASS=FALSE \
@@ -51,7 +49,7 @@ cmake \
     -D EXPAT_INCLUDE_DIR=$PREFIX/include \
     -D EXPAT_LIBRARY=$PREFIX/lib/libexpat${SHLIB_EXT} \
     -D WITH_PY_COMPILE=FALSE \
-    -D WITH_QTWEBKIT=FALSE \
+    -D WITH_QTWEBKIT=TRUE \
     $PLATFORM_OPTS \
     $SRC_DIR
 
