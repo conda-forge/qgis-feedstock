@@ -1,2 +1,8 @@
 MACOSX_DEPLOYMENT_TARGET:  # [osx]
   - '10.12'                # [osx]
+proj:
+    - '7.2'
+gdal:
+    - '3.2'
+geos:
+    - '3.9'
