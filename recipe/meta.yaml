@@ -10,7 +10,7 @@ source:
   #patches:
 
 build:
-  number: 2
+  number: 3
   skip: true  # [py2k]
 
 requirements:
