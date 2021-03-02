@@ -90,6 +90,8 @@ requirements:
     # For PostgreSQL support.
     - postgresql
     - psycopg2
+    # Point Clouds
+    - pdal
   run:
     - python
     - icu
@@ -136,6 +138,7 @@ requirements:
     - yaml
     - owslib
     - pyqtwebkit
+    - pdal
 
   run_constrained:   # [osx]
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
