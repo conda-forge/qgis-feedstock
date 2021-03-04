@@ -7,7 +7,10 @@ package:
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
   sha256: 09aa83ea7e193adec1f490feeaae8644fddbcbb964a858a1e8f740e665fa1563
-  #patches:
+  patches:
+    # experimental patch to prevent untwine including winsock.h 
+    # before pdal includes winsock2.h (they can't be mixed)
+    - winsock.patch  # [win]
 
 build:
   number: 3

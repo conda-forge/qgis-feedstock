@@ -1,0 +1,10 @@
+--- external/untwine/untwine/MapFile.hpp.orig	2021-03-04 13:08:40.304517780 +1000
++++ external/untwine/untwine/MapFile.hpp	2021-03-04 13:08:51.992651725 +1000
+@@ -31,6 +31,7 @@
+ #pragma once
+ 
+ #ifdef _WIN32
++#define _WINSOCKAPI_
+ #include <Windows.h>
+ #else
+ #include <fcntl.h>
