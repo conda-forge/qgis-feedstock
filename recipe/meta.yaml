@@ -7,10 +7,7 @@ package:
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
   sha256: 09aa83ea7e193adec1f490feeaae8644fddbcbb964a858a1e8f740e665fa1563
-  patches:
-    # experimental patch to prevent untwine including winsock.h 
-    # before pdal includes winsock2.h (they can't be mixed)
-    - winsock.patch  # [win]
+  #patches:
 
 build:
   number: 3
@@ -95,6 +92,7 @@ requirements:
     - psycopg2
     # Point Clouds
     - pdal
+    - laz-perf
   run:
     - python
     - icu
@@ -142,6 +140,7 @@ requirements:
     - owslib
     - pyqtwebkit
     - pdal
+    - laz-perf
 
   run_constrained:   # [osx]
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
