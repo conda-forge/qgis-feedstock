@@ -50,6 +50,9 @@ cmake \
     -D EXPAT_LIBRARY=$PREFIX/lib/libexpat${SHLIB_EXT} \
     -D WITH_PY_COMPILE=FALSE \
     -D WITH_QTWEBKIT=TRUE \
+    -D WITH_PDAL=TRUE \
+    -D WITH_EPT=TRUE \
+    -D LazPerf_INCLUDE_DIR=$PREFIX/include \
     $PLATFORM_OPTS \
     ..
 
