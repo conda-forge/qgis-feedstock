@@ -7,9 +7,7 @@ package:
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
   sha256: 09aa83ea7e193adec1f490feeaae8644fddbcbb964a858a1e8f740e665fa1563
-  patches:
-    # include winsock2 instead
-    - patches/0001-Replace-winsock-by-winsock2.patch # [win]
+  #patches:
 
 build:
   number: 4
