@@ -1,16 +1,17 @@
---- external/untwine/untwine/MapFile.cpp.orig	2021-03-11 13:22:12.133382300 +1000
-+++ external/untwine/untwine/MapFile.cpp	2021-03-11 13:24:09.592194300 +1000
-@@ -29,6 +29,9 @@
+--- external/untwine/untwine/MapFile.cpp.orig	2021-03-11 16:36:16.907279906 +1000
++++ external/untwine/untwine/MapFile.cpp	2021-03-11 16:36:35.119565918 +1000
+@@ -29,6 +29,10 @@
   ****************************************************************************/
  
  #include "MapFile.hpp"
 +#ifdef _WIN32
 +#include <io.h>
++#include <fcntl.h>
 +#endif
  
  namespace untwine
  {
-@@ -44,10 +47,10 @@
+@@ -44,10 +48,10 @@
          return ctx;
      }
  
