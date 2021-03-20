@@ -1,4 +1,4 @@
-{% set version = "3.18.0" %}
+{% set version = "3.18.1" %}
 
 package:
   name: qgis
@@ -6,11 +6,11 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: 09aa83ea7e193adec1f490feeaae8644fddbcbb964a858a1e8f740e665fa1563
+  sha256: b2934927f1c9314dbe83aff0c900d2c51fb2f980fb2d313f4bcb1736b92fbaa7
   #patches:
 
 build:
-  number: 3
+  number: 0
   skip: true  # [py2k]
 
 requirements:
