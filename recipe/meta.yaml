@@ -7,7 +7,9 @@ package:
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
   sha256: b2934927f1c9314dbe83aff0c900d2c51fb2f980fb2d313f4bcb1736b92fbaa7
-  #patches:
+  patches:
+    # backport of https://github.com/qgis/QGIS/pull/41774
+    proj8.patch
 
 build:
   number: 1
