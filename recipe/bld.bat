@@ -27,7 +27,6 @@ cmake -G Ninja ^
     -D QGIS_INSTALL_SYS_LIBS=FALSE ^
     -D WITH_PDAL=FALSE ^
     -D WITH_EPT=FALSE ^
-    -D LazPerf_INCLUDE_DIR=%LIBRARY_INC% ^
     ..
 if errorlevel 1 exit 1
 
