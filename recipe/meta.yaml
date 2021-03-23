@@ -97,8 +97,8 @@ requirements:
     - postgresql
     - psycopg2
     # Point Clouds
-    - pdal  # [not win]
-    - laz-perf  # [not win]
+    - pdal
+    - laz-perf
   run:
     - python
     - icu
@@ -145,8 +145,8 @@ requirements:
     - yaml
     - owslib
     - pyqtwebkit
-    - pdal  # [not win]
-    - laz-perf  # [not win]
+    - pdal
+    - laz-perf
 
   run_constrained:   # [osx]
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
