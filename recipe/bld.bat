@@ -25,9 +25,8 @@ cmake -G Ninja ^
     -D EXPAT_LIBRARY=%LIBRARY_LIB%\expat.lib ^
     -D WITH_QTWEBKIT=TRUE ^
     -D QGIS_INSTALL_SYS_LIBS=FALSE ^
-    -D WITH_PDAL=TRUE ^
-    -D WITH_EPT=TRUE ^
-    -D LazPerf_INCLUDE_DIR=%LIBRARY_INC% ^
+    -D WITH_PDAL=FALSE ^
+    -D WITH_EPT=FALSE ^
     ..
 if errorlevel 1 exit 1
 
