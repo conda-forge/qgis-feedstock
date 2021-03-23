@@ -1,0 +1,11 @@
+--- ./external/untwine/epf/FileProcessor.cpp.orig	2021-03-23 12:30:28.028677093 +1000
++++ ./external/untwine/epf/FileProcessor.cpp	2021-03-23 12:30:43.220828035 +1000
+@@ -50,7 +50,7 @@
+     // This is some random cell that ultimately won't get used, but it contains a buffer
+     // into which we can write data.
+     Cell *cell = m_cellMgr.get(VoxelKey());
+-    f.setCallback([this, &count, &limit, &cell](pdal::PointRef& point)
++    f.setCallback([this, &CountIncrement, &limit, &cell](pdal::PointRef& point)
+         {
+             // Write the data into the point buffer in the cell.  This is the *last*
+             // cell buffer that we used. We're hoping that it's the right one.
