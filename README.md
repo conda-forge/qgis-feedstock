@@ -157,6 +157,22 @@ It is possible to list all of the versions of `qgis` available on your platform 
 conda search qgis --channel conda-forge
 ```
 
+To start QGIS, call:
+
+```
+qgis
+```
+
+**Notes for macOS**
+
+If the QGIS window remains invisible ([issue #183](https://github.com/conda-forge/qgis-feedstock/issues/183)), you might need to set: 
+```
+export QT_MAC_WANTS_LAYER=1
+```
+
+How to set conda environment variables permanently is shown  
+[here](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#macos-linux-save-env-variables).
+
 
 About conda-forge
 =================
