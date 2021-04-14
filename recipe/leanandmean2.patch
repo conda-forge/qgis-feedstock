@@ -1,0 +1,11 @@
+--- src/app/CMakeLists.txt.orig	2021-04-14 15:20:21.717141875 +1000
++++ src/app/CMakeLists.txt	2021-04-14 15:20:31.753286211 +1000
+@@ -501,7 +501,7 @@
+   libdxfrw
+ )
+ 
+-target_compile_definitions(qgis_app PRIVATE "-DQT_NO_FOREACH")
++target_compile_definitions(qgis_app PRIVATE "-DQT_NO_FOREACH -DWIN32_LEAN_AND_MEAN")
+ 
+ if (WITH_BINDINGS)
+   target_link_libraries(qgis_app qgispython)

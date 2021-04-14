@@ -15,6 +15,7 @@ source:
     - leanandmean.patch  # [win]
     - fileprocessor.patch  # [win]
     - qgisuntwine.patch  # [win]
+    - leanandmean2.patch  # [win]
 
 build:
   number: 2
