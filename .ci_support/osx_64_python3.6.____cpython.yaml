@@ -15,24 +15,24 @@ cxx_compiler_version:
 exiv2:
 - '0.27'
 expat:
-- '2.2'
+- '2'
 gdal:
 - '3.2'
 geos:
-- 3.9.0
+- '3.9'
 gsl:
 - '2.6'
 icu:
 - '68'
 libprotobuf:
-- '3.14'
+- '3.15'
 libspatialindex:
 - 1.9.3
+libzip:
+- '1'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 pin_run_as_build:
-  expat:
-    max_pin: x.x
   gdal:
     max_pin: x.x
   python:
@@ -45,7 +45,7 @@ pin_run_as_build:
   sqlite:
     max_pin: x
 proj:
-- 7.2.0
+- '7.2'
 python:
 - 3.6.* *_cpython
 qt:
