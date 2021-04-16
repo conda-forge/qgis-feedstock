@@ -15,7 +15,7 @@ cxx_compiler_version:
 exiv2:
 - '0.27'
 expat:
-- '2.2'
+- '2'
 gdal:
 - '3.2'
 geos:
@@ -28,11 +28,11 @@ libprotobuf:
 - '3.15'
 libspatialindex:
 - 1.9.3
+libzip:
+- '1'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 pin_run_as_build:
-  expat:
-    max_pin: x.x
   gdal:
     max_pin: x.x
   python:

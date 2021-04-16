@@ -9,7 +9,7 @@ cxx_compiler:
 exiv2:
 - '0.27'
 expat:
-- '2.2'
+- '2'
 gdal:
 - '3.2'
 geos:
@@ -22,9 +22,9 @@ libprotobuf:
 - '3.15'
 libspatialindex:
 - 1.9.3
+libzip:
+- '1'
 pin_run_as_build:
-  expat:
-    max_pin: x.x
   gdal:
     max_pin: x.x
   python:
