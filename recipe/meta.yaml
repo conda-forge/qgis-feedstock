@@ -1,4 +1,4 @@
-{% set version = "3.18.1" %}
+{% set version = "3.18.2" %}
 
 package:
   name: qgis
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: b2934927f1c9314dbe83aff0c900d2c51fb2f980fb2d313f4bcb1736b92fbaa7
+  sha256: 1913e4d5596bbc8b7d143f3defb18bf376f750a71f334f69d76af5deca7ecc5d
   patches:
     # backport of https://github.com/qgis/QGIS/pull/41774
     - proj8.patch
@@ -18,7 +18,7 @@ source:
     - winsock2.patch  # [win]
 
 build:
-  number: 2
+  number: 1
   skip: true  # [py2k]
 
 requirements:
