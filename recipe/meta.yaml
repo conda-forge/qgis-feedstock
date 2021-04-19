@@ -7,10 +7,17 @@ package:
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
   sha256: 1913e4d5596bbc8b7d143f3defb18bf376f750a71f334f69d76af5deca7ecc5d
-  patches: proj8.patch
+  patches:
+    # backport of https://github.com/qgis/QGIS/pull/41774
+    - proj8.patch
+    # patches to get untwine working on Windows
+    - mapfile.patch  # [win]
+    - leanandmean.patch  # [win]
+    - fileprocessor.patch  # [win]
+    - qgisuntwine.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py2k]
 
 requirements:
@@ -91,8 +98,8 @@ requirements:
     - postgresql
     - psycopg2
     # Point Clouds
-    - pdal  # [not win]
-    - laz-perf  # [not win]
+    - pdal
+    - laz-perf
   run:
     - python
     - icu
@@ -139,8 +146,8 @@ requirements:
     - yaml
     - owslib
     - pyqtwebkit
-    - pdal  # [not win]
-    - laz-perf  # [not win]
+    - pdal
+    - laz-perf
 
   run_constrained:   # [osx]
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]

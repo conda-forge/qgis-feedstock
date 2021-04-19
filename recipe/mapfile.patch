@@ -1,0 +1,26 @@
+--- external/untwine/untwine/MapFile.cpp.orig	2021-03-11 16:36:16.907279906 +1000
++++ external/untwine/untwine/MapFile.cpp	2021-03-11 16:36:35.119565918 +1000
+@@ -29,6 +29,10 @@
+  ****************************************************************************/
+ 
+ #include "MapFile.hpp"
++#ifdef _WIN32
++#include <io.h>
++#include <fcntl.h>
++#endif
+ 
+ namespace untwine
+ {
+@@ -44,10 +48,10 @@
+         return ctx;
+     }
+ 
+-#ifndef WIN32
++#ifndef _WIN32
+     ctx.m_fd = ::open(filename.c_str(), readOnly ? O_RDONLY : O_RDWR);
+ #else
+-    ctx.m_fd = ::_open(filename.c_str(), readOnly ? O_RDONLY : O_RDWR);
++    ctx.m_fd = ::_open(filename.c_str(), readOnly ? _O_RDONLY : _O_RDWR);
+ #endif
+ 
+     if (ctx.m_fd == -1)
