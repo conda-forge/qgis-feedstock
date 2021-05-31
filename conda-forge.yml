@@ -7,8 +7,3 @@ azure:
   settings_win:
     variables:
       CONDA_BLD_PATH: C:\bld\
-channels:
-  # channel to push to and the second element is the label on that channel
-  # adds ltr label for the LTR branch
-  targets:
-    - ["conda-forge", "ltr"]
