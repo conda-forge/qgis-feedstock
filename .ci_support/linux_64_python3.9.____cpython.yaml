@@ -7,7 +7,7 @@ cdt_name:
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge main
+- conda-forge ltr-qgis
 cxx_compiler:
 - gxx
 cxx_compiler_version:
