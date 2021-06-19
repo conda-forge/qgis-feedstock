@@ -7,23 +7,6 @@ package:
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
   sha256: affcbea058a37b1449c40dc78f829a7c3606449798ccfaaa38274d49557cefce
-  patches:
-    # QGIS inserts Qt plugin locations into PATH relative to build location
-    # This patch fixes it so PATH is relative to install location
-    - patches/0001-linux-fix-plugins-path.patch  # [linux]
-    # by default looks for pyrcc5.bat on Windows, but we have pyrcc5.exe
-    - patches/0002-CMake-PyQtMacros.patch  # [win]
-    # gets the wrong geos lib
-    - patches/0003-CMake-GEOS.patch  # [win]
-    # don't try and install MSVC runtime libs as they already exist
-    - patches/0004-CMakeLists-nosyslibs.patch  # [win]
-    # QGIS needs to #include <functional> for GCC7 & VC14, at least
-    - patches/0005-include-functional.patch
-    # Need to set "H5_BUILT_AS_DYNAMIC_LIB" to use the shared libs on Windows
-    # https://trac.osgeo.org/gdal/wiki/HDF#BuildingonWindowswithMSVC
-    - patches/0006-CMakeLists-providers-MDAL-HDF5.patch  # [win]
-    # Don't create a .app - just do the usual Unix thing
-    - patches/0007-OSX-no-app.patch  # [osx]
 
 build:
   number: 0
