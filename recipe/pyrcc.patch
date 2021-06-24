@@ -1,0 +1,23 @@
+--- cmake/PyQtMacros.cmake.orig	2021-06-24 11:49:48.745279231 +1000
++++ cmake/PyQtMacros.cmake	2021-06-24 11:50:39.078231596 +1000
+@@ -4,9 +4,8 @@
+ # Redistribution and use is allowed according to the terms of the BSD license.
+ # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+ 
+-SET(PYUIC_PROG_NAME pyuic5)
+-SET(PYUIC_PROG_NAMES pyuic5)
+-SET(PYRCC_PROG_NAME pyrcc5)
++SET(PYUIC_PROG_NAMES pyuic5 pyuic5.bat)
++SET(PYRCC_PROG_NAMES pyrcc5 pyrcc5.bat)
+ 
+ IF(NOT PYUIC_PROGRAM)
+   FIND_PROGRAM(PYUIC_PROGRAM NAMES ${PYUIC_PROG_NAMES} PATHS $ENV{LIB_DIR}/bin)
+@@ -45,7 +44,7 @@
+ ENDMACRO(PYQT_WRAP_UI)
+ 
+ IF(NOT PYRCC_PROGRAM)
+-  FIND_PROGRAM(PYRCC_PROGRAM NAMES ${PYRCC_PROG_NAME} PATHS $ENV{LIB_DIR}/bin)
++  FIND_PROGRAM(PYRCC_PROGRAM NAMES ${PYRCC_PROG_NAMES} PATHS $ENV{LIB_DIR}/bin)
+   IF (NOT PYRCC_PROGRAM)
+     MESSAGE(FATAL_ERROR "pyrcc5 not found - aborting")
+   ENDIF (NOT PYRCC_PROGRAM)
