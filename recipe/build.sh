@@ -56,7 +56,8 @@ cmake \
     $PLATFORM_OPTS \
     ..
 
-ninja -j$CPU_COUNT
+ninja -j$CPU_COUNT || cat -n python/core/auto_generated/qgis.sip
+false
 ninja install
 
 # QGIS gets bundled as a QGIS.app on MacOS (unless we creeate our own cmake)
