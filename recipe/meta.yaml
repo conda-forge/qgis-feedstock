@@ -142,7 +142,7 @@ requirements:
     - laz-perf
 
   run_constrained:   # [osx]
-    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
+    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
 test:
   requires:
     - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
