@@ -1,0 +1,10 @@
+--- src/gui/raster/qgsrasterhistogramwidget.cpp.orig	2021-07-29 09:41:38.795302036 +1000
++++ src/gui/raster/qgsrasterhistogramwidget.cpp	2021-07-29 09:41:48.287386090 +1000
+@@ -44,6 +44,7 @@
+ #include <qwt_plot_layout.h>
+ #include <qwt_plot_renderer.h>
+ #include <qwt_plot_histogram.h>
++#include <qwt_scale_div.h>
+ 
+ #ifdef Q_OS_WIN
+ #include <time.h>

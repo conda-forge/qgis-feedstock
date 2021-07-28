@@ -24,6 +24,8 @@ source:
     - patches/0006-CMakeLists-providers-MDAL-HDF5.patch  # [win]
     # Don't create a .app - just do the usual Unix thing
     - patches/0007-OSX-no-app.patch  # [osx]
+    # patch missing #include
+    - patches/0008-qgsrasterhistogramwidget.patch
 
 build:
   number: 0
