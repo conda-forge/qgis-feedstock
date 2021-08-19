@@ -24,6 +24,8 @@ source:
     - patches/0006-CMakeLists-providers-MDAL-HDF5.patch  # [win]
     # Don't create a .app - just do the usual Unix thing
     - patches/0007-OSX-no-app.patch  # [osx]
+    # Adds missing includes
+    - patches/0008-linux-osx-missing-includes.patch  # [unix]
 
 build:
   number: 0

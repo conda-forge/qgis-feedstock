@@ -1,0 +1,24 @@
+diff --git src/gui/raster/qgsrasterhistogramwidget.cpp src/gui/raster/qgsrasterhistogramwidget.cpp
+index 79c3e129b8..2a699a84c3 100644
+--- src/gui/raster/qgsrasterhistogramwidget.cpp
++++ src/gui/raster/qgsrasterhistogramwidget.cpp
+@@ -44,6 +44,7 @@
+ #include <qwt_plot_layout.h>
+ #include <qwt_plot_renderer.h>
+ #include <qwt_plot_histogram.h>
++#include <qwt_scale_div.h>
+ 
+ #ifdef Q_OS_WIN
+ #include <time.h>
+diff --git src/gui/symbology/qgsgraduatedhistogramwidget.cpp src/gui/symbology/qgsgraduatedhistogramwidget.cpp
+index 7b1e6a7147..85caf4c1ce 100644
+--- src/gui/symbology/qgsgraduatedhistogramwidget.cpp
++++ src/gui/symbology/qgsgraduatedhistogramwidget.cpp
+@@ -38,6 +38,7 @@
+ #include <qwt_plot_layout.h>
+ #include <qwt_plot_renderer.h>
+ #include <qwt_plot_histogram.h>
++#include <qwt_scale_map.h>
+ 
+ 
+ QgsGraduatedHistogramWidget::QgsGraduatedHistogramWidget( QWidget *parent )
