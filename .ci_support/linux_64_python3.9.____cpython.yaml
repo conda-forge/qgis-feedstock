@@ -27,7 +27,7 @@ gsl:
 icu:
 - '68'
 libprotobuf:
-- '3.15'
+- '3.16'
 libspatialindex:
 - 1.9.3
 libzip:
@@ -52,6 +52,8 @@ qt:
 - '5.12'
 qtkeychain:
 - '0.12'
+qwt:
+- '6.1'
 sqlite:
 - '3'
 target_platform:
