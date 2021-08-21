@@ -52,6 +52,8 @@ qt:
 - '5.12'
 qtkeychain:
 - '0.12'
+qwt:
+- '6.1'
 sqlite:
 - '3'
 target_platform:
