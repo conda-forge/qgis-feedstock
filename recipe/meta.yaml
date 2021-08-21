@@ -24,9 +24,12 @@ source:
     - patches/0006-CMakeLists-providers-MDAL-HDF5.patch  # [win]
     # Don't create a .app - just do the usual Unix thing
     - patches/0007-OSX-no-app.patch  # [osx]
+    # Backport keeping pyi files. This is not crucial, but makes easier to create
+    # Developement environments with full autocompletation
+    - patches/0008-keep_pyi_files_backport.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py2k]
 
 requirements:
