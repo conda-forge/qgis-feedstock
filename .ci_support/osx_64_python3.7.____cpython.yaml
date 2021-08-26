@@ -21,7 +21,7 @@ gdal:
 geos:
 - 3.9.1
 gsl:
-- '2.6'
+- '2.7'
 icu:
 - '68'
 libprotobuf:
@@ -45,7 +45,7 @@ pin_run_as_build:
   sqlite:
     max_pin: x
 proj:
-- 8.0.0
+- 8.0.1
 python:
 - 3.7.* *_cpython
 qt:
