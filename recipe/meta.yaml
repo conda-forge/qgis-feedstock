@@ -79,7 +79,7 @@ requirements:
     - qscintilla2
     - qca
     - qjson
-    - qwt
+    - qwt <6.2.0
     - qwtpolar
     - qtkeychain
     - qtlocation
