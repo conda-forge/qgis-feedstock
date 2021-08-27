@@ -59,7 +59,7 @@ requirements:
     - {{ cdt('cups-devel') }}            # [linux]
     - {{ cdt('libxcb') }}                # [linux]
   host:
-    - python
+    - python >=3.7
     - six
     - flex  # [unix]
     - bison  # [unix]
@@ -101,7 +101,7 @@ requirements:
     - pdal
     - laz-perf
   run:
-    - python
+    - python >=3.7
     - icu
     - libzip
     - libtasn1  # [osx]
