@@ -8,8 +8,17 @@ jobs:
     vmImage: vs2017-win2016
   strategy:
     matrix:
-      win_64_:
-        CONFIG: win_64_
+      win_64_python3.6.____cpython:
+        CONFIG: win_64_python3.6.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_python3.7.____cpython:
+        CONFIG: win_64_python3.7.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_python3.8.____cpython:
+        CONFIG: win_64_python3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_python3.9.____cpython:
+        CONFIG: win_64_python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
   variables:
