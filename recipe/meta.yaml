@@ -10,6 +10,8 @@ source:
   patches:
     # backport of https://github.com/qgis/QGIS/pull/41774
     - proj8.patch
+    # fix linking error, from https://github.com/archlinux/svntogit-community/raw/a433363547593c30bfabf869860cc3fe1e17532f/trunk/qgis-qwtpolar-link.patch
+    - qgis-qwtpolar-link.patch
     # patches to get untwine working on Windows
     - mapfile.patch  # [win]
     - leanandmean.patch  # [win]
@@ -18,7 +20,7 @@ source:
 
 build:
   number: 1
-  skip: true  # [py2k]
+  skip: true  # [py2k or py<37]
 
 requirements:
   build:
@@ -111,7 +113,7 @@ requirements:
     - qscintilla2
     - qca
     - qjson
-    - qwt
+    - qwt <6.2.0
     - qwtpolar
     - qtkeychain
     - qtlocation
