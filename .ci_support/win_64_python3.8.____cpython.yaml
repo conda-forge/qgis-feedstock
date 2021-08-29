@@ -11,7 +11,7 @@ exiv2:
 expat:
 - '2'
 gdal:
-- '3.2'
+- '3.3'
 geos:
 - 3.9.1
 gsl:
@@ -37,7 +37,7 @@ pin_run_as_build:
   sqlite:
     max_pin: x
 proj:
-- 8.0.0
+- 8.0.1
 python:
 - 3.8.* *_cpython
 qt:

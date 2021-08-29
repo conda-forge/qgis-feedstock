@@ -5,13 +5,9 @@
 jobs:
 - job: linux
   pool:
-    vmImage: ubuntu-16.04
+    vmImage: ubuntu-latest
   strategy:
     matrix:
-      linux_64_python3.6.____cpython:
-        CONFIG: linux_64_python3.6.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-comp7
       linux_64_python3.7.____cpython:
         CONFIG: linux_64_python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
