@@ -52,8 +52,6 @@ cmake \
     -D WITH_QTWEBKIT=TRUE \
     -D WITH_PDAL=TRUE \
     -D WITH_EPT=TRUE \
-    -D WITH_QWTPOLAR=TRUE \
-    -D WITH_INTERNAL_QWTPOLAR=FALSE \
     -D LazPerf_INCLUDE_DIR=$PREFIX/include \
     $PLATFORM_OPTS \
     ..
