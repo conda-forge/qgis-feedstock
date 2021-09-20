@@ -1,4 +1,4 @@
-{% set version = "3.20.2" %}
+{% set version = "3.20.3" %}
 
 package:
   name: qgis
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: cbc55a05d88e27251c36319ca99882541f3e6892c9f557117bb6f9ca7a279e6d
+  sha256: 93ac52138f4f7832078e6e79ed5249dcd8c3dd34c8801c4039f87b690657294e
   patches:
     - pyrcc.patch  # [win]
     - protobuf.patch  # [win]
