@@ -17,7 +17,7 @@ exiv2:
 expat:
 - '2'
 gdal:
-- '3.3'
+- '3.4'
 geos:
 - 3.10.0
 gsl:
