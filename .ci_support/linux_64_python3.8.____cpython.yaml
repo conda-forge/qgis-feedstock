@@ -13,7 +13,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '9'
 docker_image:
-- quay.io/condaforge/linux-anvil-comp7
+- quay.io/condaforge/linux-anvil-cos7-x86_64
 exiv2:
 - '0.27'
 expat:
@@ -23,7 +23,7 @@ gdal:
 geos:
 - '3.9'
 gsl:
-- '2.6'
+- '2.7'
 icu:
 - '68'
 libprotobuf:
@@ -61,5 +61,3 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - cdt_name
-  - docker_image
