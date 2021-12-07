@@ -1,19 +1,11 @@
 c_compiler:
-- gcc
-c_compiler_version:
-- '9'
-cdt_name:
-- cos6
+- vs2017
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- gxx
-cxx_compiler_version:
-- '9'
-docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
+- vs2017
 exiv2:
 - '0.27'
 expat:
@@ -47,7 +39,7 @@ pin_run_as_build:
 proj:
 - 8.2.0
 python:
-- 3.7.* *_cpython
+- 3.10.* *_cpython
 qt:
 - '5.12'
 qtkeychain:
@@ -55,7 +47,4 @@ qtkeychain:
 sqlite:
 - '3'
 target_platform:
-- linux-64
-zip_keys:
-- - c_compiler_version
-  - cxx_compiler_version
+- win-64

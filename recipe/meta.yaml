@@ -19,7 +19,7 @@ source:
     - qgisuntwine.patch  # [win]
 
 build:
-  number: 6
+  number: 7
   skip: true  # [py2k or py<37]
 
 requirements:
@@ -97,7 +97,7 @@ requirements:
     - libspatialindex
     - libspatialite
     # For PostgreSQL support.
-    - postgresql
+    - postgresql >=13,<14
     - psycopg2
     # Point Clouds
     - pdal
@@ -126,7 +126,7 @@ requirements:
     - libspatialindex
     - libspatialite
     - psycopg2
-    - postgresql
+    - postgresql >=13,<14
     - exiv2
     - libprotobuf
     # Runtime Python library deps
