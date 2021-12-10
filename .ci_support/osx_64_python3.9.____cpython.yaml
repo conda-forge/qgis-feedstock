@@ -25,7 +25,7 @@ gsl:
 icu:
 - '68'
 libprotobuf:
-- '3.18'
+- '3.19'
 libspatialindex:
 - 1.9.3
 libzip:
