@@ -19,7 +19,7 @@ source:
     - qgisuntwine.patch  # [win]
 
 build:
-  number: 8
+  number: 9
   skip: true  # [py2k or py<37]
 
 requirements:
