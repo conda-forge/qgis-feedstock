@@ -23,7 +23,7 @@ geos:
 gsl:
 - '2.7'
 icu:
-- '68'
+- '69'
 libprotobuf:
 - '3.19'
 libspatialindex:
