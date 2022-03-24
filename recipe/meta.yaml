@@ -20,7 +20,7 @@ source:
 
 build:
   number: 9
-  skip: true  # [py2k or py<37]
+  skip: true  # [py2k or py<38]
 
 requirements:
   build:
