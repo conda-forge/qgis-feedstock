@@ -17,10 +17,12 @@ source:
     - leanandmean.patch  # [win]
     - fileprocessor.patch  # [win]
     - qgisuntwine.patch  # [win]
+    ## fix for llvm 13 from https://github.com/qgis/QGIS/pull/46408/files
+    - Fix-building-with-llvm13.patch
 
 build:
-  number: 8
-  skip: true  # [py2k or py<37]
+  number: 9
+  skip: true  # [py2k or py<38]
 
 requirements:
   build:
@@ -97,7 +99,7 @@ requirements:
     - libspatialindex
     - libspatialite
     # For PostgreSQL support.
-    - postgresql >=13,<14
+    - postgresql >=14,<15
     - psycopg2
     # Point Clouds
     - pdal
@@ -126,7 +128,7 @@ requirements:
     - libspatialindex
     - libspatialite
     - psycopg2
-    - postgresql >=13,<14
+    - postgresql >=14,<15
     - exiv2
     - libprotobuf
     # Runtime Python library deps
