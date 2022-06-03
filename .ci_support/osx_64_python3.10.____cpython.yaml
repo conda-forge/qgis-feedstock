@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
-- '12'
+- '13'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -11,13 +11,13 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '12'
+- '13'
 exiv2:
 - '0.27'
 expat:
 - '2'
 gdal:
-- '3.4'
+- '3.5'
 geos:
 - 3.10.2
 gsl:
