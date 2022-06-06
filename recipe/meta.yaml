@@ -86,9 +86,6 @@ requirements:
     - qwt <6.2.0
     - qwtpolar
     - qtkeychain
-    - qtlocation
-    # included in win-64 Qt already but needed for linux/osx
-    - qtserialport  # [unix]
     # GDAL stack.
     - gdal
     - geos
@@ -118,8 +115,6 @@ requirements:
     - qwt <6.2.0
     - qwtpolar
     - qtkeychain
-    - qtlocation
-    - qtserialport  # [unix]
     - gdal
     - geos
     - proj
