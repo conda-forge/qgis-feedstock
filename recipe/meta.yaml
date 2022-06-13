@@ -79,7 +79,6 @@ requirements:
     - qt
     - pyqt
     - qtwebkit
-    - pyqtwebkit
     - qscintilla2
     - qca
     - qjson
@@ -144,7 +143,6 @@ requirements:
     - pyyaml
     - yaml
     - owslib
-    - pyqtwebkit
     - pdal
     - laz-perf
 
