@@ -13,11 +13,11 @@ expat:
 gdal:
 - '3.5'
 geos:
-- 3.10.2
+- 3.10.3
 gsl:
 - '2.7'
 icu:
-- '69'
+- '70'
 libprotobuf:
 - '3.19'
 libspatialindex:
