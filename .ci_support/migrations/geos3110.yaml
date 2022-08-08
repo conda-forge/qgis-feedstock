@@ -2,12 +2,6 @@ __migrator:
   build_number: 1
   kind: version
   migration_number: 1
-<<<<<<<< HEAD:.ci_support/migrations/geos3110.yaml
 geos:
 - 3.11.0
 migrator_ts: 1656728829.0517387
-========
-icu:
-- '70'
-migrator_ts: 1648069834.8412466
->>>>>>>> bot/rebuild-icu70-0-1_he4780a:.ci_support/migrations/icu70.yaml
