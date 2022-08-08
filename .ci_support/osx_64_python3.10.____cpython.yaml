@@ -46,6 +46,8 @@ proj:
 - 9.0.1
 python:
 - 3.10.* *_cpython
+qt_main:
+- '5.15'
 qtkeychain:
 - '0.12'
 sqlite:
