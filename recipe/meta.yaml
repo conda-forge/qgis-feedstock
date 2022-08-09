@@ -12,7 +12,6 @@ source:
     - mapfile.patch  # [win]
     - leanandmean.patch  # [win]
     - fileprocessor.patch  # [win]
-    - qgisuntwine.patch  # [win]
 
 build:
   number: 0
