@@ -52,14 +52,11 @@ requirements:
     - {{ cdt('libxxf86vm-devel') }}      # [linux]
     - {{ cdt('cups-devel') }}            # [linux]
     - {{ cdt('libxcb') }}                # [linux]
-    - sip  # [win]
-    - pyqt5-sip  # [win]
-    - pyqt-builder  # [win]
   host:
     - python
     - six
     - setuptools
-    - sip =6.5.1
+    - sip
     - flex  # [unix]
     - bison  # [unix]
     - m4  # [unix]
@@ -76,6 +73,7 @@ requirements:
     - pyqt5-sip
     - pyqt-builder
     - qtwebkit
+    - pyqtwebkit
     - qscintilla2
     - qca
     - qjson
@@ -138,6 +136,7 @@ requirements:
     - pyyaml
     - yaml
     - owslib
+    - pyqtwebkit
     - pdal
     - laz-perf
 
