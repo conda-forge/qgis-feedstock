@@ -37,26 +37,21 @@ cmake \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX="${PREFIX}" \
     -D CMAKE_PREFIX_PATH="${PREFIX}" \
-    -D PYTHON_EXECUTABLE="${PYTHON}" \
-    -D ENABLE_TESTS=FALSE \
-    -D WITH_BINDINGS=TRUE \
     -D WITH_3D=TRUE \
     -D WITH_DESKTOP=TRUE \
     -D WITH_SERVER=FALSE \
     -D WITH_GRASS=FALSE \
-    -D WITH_STAGED_PLUGINS=TRUE \
-    -D WITH_CUSTOM_WIDGETS=TRUE \
-    -D EXPAT_INCLUDE_DIR=$PREFIX/include \
-    -D EXPAT_LIBRARY=$PREFIX/lib/libexpat${SHLIB_EXT} \
-    -D WITH_PY_COMPILE=FALSE \
-    -D WITH_QTWEBKIT=TRUE \
     -D WITH_PDAL=TRUE \
-    -D WITH_EPT=TRUE \
-    -D LazPerf_INCLUDE_DIR=$PREFIX/include \
+    -D BINDINGS_GLOBAL_INSTALL=TRUE \
+    -D WITH_QWTPOLAR=TRUE \
+    -D QWTPOLAR_LIBRARY=${PREFIX}/lib/libqwt.so \
+    -D QWTPOLAR_INCLUDE_DIR=${PREFIX}/include/qwt \
+    -D CMAKE_CXX_FLAGS="${CXXFLAGS} -DQWT_POLAR_VERSION=0x060200" \
+    -D WITH_INTERNAL_QWTPOLAR=FALSE \
     $PLATFORM_OPTS \
     ..
 
-ninja -j1
+ninja -j$CPU_COUNT
 ninja install
 
 # QGIS gets bundled as a QGIS.app on MacOS (unless we creeate our own cmake)
