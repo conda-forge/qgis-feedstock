@@ -21,7 +21,7 @@ source:
     - Fix-building-with-llvm13.patch
 
 build:
-  number: 11
+  number: 12
   skip: true  # [py2k or py<38]
 
 requirements:
@@ -76,7 +76,7 @@ requirements:
     - libtasn1  # [osx]
     - exiv2
     # Qt stack.
-    - qt
+    - qt-main
     - pyqt
     - qtwebkit
     - pyqtwebkit
@@ -106,7 +106,7 @@ requirements:
     - icu
     - libzip
     - libtasn1  # [osx]
-    - qt
+    - qt-main
     - pyqt
     - qtwebkit
     - qscintilla2
