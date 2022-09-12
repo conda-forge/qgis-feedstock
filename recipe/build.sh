@@ -33,7 +33,6 @@ fi
 
 # TODO: enable QSPATIALITE on OSX
 cmake \
-    -G Ninja \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX="${PREFIX}" \
     -D CMAKE_PREFIX_PATH="${PREFIX}" \
@@ -51,8 +50,8 @@ cmake \
     $PLATFORM_OPTS \
     ..
 
-ninja -j$CPU_COUNT
-ninja install
+make -j$CPU_COUNT
+make install
 
 # QGIS gets bundled as a QGIS.app on MacOS (unless we creeate our own cmake)
 # https://github.com/qgis/QGIS/blob/master/mac/readme.txt

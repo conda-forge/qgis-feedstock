@@ -17,7 +17,7 @@ build:
 requirements:
   build:
     - cmake
-    - ninja
+    - make
     - m2-flex  # [win]
     - m2-bison  # [win]
     - m2-m4  # [win]
