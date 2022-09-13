@@ -92,7 +92,7 @@ requirements:
     - libspatialindex
     - libspatialite
     # For PostgreSQL support.
-    - postgresql >=14,<15
+    - postgresql
     - psycopg2
     # Point Clouds
     - pdal
@@ -118,7 +118,7 @@ requirements:
     - libspatialindex
     - libspatialite
     - psycopg2
-    - postgresql >=14,<15
+    - postgresql
     - exiv2
     - libprotobuf
     # Runtime Python library deps
