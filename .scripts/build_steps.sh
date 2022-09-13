@@ -23,9 +23,6 @@ export CONFIG_FILE="${CI_SUPPORT}/${CONFIG}.yaml"
 
 cat >~/.condarc <<CONDARC
 
-channels:
-  - izahn
-  - conda-forge
 conda-build:
   root-dir: ${FEEDSTOCK_ROOT}/build_artifacts
 pkgs_dirs:
