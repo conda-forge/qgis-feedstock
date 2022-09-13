@@ -12,7 +12,8 @@ source:
 
 build:
   number: 0
-  skip: true  # [py2k or py<38]
+  skip: true  # [(not linux) or (not py==39)]
+  # [py2k or py<38]
 
 requirements:
   build:
@@ -54,6 +55,7 @@ requirements:
     - {{ cdt('cups-devel') }}            # [linux]
     - {{ cdt('libxcb') }}                # [linux]
   host:
+    - xorg-libxfixes  # [linux]
     - python
     - six
     - setuptools
