@@ -17,37 +17,19 @@
 [[ -d build ]] || mkdir build
 cd build/
 
-# https://github.com/conda-forge/bison-feedstock/issues/7
-export M4="${PREFIX}/bin/m4"
-
 echo "Current work directory: $(pwd)"
 echo "PREFIX: $PREFIX"
 
+PLATFORM_OPTS=""
 if [ $(uname) == Darwin ]; then
   PLATFORM_OPTS="-D WITH_QSPATIALITE=FALSE -D QGIS_MACAPP_FRAMEWORK=FALSE"
-else
-  # Needed to find libGL.so
-  export LDFLAGS="$LDFLAGS -Wl,-rpath-link,${BUILD_PREFIX}/${HOST}/sysroot"
-  PLATFORM_OPTS=""
 fi
 
 # TODO: enable QSPATIALITE on OSX
 cmake \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX="${PREFIX}" \
-    -D CMAKE_PREFIX_PATH="${PREFIX}" \
-    -D WITH_3D=TRUE \
-    -D WITH_DESKTOP=TRUE \
-    -D WITH_SERVER=FALSE \
-    -D WITH_GRASS=FALSE \
-    -D WITH_PDAL=TRUE \
-    -D BINDINGS_GLOBAL_INSTALL=TRUE \
-    -D WITH_QWTPOLAR=TRUE \
-    -D QWTPOLAR_LIBRARY=${PREFIX}/lib/libqwt.so \
-    -D QWTPOLAR_INCLUDE_DIR=${PREFIX}/include/qwt \
-    -D CMAKE_CXX_FLAGS="${CXXFLAGS} -DQWT_POLAR_VERSION=0x060200" \
-    -D WITH_INTERNAL_QWTPOLAR=FALSE \
-    $PLATFORM_OPTS \
+    -D CMAKE_PREFIX_PATH="${PREFIX}" $PLATFORM_OPTS \
     ..
 
 make -j$CPU_COUNT
