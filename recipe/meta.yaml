@@ -63,6 +63,8 @@ requirements:
     - {{ cdt('cups-devel') }}            # [linux]
     - {{ cdt('libxcb') }}                # [linux]
   host:
+    - setuptools
+    - sip
     - python
     - six
     - flex  # [unix]
@@ -78,13 +80,14 @@ requirements:
     # Qt stack.
     - qt-main
     - pyqt
+    - pyqt5-sip
+    - pyqt-builder
     - qtwebkit
     - pyqtwebkit
     - qscintilla2
     - qca
     - qjson
-    - qwt <6.2.0
-    - qwtpolar
+    - qwt
     - qtkeychain
     # GDAL stack.
     - gdal
@@ -112,8 +115,7 @@ requirements:
     - qscintilla2
     - qca
     - qjson
-    - qwt <6.2.0
-    - qwtpolar
+    - qwt
     - qtkeychain
     - gdal
     - geos
