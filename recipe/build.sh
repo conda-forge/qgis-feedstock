@@ -27,7 +27,7 @@ fi
 
 # TODO: enable QSPATIALITE on OSX
 cmake \
-    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_BUILD_TYPE=Debug \
     -D CMAKE_INSTALL_PREFIX="${PREFIX}" \
     -D CMAKE_PREFIX_PATH="${PREFIX}" $PLATFORM_OPTS \
     ..
