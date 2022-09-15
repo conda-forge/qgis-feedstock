@@ -1,5 +1,5 @@
 :: move hostedtoolscache, otherwise cmake uses wrong python
-mv C:\hostedtoolcache\windows\Python C:\
+move C:\hostedtoolcache\windows\Python C:\
 if errorlevel 1 exit 1
 
 mkdir build
