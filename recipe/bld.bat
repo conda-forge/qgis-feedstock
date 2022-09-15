@@ -1,3 +1,6 @@
+:: remote hostedtoolscache, otherwise cmake uses wrong python
+del /s "C:\hostedtoolcache\windows\Python"
+if errorlevel 1 exit 1
 
 mkdir build
 if errorlevel 1 exit 1
