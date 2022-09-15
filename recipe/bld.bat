@@ -1,7 +1,3 @@
-:: move hostedtoolscache, otherwise cmake uses wrong python
-move C:\hostedtoolcache\windows\Python C:\
-if errorlevel 1 exit 1
-
 mkdir build
 if errorlevel 1 exit 1
 cd build
@@ -14,6 +10,7 @@ cmake -G Ninja ^
     -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
     -D CMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
     -D PYTHON_EXECUTABLE=%PYTHON% ^
+    -D Python_EXECUTABLE=%PYTHON%
     -D WITH_GUI=TRUE ^
     -D ENABLE_TESTS=FALSE ^
     -D WITH_BINDINGS=TRUE ^
