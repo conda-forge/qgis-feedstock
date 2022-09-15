@@ -1,5 +1,5 @@
-:: remote hostedtoolscache, otherwise cmake uses wrong python
-del /s "C:\hostedtoolcache\windows\Python"
+:: move hostedtoolscache, otherwise cmake uses wrong python
+mv C:\hostedtoolcache\windows\Python C:\
 if errorlevel 1 exit 1
 
 mkdir build
