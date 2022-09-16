@@ -54,6 +54,7 @@ requirements:
     - {{ cdt('libxcb') }}                # [linux]
   host:
     - setuptools
+    - pip  # [win]
     - sip
     - python
     - six
