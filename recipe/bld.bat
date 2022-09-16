@@ -3,6 +3,9 @@ if errorlevel 1 exit 1
 cd build
 if errorlevel 1 exit 1
 
+%PYTHON% -m pip install pyqt5-tools
+if errorlevel 1 exit 1
+
 set BUILDCONF=Release
 
 cmake -G Ninja ^
