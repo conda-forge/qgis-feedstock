@@ -3,9 +3,6 @@ if errorlevel 1 exit 1
 cd build
 if errorlevel 1 exit 1
 
-%PYTHON% -m pip install pyqt5-tools
-if errorlevel 1 exit 1
-
 set BUILDCONF=Release
 
 cmake -G Ninja ^
@@ -16,6 +13,7 @@ cmake -G Ninja ^
     -D PYTHON3_EXECUTABLE=%PYTHON% ^
     -D Python3_EXECUTABLE=%PYTHON% ^
     -D Python_EXECUTABLE=%PYTHON% ^
+    -D PYUIC_PROGRAM=%PREFIX\pyuic5.bat ^
     -D WITH_GUI=TRUE ^
     -D ENABLE_TESTS=FALSE ^
     -D WITH_BINDINGS=TRUE ^
