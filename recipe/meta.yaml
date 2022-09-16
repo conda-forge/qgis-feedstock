@@ -63,7 +63,8 @@ requirements:
     - expat
     - icu
     - libzip
-    - libprotobuf  # [not win]
+    - libprotobuf
+    - protobuf  # [win]
     - libtasn1  # [osx]
     - exiv2
     # Qt stack.
@@ -116,7 +117,7 @@ requirements:
     - psycopg2
     - postgresql >=14,<15
     - exiv2
-    - libprotobuf  # [not win]
+    - libprotobuf
     # Runtime Python library deps
     - python-dateutil
     - future
