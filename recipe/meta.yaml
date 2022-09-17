@@ -52,7 +52,6 @@ requirements:
     - {{ cdt('libxcb') }}                # [linux]
   host:
     - setuptools
-    - pip  # [win]
     - sip
     - python
     - six
@@ -64,7 +63,6 @@ requirements:
     - icu
     - libzip
     - libprotobuf
-    - protobuf  # [win]
     - libtasn1  # [osx]
     - exiv2
     # Qt stack.
