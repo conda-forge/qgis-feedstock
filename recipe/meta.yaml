@@ -1,4 +1,4 @@
-{% set version = "3.26.3" %}
+{% set version = "3.22.11" %}
 
 package:
   name: qgis
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: 512b64e2778bcea02dcc70a1c4fac2cc47b4f9a685a62b08eec0ec23636104e6
+  sha256: 9fe4695bec89999bb27e839ca80a3749f042f3cfea05a6b0471d9f90646c68b3
 
 build:
   number: 0
