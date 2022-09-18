@@ -10,7 +10,8 @@ source:
 
 build:
   number: 0
-  skip: true  # [py2k or py<38]
+  skip: true  # [(not win) or (not py==39)]
+  #skip: true  # [py2k or py<38]
 
 requirements:
   build:
