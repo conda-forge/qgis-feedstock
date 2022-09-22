@@ -7,7 +7,6 @@ azure:
   settings_win:
     variables:
       CONDA_BLD_PATH: C:\bld\
-  store_build_artifacts: True
 github:
   branch_name: main
   tooling_branch_name: main
