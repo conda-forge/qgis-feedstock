@@ -35,15 +35,9 @@ libzip:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 pin_run_as_build:
-  gdal:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
-  qtkeychain:
-    max_pin: x.x
-  sqlite:
-    max_pin: x
 proj:
 - 9.0.1
 python:

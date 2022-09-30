@@ -3,7 +3,7 @@ c_compiler:
 c_compiler_version:
 - '10'
 cdt_name:
-- cos6
+- cos7
 channel_sources:
 - conda-forge
 channel_targets:
@@ -33,15 +33,9 @@ libspatialindex:
 libzip:
 - '1'
 pin_run_as_build:
-  gdal:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
-  qtkeychain:
-    max_pin: x.x
-  sqlite:
-    max_pin: x
 proj:
 - 9.0.1
 python:
