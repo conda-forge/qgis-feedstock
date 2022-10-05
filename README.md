@@ -232,6 +232,7 @@ Feedstock Maintainers
 * [@SrNetoChan](https://github.com/SrNetoChan/)
 * [@ceholden](https://github.com/ceholden/)
 * [@gillins](https://github.com/gillins/)
+* [@izahn](https://github.com/izahn/)
 * [@kmuehlbauer](https://github.com/kmuehlbauer/)
 * [@ocefpaf](https://github.com/ocefpaf/)
 

@@ -1,4 +1,4 @@
-{% set version = "3.18.3" %}
+{% set version = "3.22.11" %}
 
 package:
   name: qgis
@@ -6,22 +6,14 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: 8935ba2a658aee44286b39af43d4e6ec7c389e780ed2f352cbea60f99ced0b9f
+  sha256: 9fe4695bec89999bb27e839ca80a3749f042f3cfea05a6b0471d9f90646c68b3
   patches:
-    # backport of https://github.com/qgis/QGIS/pull/41774
-    - proj8.patch
-    # fix linking error, from https://github.com/archlinux/svntogit-community/raw/a433363547593c30bfabf869860cc3fe1e17532f/trunk/qgis-qwtpolar-link.patch
-    - qgis-qwtpolar-link.patch
-    # patches to get untwine working on Windows
-    - mapfile.patch  # [win]
-    - leanandmean.patch  # [win]
-    - fileprocessor.patch  # [win]
-    - qgisuntwine.patch  # [win]
-    ## fix for llvm 13 from https://github.com/qgis/QGIS/pull/46408/files
-    - Fix-building-with-llvm13.patch
+    - 0001-use-protobuf-dlls.patch  # [win]
+    - 0002-skip-dot-in-path.patch  # [win]
 
 build:
-  number: 11
+  number: 0
+  #skip: true  # [(not win) or (not py==39)]
   skip: true  # [py2k or py<38]
 
 requirements:
@@ -63,6 +55,8 @@ requirements:
     - {{ cdt('cups-devel') }}            # [linux]
     - {{ cdt('libxcb') }}                # [linux]
   host:
+    - setuptools
+    - sip
     - python
     - six
     - flex  # [unix]
@@ -76,15 +70,16 @@ requirements:
     - libtasn1  # [osx]
     - exiv2
     # Qt stack.
-    - qt
+    - qt-main
     - pyqt
+    - pyqt5-sip
+    - pyqt-builder
     - qtwebkit
     - pyqtwebkit
     - qscintilla2
     - qca
     - qjson
-    - qwt <6.2.0
-    - qwtpolar
+    - qwt
     - qtkeychain
     # GDAL stack.
     - gdal
@@ -106,14 +101,13 @@ requirements:
     - icu
     - libzip
     - libtasn1  # [osx]
-    - qt
+    - qt-main
     - pyqt
     - qtwebkit
     - qscintilla2
     - qca
     - qjson
-    - qwt <6.2.0
-    - qwtpolar
+    - qwt
     - qtkeychain
     - gdal
     - geos
@@ -206,3 +200,4 @@ extra:
     - kmuehlbauer
     - SrNetoChan
     - gillins
+    - izahn
