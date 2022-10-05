@@ -43,7 +43,7 @@ python:
 qt_main:
 - '5.15'
 qtkeychain:
-- '0.12'
+- '0.13'
 sqlite:
 - '3'
 target_platform:
