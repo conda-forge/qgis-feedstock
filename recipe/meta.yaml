@@ -73,7 +73,7 @@ requirements:
     - qt-main
     - pyqt
     - pyqt5-sip
-    - pyqt-builder
+    - pyqt-builder =1.13
     - qtwebkit
     - pyqtwebkit
     - qscintilla2
