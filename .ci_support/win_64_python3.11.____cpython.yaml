@@ -1,19 +1,11 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '10.13'
-MACOSX_SDK_VERSION:
-- '10.13'
 c_compiler:
-- clang
-c_compiler_version:
-- '14'
+- vs2019
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- clangxx
-cxx_compiler_version:
-- '14'
+- vs2019
 exiv2:
 - '0.27'
 expat:
@@ -32,8 +24,6 @@ libspatialindex:
 - 1.9.3
 libzip:
 - '1'
-macos_machine:
-- x86_64-apple-darwin13.4.0
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -41,7 +31,7 @@ pin_run_as_build:
 proj:
 - 9.1.0
 python:
-- 3.8.* *_cpython
+- 3.11.* *_cpython
 qt_main:
 - '5.15'
 qtkeychain:
@@ -49,7 +39,4 @@ qtkeychain:
 sqlite:
 - '3'
 target_platform:
-- osx-64
-zip_keys:
-- - c_compiler_version
-  - cxx_compiler_version
+- win-64
