@@ -12,3 +12,5 @@ github:
   tooling_branch_name: main
 os_version:
   linux_64: cos7
+conda_build:
+  pkg_format: '2'
