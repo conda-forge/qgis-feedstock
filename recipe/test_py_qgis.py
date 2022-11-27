@@ -2,6 +2,7 @@
 import os
 import pathlib
 import sys
+import traceback
 
 from qgis.core import \
     QgsApplication, QgsVectorLayer, \
@@ -58,6 +59,7 @@ if __name__ == '__main__':
         testPROJ()
 
     except Exception as e:
+        print(traceback.format_exc())
         print(e)
         print('QGIS prefixPath(): "{0}"'.format(app.prefixPath()))
         sys.exit(1)
