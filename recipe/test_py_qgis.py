@@ -15,10 +15,10 @@ def testPROJ():
     """
     Tests if PROJ library can be found
     """
-    PROJ_LIB = pathlib.Path(os.environ.get('PROJ_LIB'))
-    assert PROJ_LIB.is_dir(), f'PROJ_LIB does not exist: {PROJ_LIB}'
+    PROJ_LIB = pathlib.Path(os.environ.get('PROJ_DATA'))
+    assert PROJ_LIB.is_dir(), f'PROJ_LIB does not exist: {PROJ_DATA}'
     PROJ_DB = PROJ_LIB / 'proj.db'
-    assert PROJ_DB.is_file(), f'proj.db file does not exist: {PROJ_DB}'
+    assert PROJ_DB.is_file(), f'proj.db file does not exist: {PROJ_DATA}'
 
     found = False
     for path in QgsProjUtils.searchPaths():
