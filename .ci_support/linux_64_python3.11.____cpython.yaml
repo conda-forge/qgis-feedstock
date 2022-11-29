@@ -1,0 +1,53 @@
+c_compiler:
+- gcc
+c_compiler_version:
+- '10'
+cdt_name:
+- cos7
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge main
+cxx_compiler:
+- gxx
+cxx_compiler_version:
+- '10'
+docker_image:
+- quay.io/condaforge/linux-anvil-cos7-x86_64
+exiv2:
+- '0.27'
+expat:
+- '2'
+gdal:
+- '3.6'
+geos:
+- 3.11.0
+gsl:
+- '2.7'
+icu:
+- '70'
+libprotobuf:
+- '3.21'
+libspatialindex:
+- 1.9.3
+libzip:
+- '1'
+pin_run_as_build:
+  python:
+    min_pin: x.x
+    max_pin: x.x
+proj:
+- 9.1.0
+python:
+- 3.11.* *_cpython
+qt_main:
+- '5.15'
+qtkeychain:
+- '0.13'
+sqlite:
+- '3'
+target_platform:
+- linux-64
+zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
