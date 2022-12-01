@@ -54,6 +54,8 @@ requirements:
     - {{ cdt('cups-devel') }}            # [linux]
     - {{ cdt('libxcb') }}                # [linux]
   host:
+    - setuptools
+    - sip
     - python
     - six
     - flex  # [unix]
@@ -69,6 +71,8 @@ requirements:
     # Qt stack.
     - qt-main
     - pyqt
+    - pyqt5-sip
+    - pyqt-builder =1.13
     - qtwebkit
     - pyqtwebkit
     - qscintilla2
@@ -77,9 +81,6 @@ requirements:
     - qwt
     - qwtpolar
     - qtkeychain
-    - qtlocation
-    # included in win-64 Qt already but needed for linux/osx
-    - qtserialport  # [unix]
     # GDAL stack.
     - gdal
     - geos
@@ -92,22 +93,22 @@ requirements:
     # For PostgreSQL support.
     - postgresql
     - psycopg2
+    # Point Clouds
+    - pdal
+    - laz-perf
   run:
     - python
     - icu
     - libzip
     - libtasn1  # [osx]
-    - qt
+    - qt-main
     - pyqt
     - qtwebkit
     - qscintilla2
     - qca
     - qjson
     - qwt
-    - qwtpolar
     - qtkeychain
-    - qtlocation
-    - qtserialport  # [unix]
     - gdal
     - geos
     - proj
@@ -116,7 +117,7 @@ requirements:
     - libspatialindex
     - libspatialite
     - psycopg2
-    - postgresql
+    - postgresql >=14,<15
     - exiv2
     - libprotobuf
     # Runtime Python library deps
@@ -138,6 +139,8 @@ requirements:
     - yaml
     - owslib
     - pyqtwebkit
+    - pdal
+    - laz-perf
 
   run_constrained:   # [osx]
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
