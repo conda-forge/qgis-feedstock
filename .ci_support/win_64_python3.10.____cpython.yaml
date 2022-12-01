@@ -11,9 +11,9 @@ exiv2:
 expat:
 - '2'
 gdal:
-- '3.2'
+- '3.5'
 geos:
-- '3.9'
+- 3.11.0
 gsl:
 - '2.7'
 icu:
@@ -29,13 +29,11 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 proj:
-- '7.2'
+- 9.1.0
 python:
 - 3.10.* *_cpython
 qtkeychain:
 - '0.13'
-qwt:
-- '6.1'
 sqlite:
 - '3'
 target_platform:
