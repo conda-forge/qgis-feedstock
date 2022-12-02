@@ -82,6 +82,7 @@ requirements:
     - qwtpolar
     - qtkeychain
     # GDAL stack.
+    - libgdal
     - gdal
     - geos
     - proj
@@ -109,6 +110,7 @@ requirements:
     - qjson
     - qwt
     - qtkeychain
+    - libgdal
     - gdal
     - geos
     - proj
