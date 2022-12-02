@@ -79,7 +79,6 @@ requirements:
     - qca
     - qjson
     - qwt
-    - qwtpolar
     - qtkeychain
     # GDAL stack.
     - libgdal
