@@ -1,9 +1,11 @@
 MACOSX_DEPLOYMENT_TARGET:
-- '10.12'
+- '10.13'
+MACOSX_SDK_VERSION:
+- '10.13'
 c_compiler:
 - clang
 c_compiler_version:
-- '11'
+- '14'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -11,21 +13,23 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '11'
+- '14'
 exiv2:
 - '0.27'
 expat:
 - '2'
 gdal:
-- '3.2'
+- '3.6'
 geos:
-- '3.9'
+- 3.11.0
 gsl:
 - '2.7'
 icu:
-- '68'
+- '70'
+libgdal:
+- '3.6'
 libprotobuf:
-- '3.18'
+- '3.21'
 libspatialindex:
 - 1.9.3
 libzip:
@@ -33,27 +37,17 @@ libzip:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 pin_run_as_build:
-  gdal:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
-  qt:
-    max_pin: x.x
-  qtkeychain:
-    max_pin: x.x
-  sqlite:
-    max_pin: x
 proj:
-- '7.2'
+- 9.1.0
 python:
 - 3.8.* *_cpython
-qt:
-- '5.12'
+qt_main:
+- '5.15'
 qtkeychain:
-- '0.12'
-qwt:
-- '6.1'
+- '0.13'
 sqlite:
 - '3'
 target_platform:
