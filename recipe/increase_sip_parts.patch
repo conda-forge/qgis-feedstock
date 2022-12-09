@@ -1,10 +1,10 @@
---- CMakeLists.txt.orig	2022-12-09 17:30:45.977204501 +1000
-+++ CMakeLists.txt	2022-12-09 17:30:53.109156010 +1000
-@@ -943,7 +943,7 @@
+--- CMakeLists.txt.orig	2022-12-09 18:08:25.608347351 +1000
++++ CMakeLists.txt	2022-12-09 18:08:49.264080885 +1000
+@@ -989,7 +989,7 @@
    include(SIPMacros)
  
    set(SIP_INCLUDES ${PYQT_SIP_DIR} ${CMAKE_SOURCE_DIR}/python)
--  set(SIP_CONCAT_PARTS 16)
+-  set(SIP_CONCAT_PARTS 20)
 +  set(SIP_CONCAT_PARTS 32)
  
    if (NOT BINDINGS_GLOBAL_INSTALL)
