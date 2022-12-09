@@ -1,7 +1,7 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '10'
+- '11'
 cdt_name:
 - cos7
 channel_sources:
@@ -11,7 +11,7 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '10'
+- '11'
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
 exiv2:
@@ -21,7 +21,7 @@ expat:
 gdal:
 - '3.6'
 geos:
-- 3.11.0
+- 3.11.1
 gsl:
 - '2.7'
 icu:
@@ -40,6 +40,8 @@ pin_run_as_build:
     max_pin: x.x
 proj:
 - 9.1.0
+pyqt:
+- '5.15'
 python:
 - 3.11.* *_cpython
 qt_main:
