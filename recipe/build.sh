@@ -28,7 +28,7 @@ if [ $(uname) == Darwin ]; then
 else
   # Needed to find libGL.so
   export LDFLAGS="$LDFLAGS -Wl,-rpath-link,${BUILD_PREFIX}/${HOST}/sysroot"
-  PLATFORM_OPTS="--trace-source=SIPMacros.cmake"
+  PLATFORM_OPTS=""
 fi
 
 # TODO: enable QSPATIALITE on OSX
@@ -56,7 +56,7 @@ cmake \
     $PLATFORM_OPTS \
     ..
 
-ninja -j$CPU_COUNT
+VERBOSE=1 ninja -j$CPU_COUNT
 ninja install
 
 # QGIS gets bundled as a QGIS.app on MacOS (unless we creeate our own cmake)
