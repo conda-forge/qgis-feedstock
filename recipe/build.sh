@@ -28,7 +28,7 @@ if [ $(uname) == Darwin ]; then
 else
   # Needed to find libGL.so
   export LDFLAGS="$LDFLAGS -Wl,-rpath-link,${BUILD_PREFIX}/${HOST}/sysroot"
-  PLATFORM_OPTS=""
+  PLATFORM_OPTS="--trace-source=SIPMacros.cmake"
 fi
 
 # TODO: enable QSPATIALITE on OSX
