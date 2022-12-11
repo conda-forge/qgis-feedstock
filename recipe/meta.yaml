@@ -10,7 +10,6 @@ source:
   patches:
     - 0001-use-protobuf-dlls.patch  # [win]
     - 0002-skip-dot-in-path.patch  # [win]
-    - increase_sip_parts.patch  # [linux]
 
 build:
   number: 2
