@@ -1,8 +1,0 @@
---- ./external/untwine/api/QgisUntwine_win.cpp.orig	2021-04-14 11:11:56.364944891 +1000
-+++ ./external/untwine/api/QgisUntwine_win.cpp	2021-04-14 11:12:28.621389038 +1000
-@@ -1,4 +1,5 @@
- #include <iostream>
-+#include <algorithm>
- 
- #include "QgisUntwine.hpp"
- 

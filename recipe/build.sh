@@ -29,6 +29,13 @@ else
   # Needed to find libGL.so
   export LDFLAGS="$LDFLAGS -Wl,-rpath-link,${BUILD_PREFIX}/${HOST}/sysroot"
   PLATFORM_OPTS=""
+  
+  # Stolen from PyQt feedstock - sip always looks for g++ it seems
+  ln -s ${GXX} g++ || true
+  ln -s ${GCC} gcc || true
+  ln -s ${GCC_AR} gcc-ar || true
+  chmod +x g++ gcc gcc-ar
+  export PATH=${PWD}:${PATH}
 fi
 
 # TODO: enable QSPATIALITE on OSX
