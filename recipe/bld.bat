@@ -1,4 +1,3 @@
-
 mkdir build
 if errorlevel 1 exit 1
 cd build
@@ -11,6 +10,11 @@ cmake -G Ninja ^
     -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
     -D CMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
     -D PYTHON_EXECUTABLE=%PYTHON% ^
+    -D PYTHON3_EXECUTABLE=%PYTHON% ^
+    -D Python3_EXECUTABLE=%PYTHON% ^
+    -D Python_EXECUTABLE=%PYTHON% ^
+    -D PYUIC_PROGRAM=%PREFIX%\pyuic5.bat ^
+    -D PYRCC_PROGRAM=%PREFIX%\pyrcc5.bat ^
     -D WITH_GUI=TRUE ^
     -D ENABLE_TESTS=FALSE ^
     -D WITH_BINDINGS=TRUE ^
@@ -24,6 +28,10 @@ cmake -G Ninja ^
     -D EXPAT_INCLUDE_DIR=%LIBRARY_INC% ^
     -D EXPAT_LIBRARY=%LIBRARY_LIB%\expat.lib ^
     -D WITH_QTWEBKIT=TRUE ^
+    -D QGIS_INSTALL_SYS_LIBS=FALSE ^
+    -D WITH_PDAL=TRUE ^
+    -D WITH_EPT=TRUE ^
+    -D LazPerf_INCLUDE_DIR=%LIBRARY_INC% ^
     ..
 if errorlevel 1 exit 1
 

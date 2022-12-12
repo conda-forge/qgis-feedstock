@@ -2,6 +2,7 @@
 import os
 import pathlib
 import sys
+import traceback
 
 from qgis.core import \
     QgsApplication, QgsVectorLayer, \
@@ -14,10 +15,10 @@ def testPROJ():
     """
     Tests if PROJ library can be found
     """
-    PROJ_LIB = pathlib.Path(os.environ.get('PROJ_LIB'))
-    assert PROJ_LIB.is_dir(), f'PROJ_LIB does not exist: {PROJ_LIB}'
+    PROJ_LIB = pathlib.Path(os.environ.get('PROJ_DATA'))
+    assert PROJ_LIB.is_dir(), f'PROJ_LIB does not exist: {PROJ_DATA}'
     PROJ_DB = PROJ_LIB / 'proj.db'
-    assert PROJ_DB.is_file(), f'proj.db file does not exist: {PROJ_DB}'
+    assert PROJ_DB.is_file(), f'proj.db file does not exist: {PROJ_DATA}'
 
     found = False
     for path in QgsProjUtils.searchPaths():
@@ -58,6 +59,7 @@ if __name__ == '__main__':
         testPROJ()
 
     except Exception as e:
+        print(traceback.format_exc())
         print(e)
         print('QGIS prefixPath(): "{0}"'.format(app.prefixPath()))
         sys.exit(1)

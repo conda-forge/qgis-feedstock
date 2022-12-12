@@ -1,4 +1,4 @@
-{% set version = "3.16.16" %}
+{% set version = "3.28.1" %}
 
 package:
   name: qgis
@@ -6,31 +6,15 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: ccd2f404534fcb00b5e17863375462090c9575e68b32ce50b2e7e925d1e01a49
+  sha256: 09015bb68c45556ffe9d480272d24048e6276a6bf1c010fd77beae64329ff674
   patches:
-    # QGIS inserts Qt plugin locations into PATH relative to build location
-    # This patch fixes it so PATH is relative to install location
-    - patches/0001-linux-fix-plugins-path.patch  # [linux]
-    # by default looks for pyrcc5.bat on Windows, but we have pyrcc5.exe
-    - patches/0002-CMake-PyQtMacros.patch  # [win]
-    # gets the wrong geos lib
-    - patches/0003-CMake-GEOS.patch  # [win]
-    # don't try and install MSVC runtime libs as they already exist
-    - patches/0004-CMakeLists-nosyslibs.patch  # [win]
-    # QGIS needs to #include <functional> for GCC7 & VC14, at least
-    - patches/0005-include-functional.patch
-    # Need to set "H5_BUILT_AS_DYNAMIC_LIB" to use the shared libs on Windows
-    # https://trac.osgeo.org/gdal/wiki/HDF#BuildingonWindowswithMSVC
-    - patches/0006-CMakeLists-providers-MDAL-HDF5.patch  # [win]
-    # Don't create a .app - just do the usual Unix thing
-    - patches/0007-OSX-no-app.patch  # [osx]
-    # Backport keeping pyi files. This is not crucial, but makes easier to create
-    # Developement environments with full autocompletation
-    - patches/0008-keep_pyi_files_backport.patch
+    - 0001-use-protobuf-dlls.patch  # [win]
+    - 0002-skip-dot-in-path.patch  # [win]
 
 build:
-  number: 0
-  skip: true  # [py2k]
+  number: 2
+  #skip: true  # [(not win) or (not py==39)]
+  skip: true  # [py2k or py<38]
 
 requirements:
   build:
@@ -71,6 +55,8 @@ requirements:
     - {{ cdt('cups-devel') }}            # [linux]
     - {{ cdt('libxcb') }}                # [linux]
   host:
+    - setuptools
+    - sip
     - python
     - six
     - flex  # [unix]
@@ -84,20 +70,19 @@ requirements:
     - libtasn1  # [osx]
     - exiv2
     # Qt stack.
-    - qt
+    - qt-main
     - pyqt
+    - pyqt5-sip
+    - pyqt-builder =1.13
     - qtwebkit
     - pyqtwebkit
     - qscintilla2
     - qca
     - qjson
     - qwt
-    - qwtpolar
     - qtkeychain
-    - qtlocation
-    # included in win-64 Qt already but needed for linux/osx
-    - qtserialport  # [unix]
     # GDAL stack.
+    - libgdal
     - gdal
     - geos
     - proj
@@ -107,24 +92,25 @@ requirements:
     - libspatialindex
     - libspatialite
     # For PostgreSQL support.
-    - postgresql
+    - postgresql >=14,<15
     - psycopg2
+    # Point Clouds
+    - pdal
+    - laz-perf
   run:
     - python
     - icu
     - libzip
     - libtasn1  # [osx]
-    - qt
+    - qt-main
     - pyqt
     - qtwebkit
     - qscintilla2
     - qca
     - qjson
     - qwt
-    - qwtpolar
     - qtkeychain
-    - qtlocation
-    - qtserialport  # [unix]
+    - libgdal
     - gdal
     - geos
     - proj
@@ -133,7 +119,7 @@ requirements:
     - libspatialindex
     - libspatialite
     - psycopg2
-    - postgresql
+    - postgresql >=14,<15
     - exiv2
     - libprotobuf
     # Runtime Python library deps
@@ -155,6 +141,8 @@ requirements:
     - yaml
     - owslib
     - pyqtwebkit
+    - pdal
+    - laz-perf
 
   run_constrained:   # [osx]
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
@@ -214,3 +202,4 @@ extra:
     - kmuehlbauer
     - SrNetoChan
     - gillins
+    - izahn

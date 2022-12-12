@@ -1,51 +1,45 @@
 c_compiler:
-- vs2017
+- vs2019
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2017
+- vs2019
 exiv2:
 - '0.27'
 expat:
 - '2'
 gdal:
-- '3.2'
+- '3.6'
 geos:
-- '3.9'
+- 3.11.1
 gsl:
 - '2.7'
 icu:
-- '68'
+- '70'
+libgdal:
+- '3.6'
 libprotobuf:
-- '3.18'
+- '3.21'
 libspatialindex:
 - 1.9.3
 libzip:
 - '1'
 pin_run_as_build:
-  gdal:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
-  qt:
-    max_pin: x.x
-  qtkeychain:
-    max_pin: x.x
-  sqlite:
-    max_pin: x
 proj:
-- '7.2'
+- 9.1.0
+pyqt:
+- '5.15'
 python:
 - 3.8.* *_cpython
-qt:
-- '5.12'
+qt_main:
+- '5.15'
 qtkeychain:
-- '0.12'
-qwt:
-- '6.1'
+- '0.13'
 sqlite:
 - '3'
 target_platform:
