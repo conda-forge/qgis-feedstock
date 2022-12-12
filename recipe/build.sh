@@ -61,10 +61,9 @@ cmake \
     -D WITH_EPT=TRUE \
     -D LazPerf_INCLUDE_DIR=$PREFIX/include \
     $PLATFORM_OPTS \
-    $SRC_DIR
+    ..
 
-# There are some issues with parallel compiling.
-ninja -j$CPU_COUNT || (ninja -j$CPU_COUNT -v)
+ninja -j$CPU_COUNT
 ninja install
 
 # QGIS gets bundled as a QGIS.app on MacOS (unless we creeate our own cmake)
