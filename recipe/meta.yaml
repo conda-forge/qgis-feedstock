@@ -110,8 +110,8 @@ requirements:
     - qjson
     - qwt
     - qtkeychain
-    - libgdal
-    - gdal
+    - {{ pin_compatible('libgdal', max_pin='x.x') }}
+    - {{ pin_compatible('gdal', max_pin='x.x') }}
     - geos
     - proj
     - gsl
