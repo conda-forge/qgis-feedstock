@@ -13,7 +13,7 @@ expat:
 gdal:
 - '3.6'
 geos:
-- '3.11'
+- 3.11.1
 gsl:
 - '2.7'
 icu:
@@ -31,7 +31,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 proj:
-- '9.0'
+- 9.1.0
 pyqt:
 - '5.15'
 python:
@@ -40,8 +40,6 @@ qt_main:
 - '5.15'
 qtkeychain:
 - '0.13'
-qwt:
-- '6.2'
 sqlite:
 - '3'
 target_platform:
