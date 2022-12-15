@@ -5,11 +5,14 @@
 jobs:
 - job: osx
   pool:
-    vmImage: macOS-10.15
+    vmImage: macOS-11
   strategy:
     matrix:
-      osx_64_python3.7.____cpython:
-        CONFIG: osx_64_python3.7.____cpython
+      osx_64_python3.10.____cpython:
+        CONFIG: osx_64_python3.10.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_64_python3.11.____cpython:
+        CONFIG: osx_64_python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
       osx_64_python3.8.____cpython:
         CONFIG: osx_64_python3.8.____cpython

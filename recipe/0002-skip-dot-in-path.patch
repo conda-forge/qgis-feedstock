@@ -1,0 +1,13 @@
+--- python/__init__.py.orig	2022-09-22 09:53:28.920292863 +1000
++++ python/__init__.py	2022-09-22 09:54:04.001874547 +1000
+@@ -70,10 +70,6 @@
+     # any of the QGIS modules or else it will error.
+     setupenv()
+ 
+-    if sys.version_info[0] > 3 or (sys.version_info[0] == 3 and sys.version_info[1] >= 9):
+-        for p in os.getenv("PATH").split(";"):
+-            if os.path.exists(p):
+-                os.add_dll_directory(p)
+ 
+ from qgis.PyQt import QtCore
+ 

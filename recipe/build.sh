@@ -29,6 +29,13 @@ else
   # Needed to find libGL.so
   export LDFLAGS="$LDFLAGS -Wl,-rpath-link,${BUILD_PREFIX}/${HOST}/sysroot"
   PLATFORM_OPTS=""
+  
+  # Stolen from PyQt feedstock - sip always looks for g++ it seems
+  ln -s ${GXX} g++ || true
+  ln -s ${GCC} gcc || true
+  ln -s ${GCC_AR} gcc-ar || true
+  chmod +x g++ gcc gcc-ar
+  export PATH=${PWD}:${PATH}
 fi
 
 # TODO: enable QSPATIALITE on OSX
@@ -50,11 +57,13 @@ cmake \
     -D EXPAT_LIBRARY=$PREFIX/lib/libexpat${SHLIB_EXT} \
     -D WITH_PY_COMPILE=FALSE \
     -D WITH_QTWEBKIT=TRUE \
+    -D WITH_PDAL=TRUE \
+    -D WITH_EPT=TRUE \
+    -D LazPerf_INCLUDE_DIR=$PREFIX/include \
     $PLATFORM_OPTS \
-    $SRC_DIR
+    ..
 
-# There are some issues with parallel compiling.
-ninja -j$CPU_COUNT || (ninja -j$CPU_COUNT -v)
+ninja -j$CPU_COUNT
 ninja install
 
 # QGIS gets bundled as a QGIS.app on MacOS (unless we creeate our own cmake)
