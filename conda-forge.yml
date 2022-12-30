@@ -1,3 +1,6 @@
+bot:
+  abi_migration_branches:
+  - LTR
 provider:
   osx: azure
   linux: azure
