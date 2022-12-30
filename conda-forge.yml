@@ -14,3 +14,6 @@ os_version:
   linux_64: cos7
 conda_build:
   pkg_format: '2'
+build_platform:
+   osx_arm64: osx_64
+test_on_native_only: true
