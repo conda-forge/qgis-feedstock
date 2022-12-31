@@ -12,7 +12,7 @@ source:
     - 0002-skip-dot-in-path.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   #skip: true  # [(not win) or (not py==39)]
   skip: true  # [py2k or py<38]
 
@@ -92,7 +92,7 @@ requirements:
     - libspatialindex
     - libspatialite
     # For PostgreSQL support.
-    - postgresql >=14,<15
+    - postgresql
     - psycopg2
     # Point Clouds
     - pdal
@@ -119,7 +119,7 @@ requirements:
     - libspatialindex
     - libspatialite
     - psycopg2
-    - postgresql >=14,<15
+    - postgresql
     - exiv2
     - libprotobuf
     # Runtime Python library deps
