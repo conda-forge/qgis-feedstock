@@ -5,6 +5,10 @@ if errorlevel 1 exit 1
 
 set BUILDCONF=Release
 
+:: Workaround for this lib being required but not set in cmake
+:: (Seems maybe it used to be?)
+set _LINK_=Ws2_32.lib
+
 cmake -G Ninja ^
     -D CMAKE_BUILD_TYPE=%BUILDCONF% ^
     -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^

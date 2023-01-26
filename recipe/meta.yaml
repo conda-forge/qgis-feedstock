@@ -12,7 +12,7 @@ source:
     - 0002-skip-dot-in-path.patch  # [win]
 
 build:
-  number: 1
+  number: 3
   #skip: true  # [(not win) or (not py==39)]
   skip: true  # [py2k or py<38]
 
