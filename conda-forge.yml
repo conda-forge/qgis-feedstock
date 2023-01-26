@@ -18,5 +18,9 @@ os_version:
 conda_build:
   pkg_format: '2'
 build_platform:
-   osx_arm64: osx_64
+  osx_arm64: osx_64
+  linux_aarch64: linux_aarch64
 test_on_native_only: true
+provider:
+  linux_aarch64: azure
+

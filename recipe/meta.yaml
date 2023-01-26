@@ -54,9 +54,12 @@ requirements:
     - {{ cdt('libxxf86vm-devel') }}      # [linux]
     - {{ cdt('cups-devel') }}            # [linux]
     - {{ cdt('libxcb') }}                # [linux]
+    - python                             # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}  # [build_platform != target_platform]
+    - sip                                # [build_platform != target_platform]
   host:
     - setuptools
-    - sip
+    - sip                                # [build_platform == target_platform]
     - python
     - six
     - flex  # [unix]

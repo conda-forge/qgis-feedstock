@@ -39,7 +39,7 @@ else
 fi
 
 # TODO: enable QSPATIALITE on OSX
-cmake \
+cmake ${CMAKE_ARGS} \
     -G Ninja \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX="${PREFIX}" \
