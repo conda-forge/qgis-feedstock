@@ -57,6 +57,8 @@ requirements:
     - python                             # [build_platform != target_platform]
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
     - sip                                # [build_platform != target_platform]
+    - pyqt-builder                       # [build_platform != target_platform]
+    - pyqt5-sip                          # [build_platform != target_platform]
   host:
     - setuptools
     - sip                                # [build_platform == target_platform]
@@ -75,8 +77,8 @@ requirements:
     # Qt stack.
     - qt-main
     - pyqt
-    - pyqt5-sip
-    - pyqt-builder =1.13
+    - pyqt5-sip                          # [build_platform == target_platform]
+    - pyqt-builder                       # [build_platform == target_platform]
     - qtwebkit
     - pyqtwebkit
     - qscintilla2
