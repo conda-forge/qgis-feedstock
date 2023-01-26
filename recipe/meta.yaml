@@ -60,6 +60,7 @@ requirements:
     - pyqt-builder                       # [build_platform != target_platform]
     - pyqt5-sip                          # [build_platform != target_platform]
     - pyqt                               # [build_platform != target_platform]
+    - pkgconfig                          # [build_platform != target_platform]
   host:
     - setuptools
     - sip                                # [build_platform == target_platform]
@@ -68,7 +69,7 @@ requirements:
     - flex  # [unix]
     - bison  # [unix]
     - m4  # [unix]
-    - pkgconfig
+    - pkgconfig                          # [build_platform == target_platform]
     - expat
     - icu
     - libzip
