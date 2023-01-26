@@ -59,6 +59,7 @@ requirements:
     - sip                                # [build_platform != target_platform]
     - pyqt-builder                       # [build_platform != target_platform]
     - pyqt5-sip                          # [build_platform != target_platform]
+    - pyqt                               # [build_platform != target_platform]
   host:
     - setuptools
     - sip                                # [build_platform == target_platform]
@@ -76,7 +77,7 @@ requirements:
     - exiv2
     # Qt stack.
     - qt-main
-    - pyqt
+    - pyqt                               # [build_platform == target_platform]
     - pyqt5-sip                          # [build_platform == target_platform]
     - pyqt-builder                       # [build_platform == target_platform]
     - qtwebkit
