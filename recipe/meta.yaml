@@ -61,14 +61,18 @@ requirements:
     - pyqt5-sip                          # [build_platform != target_platform]
     - pyqt                               # [build_platform != target_platform]
     - pkgconfig                          # [build_platform != target_platform]
+    - qscintilla2                        # [build_platform != target_platform]
+    - flex                               # [unix and (build_platform != target_platform)]
+    - bison                              # [unix and (build_platform != target_platform)]
+    - m4                                 # [unix and (build_platform != target_platform)]
   host:
     - setuptools
     - sip                                # [build_platform == target_platform]
     - python
     - six
-    - flex  # [unix]
-    - bison  # [unix]
-    - m4  # [unix]
+    - flex                               # [unix and (build_platform == target_platform)]
+    - bison                              # [unix and (build_platform == target_platform)]
+    - m4                                 # [unix and (build_platform == target_platform)]
     - pkgconfig                          # [build_platform == target_platform]
     - expat
     - icu
@@ -83,7 +87,7 @@ requirements:
     - pyqt-builder                       # [build_platform == target_platform]
     - qtwebkit
     - pyqtwebkit
-    - qscintilla2
+    - qscintilla2                        # [build_platform == target_platform]
     - qca
     - qjson
     - qwt
