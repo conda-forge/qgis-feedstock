@@ -60,19 +60,20 @@ requirements:
     - pyqt-builder                       # [build_platform != target_platform]
     - pyqt5-sip                          # [build_platform != target_platform]
     - pyqt                               # [build_platform != target_platform]
+    - qscintilla2                        # [build_platform != target_platform]
     - pkgconfig                          # [build_platform != target_platform]
     - flex                               # [unix and (build_platform != target_platform)]
     - bison                              # [unix and (build_platform != target_platform)]
     - m4                                 # [unix and (build_platform != target_platform)]
   host:
     - setuptools
-    - sip                                # [build_platform == target_platform]
+    - sip
     - python
     - six
-    - flex                               # [unix and (build_platform == target_platform)]
-    - bison                              # [unix and (build_platform == target_platform)]
-    - m4                                 # [unix and (build_platform == target_platform)]
-    - pkgconfig                          # [build_platform == target_platform]
+    - flex
+    - bison
+    - m4
+    - pkgconfig
     - expat
     - icu
     - libzip
