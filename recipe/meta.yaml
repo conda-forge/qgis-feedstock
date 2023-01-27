@@ -61,7 +61,6 @@ requirements:
     - pyqt5-sip                          # [build_platform != target_platform]
     - pyqt                               # [build_platform != target_platform]
     - pkgconfig                          # [build_platform != target_platform]
-    - qscintilla2                        # [build_platform != target_platform]
     - flex                               # [unix and (build_platform != target_platform)]
     - bison                              # [unix and (build_platform != target_platform)]
     - m4                                 # [unix and (build_platform != target_platform)]
@@ -87,7 +86,7 @@ requirements:
     - pyqt-builder                       # [build_platform == target_platform]
     - qtwebkit
     - pyqtwebkit
-    - qscintilla2                        # [build_platform == target_platform]
+    - qscintilla2
     - qca
     - qjson
     - qwt
