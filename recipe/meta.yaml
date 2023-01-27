@@ -70,9 +70,9 @@ requirements:
     - sip
     - python
     - six
-    - flex
-    - bison
-    - m4
+    - flex                               # [unix]
+    - bison                              # [unix]
+    - m4                                 # [unix]
     - pkgconfig
     - expat
     - icu
