@@ -81,9 +81,9 @@ requirements:
     - exiv2
     # Qt stack.
     - qt-main
-    - pyqt                               # [build_platform == target_platform]
-    - pyqt5-sip                          # [build_platform == target_platform]
-    - pyqt-builder                       # [build_platform == target_platform]
+    - pyqt
+    - pyqt5-sip
+    - pyqt-builder
     - qtwebkit
     - pyqtwebkit
     - qscintilla2
