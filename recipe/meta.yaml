@@ -55,7 +55,7 @@ requirements:
     - {{ cdt('cups-devel') }}            # [linux]
     - {{ cdt('libxcb') }}                # [linux]
   host:
-    - openssl = 1.1.1
+    - openssl =1.1.1
     - setuptools
     - sip
     - python
