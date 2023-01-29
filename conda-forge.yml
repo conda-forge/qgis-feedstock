@@ -3,8 +3,11 @@ bot:
   - LTR
 provider:
   osx: azure
+  osx_arm64: azure
   linux: azure
+  linux_aarch64: azure
   win: azure
+  
 conda_forge_output_validation: true
 azure:
   settings_win:
@@ -22,5 +25,4 @@ build_platform:
   linux_aarch64: linux_64
 test_on_native_only: true
 provider:
-  linux_aarch64: azure
-
+  
