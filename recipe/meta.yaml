@@ -66,6 +66,7 @@ requirements:
     - bison                              # [unix and (build_platform != target_platform)]
     - m4                                 # [unix and (build_platform != target_platform)]
     - pdal                               # [build_platform != target_platform]
+    - libprotobuf                        # [build_platform != target_platform]
   host:
     - setuptools
     - sip

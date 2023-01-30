@@ -41,10 +41,10 @@ fi
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
     # ensure we find the correct pkg-config during cross compilation
     export PKG_CONFIG=${BUILD_PREFIX}/bin/pkg-config
-    #export BISON_ROOT=${BUILD_PREFIX}
-    #export FLEX_ROOT=${BUILD_PREFIX}
-    #export PDAL_ROOT=${BUILD_PREFIX}
-    # to find m4
+    export BISON_ROOT=${BUILD_PREFIX}
+    export FLEX_ROOT=${BUILD_PREFIX}
+    export PDAL_ROOT=${BUILD_PREFIX}
+    # to find m4/pdal
     export PATH=${BUILD_PREFIX}/bin:${PATH}
 fi
 
