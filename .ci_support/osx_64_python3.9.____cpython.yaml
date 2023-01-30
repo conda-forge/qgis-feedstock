@@ -36,6 +36,8 @@ libzip:
 - '1'
 macos_machine:
 - x86_64-apple-darwin13.4.0
+openssl:
+- '3'
 pin_run_as_build:
   python:
     min_pin: x.x
