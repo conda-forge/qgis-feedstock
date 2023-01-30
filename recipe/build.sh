@@ -38,6 +38,11 @@ else
   export PATH=${PWD}:${PATH}
 fi
 
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
+    # ensure we find the correct pkg-config during cross compilation
+    export PKG_CONFIG=${BUILD_PREFIX}/bin/pkg-config
+fi
+
 # TODO: enable QSPATIALITE on OSX
 cmake ${CMAKE_ARGS} \
     -G Ninja \
