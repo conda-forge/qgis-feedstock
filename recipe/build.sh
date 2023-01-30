@@ -41,6 +41,7 @@ fi
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
     # ensure we find the correct pkg-config during cross compilation
     export PKG_CONFIG=${BUILD_PREFIX}/bin/pkg-config
+    export BISON_ROOT=${BUILD_PREFIX}
 fi
 
 # TODO: enable QSPATIALITE on OSX
