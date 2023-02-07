@@ -45,6 +45,7 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
     export FLEX_ROOT=${BUILD_PREFIX}
     export PDAL_ROOT=${BUILD_PREFIX}
     # to find m4/pdal
+    export M4=${BUILD_PREFIX}/bin/m4
     export PATH=${BUILD_PREFIX}/bin:${PATH}
 fi
 
