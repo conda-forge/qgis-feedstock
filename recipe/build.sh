@@ -46,9 +46,10 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
     export PDAL_ROOT=${BUILD_PREFIX}
     # hide this so we get the arm libs but x86 protoc
     rm ${PREFIX}/bin/protoc
+    rm ${PREFIX}/bin/pdal
     # to find m4/pdal
     export M4=${BUILD_PREFIX}/bin/m4
-    export PATH=${BUILD_PREFIX}/bin:${PATH}
+    #export PATH=${BUILD_PREFIX}/bin:${PATH}
 fi
 
 # TODO: enable QSPATIALITE on OSX
