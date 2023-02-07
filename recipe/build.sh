@@ -44,7 +44,8 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
     export BISON_ROOT=${BUILD_PREFIX}
     export FLEX_ROOT=${BUILD_PREFIX}
     export PDAL_ROOT=${BUILD_PREFIX}
-    export Protobuf_ROOT=${BUILD_PREFIX}
+    # hide this so we get the arm libs but x86 protoc
+    rm ${PREFIX}/bin/protoc
     # to find m4/pdal
     export M4=${BUILD_PREFIX}/bin/m4
     export PATH=${BUILD_PREFIX}/bin:${PATH}
