@@ -26,6 +26,8 @@ libspatialindex:
 - 1.9.3
 libzip:
 - '1'
+openssl:
+- '3'
 pin_run_as_build:
   python:
     min_pin: x.x
