@@ -43,7 +43,7 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
     export PKG_CONFIG=${BUILD_PREFIX}/bin/pkg-config
     export BISON_ROOT=${BUILD_PREFIX}
     export FLEX_ROOT=${BUILD_PREFIX}
-    export PDAL_ROOT=${BUILD_PREFIX}
+    #export PDAL_ROOT=${BUILD_PREFIX}
     # hide this so we get the arm libs but x86 protoc
     rm ${PREFIX}/bin/protoc
     rm ${PREFIX}/bin/pdal
