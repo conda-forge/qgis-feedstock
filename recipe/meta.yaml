@@ -1,4 +1,4 @@
-{% set version = "3.22.15" %}
+{% set version = "3.22.16" %}
 
 package:
   name: qgis
