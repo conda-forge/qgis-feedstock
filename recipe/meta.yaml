@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: 99c60fee6ff31935ce5dd8ea9c7fa2146c7c9b7422e97311081c55eafcc58a43
+  sha256: dbd1f8a639291bb2492eea61e4ef96079d7b27d3dfa538dab8cd98f31429254a
   patches:
     - 0001-use-protobuf-dlls.patch  # [win]
     - 0002-skip-dot-in-path.patch  # [win]
