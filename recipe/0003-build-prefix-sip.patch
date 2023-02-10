@@ -1,0 +1,11 @@
+--- cmake/FindSIP.cmake.orig	2023-02-10 04:23:51.199820061 +0000
++++ cmake/FindSIP.cmake	2023-02-10 04:26:23.771378451 +0000
+@@ -44,7 +44,7 @@
+       STRING(REGEX REPLACE ".*\nsip_inc_dir:([^\n]+).*$" "\\1" SIP_INCLUDE_DIR ${sip_config})
+       STRING(REGEX REPLACE ".*\nsip_module_dir:([^\n]+).*$" "\\1" SIP_MODULE_DIR ${sip_config})
+     ELSE(${SIP_VERSION_STR} VERSION_LESS 5)
+-      FIND_PROGRAM(SIP_BUILD_EXECUTABLE sip-build)
++      FIND_PROGRAM(SIP_BUILD_EXECUTABLE PATHS sip-build PATHS VAR "BUILD_PREFIX")
+     ENDIF(${SIP_VERSION_STR} VERSION_LESS 5)
+     SET(SIP_FOUND TRUE)
+   ENDIF(sip_config)

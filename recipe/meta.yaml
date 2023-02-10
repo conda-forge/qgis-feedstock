@@ -10,6 +10,7 @@ source:
   patches:
     - 0001-use-protobuf-dlls.patch  # [win]
     - 0002-skip-dot-in-path.patch  # [win]
+    - 0003-build-prefix-sip.patch  # [build_platform != target_platform]
 
 build:
   number: 1
