@@ -38,8 +38,28 @@ else
   export PATH=${PWD}:${PATH}
 fi
 
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
+    # ensure we find the correct pkg-config during cross compilation
+    export PKG_CONFIG=${BUILD_PREFIX}/bin/pkg-config
+    export BISON_ROOT=${BUILD_PREFIX}
+    export FLEX_ROOT=${BUILD_PREFIX}
+    # hide this so we get the arm libs but x86 protoc
+    rm ${PREFIX}/bin/protoc
+    rm ${PREFIX}/bin/pdal
+    rm ${PREFIX}/bin/sip-build ${BUILD_PREFIX}/bin/sip-build
+    # to find m4
+    export M4=${BUILD_PREFIX}/bin/m4
+    
+    # make our own sip-build with correct settings (uses PATH set above)
+    SITE_PKGS_PATH=$($PREFIX/bin/python -c 'import site;print(site.getsitepackages()[0])')
+    echo "#!/bin/bash" > sip-build
+    echo "$BUILD_PREFIX/bin/python -m sipbuild.tools.build --target-dir $SITE_PKGS_PATH \$@" >> sip-build
+    chmod +x sip-build
+    cat sip-build
+fi
+
 # TODO: enable QSPATIALITE on OSX
-cmake \
+cmake ${CMAKE_ARGS} \
     -G Ninja \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX="${PREFIX}" \

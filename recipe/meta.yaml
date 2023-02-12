@@ -12,7 +12,7 @@ source:
     - 0002-skip-dot-in-path.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   #skip: true  # [(not win) or (not py==39)]
   skip: true  # [py2k or py<38]
 
@@ -54,14 +54,27 @@ requirements:
     - {{ cdt('libxxf86vm-devel') }}      # [linux]
     - {{ cdt('cups-devel') }}            # [linux]
     - {{ cdt('libxcb') }}                # [linux]
+    - python                             # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}  # [build_platform != target_platform]
+    - sip                                # [build_platform != target_platform]
+    - pyqt-builder                       # [build_platform != target_platform]
+    - pyqt5-sip                          # [build_platform != target_platform]
+    - pyqt                               # [build_platform != target_platform]
+    - qscintilla2                        # [build_platform != target_platform]
+    - pkgconfig                          # [build_platform != target_platform]
+    - flex                               # [unix and (build_platform != target_platform)]
+    - bison                              # [unix and (build_platform != target_platform)]
+    - m4                                 # [unix and (build_platform != target_platform)]
+    - pdal                               # [build_platform != target_platform]
+    - libprotobuf                        # [build_platform != target_platform]
   host:
     - setuptools
     - sip
     - python
     - six
-    - flex  # [unix]
-    - bison  # [unix]
-    - m4  # [unix]
+    - flex                               # [unix]
+    - bison                              # [unix]
+    - m4                                 # [unix]
     - pkgconfig
     - expat
     - icu
@@ -73,7 +86,7 @@ requirements:
     - qt-main
     - pyqt
     - pyqt5-sip
-    - pyqt-builder =1.13
+    - pyqt-builder
     - qtwebkit
     - pyqtwebkit
     - qscintilla2
@@ -130,7 +143,6 @@ requirements:
     - markupsafe
     - mock
     - nose2
-    - owslib
     - plotly
     - pygments
     - pyproj
