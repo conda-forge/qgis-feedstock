@@ -58,6 +58,11 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
     cat sip-build
 fi
 
+if [ "$ARCH" == "ppc64le" ]; then
+    # try to avoid "relocation truncated to fit: R_PPC64_REL24 against symbol XXX" type errors
+    CXXFLAGS="${CXXFLAGS} -mcmodel=medium"
+fi
+
 # TODO: enable QSPATIALITE on OSX
 cmake ${CMAKE_ARGS} \
     -G Ninja \
