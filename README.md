@@ -1,11 +1,11 @@
-About qgis
-==========
+About qgis-feedstock
+====================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/qgis-feedstock/blob/main/LICENSE.txt)
 
 Home: http://qgis.org/
 
 Package license: GPL-2.0-only
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/qgis-feedstock/blob/main/LICENSE.txt)
 
 Summary: A free and open source Geographic Information System (GIS).
 
