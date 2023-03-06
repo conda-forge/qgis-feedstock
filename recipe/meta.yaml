@@ -10,7 +10,8 @@ source:
   patches:
     - 0001-use-protobuf-dlls.patch  # [win]
     - 0002-skip-dot-in-path.patch  # [win]
-    - debug_findpyqt5.patch  # [win]
+    # remove when https://github.com/conda-forge/pyqt-feedstock/pull/129 merged
+    - 0003-workaround-multi-pyqt5.patch  # [win]
 
 build:
   number: 0
