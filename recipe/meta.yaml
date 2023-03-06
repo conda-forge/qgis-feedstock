@@ -10,6 +10,7 @@ source:
   patches:
     - 0001-use-protobuf-dlls.patch  # [win]
     - 0002-skip-dot-in-path.patch  # [win]
+    - debug_findpyqt5.patch  # [win]
 
 build:
   number: 0
