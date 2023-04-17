@@ -4,6 +4,7 @@ bot:
 provider:
   osx: azure
   linux: azure
+  linux_aarch64: azure
   win: azure
 conda_forge_output_validation: true
 azure:
@@ -21,6 +22,3 @@ build_platform:
   osx_arm64: osx_64
   linux_aarch64: linux_64
 test_on_native_only: true
-provider:
-  linux_aarch64: azure
-
