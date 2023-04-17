@@ -1,24 +1,24 @@
-bot:
-  abi_migration_branches:
-  - LTR
-provider:
-  osx: azure
-  linux: azure
-  linux_aarch64: azure
-  win: azure
-conda_forge_output_validation: true
 azure:
   settings_win:
     variables:
       CONDA_BLD_PATH: C:\bld\
+bot:
+  abi_migration_branches:
+  - LTR
+build_platform:
+  linux_aarch64: linux_64
+  osx_arm64: osx_64
+conda_build:
+  pkg_format: '2'
+conda_forge_output_validation: true
 github:
   branch_name: main
   tooling_branch_name: main
 os_version:
   linux_64: cos7
-conda_build:
-  pkg_format: '2'
-build_platform:
-  osx_arm64: osx_64
-  linux_aarch64: linux_64
+provider:
+  linux: azure
+  linux_aarch64: azure
+  osx: azure
+  win: azure
 test_on_native_only: true
