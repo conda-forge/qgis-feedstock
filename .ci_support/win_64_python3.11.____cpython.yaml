@@ -17,7 +17,7 @@ geos:
 gsl:
 - '2.7'
 icu:
-- '70'
+- '72'
 libgdal:
 - '3.6'
 libprotobuf:

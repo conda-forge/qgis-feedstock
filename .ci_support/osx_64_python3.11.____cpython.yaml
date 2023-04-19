@@ -5,7 +5,7 @@ MACOSX_SDK_VERSION:
 c_compiler:
 - clang
 c_compiler_version:
-- '14'
+- '15'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -13,7 +13,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '14'
+- '15'
 exiv2:
 - '0.27'
 expat:
@@ -25,7 +25,7 @@ geos:
 gsl:
 - '2.7'
 icu:
-- '70'
+- '72'
 libgdal:
 - '3.6'
 libprotobuf:
