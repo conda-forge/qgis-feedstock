@@ -5,7 +5,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://qgis.org/downloads2dfacce09f59e6c8cac621dee94bba4c20aa303ca1a204ee70bbddd7c2a301e0/qgis-{{ version }}.tar.bz2
+  url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
   sha256: 2dfacce09f59e6c8cac621dee94bba4c20aa303ca1a204ee70bbddd7c2a301e0
   patches:
     - 0001-use-protobuf-dlls.patch  # [win]
