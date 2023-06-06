@@ -27,7 +27,7 @@ gsl:
 icu:
 - '72'
 libgdal:
-- '3.6'
+- '3.7'
 libprotobuf:
 - '3.21'
 libspatialindex:
