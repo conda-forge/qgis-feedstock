@@ -1,4 +1,4 @@
-{% set version = "3.30.3" %}
+{% set version = "3.32.0" %}
 
 package:
   name: qgis
@@ -6,15 +6,16 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: e291cb7c74fd44bfebf8ac3738490e185ab8e64b3e45bbec769b4b14c2f82687
+  sha256: dfc90a6103a3c6020d005dbb68c81caf9a4c11fca4be53bfe070226813f87a9a
   patches:
     - 0001-use-protobuf-dlls.patch  # [win]
     - 0002-skip-dot-in-path.patch  # [win]
     # remove when https://github.com/conda-forge/pyqt-feedstock/pull/129 merged
     - 0003-workaround-multi-pyqt5.patch  # [win]
+    - 0004-wrench_threads.patch
 
 build:
-  number: 1
+  number: 0
   #skip: true  # [(not win) or (not py==39)]
   skip: true  # [py2k or py<38]
 

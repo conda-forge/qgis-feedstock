@@ -1,0 +1,10 @@
+--- src/providers/pdal/CMakeLists.txt.orig	2023-06-26 11:13:53.043328320 +1000
++++ src/providers/pdal/CMakeLists.txt	2023-06-26 11:14:19.021511396 +1000
+@@ -190,6 +190,7 @@
+   target_link_libraries (pdal_wrench PRIVATE
+     ${PDAL_LIBRARIES}
+     ${GDAL_LIBRARY}
++    Threads::Threads
+   )
+ 
+   install(TARGETS pdal_wrench
