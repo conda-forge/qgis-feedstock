@@ -80,6 +80,7 @@ cmake ${CMAKE_ARGS} \
     -D WITH_PDAL=TRUE \
     -D WITH_EPT=TRUE \
     -D LazPerf_INCLUDE_DIR=$PREFIX/include \
+    -D CMAKE_CXX_STANDARD=17 \
     $PLATFORM_OPTS \
     ..
 
