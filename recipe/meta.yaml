@@ -14,8 +14,8 @@ source:
 
 build:
   number: 2
-  #skip: true  # [(not win) or (not py==39)]
-  skip: true  # [py2k or py<38]
+  # Note: pyproj doesn't support Python 3.8
+  skip: true  # [py2k or py<39]
 
 requirements:
   build:
