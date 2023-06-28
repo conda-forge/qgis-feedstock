@@ -26,7 +26,7 @@ diff -ru qgis-3.32.0-orig/CMakeLists.txt qgis-3.32.0/CMakeLists.txt
 +
 diff -ru qgis-3.32.0-orig/src/core/CMakeLists.txt qgis-3.32.0/src/core/CMakeLists.txt
 --- qgis-3.32.0-orig/src/core/CMakeLists.txt	2023-06-28 10:07:17.434978947 +1000
-+++ qgis-3.32.0/src/core/CMakeLists.txt	2023-06-28 10:07:28.562079765 +1000
++++ qgis-3.32.0/src/core/CMakeLists.txt	2023-06-28 13:58:11.054026417 +1000
 @@ -2029,6 +2029,9 @@
    set_source_files_properties(${VECTOR_TILE_PROTO_SRCS} PROPERTIES COMPILE_FLAGS -w)
  endif()
@@ -37,3 +37,12 @@ diff -ru qgis-3.32.0-orig/src/core/CMakeLists.txt qgis-3.32.0/src/core/CMakeList
  # install headers
  # install qgsconfig.h and plugin.h here so they can get into
  # the OS X framework target
+@@ -2375,7 +2378,7 @@
+   ${EXPAT_LIBRARY}
+   ${SQLITE3_LIBRARY}
+   ${LIBZIP_LIBRARY}
+-  ${Protobuf_LITE_LIBRARY}
++  protobuf::libprotobuf-lite
+   ${ZLIB_LIBRARIES}
+   ${EXIV2_LIBRARY}
+ )
