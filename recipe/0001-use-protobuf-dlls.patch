@@ -1,7 +1,7 @@
 diff -ru qgis-3.32.0-orig/CMakeLists.txt qgis-3.32.0/CMakeLists.txt
 --- qgis-3.32.0-orig/CMakeLists.txt	2023-06-29 08:45:13.083130699 +1000
-+++ qgis-3.32.0/CMakeLists.txt	2023-06-29 14:44:52.386125377 +1000
-@@ -363,7 +363,15 @@
++++ qgis-3.32.0/CMakeLists.txt	2023-06-29 17:08:20.975609696 +1000
+@@ -363,7 +363,18 @@
      message (SEND_ERROR "sqlite3 dependency was not found!")
    endif()
  
@@ -11,7 +11,10 @@ diff -ru qgis-3.32.0-orig/CMakeLists.txt qgis-3.32.0/CMakeLists.txt
 +    # gets linked in (along with the protobuf::libprotobuf-lite change)
 +    # but this breaks Unix.
 +    # (see https://github.com/conda-forge/conda-forge-pinning-feedstock/issues/4075)
-+    find_package(Protobuf CONFIG)
++    block()
++      set(CMAKE_FIND_PACKAGE_PREFER_CONFIG 1)
++      find_package(Protobuf REQUIRED)
++    endblock()
 +  else()
 +    find_package(Protobuf REQUIRED)   # for decoding of vector tiles in MVT format
 +  endif()
