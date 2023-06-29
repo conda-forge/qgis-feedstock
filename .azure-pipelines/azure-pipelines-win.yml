@@ -14,9 +14,6 @@ jobs:
       win_64_libprotobuf3.21python3.11.____cpython:
         CONFIG: win_64_libprotobuf3.21python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-      win_64_libprotobuf3.21python3.8.____cpython:
-        CONFIG: win_64_libprotobuf3.21python3.8.____cpython
-        UPLOAD_PACKAGES: 'True'
       win_64_libprotobuf3.21python3.9.____cpython:
         CONFIG: win_64_libprotobuf3.21python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -25,9 +22,6 @@ jobs:
         UPLOAD_PACKAGES: 'True'
       win_64_libprotobuf4.23.2python3.11.____cpython:
         CONFIG: win_64_libprotobuf4.23.2python3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-      win_64_libprotobuf4.23.2python3.8.____cpython:
-        CONFIG: win_64_libprotobuf4.23.2python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
       win_64_libprotobuf4.23.2python3.9.____cpython:
         CONFIG: win_64_libprotobuf4.23.2python3.9.____cpython
