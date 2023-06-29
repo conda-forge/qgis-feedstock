@@ -1,27 +1,43 @@
-From f5397398a0d697bcefb10d7be589fc215f3abc6a Mon Sep 17 00:00:00 2001
-From: Ista Zahn <izahn@hbs.edu>
-Date: Mon, 19 Sep 2022 06:32:25 -0400
-Subject: [PATCH] use protobuf dlls
-
----
- src/core/CMakeLists.txt | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
-index 7537413..8eed55d 100644
---- a/src/core/CMakeLists.txt
-+++ b/src/core/CMakeLists.txt
-@@ -1813,6 +1813,10 @@ if (NOT MSVC)
+diff -ru qgis-3.32.0-orig/CMakeLists.txt qgis-3.32.0/CMakeLists.txt
+--- qgis-3.32.0-orig/CMakeLists.txt	2023-06-29 08:45:13.083130699 +1000
++++ qgis-3.32.0/CMakeLists.txt	2023-06-29 17:57:49.676081552 +1000
+@@ -363,7 +363,16 @@
+     message (SEND_ERROR "sqlite3 dependency was not found!")
+   endif()
+ 
+-  find_package(Protobuf REQUIRED)   # for decoding of vector tiles in MVT format
++  if(MSVC)
++    # for some reason on Windows we need to do this so abseil
++    # gets linked in (along with the protobuf::libprotobuf-lite change)
++    # but this breaks Unix.
++    # (see https://github.com/conda-forge/conda-forge-pinning-feedstock/issues/4075)
++    set(protobuf_MODULE_COMPATIBLE TRUE CACHE INTERNAL "")
++    find_package(Protobuf CONFIG)
++  else()
++    find_package(Protobuf REQUIRED)   # for decoding of vector tiles in MVT format
++  endif()
+   message(STATUS "Found Protobuf: ${Protobuf_LIBRARIES}")
+   if (NOT Protobuf_PROTOC_EXECUTABLE)
+     message (SEND_ERROR "Protobuf library's 'protoc' tool was not found!")
+diff -ru qgis-3.32.0-orig/src/core/CMakeLists.txt qgis-3.32.0/src/core/CMakeLists.txt
+--- qgis-3.32.0-orig/src/core/CMakeLists.txt	2023-06-29 08:45:13.555301061 +1000
++++ qgis-3.32.0/src/core/CMakeLists.txt	2023-06-29 08:55:37.311270163 +1000
+@@ -2029,6 +2029,9 @@
    set_source_files_properties(${VECTOR_TILE_PROTO_SRCS} PROPERTIES COMPILE_FLAGS -w)
  endif()
  
-+if (MSVC)
-+  set_source_files_properties(${VECTOR_TILE_PROTO_SRCS} vectortile/qgsvectortilemvtdecoder.cpp vectortile/qgsvectortilemvtencoder.cpp vectortile/qgsvectortilewriter.cpp PROPERTIES COMPILE_DEFINITIONS PROTOBUF_USE_DLLS)
-+endif()
++# now on all platforms (see https://github.com/conda-forge/conda-forge-pinning-feedstock/issues/4075)
++set_source_files_properties(${VECTOR_TILE_PROTO_SRCS} vectortile/qgsvectortilemvtdecoder.cpp vectortile/qgsvectortilemvtencoder.cpp vectortile/qgsvectortilewriter.cpp PROPERTIES COMPILE_DEFINITIONS PROTOBUF_USE_DLLS)
 +
  # install headers
  # install qgsconfig.h and plugin.h here so they can get into
  # the OS X framework target
--- 
-2.37.3
-
+@@ -2375,7 +2378,7 @@
+   ${EXPAT_LIBRARY}
+   ${SQLITE3_LIBRARY}
+   ${LIBZIP_LIBRARY}
+-  ${Protobuf_LITE_LIBRARY}
++  protobuf::libprotobuf-lite
+   ${ZLIB_LIBRARIES}
+   ${EXIV2_LIBRARY}
+ )
