@@ -16,9 +16,9 @@ source:
     - 0004-wrench_threads.patch
 
 build:
-  number: 1
-  #skip: true  # [(not win) or (not py==39)]
-  skip: true  # [py2k or py<38]
+  number: 2
+  # pyproj no longer supports py38
+  skip: true  # [py2k or py<39]
 
 requirements:
   build:
