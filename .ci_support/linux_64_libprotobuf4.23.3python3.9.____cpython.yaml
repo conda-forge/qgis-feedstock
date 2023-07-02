@@ -1,17 +1,19 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '11.0'
 c_compiler:
-- clang
+- gcc
 c_compiler_version:
-- '15'
+- '12'
+cdt_name:
+- cos7
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- clangxx
+- gxx
 cxx_compiler_version:
-- '15'
+- '12'
+docker_image:
+- quay.io/condaforge/linux-anvil-cos7-x86_64
 exiv2:
 - '0.27'
 expat:
@@ -27,13 +29,11 @@ icu:
 libgdal:
 - '3.7'
 libprotobuf:
-- 4.23.2
+- 4.23.3
 libspatialindex:
 - 1.9.3
 libzip:
 - '1'
-macos_machine:
-- arm64-apple-darwin20.0.0
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -45,7 +45,7 @@ proj:
 pyqt:
 - '5.15'
 python:
-- 3.11.* *_cpython
+- 3.9.* *_cpython
 qt_main:
 - '5.15'
 qtkeychain:
@@ -53,7 +53,7 @@ qtkeychain:
 sqlite:
 - '3'
 target_platform:
-- osx-arm64
+- linux-64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version

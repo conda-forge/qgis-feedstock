@@ -17,14 +17,14 @@ jobs:
       osx_64_libprotobuf3.21python3.9.____cpython:
         CONFIG: osx_64_libprotobuf3.21python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_libprotobuf4.23.2python3.10.____cpython:
-        CONFIG: osx_64_libprotobuf4.23.2python3.10.____cpython
+      osx_64_libprotobuf4.23.3python3.10.____cpython:
+        CONFIG: osx_64_libprotobuf4.23.3python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_libprotobuf4.23.2python3.11.____cpython:
-        CONFIG: osx_64_libprotobuf4.23.2python3.11.____cpython
+      osx_64_libprotobuf4.23.3python3.11.____cpython:
+        CONFIG: osx_64_libprotobuf4.23.3python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_libprotobuf4.23.2python3.9.____cpython:
-        CONFIG: osx_64_libprotobuf4.23.2python3.9.____cpython
+      osx_64_libprotobuf4.23.3python3.9.____cpython:
+        CONFIG: osx_64_libprotobuf4.23.3python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
       osx_arm64_libprotobuf3.21python3.10.____cpython:
         CONFIG: osx_arm64_libprotobuf3.21python3.10.____cpython
@@ -35,14 +35,14 @@ jobs:
       osx_arm64_libprotobuf3.21python3.9.____cpython:
         CONFIG: osx_arm64_libprotobuf3.21python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_libprotobuf4.23.2python3.10.____cpython:
-        CONFIG: osx_arm64_libprotobuf4.23.2python3.10.____cpython
+      osx_arm64_libprotobuf4.23.3python3.10.____cpython:
+        CONFIG: osx_arm64_libprotobuf4.23.3python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_libprotobuf4.23.2python3.11.____cpython:
-        CONFIG: osx_arm64_libprotobuf4.23.2python3.11.____cpython
+      osx_arm64_libprotobuf4.23.3python3.11.____cpython:
+        CONFIG: osx_arm64_libprotobuf4.23.3python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_libprotobuf4.23.2python3.9.____cpython:
-        CONFIG: osx_arm64_libprotobuf4.23.2python3.9.____cpython
+      osx_arm64_libprotobuf4.23.3python3.9.____cpython:
+        CONFIG: osx_arm64_libprotobuf4.23.3python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
 
