@@ -21,7 +21,7 @@ icu:
 libgdal:
 - '3.7'
 libprotobuf:
-- 4.23.2
+- 4.23.3
 libspatialindex:
 - 1.9.3
 libzip:
@@ -37,7 +37,7 @@ proj:
 pyqt:
 - '5.15'
 python:
-- 3.11.* *_cpython
+- 3.9.* *_cpython
 qt_main:
 - '5.15'
 qtkeychain:
