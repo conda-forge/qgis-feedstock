@@ -16,7 +16,7 @@ source:
     - 0004-wrench_threads.patch
 
 build:
-  number: 3
+  number: 4
   # pyproj no longer supports py38
   skip: true  # [py2k or py<39]
 
@@ -58,8 +58,8 @@ requirements:
     - {{ cdt('libxfixes-devel') }}       # [linux]
     - {{ cdt('libxxf86vm') }}            # [linux]
     - {{ cdt('libxxf86vm-devel') }}      # [linux]
-    - {{ cdt('cups-devel') }}            # [linux]
     - {{ cdt('libxcb') }}                # [linux]
+    - {{ cdt('libglvnd-glx') }}          # [linux and cdt_name != 'cos6']
     - sip                                # [build_platform != target_platform]
     - pyqt-builder                       # [build_platform != target_platform]
     - pyqt5-sip                          # [build_platform != target_platform]
