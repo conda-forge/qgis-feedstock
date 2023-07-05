@@ -6,7 +6,7 @@ import traceback
 
 from qgis.core import \
     QgsApplication, QgsVectorLayer, \
-    QgsProjUtils, QgsCoordinateReferenceSystem
+    QgsProjUtils, QgsCoordinateReferenceSystem, QgsFillSymbol
 
 fname = os.path.join(os.path.dirname(__file__), 'test_data', 'box.geojson')
 
@@ -33,6 +33,10 @@ def testPROJ():
 
 
 def test(vector_file):
+    # test creation of some symbology 
+    # - issues with SIP seem to cause issues here
+    a = QgsFillSymbol()
+
     vl = QgsVectorLayer(vector_file)
     valid = vl.isValid()
     print('Valid layer?: {valid}'.format(valid=valid))
