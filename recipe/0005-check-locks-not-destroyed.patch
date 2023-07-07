@@ -1,0 +1,56 @@
+--- ./src/core/proj/qgscoordinatereferencesystem.cpp.orig	2023-07-07 14:50:26.871216709 +1000
++++ ./src/core/proj/qgscoordinatereferencesystem.cpp	2023-07-07 14:51:43.171612995 +1000
+@@ -693,7 +693,7 @@
+   // in case sCacheLock would have been destroyed before the current TLS
+   // QgsProjContext object that has called us...
+ 
+-  if ( !sDisableSrIdCache )
++  if ( !sDisableSrIdCache && !sSrIdCacheLock.isDestroyed() )
+   {
+     QgsReadWriteLocker locker( *sSrIdCacheLock(), QgsReadWriteLocker::Write );
+     if ( !sDisableSrIdCache )
+@@ -708,7 +708,7 @@
+       }
+     }
+   }
+-  if ( !sDisableOgcCache )
++  if ( !sDisableOgcCache && !sOgcLock.isDestroyed() )
+   {
+     QgsReadWriteLocker locker( *sOgcLock(), QgsReadWriteLocker::Write );
+     if ( !sDisableOgcCache )
+@@ -723,7 +723,7 @@
+       }
+     }
+   }
+-  if ( !sDisableProjCache )
++  if ( !sDisableProjCache && !sProj4CacheLock.isDestroyed() )
+   {
+     QgsReadWriteLocker locker( *sProj4CacheLock(), QgsReadWriteLocker::Write );
+     if ( !sDisableProjCache )
+@@ -738,7 +738,7 @@
+       }
+     }
+   }
+-  if ( !sDisableWktCache )
++  if ( !sDisableWktCache && !sCRSWktLock.isDestroyed() )
+   {
+     QgsReadWriteLocker locker( *sCRSWktLock(), QgsReadWriteLocker::Write );
+     if ( !sDisableWktCache )
+@@ -753,7 +753,7 @@
+       }
+     }
+   }
+-  if ( !sDisableSrsIdCache )
++  if ( !sDisableSrsIdCache && !sCRSSrsIdLock.isDestroyed() )
+   {
+     QgsReadWriteLocker locker( *sCRSSrsIdLock(), QgsReadWriteLocker::Write );
+     if ( !sDisableSrsIdCache )
+@@ -768,7 +768,7 @@
+       }
+     }
+   }
+-  if ( !sDisableStringCache )
++  if ( !sDisableStringCache && !sCrsStringLock.isDestroyed() )
+   {
+     QgsReadWriteLocker locker( *sCrsStringLock(), QgsReadWriteLocker::Write );
+     if ( !sDisableStringCache )
