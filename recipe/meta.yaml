@@ -63,6 +63,7 @@ requirements:
     - {{ cdt('libglvnd-glx') }}          # [linux and cdt_name != 'cos6']
     - sip                                # [build_platform != target_platform]
     - pyqt-builder                       # [build_platform != target_platform]
+    - pyqt5-sip                          # [build_platform != target_platform]
     - pyqt                               # [build_platform != target_platform]
     - qscintilla2                        # [build_platform != target_platform]
     - pkgconfig                          # [build_platform != target_platform]
@@ -89,6 +90,7 @@ requirements:
     # Qt stack.
     - qt-main
     - pyqt
+    - pyqt5-sip
     - pyqt-builder
     - qtwebkit
     - pyqtwebkit
@@ -122,6 +124,7 @@ requirements:
     - libtasn1  # [osx]
     - qt-main
     - pyqt
+    - pyqt5-sip
     - qtwebkit
     - qscintilla2
     - qca
