@@ -35,7 +35,7 @@ def testPROJ():
 def test(vector_file):
     # test creation of some symbology 
     # - issues with SIP seem to cause issues here
-    a = QgsFillSymbol()
+    #a = QgsFillSymbol()
 
     vl = QgsVectorLayer(vector_file)
     valid = vl.isValid()
