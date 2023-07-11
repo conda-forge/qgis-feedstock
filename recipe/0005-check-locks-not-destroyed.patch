@@ -1,5 +1,6 @@
---- ./src/core/proj/qgscoordinatereferencesystem.cpp.orig	2023-07-07 14:50:26.871216709 +1000
-+++ ./src/core/proj/qgscoordinatereferencesystem.cpp	2023-07-07 14:51:43.171612995 +1000
+diff -ur qgis-3.32.0.orig/src/core/proj/qgscoordinatereferencesystem.cpp qgis-3.32.0/src/core/proj/qgscoordinatereferencesystem.cpp
+--- qgis-3.32.0.orig/src/core/proj/qgscoordinatereferencesystem.cpp	2023-07-11 14:41:30.468444152 +1000
++++ qgis-3.32.0/src/core/proj/qgscoordinatereferencesystem.cpp	2023-07-11 14:41:57.239576214 +1000
 @@ -693,7 +693,7 @@
    // in case sCacheLock would have been destroyed before the current TLS
    // QgsProjContext object that has called us...
@@ -54,3 +55,21 @@
    {
      QgsReadWriteLocker locker( *sCrsStringLock(), QgsReadWriteLocker::Write );
      if ( !sDisableStringCache )
+diff -ur qgis-3.32.0.orig/src/core/proj/qgsellipsoidutils.cpp qgis-3.32.0/src/core/proj/qgsellipsoidutils.cpp
+--- qgis-3.32.0.orig/src/core/proj/qgsellipsoidutils.cpp	2023-07-11 14:41:30.468444152 +1000
++++ qgis-3.32.0/src/core/proj/qgsellipsoidutils.cpp	2023-07-11 14:42:44.322040454 +1000
+@@ -345,6 +345,8 @@
+ 
+ void QgsEllipsoidUtils::invalidateCache( bool disableCache )
+ {
++  if( !sEllipsoidCacheLock.isDestroyed() && !sDefinitionCacheLock.isDestroyed() ) 
++  {
+   const QgsReadWriteLocker locker1( *sEllipsoidCacheLock(), QgsReadWriteLocker::Write );
+   const QgsReadWriteLocker locker2( *sDefinitionCacheLock(), QgsReadWriteLocker::Write );
+ 
+@@ -355,4 +357,5 @@
+     sEllipsoidCache()->clear();
+     sDefinitionCache()->clear();
+   }
++  }
+ }
