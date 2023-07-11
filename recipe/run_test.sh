@@ -18,4 +18,4 @@ python -c 'import qgis.utils'
 # First tell Qt we don't have a display
 export QT_QPA_PLATFORM=offscreen
 
-python test_py_qgis.py
+valgrind python test_py_qgis.py
