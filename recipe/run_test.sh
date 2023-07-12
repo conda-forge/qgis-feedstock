@@ -30,6 +30,7 @@ if [ $(uname) == Darwin ]; then
     else
         echo "Error with build - exit code $code"
         exit $code
+    fi
 else
     python test_py_qgis.py
 fi
