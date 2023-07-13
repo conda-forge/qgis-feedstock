@@ -14,9 +14,10 @@ source:
     # remove when https://github.com/conda-forge/pyqt-feedstock/pull/129 merged
     - 0003-workaround-multi-pyqt5.patch  # [win]
     - 0004-wrench_threads.patch
-
+    - 0005-check-locks-not-destroyed.patch
+    
 build:
-  number: 4
+  number: 5
   # pyproj no longer supports py38
   skip: true  # [py2k or py<39]
 
@@ -123,6 +124,7 @@ requirements:
     - libtasn1  # [osx]
     - qt-main
     - pyqt
+    - pyqt5-sip
     - qtwebkit
     - qscintilla2
     - qca

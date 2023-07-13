@@ -1,0 +1,75 @@
+diff -ur qgis-3.32.0.orig/src/core/proj/qgscoordinatereferencesystem.cpp qgis-3.32.0/src/core/proj/qgscoordinatereferencesystem.cpp
+--- qgis-3.32.0.orig/src/core/proj/qgscoordinatereferencesystem.cpp	2023-07-11 14:41:30.468444152 +1000
++++ qgis-3.32.0/src/core/proj/qgscoordinatereferencesystem.cpp	2023-07-11 14:41:57.239576214 +1000
+@@ -693,7 +693,7 @@
+   // in case sCacheLock would have been destroyed before the current TLS
+   // QgsProjContext object that has called us...
+ 
+-  if ( !sDisableSrIdCache )
++  if ( !sDisableSrIdCache && !sSrIdCacheLock.isDestroyed() )
+   {
+     QgsReadWriteLocker locker( *sSrIdCacheLock(), QgsReadWriteLocker::Write );
+     if ( !sDisableSrIdCache )
+@@ -708,7 +708,7 @@
+       }
+     }
+   }
+-  if ( !sDisableOgcCache )
++  if ( !sDisableOgcCache && !sOgcLock.isDestroyed() )
+   {
+     QgsReadWriteLocker locker( *sOgcLock(), QgsReadWriteLocker::Write );
+     if ( !sDisableOgcCache )
+@@ -723,7 +723,7 @@
+       }
+     }
+   }
+-  if ( !sDisableProjCache )
++  if ( !sDisableProjCache && !sProj4CacheLock.isDestroyed() )
+   {
+     QgsReadWriteLocker locker( *sProj4CacheLock(), QgsReadWriteLocker::Write );
+     if ( !sDisableProjCache )
+@@ -738,7 +738,7 @@
+       }
+     }
+   }
+-  if ( !sDisableWktCache )
++  if ( !sDisableWktCache && !sCRSWktLock.isDestroyed() )
+   {
+     QgsReadWriteLocker locker( *sCRSWktLock(), QgsReadWriteLocker::Write );
+     if ( !sDisableWktCache )
+@@ -753,7 +753,7 @@
+       }
+     }
+   }
+-  if ( !sDisableSrsIdCache )
++  if ( !sDisableSrsIdCache && !sCRSSrsIdLock.isDestroyed() )
+   {
+     QgsReadWriteLocker locker( *sCRSSrsIdLock(), QgsReadWriteLocker::Write );
+     if ( !sDisableSrsIdCache )
+@@ -768,7 +768,7 @@
+       }
+     }
+   }
+-  if ( !sDisableStringCache )
++  if ( !sDisableStringCache && !sCrsStringLock.isDestroyed() )
+   {
+     QgsReadWriteLocker locker( *sCrsStringLock(), QgsReadWriteLocker::Write );
+     if ( !sDisableStringCache )
+diff -ur qgis-3.32.0.orig/src/core/proj/qgsellipsoidutils.cpp qgis-3.32.0/src/core/proj/qgsellipsoidutils.cpp
+--- qgis-3.32.0.orig/src/core/proj/qgsellipsoidutils.cpp	2023-07-11 14:41:30.468444152 +1000
++++ qgis-3.32.0/src/core/proj/qgsellipsoidutils.cpp	2023-07-11 14:42:44.322040454 +1000
+@@ -345,6 +345,8 @@
+ 
+ void QgsEllipsoidUtils::invalidateCache( bool disableCache )
+ {
++  if( !sEllipsoidCacheLock.isDestroyed() && !sDefinitionCacheLock.isDestroyed() ) 
++  {
+   const QgsReadWriteLocker locker1( *sEllipsoidCacheLock(), QgsReadWriteLocker::Write );
+   const QgsReadWriteLocker locker2( *sDefinitionCacheLock(), QgsReadWriteLocker::Write );
+ 
+@@ -355,4 +357,5 @@
+     sEllipsoidCache()->clear();
+     sDefinitionCache()->clear();
+   }
++  }
+ }
