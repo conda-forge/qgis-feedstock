@@ -11,7 +11,8 @@ source:
     - 0001-use-protobuf-dlls.patch  # [win]
     - 0002-skip-dot-in-path.patch  # [win]
     - 0003-workaround-multi-pyqt5.patch  # [win]
-
+    - 0005-check-locks-not-destroyed.patch
+    
 build:
   number: 2
   # Note: pyproj doesn't support Python 3.8
@@ -119,6 +120,7 @@ requirements:
     - libtasn1  # [osx]
     - qt-main
     - pyqt
+    - pyqt5-sip
     - qtwebkit
     - qscintilla2
     - qca
