@@ -14,7 +14,7 @@ source:
     - 0005-check-locks-not-destroyed.patch
     
 build:
-  number: 0
+  number: 1
   # Note: pyproj doesn't support Python 3.8
   skip: true  # [py2k or py<39]
 
