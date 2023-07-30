@@ -20,17 +20,12 @@ export QT_QPA_PLATFORM=offscreen
 
 
 if [ $(uname) == Darwin ]; then
-    set +e
-    python test_py_qgis.py
-    code=$?
-    if [[ $code -eq 0 ]]; then
-        echo "Passed without a problem"
-    elif [[ $code -eq 139 ]]; then
-        echo "Passed, but segfaulted for a known reason at end of program"
-    else
-        echo "Error with build - exit code $code"
-        exit $code
-    fi
+
+    sudo mv /usr/local/conda_mangled/* /usr/local/
+    /usr/local/Homebrew/bin/brew tap LouisBrunner/valgrind
+    /usr/local/Homebrew/bin/brew install --HEAD LouisBrunner/valgrind/valgrind
+
+    valgrind python test_py_qgis.py
 else
     python test_py_qgis.py
 fi
