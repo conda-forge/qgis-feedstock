@@ -25,6 +25,7 @@ if [ $(uname) == Darwin ]; then
     /usr/local/Homebrew/bin/brew tap LouisBrunner/valgrind
     /usr/local/Homebrew/bin/brew install --HEAD LouisBrunner/valgrind/valgrind
 
+    ulimit -n 1024
     valgrind python test_py_qgis.py
 else
     python test_py_qgis.py
