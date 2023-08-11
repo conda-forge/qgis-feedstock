@@ -21,7 +21,7 @@ export QT_QPA_PLATFORM=offscreen
 
 if [ $(uname) == Darwin ]; then
     set +e
-    python test_py_qgis.py
+    ulimit -c unlimited && (python test_py_qgis.py || (lldb -c `ls -t /cores/* | head -n1` --batch -o 'thread backtrace all' -o 'quit' && exit 1))
     code=$?
     if [[ $code -eq 0 ]]; then
         echo "Passed without a problem"
