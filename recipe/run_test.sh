@@ -21,6 +21,10 @@ export QT_QPA_PLATFORM=offscreen
 
 if [ $(uname) == Darwin ]; then
     set +e
+    sudo chmod 1777 /cores
+    sudo sysctl kern.coredump=1
+    /usr/libexec/PlistBuddy -c "Add :com.apple.security.get-task-allow bool true" segv.entitlements
+    codesign -s - -f --entitlements segv.entitlements $(which python)
     ulimit -c unlimited && (python test_py_qgis.py || (lldb -c `ls -t /cores/* | head -n1` --batch -o 'thread backtrace all' -o 'quit' && exit 1))
     code=$?
     if [[ $code -eq 0 ]]; then
