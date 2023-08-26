@@ -8,6 +8,7 @@ set -x
 # Testing QGIS command currently is found as lint in meta.yaml
 # QGIS has no --version, and --help exists 2
 qgis --help || [[ "$?" == "2" ]]
+qgis_process --version
 
 # Check Python API -- paths should be OK from activate script
 python -c 'import qgis.core'
