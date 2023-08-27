@@ -8,23 +8,14 @@ jobs:
     vmImage: windows-2022
   strategy:
     matrix:
-      win_64_libprotobuf3.21python3.10.____cpython:
-        CONFIG: win_64_libprotobuf3.21python3.10.____cpython
+      win_64_python3.10.____cpython:
+        CONFIG: win_64_python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-      win_64_libprotobuf3.21python3.11.____cpython:
-        CONFIG: win_64_libprotobuf3.21python3.11.____cpython
+      win_64_python3.11.____cpython:
+        CONFIG: win_64_python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-      win_64_libprotobuf3.21python3.9.____cpython:
-        CONFIG: win_64_libprotobuf3.21python3.9.____cpython
-        UPLOAD_PACKAGES: 'True'
-      win_64_libprotobuf4.23.3python3.10.____cpython:
-        CONFIG: win_64_libprotobuf4.23.3python3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-      win_64_libprotobuf4.23.3python3.11.____cpython:
-        CONFIG: win_64_libprotobuf4.23.3python3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-      win_64_libprotobuf4.23.3python3.9.____cpython:
-        CONFIG: win_64_libprotobuf4.23.3python3.9.____cpython
+      win_64_python3.9.____cpython:
+        CONFIG: win_64_python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
   variables:
