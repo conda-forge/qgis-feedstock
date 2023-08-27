@@ -94,6 +94,7 @@ if [ $(uname) == Darwin ]; then
 
   # and create a link into the .app so we can run it.
   ln -s $PREFIX/QGIS.app/Contents/MacOS/QGIS $PREFIX/bin/qgis
+  ln -s $PREFIX/bin/qgis_process.app/Contents/MacOS/qgis_process $PREFIX/bin/qgis_process
 fi
 
 
