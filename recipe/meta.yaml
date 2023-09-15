@@ -1,4 +1,4 @@
-{% set version = "3.32.2" %}
+{% set version = "3.32.3" %}
 
 package:
   name: qgis
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: 66f1982495eec7a1da431cadcd0d8faca2599aa5e717d21a69b2664c7946148b
+  sha256: cd52487447ebd952b4fbb158b8602de95f8e940e9d79391bba15f941cddd0740
   patches:
     # now need define on all platforms
     - 0001-use-protobuf-dlls.patch
@@ -17,7 +17,7 @@ source:
     - 0005-check-locks-not-destroyed.patch
 
 build:
-  number: 3
+  number: 0
   # pyproj no longer supports py38
   skip: true  # [py2k or py<39]
 
