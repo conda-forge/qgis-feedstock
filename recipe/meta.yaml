@@ -1,4 +1,4 @@
-{% set version = "3.28.10" %}
+{% set version = "3.28.11" %}
 
 package:
   name: qgis
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: cff867e97909bbc2facce6343770dcb1b61fc6e4855f57783e30bf63d51c5218
+  sha256: c5eb703893c7f98de051c45d677c4a34b40f986db51782a4930ddefad4e193b4
   patches:
     - 0001-use-protobuf-dlls.patch  # [win]
     - 0002-skip-dot-in-path.patch  # [win]
