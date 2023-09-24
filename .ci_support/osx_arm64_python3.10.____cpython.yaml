@@ -19,7 +19,7 @@ expat:
 gdal:
 - '3.7'
 geos:
-- 3.11.2
+- 3.12.0
 gsl:
 - '2.7'
 icu:
@@ -27,7 +27,7 @@ icu:
 libgdal:
 - '3.7'
 libprotobuf:
-- '3.21'
+- 4.23.3
 libspatialindex:
 - 1.9.3
 libzip:

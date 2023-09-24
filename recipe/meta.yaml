@@ -1,4 +1,4 @@
-{% set version = "3.28.10" %}
+{% set version = "3.28.11" %}
 
 package:
   name: qgis
@@ -6,13 +6,13 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: cff867e97909bbc2facce6343770dcb1b61fc6e4855f57783e30bf63d51c5218
+  sha256: c5eb703893c7f98de051c45d677c4a34b40f986db51782a4930ddefad4e193b4
   patches:
     - 0001-use-protobuf-dlls.patch  # [win]
     - 0002-skip-dot-in-path.patch  # [win]
     - 0003-workaround-multi-pyqt5.patch  # [win]
     - 0005-check-locks-not-destroyed.patch
-    
+
 build:
   number: 0
   # Note: pyproj doesn't support Python 3.8
@@ -56,8 +56,8 @@ requirements:
     - {{ cdt('libxfixes-devel') }}       # [linux]
     - {{ cdt('libxxf86vm') }}            # [linux]
     - {{ cdt('libxxf86vm-devel') }}      # [linux]
-    - {{ cdt('cups-devel') }}            # [linux]
     - {{ cdt('libxcb') }}                # [linux]
+    - {{ cdt('libglvnd-glx') }}          # [linux and cdt_name != 'cos6']
     - sip                                # [build_platform != target_platform]
     - pyqt-builder                       # [build_platform != target_platform]
     - pyqt5-sip                          # [build_platform != target_platform]
@@ -113,6 +113,8 @@ requirements:
     # Point Clouds
     - pdal
     - laz-perf
+    - ocl-icd      # [linux]
+    - khronos-opencl-icd-loader      # [win or osx]
   run:
     - python
     - icu
@@ -159,6 +161,8 @@ requirements:
     - pyqtwebkit
     - pdal
     - laz-perf
+    - ocl-icd      # [linux]
+    - khronos-opencl-icd-loader      # [win or osx]
 
   run_constrained:   # [osx]
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
