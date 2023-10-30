@@ -45,7 +45,6 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
     export FLEX_ROOT=${BUILD_PREFIX}
     # hide this so we get the arm libs but x86 protoc
     rm ${PREFIX}/bin/protoc
-    rm ${PREFIX}/bin/protoc-*
     rm ${PREFIX}/bin/pdal
     rm ${PREFIX}/bin/sip-build ${BUILD_PREFIX}/bin/sip-build
     # to find m4
@@ -83,6 +82,12 @@ cmake ${CMAKE_ARGS} \
     -D LazPerf_INCLUDE_DIR=$PREFIX/include \
     $PLATFORM_OPTS \
     ..
+
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
+    # this seems to be required for cmake but causes
+    # problem in the build for cross compilation
+    rm ${PREFIX}/bin/protoc-*
+fi
 
 ninja -j$CPU_COUNT
 ninja install
