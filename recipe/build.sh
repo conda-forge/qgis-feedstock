@@ -45,6 +45,7 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
     export FLEX_ROOT=${BUILD_PREFIX}
     # hide this so we get the arm libs but x86 protoc
     rm ${PREFIX}/bin/protoc
+    rm ${PREFIX}/bin/protoc-*
     rm ${PREFIX}/bin/pdal
     rm ${PREFIX}/bin/sip-build ${BUILD_PREFIX}/bin/sip-build
     # to find m4
