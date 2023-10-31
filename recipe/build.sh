@@ -83,12 +83,6 @@ cmake ${CMAKE_ARGS} \
     $PLATFORM_OPTS \
     ..
 
-if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
-    # this seems to be required for cmake but causes
-    # problem in the build for cross compilation
-    rm ${PREFIX}/bin/protoc-*
-fi
-
 ninja -j$CPU_COUNT
 ninja install
 

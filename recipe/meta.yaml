@@ -81,7 +81,7 @@ requirements:
     - expat
     - icu
     - libzip
-    - libprotobuf
+    - libprotobuf                        # [build_platform == target_platform]
     - libtasn1  # [osx]
     - exiv2
     # Qt stack.
