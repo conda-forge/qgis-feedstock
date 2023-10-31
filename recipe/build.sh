@@ -44,8 +44,6 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
     export BISON_ROOT=${BUILD_PREFIX}
     export FLEX_ROOT=${BUILD_PREFIX}
     # hide this so we get the arm libs but x86 protoc
-    cp ${BUILD_PREFIX}/bin/protoc*  ${PREFIX}/bin/
-    cp ${BUILD_PREFIX}/lib/libprotoc*  ${PREFIX}/lib/
     rm ${PREFIX}/bin/pdal
     rm ${PREFIX}/bin/sip-build ${BUILD_PREFIX}/bin/sip-build
     # to find m4
@@ -64,7 +62,7 @@ cmake ${CMAKE_ARGS} \
     -G Ninja \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX="${PREFIX}" \
-    -D CMAKE_PREFIX_PATH="${PREFIX}" \
+    -D CMAKE_PREFIX_PATH="${BUILD_PREFIX}:${PREFIX}" \
     -D PYTHON_EXECUTABLE="${PYTHON}" \
     -D ENABLE_TESTS=FALSE \
     -D WITH_BINDINGS=TRUE \
