@@ -55,6 +55,9 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
     echo "$BUILD_PREFIX/bin/python -m sipbuild.tools.build --target-dir $SITE_PKGS_PATH \$@" >> sip-build
     chmod +x sip-build
     cat sip-build
+    
+    # ensure we get right protoc
+    PLATFORM_OPTS="$PLATFORM_OPTS -D Protobuf_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc"
 fi
 
 # TODO: enable QSPATIALITE on OSX
@@ -79,7 +82,6 @@ cmake ${CMAKE_ARGS} \
     -D WITH_PDAL=TRUE \
     -D WITH_EPT=TRUE \
     -D LazPerf_INCLUDE_DIR=$PREFIX/include \
-    -D Protobuf_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc \
     $PLATFORM_OPTS \
     ..
 
