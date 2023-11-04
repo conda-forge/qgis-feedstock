@@ -41,7 +41,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 postgresql:
-- '15'
+- '16'
 proj:
 - 9.3.0
 pyqt:
