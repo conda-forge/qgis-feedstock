@@ -1,0 +1,21 @@
+--- CMakeLists.txt.orig	2023-11-03 10:45:01.404334087 +1000
++++ CMakeLists.txt	2023-11-03 10:45:58.234291481 +1000
+@@ -374,7 +374,17 @@
+   endif()
+ 
+   find_package(Protobuf CONFIG)
+-  find_package(Protobuf REQUIRED)
++   if(Protobuf_FOUND)
++     message(STATUS "Found protobuf via cmake config")
++     if(Protobuf_PROTOC_EXECUTABLE)
++      set_target_properties(protobuf::protoc PROPERTIES
++        IMPORTED_LOCATION_RELEASE "${Protobuf_PROTOC_EXECUTABLE}"
++      )
++    endif()
++ else()
++     message(WARNING "Falling back to cmake FindProtobuf as Protobuf was not found via CONFIG")
++     find_package(Protobuf REQUIRED)
++ endif()
+   if(Protobuf_VERSION GREATER_EQUAL 4.23)
+     set(Protobuf_LITE_LIBRARY protobuf::libprotobuf-lite)
+   endif()
