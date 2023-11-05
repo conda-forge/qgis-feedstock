@@ -8,12 +8,9 @@ source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
   sha256: 348a2df4c4520813a319b7f72546b3823e044cacd28646ba189b56a49c7d1b5f
   patches:
-    # now need define on all platforms
-    - 0001-use-protobuf-dlls.patch
     - 0002-skip-dot-in-path.patch  # [win]
     # remove when https://github.com/conda-forge/pyqt-feedstock/pull/129 merged
     - 0003-workaround-multi-pyqt5.patch  # [win]
-    - 0004-wrench_threads.patch
     - 0005-check-locks-not-destroyed.patch
 
 build:
