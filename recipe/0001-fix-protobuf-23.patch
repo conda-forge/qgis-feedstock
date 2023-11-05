@@ -1,8 +1,13 @@
---- CMakeLists.txt.orig	2023-11-03 10:45:01.404334087 +1000
-+++ CMakeLists.txt	2023-11-03 10:45:58.234291481 +1000
-@@ -374,7 +374,17 @@
+--- CMakeLists.txt.orig	2023-11-06 09:22:08.518591789 +1000
++++ CMakeLists.txt	2023-11-06 09:22:40.562887324 +1000
+@@ -373,8 +373,22 @@
+     message (SEND_ERROR "sqlite3 dependency was not found!")
    endif()
  
++  # First look for protobuf-config.cmake, and only later use
++  # FindProtobuf.cmake shipped with CMake, for compatibility
++  # with protobuf >= 22
++  set(protobuf_MODULE_COMPATIBLE TRUE CACHE INTERNAL "")
    find_package(Protobuf CONFIG)
 -  find_package(Protobuf REQUIRED)
 +   if(Protobuf_FOUND)
