@@ -1,0 +1,26 @@
+--- CMakeLists.txt.orig	2023-11-06 09:22:08.518591789 +1000
++++ CMakeLists.txt	2023-11-06 09:22:40.562887324 +1000
+@@ -373,8 +373,22 @@
+     message (SEND_ERROR "sqlite3 dependency was not found!")
+   endif()
+ 
++  # First look for protobuf-config.cmake, and only later use
++  # FindProtobuf.cmake shipped with CMake, for compatibility
++  # with protobuf >= 22
++  set(protobuf_MODULE_COMPATIBLE TRUE CACHE INTERNAL "")
+   find_package(Protobuf CONFIG)
+-  find_package(Protobuf REQUIRED)
++   if(Protobuf_FOUND)
++     message(STATUS "Found protobuf via cmake config")
++     if(Protobuf_PROTOC_EXECUTABLE)
++      set_target_properties(protobuf::protoc PROPERTIES
++        IMPORTED_LOCATION_RELEASE "${Protobuf_PROTOC_EXECUTABLE}"
++      )
++    endif()
++ else()
++     message(WARNING "Falling back to cmake FindProtobuf as Protobuf was not found via CONFIG")
++     find_package(Protobuf REQUIRED)
++ endif()
+   if(Protobuf_VERSION GREATER_EQUAL 4.23)
+     set(Protobuf_LITE_LIBRARY protobuf::libprotobuf-lite)
+   endif()
