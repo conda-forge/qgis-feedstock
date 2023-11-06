@@ -36,6 +36,7 @@ cmake -G Ninja ^
     -D WITH_PDAL=TRUE ^
     -D WITH_EPT=TRUE ^
     -D LazPerf_INCLUDE_DIR=%LIBRARY_INC% ^
+    -D CMAKE_CXX_STANDARD=14 ^
     ..
 if errorlevel 1 exit 1
 
