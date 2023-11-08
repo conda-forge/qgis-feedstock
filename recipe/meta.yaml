@@ -69,6 +69,7 @@ requirements:
     - m4                                 # [unix and (build_platform != target_platform)]
     - pdal                               # [build_platform != target_platform]
     - libprotobuf                        # [build_platform != target_platform]
+    - libabseil                          # [win]
   host:
     - openssl
     - setuptools
@@ -115,6 +116,7 @@ requirements:
     - laz-perf
     - ocl-icd      # [linux]
     - khronos-opencl-icd-loader      # [win or osx]
+    - libabseil # [win]
   run:
     - python
     - icu
