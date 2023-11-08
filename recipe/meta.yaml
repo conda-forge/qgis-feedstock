@@ -116,7 +116,7 @@ requirements:
     - laz-perf
     - ocl-icd      # [linux]
     - khronos-opencl-icd-loader      # [win or osx]
-    - libabseil # [win]
+    - libabseil  # [win]
   run:
     - python
     - icu
