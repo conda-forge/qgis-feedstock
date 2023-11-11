@@ -1,0 +1,12 @@
+--- CMakeLists.txt.orig	2023-11-11 15:35:40.314297841 +1000
++++ CMakeLists.txt	2023-11-11 15:35:58.868602949 +1000
+@@ -371,6 +371,9 @@
+   if (NOT Protobuf_PROTOC_EXECUTABLE)
+     message (SEND_ERROR "Protobuf library's 'protoc' tool was not found!")
+   endif()
++  if(Protobuf_VERSION GREATER_EQUAL 4.23)
++    set(Protobuf_LITE_LIBRARY protobuf::libprotobuf-lite)
++  endif()
+   find_package(ZLIB REQUIRED)       # for decompression of vector tiles in MBTiles file
+   message(STATUS "Found zlib: ${ZLIB_LIBRARIES}")
+ 

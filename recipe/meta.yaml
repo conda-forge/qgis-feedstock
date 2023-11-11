@@ -12,6 +12,7 @@ source:
     - 0002-skip-dot-in-path.patch  # [win]
     - 0003-workaround-multi-pyqt5.patch  # [win]
     - 0005-check-locks-not-destroyed.patch
+    - 0006-protobuf-abseil.patch
 
 build:
   number: 0
@@ -69,7 +70,6 @@ requirements:
     - m4                                 # [unix and (build_platform != target_platform)]
     - pdal                               # [build_platform != target_platform]
     - libprotobuf                        # [build_platform != target_platform]
-    - libabseil                          # [win]
   host:
     - openssl
     - setuptools
@@ -116,7 +116,6 @@ requirements:
     - laz-perf
     - ocl-icd      # [linux]
     - khronos-opencl-icd-loader      # [win or osx]
-    - libabseil  # [win]
   run:
     - python
     - icu
