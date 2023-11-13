@@ -5,7 +5,7 @@ MACOSX_SDK_VERSION:
 c_compiler:
 - clang
 c_compiler_version:
-- '15'
+- '16'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -13,7 +13,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '15'
+- '16'
 exiv2:
 - '0.27'
 expat:
@@ -29,7 +29,7 @@ icu:
 libgdal:
 - '3.7'
 libprotobuf:
-- 4.23.3
+- 4.24.3
 libspatialindex:
 - 1.9.3
 libzip:
@@ -45,7 +45,7 @@ pin_run_as_build:
 postgresql:
 - '15'
 proj:
-- 9.2.1
+- 9.3.0
 pyqt:
 - '5.15'
 python:
