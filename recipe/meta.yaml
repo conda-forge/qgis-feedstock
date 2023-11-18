@@ -161,6 +161,7 @@ requirements:
     - pyqtwebkit
     - pdal
     - laz-perf
+    - libgdal-arrow-parquet
     - ocl-icd      # [linux]
     - khronos-opencl-icd-loader      # [win or osx]
 
