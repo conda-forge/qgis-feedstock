@@ -17,7 +17,9 @@ geos:
 gsl:
 - '2.7'
 icu:
-- '73'
+- '72'
+libabseil:
+- '20230802'
 libgdal:
 - '3.7'
 libprotobuf:
@@ -33,7 +35,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 postgresql:
-- '16'
+- '15'
 proj:
 - 9.3.0
 pyqt:
