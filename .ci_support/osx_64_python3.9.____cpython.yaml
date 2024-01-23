@@ -29,7 +29,7 @@ icu:
 libgdal:
 - '3.8'
 libprotobuf:
-- 4.24.4
+- 4.25.1
 libspatialindex:
 - 1.9.3
 libzip:
