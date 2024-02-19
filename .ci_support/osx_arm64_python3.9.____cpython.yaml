@@ -13,7 +13,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '16'
 exiv2:
-- '0.27'
+- '0.28'
 expat:
 - '2'
 gdal:
