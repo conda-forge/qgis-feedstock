@@ -1,7 +1,11 @@
+BUILD:
+- aarch64-conda_cos7-linux-gnu
 c_compiler:
 - gcc
 c_compiler_version:
 - '12'
+cdt_arch:
+- aarch64
 cdt_name:
 - cos7
 channel_sources:
@@ -45,7 +49,7 @@ proj:
 pyqt:
 - '5.15'
 python:
-- 3.9.* *_cpython
+- 3.12.* *_cpython
 qt_main:
 - '5.15'
 qtkeychain:
@@ -53,7 +57,7 @@ qtkeychain:
 sqlite:
 - '3'
 target_platform:
-- linux-64
+- linux-aarch64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version

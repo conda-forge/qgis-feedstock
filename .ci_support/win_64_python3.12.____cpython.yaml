@@ -1,19 +1,11 @@
 c_compiler:
-- gcc
-c_compiler_version:
-- '12'
-cdt_name:
-- cos7
+- vs2019
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- gxx
-cxx_compiler_version:
-- '12'
-docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
+- vs2019
 exiv2:
 - '0.28'
 expat:
@@ -45,7 +37,7 @@ proj:
 pyqt:
 - '5.15'
 python:
-- 3.9.* *_cpython
+- 3.12.* *_cpython
 qt_main:
 - '5.15'
 qtkeychain:
@@ -53,7 +45,4 @@ qtkeychain:
 sqlite:
 - '3'
 target_platform:
-- linux-64
-zip_keys:
-- - c_compiler_version
-  - cxx_compiler_version
+- win-64

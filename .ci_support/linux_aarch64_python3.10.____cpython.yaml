@@ -19,35 +19,33 @@ cxx_compiler_version:
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
 exiv2:
-- '0.27'
+- '0.28'
 expat:
 - '2'
 gdal:
-- '3.7'
+- '3.8'
 geos:
-- 3.12.0
+- 3.12.1
 gsl:
 - '2.7'
 icu:
-- '72'
+- '73'
 libgdal:
-- '3.7'
+- '3.8'
 libprotobuf:
-- 4.24.3
+- 4.25.1
 libspatialindex:
 - 1.9.3
 libzip:
 - '1'
-openssl:
-- '3'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 postgresql:
-- '15'
+- '16'
 proj:
-- 9.3.0
+- 9.3.1
 pyqt:
 - '5.15'
 python:
