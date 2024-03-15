@@ -19,4 +19,3 @@ provider:
   osx: azure
   win: azure
 test: native_and_emulated
-test_on_native_only: true
