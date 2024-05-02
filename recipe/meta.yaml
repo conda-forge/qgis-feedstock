@@ -15,7 +15,7 @@ source:
     - 0005-check-locks-not-destroyed.patch
 
 build:
-  number: 0
+  number: 1
   # pyproj no longer supports py38
   skip: true  # [py2k or py<39]
 
@@ -29,6 +29,7 @@ requirements:
     - m2-bison  # [win]
     - m2-m4  # [win]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     # The CDT packages below are those used in qt-feedstock
     - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
@@ -165,7 +166,6 @@ requirements:
     - khronos-opencl-icd-loader      # [win or osx]
 
   run_constrained:   # [osx]
-    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 test:
   requires:
     - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
