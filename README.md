@@ -195,14 +195,14 @@ Current release info
 Installing qgis
 ===============
 
-Installing `qgis` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `qgis` from the `conda-forge/label/qgis_ltr` channel can be achieved by adding `conda-forge/label/qgis_ltr` to your channels with:
 
 ```
-conda config --add channels conda-forge
+conda config --add channels conda-forge/label/qgis_ltr
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `qgis` can be installed with `conda`:
+Once the `conda-forge/label/qgis_ltr` channel has been enabled, `qgis` can be installed with `conda`:
 
 ```
 conda install qgis
@@ -217,26 +217,26 @@ mamba install qgis
 It is possible to list all of the versions of `qgis` available on your platform with `conda`:
 
 ```
-conda search qgis --channel conda-forge
+conda search qgis --channel conda-forge/label/qgis_ltr
 ```
 
 or with `mamba`:
 
 ```
-mamba search qgis --channel conda-forge
+mamba search qgis --channel conda-forge/label/qgis_ltr
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search qgis --channel conda-forge
+mamba repoquery search qgis --channel conda-forge/label/qgis_ltr
 
 # List packages depending on `qgis`:
-mamba repoquery whoneeds qgis --channel conda-forge
+mamba repoquery whoneeds qgis --channel conda-forge/label/qgis_ltr
 
 # List dependencies of `qgis`:
-mamba repoquery depends qgis --channel conda-forge
+mamba repoquery depends qgis --channel conda-forge/label/qgis_ltr
 ```
 
 
