@@ -5,7 +5,7 @@ c_stdlib:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge main
+- conda-forge qgis_ltr
 cxx_compiler:
 - vs2019
 exiv2:
