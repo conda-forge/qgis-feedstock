@@ -31,7 +31,7 @@ gsl:
 icu:
 - '73'
 libgdal:
-- '3.8'
+- '3.9'
 libprotobuf:
 - 4.25.3
 libspatialindex:
