@@ -13,7 +13,7 @@ exiv2:
 expat:
 - '2'
 gdal:
-- '3.8'
+- '3.9'
 geos:
 - 3.12.1
 gsl:
@@ -21,7 +21,7 @@ gsl:
 icu:
 - '73'
 libgdal:
-- '3.8'
+- '3.9'
 libprotobuf:
 - 4.25.3
 libspatialindex:
