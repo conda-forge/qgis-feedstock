@@ -1,4 +1,4 @@
-{% set version = "3.36.3" %}
+{% set version = "3.38.0" %}
 
 package:
   name: qgis
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: fb8d153813f54164ddf5283cfd46f176839b4d55996de9acf6bac2bd2fb2da5d
+  sha256: f9cf5ab241b9d6b3f5d40d4d7a6759a5f806148a7c9a11ba85670a03f2344be7
   patches:
     - 0001-fix-protobuf-23.patch
     - 0002-skip-dot-in-path.patch  # [win]
@@ -15,7 +15,7 @@ source:
     - 0005-check-locks-not-destroyed.patch
 
 build:
-  number: 3
+  number: 0
   # pyproj no longer supports py38
   skip: true  # [py2k or py<39]
 
