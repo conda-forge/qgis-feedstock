@@ -42,6 +42,8 @@ libspatialindex:
 - 2.0.0
 libzip:
 - '1'
+pdal:
+- '2.7'
 pin_run_as_build:
   python:
     min_pin: x.x
