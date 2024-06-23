@@ -1,21 +1,30 @@
 --- CMakeLists.txt.orig	2024-06-24 07:51:08.157059805 +1000
-+++ CMakeLists.txt	2024-06-24 07:52:51.496436739 +1000
-@@ -374,12 +374,17 @@
++++ CMakeLists.txt	2024-06-24 08:09:15.096741432 +1000
+@@ -373,10 +373,25 @@
+     message (SEND_ERROR "sqlite3 dependency was not found!")
    endif()
  
++  # First look for protobuf-config.cmake, and only later use
++  # FindProtobuf.cmake shipped with CMake, for compatibility
++  # with protobuf >= 22
++  set(protobuf_MODULE_COMPATIBLE TRUE CACHE INTERNAL "")
    find_package(Protobuf CONFIG)
 -  find_package(Protobuf REQUIRED)
  
-   message(STATUS "Found Protobuf: ${Protobuf_LIBRARIES}")
+-  message(STATUS "Found Protobuf: ${Protobuf_LIBRARIES}")
++  if(Protobuf_FOUND)
++     message(STATUS "Found protobuf via cmake config")
++     if(Protobuf_PROTOC_EXECUTABLE)
++      set_target_properties(protobuf::protoc PROPERTIES
++        IMPORTED_LOCATION_RELEASE "${Protobuf_PROTOC_EXECUTABLE}"
++      )
++    endif()
++  else()
++     message(WARNING "Falling back to cmake FindProtobuf as Protobuf was not found via CONFIG")
++     find_package(Protobuf REQUIRED)
++  endif()
++  
++  
    if (NOT Protobuf_PROTOC_EXECUTABLE)
      message (SEND_ERROR "Protobuf library's 'protoc' tool was not found!")
    endif()
-+
-+  # for cross compilation  
-+  set_target_properties(protobuf::protoc PROPERTIES
-+      IMPORTED_LOCATION_RELEASE "${Protobuf_PROTOC_EXECUTABLE}"
-+  )
-+
-   find_package(ZLIB REQUIRED)       # for decompression of vector tiles in MBTiles file
-   message(STATUS "Found zlib: ${ZLIB_LIBRARIES}")
- 
