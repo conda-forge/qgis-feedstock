@@ -1,8 +1,10 @@
 --- CMakeLists.txt.orig	2024-06-24 07:51:08.157059805 +1000
-+++ CMakeLists.txt	2024-06-24 09:06:22.696814976 +1000
-@@ -374,12 +374,17 @@
++++ CMakeLists.txt	2024-06-24 09:16:34.725718463 +1000
+@@ -373,13 +373,19 @@
+     message (SEND_ERROR "sqlite3 dependency was not found!")
    endif()
  
++  set(protobuf_MODULE_COMPATIBLE TRUE CACHE INTERNAL "")
    find_package(Protobuf CONFIG)
 -  find_package(Protobuf REQUIRED)
  
