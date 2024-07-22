@@ -99,7 +99,7 @@ requirements:
     - qwt
     - qtkeychain
     # GDAL stack.
-    - libgdal
+    - libgdal-core
     - gdal
     - geos
     - proj
@@ -112,7 +112,7 @@ requirements:
     - postgresql
     - psycopg2
     # Point Clouds
-    - pdal
+    - libpdal-core
     - laz-perf
     - ocl-icd      # [linux]
     - khronos-opencl-icd-loader      # [win or osx]
