@@ -99,7 +99,7 @@ requirements:
     - qwt
     - qtkeychain
     # GDAL stack.
-    - libgdal-core
+    - libgdal
     - gdal
     - geos
     - proj
@@ -111,8 +111,8 @@ requirements:
     # For PostgreSQL support.
     - postgresql
     - psycopg2
-    # Point Clouds
-    - libpdal-core
+    # Point Clouds. Need only C/C++ package
+    - libpdal
     - laz-perf
     - ocl-icd      # [linux]
     - khronos-opencl-icd-loader      # [win or osx]
