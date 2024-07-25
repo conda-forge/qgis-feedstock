@@ -22,14 +22,14 @@ icu:
 - '73'
 libgdal:
 - '3.9'
+libpdal:
+- '2.7'
 libprotobuf:
 - 4.25.3
 libspatialindex:
 - 2.0.0
 libzip:
 - '1'
-pdal:
-- '2.7'
 pin_run_as_build:
   python:
     min_pin: x.x
