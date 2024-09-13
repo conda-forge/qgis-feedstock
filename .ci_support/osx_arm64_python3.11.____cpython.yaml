@@ -5,7 +5,7 @@ MACOSX_SDK_VERSION:
 c_compiler:
 - clang
 c_compiler_version:
-- '16'
+- '17'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -17,7 +17,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '16'
+- '17'
 exiv2:
 - '0.28'
 expat:
@@ -33,7 +33,7 @@ icu:
 libgdal:
 - '3.9'
 libpdal:
-- '2.7'
+- 2.8.0
 libprotobuf:
 - 4.25.3
 libspatialindex:
