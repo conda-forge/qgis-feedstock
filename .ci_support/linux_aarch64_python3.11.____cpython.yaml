@@ -33,7 +33,7 @@ geos:
 gsl:
 - '2.7'
 icu:
-- '73'
+- '75'
 libgdal:
 - '3.9'
 libpdal:
