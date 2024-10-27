@@ -1,7 +1,7 @@
 azure:
   settings_win:
     variables:
-      CONDA_BLD_PATH: C:\bld\
+      CONDA_BLD_PATH: D:\bld\
       MINIFORGE_HOME: C:\Miniforge
 bot:
   abi_migration_branches:
