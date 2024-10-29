@@ -39,7 +39,7 @@ postgresql:
 proj:
 - '9.5'
 pyqt:
-- 5.15.8
+- '5.15'
 python:
 - 3.9.* *_cpython
 qt_main:
