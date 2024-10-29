@@ -41,7 +41,7 @@ if errorlevel 1 exit 1
 
 ninja -j%CPU_COUNT%
 if errorlevel 1 exit 1
-ninja install
+ninja -v install
 if errorlevel 1 exit 1
 
 :: Package up a bit. See,
