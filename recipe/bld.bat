@@ -41,8 +41,9 @@ if errorlevel 1 exit 1
 
 ninja -j%CPU_COUNT%
 if errorlevel 1 exit 1
-ninja -v install
+ninja install
 if errorlevel 1 exit 1
+echo hello
 
 :: Package up a bit. See,
 :: OSGEO4W wiki: https://trac.osgeo.org/osgeo4w/wiki/PackagingInstructions
