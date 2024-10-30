@@ -24,6 +24,3 @@ set "O4W_QT_PLUGINS=%LIBRARY_PREFIX%\plugins"
 set "O4W_QT_LIBRARIES=%LIBRARY_PREFIX%\lib"
 set "O4W_QT_TRANSLATIONS=%LIBRARY_PREFIX%\translations"
 set "O4W_QT_HEADERS=%LIBRARY_PREFIX%\include"
-
-:: Generate qgis.env with the above variables
-%LIBRARY_PREFIX%\bin\qgis.exe --postinstall
