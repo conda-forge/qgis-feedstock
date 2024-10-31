@@ -44,17 +44,6 @@ ninja -j%CPU_COUNT%
 if errorlevel 1 exit 1
 ninja install
 if errorlevel 1 exit 1
-echo hello
-
-:: Package up a bit. See,
-:: OSGEO4W wiki: https://trac.osgeo.org/osgeo4w/wiki/PackagingInstructions
-:: List of variables: https://github.com/qgis/QGIS/blob/master/ms-windows/osgeo4w/qgis.vars
-:: QGIS "qgis.env" parser: https://github.com/qgis/QGIS/blob/release-3_4/src/app/mainwin.cpp
-::
-:: Copy `qgis.vars` so we can generate `qgis.env`
-:: The `qgis.env` will be generated in post-link.bat script
-copy %SRC_DIR%\ms-windows\osgeo4w\qgis.vars %LIBRARY_PREFIX%\bin\qgis.vars
-if errorlevel 1 exit 1
 
 :: Copy activate/deactivate scripts
 set "ACTIVATE_DIR=%PREFIX%\etc\conda\activate.d"
