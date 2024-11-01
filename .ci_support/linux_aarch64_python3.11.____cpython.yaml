@@ -57,7 +57,7 @@ pyqt:
 python:
 - 3.11.* *_cpython
 qt_main:
-- '5.15'
+- 5.15.8
 qtkeychain:
 - '0.14'
 sqlite:
