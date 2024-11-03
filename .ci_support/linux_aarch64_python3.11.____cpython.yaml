@@ -39,7 +39,7 @@ libgdal:
 libpdal:
 - 2.8.0
 libprotobuf:
-- 5.27.5
+- 5.28.2
 libspatialindex:
 - 2.0.0
 libzip:
@@ -57,7 +57,7 @@ pyqt:
 python:
 - 3.11.* *_cpython
 qt_main:
-- 5.15.8
+- '5.15'
 qtkeychain:
 - '0.14'
 sqlite:
