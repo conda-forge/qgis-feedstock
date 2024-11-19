@@ -7,7 +7,7 @@ c_stdlib:
 c_stdlib_version:
 - '2.17'
 cdt_name:
-- cos7
+- conda
 channel_sources:
 - conda-forge
 channel_targets:
@@ -23,7 +23,7 @@ exiv2:
 expat:
 - '2'
 gdal:
-- '3.9'
+- '3.10'
 geos:
 - 3.13.0
 gsl:
@@ -31,7 +31,7 @@ gsl:
 icu:
 - '75'
 libgdal:
-- '3.9'
+- '3.10'
 libprotobuf:
 - 5.28.2
 libspatialindex:
@@ -63,5 +63,3 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - c_stdlib_version
-  - cdt_name
