@@ -41,7 +41,7 @@ libzip:
 macos_machine:
 - arm64-apple-darwin20.0.0
 pdal:
-- 2.8.0
+- 2.8.2
 pin_run_as_build:
   python:
     min_pin: x.x
