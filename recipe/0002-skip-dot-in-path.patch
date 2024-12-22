@@ -1,10 +1,12 @@
---- python/__init__.py.orig	2022-09-22 09:53:28.920292863 +1000
-+++ python/__init__.py	2022-09-22 09:54:04.001874547 +1000
-@@ -70,10 +70,6 @@
+--- python/__init__.py.old	2024-12-23 08:27:49.537321962 +1000
++++ python/__init__.py	2024-12-23 08:28:09.598445722 +1000
+@@ -67,12 +67,6 @@
      # any of the QGIS modules or else it will error.
      setupenv()
  
--    if sys.version_info[0] > 3 or (sys.version_info[0] == 3 and sys.version_info[1] >= 9):
+-    if sys.version_info[0] > 3 or (
+-        sys.version_info[0] == 3 and sys.version_info[1] >= 9
+-    ):
 -        for p in os.getenv("PATH").split(";"):
 -            if os.path.exists(p):
 -                os.add_dll_directory(p)
