@@ -13,9 +13,10 @@ source:
     # remove when https://github.com/conda-forge/pyqt-feedstock/pull/129 merged
     - 0003-workaround-multi-pyqt5.patch  # [win]
     - 0005-check-locks-not-destroyed.patch
+    - 0006-use-entrypoints.patch 
 
 build:
-  number: 1
+  number: 2
   # pyproj no longer supports py38
   skip: true  # [py2k or py<39]
 
