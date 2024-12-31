@@ -13,10 +13,10 @@ source:
     # remove when https://github.com/conda-forge/pyqt-feedstock/pull/129 merged
     - 0003-workaround-multi-pyqt5.patch  # [win]
     - 0005-check-locks-not-destroyed.patch
-    - 0006-use-entrypoints.patch 
+    - 0006-use-entrypoints.patch
 
 build:
-  number: 2
+  number: 3
   # pyproj no longer supports py38
   skip: true  # [py2k or py<39]
 
@@ -70,7 +70,7 @@ requirements:
     - flex                               # [unix and (build_platform != target_platform)]
     - bison                              # [unix and (build_platform != target_platform)]
     - m4                                 # [unix and (build_platform != target_platform)]
-    - pdal                               # [build_platform != target_platform]
+    - libpdal                            # [build_platform != target_platform]
     - libprotobuf                        # [build_platform != target_platform]
   host:
     - setuptools
@@ -161,7 +161,7 @@ requirements:
     - yaml
     - owslib
     - pyqtwebkit
-    - pdal
+    - libpdal
     - laz-perf
     - ocl-icd      # [linux]
     - khronos-opencl-icd-loader      # [win or osx]
