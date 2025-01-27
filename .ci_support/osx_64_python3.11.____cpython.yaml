@@ -33,7 +33,7 @@ icu:
 libgdal:
 - '3.10'
 libprotobuf:
-- 5.28.2
+- 5.28.3
 libspatialindex:
 - 2.1.0
 libzip:
@@ -57,7 +57,7 @@ python:
 qt_main:
 - '5.15'
 qtkeychain:
-- '0.14'
+- '0.15'
 sqlite:
 - '3'
 target_platform:
