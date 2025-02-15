@@ -1,4 +1,4 @@
-{% set version = "3.34.14" %}
+{% set version = "3.34.15" %}
 
 package:
   name: qgis
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: fbb9fb197626fd273cec21ae4c9d7c17645a6fc1514f77553048a07f6a21a423
+  sha256: afb0bed05ffbc7bcb6d27dd1a8644b1e63ac2cb322baa058ff65b848c760efc2
   patches:
     - 0001-fix-protobuf-23.patch
     - 0002-skip-dot-in-path.patch  # [win]
@@ -15,7 +15,7 @@ source:
     - 0005-check-locks-not-destroyed.patch
 
 build:
-  number: 2
+  number: 0
   # pyproj no longer supports py38
   skip: true  # [py2k or py<39]
 
@@ -69,7 +69,7 @@ requirements:
     - flex                               # [unix and (build_platform != target_platform)]
     - bison                              # [unix and (build_platform != target_platform)]
     - m4                                 # [unix and (build_platform != target_platform)]
-    - pdal                               # [build_platform != target_platform]
+    - libpdal                            # [build_platform != target_platform]
     - libprotobuf                        # [build_platform != target_platform]
   host:
     - setuptools
@@ -112,7 +112,7 @@ requirements:
     - postgresql
     - psycopg2
     # Point Clouds
-    - pdal
+    - libpdal
     - laz-perf
     - ocl-icd      # [linux]
     - khronos-opencl-icd-loader      # [win or osx]
@@ -160,7 +160,7 @@ requirements:
     - yaml
     - owslib
     - pyqtwebkit
-    - pdal
+    - libpdal
     - laz-perf
     - ocl-icd      # [linux]
     - khronos-opencl-icd-loader      # [win or osx]

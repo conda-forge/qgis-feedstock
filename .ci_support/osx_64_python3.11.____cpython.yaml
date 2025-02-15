@@ -32,6 +32,8 @@ icu:
 - '75'
 libgdal:
 - '3.10'
+libpdal:
+- 2.8.4
 libprotobuf:
 - 5.28.3
 libspatialindex:
@@ -40,8 +42,6 @@ libzip:
 - '1'
 macos_machine:
 - x86_64-apple-darwin13.4.0
-pdal:
-- 2.8.2
 pin_run_as_build:
   python:
     min_pin: x.x
