@@ -1,0 +1,144 @@
+diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/AssignProjection.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/AssignProjection.py
+--- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/AssignProjection.py	2024-12-23 13:43:29.783960228 +1000
++++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/AssignProjection.py	2024-12-23 13:48:50.730411962 +1000
+@@ -110,7 +110,7 @@
+         self.setOutputValue(self.OUTPUT, fileName)
+ 
+         return [
+-            self.commandName() + (".bat" if isWindows() else ".py"),
++            self.commandName(),
+             GdalUtils.escapeAndJoin(arguments),
+         ]
+ 
+diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/fillnodata.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/fillnodata.py
+--- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/fillnodata.py	2024-12-23 13:43:29.784960223 +1000
++++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/fillnodata.py	2024-12-23 13:48:37.138479494 +1000
+@@ -204,6 +204,6 @@
+             arguments.extend(GdalUtils.parseCreationOptions(options))
+ 
+         return [
+-            self.commandName() + (".bat" if isWindows() else ".py"),
++            self.commandName(),
+             GdalUtils.escapeAndJoin(arguments),
+         ]
+diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/gdal2tiles.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/gdal2tiles.py
+--- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/gdal2tiles.py	2024-12-23 13:43:29.784960223 +1000
++++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/gdal2tiles.py	2024-12-23 13:48:31.554507197 +1000
+@@ -283,6 +283,6 @@
+             arguments.extend(input_details.credential_options_as_arguments())
+ 
+         return [
+-            self.commandName() + (".bat" if isWindows() else ".py"),
++            self.commandName(),
+             GdalUtils.escapeAndJoin(arguments),
+         ]
+diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/gdal2xyz.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/gdal2xyz.py
+--- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/gdal2xyz.py	2024-12-23 13:43:29.784960223 +1000
++++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/gdal2xyz.py	2024-12-23 13:48:25.690536262 +1000
+@@ -168,6 +168,6 @@
+             arguments.extend(input_details.credential_options_as_arguments())
+ 
+         return [
+-            self.commandName() + (".bat" if isWindows() else ".py"),
++            self.commandName(),
+             GdalUtils.escapeAndJoin(arguments),
+         ]
+diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/gdalcalc.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/gdalcalc.py
+--- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/gdalcalc.py	2024-12-23 13:43:29.784960223 +1000
++++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/gdalcalc.py	2024-12-23 13:48:20.154563675 +1000
+@@ -462,6 +462,6 @@
+         arguments.append(out)
+ 
+         return [
+-            self.commandName() + (".bat" if isWindows() else ".py"),
++            self.commandName(),
+             GdalUtils.escapeAndJoin(arguments),
+         ]
+diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/merge.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/merge.py
+--- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/merge.py	2024-12-23 13:43:29.784960223 +1000
++++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/merge.py	2024-12-23 13:48:14.090593673 +1000
+@@ -245,6 +245,6 @@
+         arguments.append(list_file)
+ 
+         return [
+-            self.commandName() + (".bat" if isWindows() else ".py"),
++            self.commandName(),
+             GdalUtils.escapeAndJoin(arguments),
+         ]
+diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/pansharp.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/pansharp.py
+--- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/pansharp.py	2024-12-23 13:43:29.785960219 +1000
++++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/pansharp.py	2024-12-23 13:48:07.906624235 +1000
+@@ -174,6 +174,6 @@
+             arguments.append(extra)
+ 
+         return [
+-            self.commandName() + (".bat" if isWindows() else ".py"),
++            self.commandName(),
+             GdalUtils.escapeAndJoin(arguments),
+         ]
+diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/pct2rgb.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/pct2rgb.py
+--- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/pct2rgb.py	2024-12-23 13:43:29.785960219 +1000
++++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/pct2rgb.py	2024-12-23 13:48:00.330661632 +1000
+@@ -119,6 +119,6 @@
+             arguments.extend(input_details.credential_options_as_arguments())
+ 
+         return [
+-            self.commandName() + (".bat" if isWindows() else ".py"),
++            self.commandName(),
+             GdalUtils.escapeAndJoin(arguments),
+         ]
+diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/polygonize.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/polygonize.py
+--- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/polygonize.py	2024-12-23 13:43:29.785960219 +1000
++++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/polygonize.py	2024-12-23 13:47:55.114687351 +1000
+@@ -153,6 +153,6 @@
+             arguments.extend(input_details.credential_options_as_arguments())
+ 
+         return [
+-            self.commandName() + (".bat" if isWindows() else ".py"),
++            self.commandName(),
+             GdalUtils.escapeAndJoin(arguments),
+         ]
+diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/proximity.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/proximity.py
+--- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/proximity.py	2024-12-23 13:43:29.785960219 +1000
++++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/proximity.py	2024-12-23 13:47:50.266711233 +1000
+@@ -271,6 +271,6 @@
+             arguments.extend(input_details.credential_options_as_arguments())
+ 
+         return [
+-            self.commandName() + (".bat" if isWindows() else ".py"),
++            self.commandName(),
+             GdalUtils.escapeAndJoin(arguments),
+         ]
+diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/retile.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/retile.py
+--- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/retile.py	2024-12-23 13:43:29.785960219 +1000
++++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/retile.py	2024-12-23 13:47:43.962742263 +1000
+@@ -294,6 +294,6 @@
+         arguments.extend(credential_options)
+ 
+         return [
+-            self.commandName() + (".bat" if isWindows() else ".py"),
++            self.commandName(),
+             GdalUtils.escapeAndJoin(arguments),
+         ]
+diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/rgb2pct.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/rgb2pct.py
+--- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/rgb2pct.py	2024-12-23 13:43:29.785960219 +1000
++++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/rgb2pct.py	2024-12-23 13:47:38.234770428 +1000
+@@ -112,6 +112,6 @@
+             arguments.extend(input_details.credential_options_as_arguments())
+ 
+         return [
+-            self.commandName() + (".bat" if isWindows() else ".py"),
++            self.commandName(),
+             GdalUtils.escapeAndJoin(arguments),
+         ]
+diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/sieve.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/sieve.py
+--- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/sieve.py	2024-12-23 13:43:29.785960219 +1000
++++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/sieve.py	2024-12-23 13:47:32.482798678 +1000
+@@ -166,6 +166,6 @@
+             arguments.extend(input_details.credential_options_as_arguments())
+ 
+         return [
+-            self.commandName() + (".bat" if isWindows() else ".py"),
++            self.commandName(),
+             GdalUtils.escapeAndJoin(arguments),
+         ]
