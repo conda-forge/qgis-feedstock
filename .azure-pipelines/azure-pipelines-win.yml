@@ -23,7 +23,7 @@ jobs:
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: C:\bld\
-    MINIFORGE_HOME: D:\Miniforge
+    MINIFORGE_HOME: C:\Miniforge
     UPLOAD_TEMP: D:\\tmp
 
   steps:
