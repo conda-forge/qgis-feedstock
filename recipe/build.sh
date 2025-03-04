@@ -99,7 +99,7 @@ if [ $(uname) == Darwin ]; then
   ln -s $PREFIX/QGIS.app/Contents/MacOS/QGIS $PREFIX/bin/qgis
   ln -s $PREFIX/bin/qgis_process.app/Contents/MacOS/qgis_process $PREFIX/bin/qgis_process
   
-  lldb --batch -o "run" -o "bt" -o "quit" -- $PYTHON -c 'import qgis.core'
+  PYTHONPATH="$PREFIX/share/qgis/python:$PYTHONPATH" lldb --batch -o "run" -o "bt" -o "quit" -- $PYTHON -c 'import qgis.core'
 fi
 
 
