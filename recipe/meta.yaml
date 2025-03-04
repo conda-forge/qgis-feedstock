@@ -72,8 +72,8 @@ requirements:
     - m4                                 # [unix and (build_platform != target_platform)]
     - libpdal                            # [build_platform != target_platform]
     - libprotobuf                        # [build_platform != target_platform]
-    - lldb                               # [osx]
   host:
+    - lldb                               # [osx]
     - setuptools
     - sip
     - python
