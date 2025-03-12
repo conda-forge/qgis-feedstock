@@ -1,4 +1,4 @@
-{% set version = "3.40.3" %}
+{% set version = "3.42.0" %}
 
 package:
   name: qgis
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: 51135f0b0f82f2b76de4b89a0978396dbdab9baa3c9c03c4a53b7e2f48451076
+  sha256: 04b743397ee2375a1a0521578131fc514752f84db2f86225a9551d1f87e704e8
   patches:
     - 0001-fix-protobuf-23.patch
     - 0002-skip-dot-in-path.patch  # [win]
@@ -16,9 +16,12 @@ source:
     - 0006-use-entrypoints.patch
 
 build:
-  number: 2
+  number: 0
   # pyproj no longer supports py38
-  skip: true  # [py2k or py<39]
+  # Segfault on import with OSX, removing for now.
+  # hopefully someone who cares abount OSX will step forward
+  # See https://github.com/conda-forge/qgis-feedstock/pull/505
+  skip: true  # [py2k or py<39 or osx]
 
 requirements:
   build:
@@ -73,6 +76,7 @@ requirements:
     - libpdal                            # [build_platform != target_platform]
     - libprotobuf                        # [build_platform != target_platform]
   host:
+    - lldb                               # [osx]
     - setuptools
     - sip
     - python
