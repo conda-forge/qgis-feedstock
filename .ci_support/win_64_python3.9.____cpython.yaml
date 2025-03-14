@@ -25,7 +25,7 @@ libgdal:
 libpdal:
 - 2.8.4
 libprotobuf:
-- 5.28.3
+- 5.29.3
 libspatialindex:
 - 2.1.0
 libzip:
