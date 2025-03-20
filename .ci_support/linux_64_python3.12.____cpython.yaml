@@ -47,7 +47,7 @@ pin_run_as_build:
 postgresql:
 - '17'
 proj:
-- '9.5'
+- '9.6'
 pyqt:
 - '5.15'
 python:
