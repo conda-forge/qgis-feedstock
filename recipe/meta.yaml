@@ -1,4 +1,4 @@
-{% set version = "3.42.0" %}
+{% set version = "3.42.1" %}
 
 package:
   name: qgis
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: 04b743397ee2375a1a0521578131fc514752f84db2f86225a9551d1f87e704e8
+  sha256: 9d6a01b24712140c4159842fd00cd9c7532da8bc13625d1a3bf09abedd42c1e9
   patches:
     - 0001-fix-protobuf-23.patch
     - 0002-skip-dot-in-path.patch  # [win]
@@ -16,7 +16,7 @@ source:
     - 0006-use-entrypoints.patch
 
 build:
-  number: 2
+  number: 0
   # pyproj no longer supports py39
   # Segfault on import with OSX, removing for now.
   # hopefully someone who cares abount OSX will step forward
