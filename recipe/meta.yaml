@@ -17,8 +17,8 @@ source:
 
 build:
   number: 3
-  # pyproj no longer supports py38
-  skip: true  # [py2k or py<39]
+  # pyproj no longer supports py39
+  skip: true  # [py2k or py<310]
 
 requirements:
   build:
