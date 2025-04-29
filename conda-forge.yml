@@ -20,6 +20,7 @@ os_version:
 provider:
   linux: azure
   linux_aarch64: azure
+  linux_ppc64le: default
   osx: azure
   win: azure
 test: native_and_emulated
