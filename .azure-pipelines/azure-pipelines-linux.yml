@@ -32,6 +32,18 @@ jobs:
         CONFIG: linux_aarch64_python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:cos7
+      linux_ppc64le_python3.10.____cpython:
+        CONFIG: linux_ppc64le_python3.10.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:cos7
+      linux_ppc64le_python3.11.____cpython:
+        CONFIG: linux_ppc64le_python3.11.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:cos7
+      linux_ppc64le_python3.12.____cpython:
+        CONFIG: linux_ppc64le_python3.12.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:cos7
   timeoutInMinutes: 360
   variables: {}
 
