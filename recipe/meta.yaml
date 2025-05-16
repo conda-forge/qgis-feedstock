@@ -1,4 +1,4 @@
-{% set version = "3.42.2" %}
+{% set version = "3.42.3" %}
 
 package:
   name: qgis
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: ce63863990da409de09606651252a3811b1cbee017ce8e8fbf2fd20a64778883
+  sha256: 677d465a26be245a1230941f005c8e51567604dd6b42387bd41fc8b7eb7a8d3a
   patches:
     - 0001-fix-protobuf-23.patch
     - 0002-skip-dot-in-path.patch  # [win]
