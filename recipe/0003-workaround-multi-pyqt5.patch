@@ -12,5 +12,7 @@ index b51fd00..344875e 100644
 +        list(GET _pyqt5_metadata 0 _pyqt5_metadata)
 +      ENDIF(_pyqt5_metadata_length GREATER 1)
        FILE(READ ${_pyqt5_metadata} _pyqt5_metadata_contents)
+       message("file ${_pyqt5_metadata}")
+       message("contents ${_pyqt5_metadata_contents}")
        STRING(REGEX REPLACE ".*\nVersion: ([^\n]+).*$" "\\1" PYQT5_VERSION_STR ${_pyqt5_metadata_contents})
      ELSE(_pyqt5_metadata)
