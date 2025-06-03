@@ -2,7 +2,7 @@ diff --git a/cmake/FindPyQt5.cmake.orig b/cmake/FindPyQt5.cmake
 index b51fd00..344875e 100644
 --- a/cmake/FindPyQt5.cmake.orig
 +++ b/cmake/FindPyQt5.cmake
-@@ -27,6 +27,11 @@ ELSE(EXISTS PYQT5_VERSION_STR)
+@@ -27,6 +27,12 @@
  
      FILE(GLOB _pyqt5_metadata "${Python_SITEARCH}/PyQt5-*.dist-info/METADATA")
      IF(_pyqt5_metadata)
