@@ -46,8 +46,8 @@ requirements:
   host:
     - lldb                               # [osx]
     - setuptools
-    - sip
-    - python
+    - sip                                # [build_platform == target_platform]
+    - python                             # [build_platform == target_platform]
     - six
     - flex                               # [unix]
     - bison                              # [unix]
@@ -61,12 +61,12 @@ requirements:
     - exiv2
     # Qt stack.
     - qt-main
-    - pyqt
-    - pyqt5-sip
-    - pyqt-builder
+    - pyqt                               # [build_platform == target_platform]
+    - pyqt5-sip                          # [build_platform == target_platform]
+    - pyqt-builder                       # [build_platform == target_platform]
     - qtwebkit
     - pyqtwebkit
-    - qscintilla2
+    - qscintilla2                        # [build_platform == target_platform]
     - qca
     - qjson
     - qwt
