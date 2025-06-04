@@ -66,7 +66,7 @@ requirements:
     - pyqt-builder                       # [build_platform == target_platform]
     - qtwebkit
     - pyqtwebkit
-    - qscintilla2                        # [build_platform == target_platform]
+    - qscintilla2
     - qca
     - qjson
     - qwt
