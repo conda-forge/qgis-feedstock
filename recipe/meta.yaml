@@ -1,4 +1,5 @@
 {% set version = "3.42.3" %}
+{% set pyqt_version = "5.15.11" %}
 
 package:
   name: qgis
@@ -35,7 +36,7 @@ requirements:
     - sip                                # [build_platform != target_platform]
     - pyqt-builder                       # [build_platform != target_platform]
     - pyqt5-sip                          # [build_platform != target_platform]
-    - pyqt                               # [build_platform != target_platform]
+    - pyqt {{ pyqt_version }}            # [build_platform != target_platform]
     - qscintilla2                        # [build_platform != target_platform]
     - pkgconfig                          # [build_platform != target_platform]
     - flex                               # [unix and (build_platform != target_platform)]
@@ -61,7 +62,7 @@ requirements:
     - exiv2
     # Qt stack.
     - qt-main
-    - pyqt                               # [build_platform == target_platform]
+    - pyqt {{ pyqt_version }}            # [build_platform == target_platform]
     - pyqt5-sip                          # [build_platform == target_platform]
     - pyqt-builder                       # [build_platform == target_platform]
     - qtwebkit
