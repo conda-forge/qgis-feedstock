@@ -51,7 +51,7 @@ proj:
 pyqt:
 - '5.15'
 python:
-- 3.12.* *_cpython
+- 3.13.* *_cp313
 qt_main:
 - '5.15'
 qtkeychain:
