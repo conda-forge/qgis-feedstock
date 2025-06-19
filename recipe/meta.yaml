@@ -1,5 +1,7 @@
 {% set version = "3.42.3" %}
 {% set pyqt_version = "5.15.11" %}
+# https://github.com/qgis/QGIS/issues/61951
+{% set sip_version = "6.10.0" %}
 
 package:
   name: qgis
@@ -19,8 +21,11 @@ source:
 build:
   number: 0
   # pyproj no longer supports py39
-  skip: true  # [py2k or py<310]
-
+  # Segfault on import with OSX, removing for now.
+  # hopefully someone who cares abount OSX will step forward
+  # See https://github.com/conda-forge/qgis-feedstock/pull/505  
+  skip: true  # [py2k or py<310 or osx]
+  
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
@@ -33,7 +38,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
-    - sip                                # [build_platform != target_platform]
+    - sip {{ sip_version }}              # [build_platform != target_platform]
     - pyqt-builder                       # [build_platform != target_platform]
     - pyqt5-sip                          # [build_platform != target_platform]
     - pyqt {{ pyqt_version }}            # [build_platform != target_platform]
@@ -47,7 +52,7 @@ requirements:
   host:
     - lldb                               # [osx]
     - setuptools
-    - sip                                # [build_platform == target_platform]
+    - sip {{ sip_version }}              # [build_platform == target_platform]
     - python                             # [build_platform == target_platform]
     - six
     - flex                               # [unix]
