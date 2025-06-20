@@ -2,11 +2,12 @@ diff --git a/cmake/FindPyQt5.cmake.orig b/cmake/FindPyQt5.cmake
 index b51fd00..344875e 100644
 --- a/cmake/FindPyQt5.cmake.orig
 +++ b/cmake/FindPyQt5.cmake
-@@ -27,6 +27,11 @@ ELSE(EXISTS PYQT5_VERSION_STR)
+@@ -27,6 +27,12 @@
  
      FILE(GLOB _pyqt5_metadata "${Python_SITEARCH}/PyQt5-*.dist-info/METADATA")
      IF(_pyqt5_metadata)
 +      # workaround pyqt and pyqtwebkit being different versions - just process the first one
++      message(WARNING "${_pyqt5_metadata}")
 +      list(LENGTH _pyqt5_metadata _pyqt5_metadata_length)
 +      IF(${_pyqt5_metadata_length} GREATER 1)
 +        list(GET _pyqt5_metadata 0 _pyqt5_metadata)
