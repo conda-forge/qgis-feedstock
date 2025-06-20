@@ -52,7 +52,7 @@ requirements:
   host:
     - lldb                               # [osx]
     - setuptools
-    - sip {{ sip_version }}              # [build_platform == target_platform]
+    - sip {{ sip_version }}
     - python                             # [build_platform == target_platform]
     - six
     - flex                               # [unix]
