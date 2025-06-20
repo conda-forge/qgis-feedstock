@@ -1,5 +1,5 @@
 c_compiler:
-- vs2019
+- vs2022
 c_stdlib:
 - vs
 channel_sources:
@@ -7,13 +7,13 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2019
+- vs2022
 exiv2:
 - '0.28'
 expat:
 - '2'
 gdal:
-- '3.10'
+- '3.11'
 geos:
 - 3.13.1
 gsl:
@@ -21,7 +21,7 @@ gsl:
 icu:
 - '75'
 libgdal:
-- '3.10'
+- '3.11'
 libpdal:
 - 2.8.4
 libprotobuf:

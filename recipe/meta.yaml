@@ -1,4 +1,7 @@
-{% set version = "3.42.2" %}
+{% set version = "3.42.3" %}
+{% set pyqt_version = "5.15.11" %}
+# https://github.com/qgis/QGIS/issues/61951
+{% set sip_version = "6.10.0" %}
 
 package:
   name: qgis
@@ -6,12 +9,12 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: ce63863990da409de09606651252a3811b1cbee017ce8e8fbf2fd20a64778883
+  sha256: 677d465a26be245a1230941f005c8e51567604dd6b42387bd41fc8b7eb7a8d3a
   patches:
     - 0001-fix-protobuf-23.patch
     - 0002-skip-dot-in-path.patch  # [win]
     # remove when https://github.com/conda-forge/pyqt-feedstock/pull/129 merged
-    - 0003-workaround-multi-pyqt5.patch  # [win]
+    - 0003-workaround-multi-pyqt5.patch
     - 0005-check-locks-not-destroyed.patch
     - 0006-use-entrypoints.patch
 
@@ -22,7 +25,7 @@ build:
   # hopefully someone who cares abount OSX will step forward
   # See https://github.com/conda-forge/qgis-feedstock/pull/505  
   skip: true  # [py2k or py<310 or osx]
-
+  
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
@@ -35,39 +38,10 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
-    # The CDT packages below are those used in qt-feedstock
-    - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
-    - {{ cdt('libx11-devel') }}          # [linux]
-    - {{ cdt('libxext-devel') }}         # [linux]
-    - {{ cdt('libxrender-devel') }}      # [linux]
-    - {{ cdt('mesa-libgl-devel') }}      # [linux]
-    - {{ cdt('mesa-libegl-devel') }}     # [linux]
-    - {{ cdt('mesa-dri-drivers') }}      # [linux]
-    - {{ cdt('libxau-devel') }}          # [linux]
-    - {{ cdt('alsa-lib-devel') }}        # [linux]
-    - {{ cdt('gtk2-devel') }}            # [linux]
-    - {{ cdt('gtkmm24-devel') }}         # [linux]
-    - {{ cdt('libdrm-devel') }}          # [linux]
-    - {{ cdt('libxcomposite-devel') }}   # [linux]
-    - {{ cdt('libxcursor-devel') }}      # [linux]
-    - {{ cdt('libxi-devel') }}           # [linux]
-    - {{ cdt('libxrandr-devel') }}       # [linux]
-    - {{ cdt('pciutils-devel') }}        # [linux]
-    - {{ cdt('libxscrnsaver-devel') }}   # [linux]
-    - {{ cdt('libxtst-devel') }}         # [linux]
-    - {{ cdt('libselinux-devel') }}      # [linux]
-    - {{ cdt('libxdamage') }}            # [linux]
-    - {{ cdt('libxdamage-devel') }}      # [linux]
-    - {{ cdt('libxfixes') }}             # [linux]
-    - {{ cdt('libxfixes-devel') }}       # [linux]
-    - {{ cdt('libxxf86vm') }}            # [linux]
-    - {{ cdt('libxxf86vm-devel') }}      # [linux]
-    - {{ cdt('libxcb') }}                # [linux]
-    - {{ cdt('libglvnd-glx') }}          # [linux and cdt_name != 'cos6']
-    - sip                                # [build_platform != target_platform]
+    - sip {{ sip_version }}              # [build_platform != target_platform]
     - pyqt-builder                       # [build_platform != target_platform]
     - pyqt5-sip                          # [build_platform != target_platform]
-    - pyqt                               # [build_platform != target_platform]
+    - pyqt {{ pyqt_version }}            # [build_platform != target_platform]
     - qscintilla2                        # [build_platform != target_platform]
     - pkgconfig                          # [build_platform != target_platform]
     - flex                               # [unix and (build_platform != target_platform)]
@@ -78,8 +52,8 @@ requirements:
   host:
     - lldb                               # [osx]
     - setuptools
-    - sip
-    - python
+    - sip {{ sip_version }}
+    - python                             # [build_platform == target_platform]
     - six
     - flex                               # [unix]
     - bison                              # [unix]
@@ -89,13 +63,13 @@ requirements:
     - icu
     - libzip
     - libprotobuf
-    - libtasn1  # [osx]
+    - libtasn1                           # [osx]
     - exiv2
     # Qt stack.
     - qt-main
-    - pyqt
-    - pyqt5-sip
-    - pyqt-builder
+    - pyqt {{ pyqt_version }}            # [build_platform == target_platform]
+    - pyqt5-sip                          # [build_platform == target_platform]
+    - pyqt-builder                       # [build_platform == target_platform]
     - qtwebkit
     - pyqtwebkit
     - qscintilla2
@@ -121,11 +95,28 @@ requirements:
     - laz-perf
     - ocl-icd      # [linux]
     - khronos-opencl-icd-loader      # [win or osx]
+    - libgl-devel                            # [linux]
+    - libegl-devel                           # [linux]
+    - libopengl-devel                        # [linux]
+    - xorg-xorgproto                         # [linux]
+    - xcb-util                               # [linux]
+    - xcb-util-wm                            # [linux]
+    - xcb-util-keysyms                       # [linux]
+    - xcb-util-image                         # [linux]
+    - xcb-util-renderutil                    # [linux]
+    - xorg-libx11                            # [linux]
+    - xorg-libxext                           # [linux]
+    - xorg-libxdamage                        # [linux]
+    - xorg-libsm                             # [linux]
+    - xorg-libice                            # [linux]
+    - xorg-libxcomposite                     # [linux]
+    - xorg-libxxf86vm                        # [linux]
+    - xorg-xf86vidmodeproto                  # [linux]
   run:
     - python
     - icu
     - libzip
-    - libtasn1  # [osx]
+    - libtasn1                               # [osx]
     - qt-main
     - pyqt
     - pyqt5-sip
@@ -167,44 +158,17 @@ requirements:
     - pyqtwebkit
     - libpdal
     - laz-perf
-    - ocl-icd      # [linux]
-    - khronos-opencl-icd-loader      # [win or osx]
+    - ocl-icd                                # [linux]
+    - khronos-opencl-icd-loader              # [win or osx]
 
-  run_constrained:   # [osx]
+  run_constrained:                           # [osx]
 test:
-  requires:
-    - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
-    - {{ cdt('libx11-devel') }}          # [linux]
-    - {{ cdt('libxext-devel') }}         # [linux]
-    - {{ cdt('libxrender-devel') }}      # [linux]
-    - {{ cdt('mesa-libgl-devel') }}      # [linux]
-    - {{ cdt('mesa-libegl-devel') }}     # [linux]
-    - {{ cdt('mesa-dri-drivers') }}      # [linux]
-    - {{ cdt('libxau-devel') }}          # [linux]
-    - {{ cdt('alsa-lib-devel') }}        # [linux]
-    - {{ cdt('gtk2-devel') }}            # [linux]
-    - {{ cdt('gtkmm24-devel') }}         # [linux]
-    - {{ cdt('libdrm-devel') }}          # [linux]
-    - {{ cdt('libxcomposite-devel') }}   # [linux]
-    - {{ cdt('libxcursor-devel') }}      # [linux]
-    - {{ cdt('libxi-devel') }}           # [linux]
-    - {{ cdt('libxrandr-devel') }}       # [linux]
-    - {{ cdt('pciutils-devel') }}        # [linux]
-    - {{ cdt('libxscrnsaver-devel') }}   # [linux]
-    - {{ cdt('libxtst-devel') }}         # [linux]
-    - {{ cdt('libselinux-devel') }}      # [linux]
-    - {{ cdt('libxdamage') }}            # [linux]
-    - {{ cdt('libxdamage-devel') }}      # [linux]
-    - {{ cdt('libxfixes') }}             # [linux]
-    - {{ cdt('libxfixes-devel') }}       # [linux]
-    - {{ cdt('libxxf86vm') }}            # [linux]
-    - {{ cdt('libxcb') }}                # [linux]
   files:
     - test_data
     - test_py_qgis.py
   commands:
-    - {{ RECIPE_DIR }}/run_test.bat  # [win]
-    - bash {{ RECIPE_DIR }}/run_test.sh  # [not win]
+    - {{ RECIPE_DIR }}/run_test.bat          # [win]
+    - bash {{ RECIPE_DIR }}/run_test.sh      # [not win]
 
 about:
   home: http://qgis.org/
