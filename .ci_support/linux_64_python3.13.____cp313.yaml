@@ -51,7 +51,7 @@ proj:
 pyqt:
 - '5.15'
 python:
-- 3.10.* *_cpython
+- 3.13.* *_cp313
 qt_main:
 - '5.15'
 qtkeychain:
@@ -59,7 +59,7 @@ qtkeychain:
 sqlite:
 - '3'
 target_platform:
-- linux-aarch64
+- linux-64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
