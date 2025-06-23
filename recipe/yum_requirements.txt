@@ -1,2 +1,7 @@
-libXcomposite
+mesa-libGL
 mesa-libGL-devel
+mesa-libEGL-devel
+mesa-dri-drivers
+libX11-devel
+libglvnd-glx
+xorg-x11-server-Xvfb

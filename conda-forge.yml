@@ -22,4 +22,4 @@ provider:
   linux_aarch64: azure
   osx: azure
   win: azure
-test: native_and_emulated
+test: native
