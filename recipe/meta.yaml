@@ -19,12 +19,9 @@ source:
     - 0006-use-entrypoints.patch
 
 build:
-  number: 0
+  number: 1
   # pyproj no longer supports py39
-  # Segfault on import with OSX, removing for now.
-  # hopefully someone who cares abount OSX will step forward
-  # See https://github.com/conda-forge/qgis-feedstock/pull/505  
-  skip: true  # [py2k or py<310 or osx]
+  skip: true  # [py2k or py<310]
 
 requirements:
   build:
