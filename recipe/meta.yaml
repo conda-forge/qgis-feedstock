@@ -1,4 +1,4 @@
-{% set version = "3.40.9" %}
+{% set version = "3.40.10" %}
 {% set pyqt_version = "5.15.11" %}
 # https://github.com/qgis/QGIS/issues/61951
 {% set sip_version = "6.10.0" %}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: 1b9cf895917d21e2cdb6858e079fe35d1c058e731b0cb1a5b42eeaa31dc5a537
+  sha256: 0787918f5dd838396038617b40863b9791caf1dcc710477e8e03ebb24453b80d
   patches:
     - 0001-fix-protobuf-23.patch
     - 0002-skip-dot-in-path.patch  # [win]
@@ -19,7 +19,7 @@ source:
     - 0006-use-entrypoints.patch
 
 build:
-  number: 1
+  number: 0
   # pyproj no longer supports py39
   skip: true  # [py2k or py<310]
 
