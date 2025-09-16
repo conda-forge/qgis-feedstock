@@ -19,7 +19,7 @@ source:
     - 0006-use-entrypoints.patch
 
 build:
-  number: 3
+  number: 4
   # pyproj no longer supports py39
   skip: true  # [py2k or py<310]
 
