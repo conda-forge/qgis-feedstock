@@ -1,4 +1,4 @@
-{% set version = "3.40.10" %}
+{% set version = "3.40.11" %}
 {% set pyqt_version = "5.15.11" %}
 # https://github.com/qgis/QGIS/issues/61951
 {% set sip_version = "6.10.0" %}
@@ -19,7 +19,7 @@ source:
     - 0006-use-entrypoints.patch
 
 build:
-  number: 3
+  number: 0
   # pyproj no longer supports py39
   skip: true  # [py2k or py<310]
 
