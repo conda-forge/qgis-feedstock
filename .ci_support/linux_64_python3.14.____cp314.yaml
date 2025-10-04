@@ -1,13 +1,21 @@
 c_compiler:
-- vs2022
+- gcc
+c_compiler_version:
+- '14'
 c_stdlib:
-- vs
+- sysroot
+c_stdlib_version:
+- '2.17'
 channel_sources:
-- conda-forge
+- conda-forge,conda-forge/label/python_rc
 channel_targets:
 - conda-forge qgis_ltr
 cxx_compiler:
-- vs2022
+- gxx
+cxx_compiler_version:
+- '14'
+docker_image:
+- quay.io/condaforge/linux-anvil-x86_64:alma9
 exiv2:
 - '0.28'
 expat:
@@ -41,7 +49,7 @@ proj:
 pyqt:
 - '5.15'
 python:
-- 3.10.* *_cpython
+- 3.14.* *_cp314
 qt_main:
 - '5.15'
 qtkeychain:
@@ -49,7 +57,9 @@ qtkeychain:
 sqlite:
 - '3'
 target_platform:
-- win-64
+- linux-64
 zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
 - - python
   - channel_sources

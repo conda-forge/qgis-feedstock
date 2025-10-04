@@ -3,7 +3,7 @@ c_compiler:
 c_stdlib:
 - vs
 channel_sources:
-- conda-forge
+- conda-forge,conda-forge/label/python_rc
 channel_targets:
 - conda-forge qgis_ltr
 cxx_compiler:
@@ -41,7 +41,7 @@ proj:
 pyqt:
 - '5.15'
 python:
-- 3.10.* *_cpython
+- 3.14.* *_cp314
 qt_main:
 - '5.15'
 qtkeychain:
