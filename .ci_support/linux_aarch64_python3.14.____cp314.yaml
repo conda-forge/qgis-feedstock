@@ -7,7 +7,7 @@ c_stdlib:
 c_stdlib_version:
 - '2.17'
 channel_sources:
-- conda-forge
+- conda-forge,conda-forge/label/python_rc
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -49,7 +49,7 @@ proj:
 pyqt:
 - '5.15'
 python:
-- 3.12.* *_cpython
+- 3.14.* *_cp314
 qt_main:
 - '5.15'
 qtkeychain:
