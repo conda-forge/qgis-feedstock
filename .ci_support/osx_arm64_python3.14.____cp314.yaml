@@ -11,7 +11,7 @@ c_stdlib:
 c_stdlib_version:
 - '11.0'
 channel_sources:
-- conda-forge,conda-forge/label/python_rc
+- conda-forge
 channel_targets:
 - conda-forge qgis_ltr
 cxx_compiler:
@@ -47,9 +47,9 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 postgresql:
-- '17'
+- '18'
 proj:
-- '9.6'
+- '9.7'
 pyqt:
 - '5.15'
 python:
@@ -65,5 +65,3 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - python
-  - channel_sources

@@ -3,7 +3,7 @@ c_compiler:
 c_stdlib:
 - vs
 channel_sources:
-- conda-forge,conda-forge/label/python_rc
+- conda-forge
 channel_targets:
 - conda-forge qgis_ltr
 cxx_compiler:
@@ -35,9 +35,9 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 postgresql:
-- '17'
+- '18'
 proj:
-- '9.6'
+- '9.7'
 pyqt:
 - '5.15'
 python:
@@ -50,6 +50,3 @@ sqlite:
 - '3'
 target_platform:
 - win-64
-zip_keys:
-- - python
-  - channel_sources
