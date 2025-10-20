@@ -6,8 +6,6 @@ c_stdlib:
 - sysroot
 c_stdlib_version:
 - '2.17'
-cdt_name:
-- conda
 channel_sources:
 - conda-forge
 channel_targets:
@@ -45,13 +43,13 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 postgresql:
-- '17'
+- '18'
 proj:
-- '9.6'
+- '9.7'
 pyqt:
 - '5.15'
 python:
-- 3.10.* *_cpython
+- 3.14.* *_cp314
 qt_main:
 - '5.15'
 qtkeychain:
@@ -59,7 +57,7 @@ qtkeychain:
 sqlite:
 - '3'
 target_platform:
-- linux-aarch64
+- linux-64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
