@@ -85,7 +85,7 @@ requirements:
     # GSL for georeferencer.
     - gsl
     - sqlite
-    - libspatialindex
+    - libspatialindex 2.0
     - libspatialite
     # For PostgreSQL support.
     - postgresql
@@ -132,7 +132,7 @@ requirements:
     - proj
     - gsl
     - sqlite
-    - libspatialindex
+    - libspatialindex 2.0
     - libspatialite
     - psycopg2
     - postgresql
