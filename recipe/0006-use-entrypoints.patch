@@ -1,6 +1,6 @@
-diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/AssignProjection.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/AssignProjection.py
---- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/AssignProjection.py	2024-12-23 13:43:29.783960228 +1000
-+++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/AssignProjection.py	2024-12-23 13:48:50.730411962 +1000
+diff -ru QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/AssignProjection.py QGIS-final-3_44_4/python/plugins/processing/algs/gdal/AssignProjection.py
+--- QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/AssignProjection.py	2025-10-30 07:49:41.100955644 +1000
++++ QGIS-final-3_44_4/python/plugins/processing/algs/gdal/AssignProjection.py	2025-10-30 07:50:54.896868765 +1000
 @@ -110,7 +110,7 @@
          self.setOutputValue(self.OUTPUT, fileName)
  
@@ -10,10 +10,10 @@ diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/AssignProjec
              GdalUtils.escapeAndJoin(arguments),
          ]
  
-diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/fillnodata.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/fillnodata.py
---- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/fillnodata.py	2024-12-23 13:43:29.784960223 +1000
-+++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/fillnodata.py	2024-12-23 13:48:37.138479494 +1000
-@@ -204,6 +204,6 @@
+diff -ru QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/fillnodata.py QGIS-final-3_44_4/python/plugins/processing/algs/gdal/fillnodata.py
+--- QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/fillnodata.py	2025-10-30 07:49:41.101955645 +1000
++++ QGIS-final-3_44_4/python/plugins/processing/algs/gdal/fillnodata.py	2025-10-30 07:51:39.048698239 +1000
+@@ -225,6 +225,6 @@
              arguments.extend(GdalUtils.parseCreationOptions(options))
  
          return [
@@ -21,9 +21,9 @@ diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/fillnodata.p
 +            self.commandName(),
              GdalUtils.escapeAndJoin(arguments),
          ]
-diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/gdal2tiles.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/gdal2tiles.py
---- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/gdal2tiles.py	2024-12-23 13:43:29.784960223 +1000
-+++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/gdal2tiles.py	2024-12-23 13:48:31.554507197 +1000
+diff -ru QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/gdal2tiles.py QGIS-final-3_44_4/python/plugins/processing/algs/gdal/gdal2tiles.py
+--- QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/gdal2tiles.py	2025-10-30 07:49:41.101955645 +1000
++++ QGIS-final-3_44_4/python/plugins/processing/algs/gdal/gdal2tiles.py	2025-10-30 07:51:46.240662721 +1000
 @@ -283,6 +283,6 @@
              arguments.extend(input_details.credential_options_as_arguments())
  
@@ -32,9 +32,9 @@ diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/gdal2tiles.p
 +            self.commandName(),
              GdalUtils.escapeAndJoin(arguments),
          ]
-diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/gdal2xyz.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/gdal2xyz.py
---- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/gdal2xyz.py	2024-12-23 13:43:29.784960223 +1000
-+++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/gdal2xyz.py	2024-12-23 13:48:25.690536262 +1000
+diff -ru QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/gdal2xyz.py QGIS-final-3_44_4/python/plugins/processing/algs/gdal/gdal2xyz.py
+--- QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/gdal2xyz.py	2025-10-30 07:49:41.101955645 +1000
++++ QGIS-final-3_44_4/python/plugins/processing/algs/gdal/gdal2xyz.py	2025-10-30 07:51:58.360598158 +1000
 @@ -168,6 +168,6 @@
              arguments.extend(input_details.credential_options_as_arguments())
  
@@ -43,10 +43,10 @@ diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/gdal2xyz.py 
 +            self.commandName(),
              GdalUtils.escapeAndJoin(arguments),
          ]
-diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/gdalcalc.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/gdalcalc.py
---- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/gdalcalc.py	2024-12-23 13:43:29.784960223 +1000
-+++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/gdalcalc.py	2024-12-23 13:48:20.154563675 +1000
-@@ -462,6 +462,6 @@
+diff -ru QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/gdalcalc.py QGIS-final-3_44_4/python/plugins/processing/algs/gdal/gdalcalc.py
+--- QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/gdalcalc.py	2025-10-30 07:49:41.101955645 +1000
++++ QGIS-final-3_44_4/python/plugins/processing/algs/gdal/gdalcalc.py	2025-10-30 07:52:17.311485657 +1000
+@@ -483,6 +483,6 @@
          arguments.append(out)
  
          return [
@@ -54,21 +54,22 @@ diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/gdalcalc.py 
 +            self.commandName(),
              GdalUtils.escapeAndJoin(arguments),
          ]
-diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/merge.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/merge.py
---- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/merge.py	2024-12-23 13:43:29.784960223 +1000
-+++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/merge.py	2024-12-23 13:48:14.090593673 +1000
-@@ -245,6 +245,6 @@
+diff -ru QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/merge.py QGIS-final-3_44_4/python/plugins/processing/algs/gdal/merge.py
+--- QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/merge.py	2025-10-30 07:49:41.101955645 +1000
++++ QGIS-final-3_44_4/python/plugins/processing/algs/gdal/merge.py	2025-10-30 07:53:07.272124986 +1000
+@@ -266,7 +266,7 @@
          arguments.append(list_file)
  
          return [
--            self.commandName() + (".bat" if isWindows() else ".py"),
+-            self.commandName() + merge.command_ext(),
 +            self.commandName(),
              GdalUtils.escapeAndJoin(arguments),
          ]
-diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/pansharp.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/pansharp.py
---- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/pansharp.py	2024-12-23 13:43:29.785960219 +1000
-+++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/pansharp.py	2024-12-23 13:48:07.906624235 +1000
-@@ -174,6 +174,6 @@
+ 
+diff -ru QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/pansharp.py QGIS-final-3_44_4/python/plugins/processing/algs/gdal/pansharp.py
+--- QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/pansharp.py	2025-10-30 07:49:41.101955645 +1000
++++ QGIS-final-3_44_4/python/plugins/processing/algs/gdal/pansharp.py	2025-10-30 07:54:48.230141905 +1000
+@@ -195,6 +195,6 @@
              arguments.append(extra)
  
          return [
@@ -76,9 +77,9 @@ diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/pansharp.py 
 +            self.commandName(),
              GdalUtils.escapeAndJoin(arguments),
          ]
-diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/pct2rgb.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/pct2rgb.py
---- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/pct2rgb.py	2024-12-23 13:43:29.785960219 +1000
-+++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/pct2rgb.py	2024-12-23 13:48:00.330661632 +1000
+diff -ru QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/pct2rgb.py QGIS-final-3_44_4/python/plugins/processing/algs/gdal/pct2rgb.py
+--- QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/pct2rgb.py	2025-10-30 07:49:41.101955645 +1000
++++ QGIS-final-3_44_4/python/plugins/processing/algs/gdal/pct2rgb.py	2025-10-30 07:54:55.646057609 +1000
 @@ -119,6 +119,6 @@
              arguments.extend(input_details.credential_options_as_arguments())
  
@@ -87,10 +88,10 @@ diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/pct2rgb.py Q
 +            self.commandName(),
              GdalUtils.escapeAndJoin(arguments),
          ]
-diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/polygonize.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/polygonize.py
---- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/polygonize.py	2024-12-23 13:43:29.785960219 +1000
-+++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/polygonize.py	2024-12-23 13:47:55.114687351 +1000
-@@ -153,6 +153,6 @@
+diff -ru QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/polygonize.py QGIS-final-3_44_4/python/plugins/processing/algs/gdal/polygonize.py
+--- QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/polygonize.py	2025-10-30 07:49:41.101955645 +1000
++++ QGIS-final-3_44_4/python/plugins/processing/algs/gdal/polygonize.py	2025-10-30 07:55:04.637953342 +1000
+@@ -155,6 +155,6 @@
              arguments.extend(input_details.credential_options_as_arguments())
  
          return [
@@ -98,10 +99,10 @@ diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/polygonize.p
 +            self.commandName(),
              GdalUtils.escapeAndJoin(arguments),
          ]
-diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/proximity.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/proximity.py
---- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/proximity.py	2024-12-23 13:43:29.785960219 +1000
-+++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/proximity.py	2024-12-23 13:47:50.266711233 +1000
-@@ -271,6 +271,6 @@
+diff -ru QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/proximity.py QGIS-final-3_44_4/python/plugins/processing/algs/gdal/proximity.py
+--- QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/proximity.py	2025-10-30 07:49:41.101955645 +1000
++++ QGIS-final-3_44_4/python/plugins/processing/algs/gdal/proximity.py	2025-10-30 07:55:11.485872444 +1000
+@@ -307,6 +307,6 @@
              arguments.extend(input_details.credential_options_as_arguments())
  
          return [
@@ -109,10 +110,10 @@ diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/proximity.py
 +            self.commandName(),
              GdalUtils.escapeAndJoin(arguments),
          ]
-diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/retile.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/retile.py
---- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/retile.py	2024-12-23 13:43:29.785960219 +1000
-+++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/retile.py	2024-12-23 13:47:43.962742263 +1000
-@@ -294,6 +294,6 @@
+diff -ru QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/retile.py QGIS-final-3_44_4/python/plugins/processing/algs/gdal/retile.py
+--- QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/retile.py	2025-10-30 07:49:41.101955645 +1000
++++ QGIS-final-3_44_4/python/plugins/processing/algs/gdal/retile.py	2025-10-30 07:55:30.700638757 +1000
+@@ -319,6 +319,6 @@
          arguments.extend(credential_options)
  
          return [
@@ -120,9 +121,9 @@ diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/retile.py QG
 +            self.commandName(),
              GdalUtils.escapeAndJoin(arguments),
          ]
-diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/rgb2pct.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/rgb2pct.py
---- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/rgb2pct.py	2024-12-23 13:43:29.785960219 +1000
-+++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/rgb2pct.py	2024-12-23 13:47:38.234770428 +1000
+diff -ru QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/rgb2pct.py QGIS-final-3_44_4/python/plugins/processing/algs/gdal/rgb2pct.py
+--- QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/rgb2pct.py	2025-10-30 07:49:41.101955645 +1000
++++ QGIS-final-3_44_4/python/plugins/processing/algs/gdal/rgb2pct.py	2025-10-30 07:55:37.444554437 +1000
 @@ -112,6 +112,6 @@
              arguments.extend(input_details.credential_options_as_arguments())
  
@@ -131,9 +132,9 @@ diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/rgb2pct.py Q
 +            self.commandName(),
              GdalUtils.escapeAndJoin(arguments),
          ]
-diff -ru QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/sieve.py QGIS-final-3_40_2/python/plugins/processing/algs/gdal/sieve.py
---- QGIS-final-3_40_2_orig/python/plugins/processing/algs/gdal/sieve.py	2024-12-23 13:43:29.785960219 +1000
-+++ QGIS-final-3_40_2/python/plugins/processing/algs/gdal/sieve.py	2024-12-23 13:47:32.482798678 +1000
+diff -ru QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/sieve.py QGIS-final-3_44_4/python/plugins/processing/algs/gdal/sieve.py
+--- QGIS-final-3_44_4-orig/python/plugins/processing/algs/gdal/sieve.py	2025-10-30 07:49:41.101955645 +1000
++++ QGIS-final-3_44_4/python/plugins/processing/algs/gdal/sieve.py	2025-10-30 07:55:46.756436098 +1000
 @@ -166,6 +166,6 @@
              arguments.extend(input_details.credential_options_as_arguments())
  

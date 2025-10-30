@@ -1,4 +1,4 @@
-{% set version = "3.44.3" %}
+{% set version = "3.44.4" %}
 {% set pyqt_version = "5.15.11" %}
 # https://github.com/qgis/QGIS/issues/61951
 {% set sip_version = "6.10.0" %}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: fb8f1407a0cf2ac776e16bfbc7576217fe1760d1e0789446187c5df8e381b69d
+  sha256: e54d407c5fe921f31ec69104f8d4abbed310b277379e0a5e20af21d46565da0d
   patches:
     - 0001-fix-protobuf-23.patch
     - 0002-skip-dot-in-path.patch  # [win]
@@ -19,7 +19,7 @@ source:
     - 0006-use-entrypoints.patch
 
 build:
-  number: 1
+  number: 0
   # pyproj no longer supports py310
   # Segfault on import with OSX, removing for now.
   # hopefully someone who cares abount OSX will step forward
@@ -85,7 +85,7 @@ requirements:
     # GSL for georeferencer.
     - gsl
     - sqlite
-    - libspatialindex
+    - libspatialindex 2.0
     - libspatialite
     # For PostgreSQL support.
     - postgresql
@@ -132,7 +132,7 @@ requirements:
     - proj
     - gsl
     - sqlite
-    - libspatialindex
+    - libspatialindex 2.0
     - libspatialite
     - psycopg2
     - postgresql
