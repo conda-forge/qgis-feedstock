@@ -13,15 +13,15 @@ exiv2:
 expat:
 - '2'
 gdal:
-- '3.11'
+- '3.12'
 geos:
-- 3.14.0
+- 3.14.1
 gsl:
 - '2.7'
 icu:
 - '75'
 libgdal:
-- '3.11'
+- '3.12'
 libpdal:
 - 2.9.2
 libprotobuf:
