@@ -1,4 +1,4 @@
-{% set version = "3.44.5" %}
+{% set version = "3.44.6" %}
 {% set pyqt_version = "5.15.11" %}
 # https://github.com/qgis/QGIS/issues/61951
 {% set sip_version = "6.10.0" %}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: f1e4d52789b65cd5678a6e9b9c10bdf04df930b847a827bbf8f873db98019f2f
+  sha256: 6a7a0ad471b325f0ac364a7256b415013fc23e3ede3e6b152005739a8d273cd3
   patches:
     - 0001-fix-protobuf-23.patch
     - 0002-skip-dot-in-path.patch  # [win]
