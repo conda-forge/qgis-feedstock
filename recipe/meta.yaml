@@ -161,7 +161,9 @@ requirements:
     - ocl-icd                                # [linux]
     - khronos-opencl-icd-loader              # [win or osx]
 
-  run_constrained:   # [osx]
+  run_constrained:
+    # prevent qt6 being brought in by recent builds of qwt
+    - qt6-main <0.a0
 test:
   files:
     - test_data
