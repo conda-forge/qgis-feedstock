@@ -1,5 +1,5 @@
 azure:
-  free_disk_space: True
+  free_disk_space: true
   settings_win:
     variables:
       CONDA_BLD_PATH: C:\bld\
