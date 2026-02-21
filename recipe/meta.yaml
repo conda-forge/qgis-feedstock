@@ -71,7 +71,7 @@ requirements:
     - qscintilla2
     - qca
     - qjson
-    - qwt
+    - qwt <6.3.0
     - qtkeychain
     # GDAL stack.
     - libgdal
@@ -120,7 +120,7 @@ requirements:
     - qscintilla2
     - qca
     - qjson
-    - qwt
+    - qwt <6.3.0
     - qtkeychain
     - libgdal
     - gdal
