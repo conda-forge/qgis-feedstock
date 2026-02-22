@@ -19,11 +19,11 @@ geos:
 gsl:
 - '2.7'
 icu:
-- '75'
+- '78'
 libgdal:
 - '3.12'
 libpdal:
-- 2.9.2
+- '2.10'
 libprotobuf:
 - 6.31.1
 libspatialindex:
