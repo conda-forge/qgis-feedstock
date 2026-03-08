@@ -51,7 +51,7 @@ proj:
 python:
 - 3.13.* *_cp313
 qt6_main:
-- '6.9'
+- '6.10'
 qtkeychain:
 - '0.15'
 sqlite:
