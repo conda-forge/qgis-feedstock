@@ -19,7 +19,7 @@ source:
     - 0006-use-entrypoints.patch
 
 build:
-  number: 1
+  number: 2
   # pyproj no longer supports py310
   # Segfault on import with OSX, removing for now.
   # hopefully someone who cares abount OSX will step forward
