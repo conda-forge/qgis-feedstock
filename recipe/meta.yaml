@@ -1,7 +1,4 @@
-{% set version = "3.44.7" %}
-{% set pyqt_version = "5.15.11" %}
-# https://github.com/qgis/QGIS/issues/61951
-{% set sip_version = "6.10.0" %}
+{% set version = "4.0.0" %}
 
 package:
   name: qgis
@@ -9,22 +6,17 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: 1ab06f40600c84e928b4fe22a66997d80973201b10769e7a636e5be83459b814
+  sha256: b07377af3193cc980c03f6e0022d028590ece6d0e85d04fee03e8761472484f3
   patches:
     - 0001-fix-protobuf-23.patch
     - 0002-skip-dot-in-path.patch  # [win]
-    # remove when https://github.com/conda-forge/pyqt-feedstock/pull/129 merged
-    - 0003-workaround-multi-pyqt5.patch
     - 0005-check-locks-not-destroyed.patch
     - 0006-use-entrypoints.patch
 
 build:
-  number: 1
+  number: 0
   # pyproj no longer supports py310
-  # Segfault on import with OSX, removing for now.
-  # hopefully someone who cares abount OSX will step forward
-  # See https://github.com/conda-forge/qgis-feedstock/pull/505  
-  skip: true  # [py2k or py<311 or osx]
+  skip: true  # [py2k or py<311]
 
 requirements:
   build:
@@ -38,10 +30,10 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
-    - sip {{ sip_version }}              # [build_platform != target_platform]
+    - sip                                # [build_platform != target_platform]
     - pyqt-builder                       # [build_platform != target_platform]
-    - pyqt5-sip                          # [build_platform != target_platform]
-    - pyqt {{ pyqt_version }}            # [build_platform != target_platform]
+    - pyqt6-sip                          # [build_platform != target_platform]
+    - pyqt6                              # [build_platform != target_platform]
     - qscintilla2                        # [build_platform != target_platform]
     - pkgconfig                          # [build_platform != target_platform]
     - flex                               # [unix and (build_platform != target_platform)]
@@ -52,7 +44,7 @@ requirements:
   host:
     - lldb                               # [osx]
     - setuptools
-    - sip {{ sip_version }}
+    - sip
     - python                             # [build_platform == target_platform]
     - six
     - flex                               # [unix]
@@ -66,16 +58,14 @@ requirements:
     - libtasn1                           # [osx]
     - exiv2
     # Qt stack.
-    - qt-main
-    - pyqt {{ pyqt_version }}            # [build_platform == target_platform]
-    - pyqt5-sip                          # [build_platform == target_platform]
+    - qt6-main
+    - pyqt6                              # [build_platform == target_platform]
+    - pyqt6-sip                          # [build_platform == target_platform]
     - pyqt-builder                       # [build_platform == target_platform]
-    - qtwebkit
-    - pyqtwebkit
     - qscintilla2
     - qca
     - qjson
-    - qwt <6.3.0
+    - qwt
     - qtkeychain
     # GDAL stack.
     - libgdal
@@ -93,8 +83,8 @@ requirements:
     # Point Clouds. Need only C/C++ package
     - libpdal
     - laz-perf
-    - ocl-icd      # [linux]
-    - khronos-opencl-icd-loader      # [win or osx]
+    - ocl-icd                                # [linux]
+    - khronos-opencl-icd-loader              # [win or osx]
     - libgl-devel                            # [linux]
     - libegl-devel                           # [linux]
     - libopengl-devel                        # [linux]
@@ -117,14 +107,13 @@ requirements:
     - icu
     - libzip
     - libtasn1                               # [osx]
-    - qt-main
-    - pyqt
-    - pyqt5-sip
-    - qtwebkit
+    - qt6-main
+    - pyqt6
+    - pyqt6-sip
     - qscintilla2
     - qca
     - qjson
-    - qwt <6.3.0
+    - qwt
     - qtkeychain
     - libgdal
     - gdal
@@ -155,7 +144,6 @@ requirements:
     - pyyaml
     - yaml
     - owslib
-    - pyqtwebkit
     - libpdal
     - laz-perf
     - ocl-icd                                # [linux]

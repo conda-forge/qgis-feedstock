@@ -36,12 +36,10 @@ postgresql:
 - '18'
 proj:
 - '9.7'
-pyqt:
-- '5.15'
 python:
 - 3.11.* *_cpython
-qt_main:
-- '5.15'
+qt6_main:
+- '6.10'
 qtkeychain:
 - '0.15'
 sqlite:

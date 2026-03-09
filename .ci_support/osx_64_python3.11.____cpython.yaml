@@ -1,21 +1,23 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '11.0'
+MACOSX_SDK_VERSION:
+- '11.0'
 c_compiler:
-- gcc
+- clang
 c_compiler_version:
-- '14'
+- '19'
 c_stdlib:
-- sysroot
+- macosx_deployment_target
 c_stdlib_version:
-- '2.17'
+- '11.0'
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- gxx
+- clangxx
 cxx_compiler_version:
-- '14'
-docker_image:
-- quay.io/condaforge/linux-anvil-x86_64:alma9
+- '19'
 exiv2:
 - '0.28'
 expat:
@@ -36,6 +38,8 @@ libprotobuf:
 - 6.33.5
 libzip:
 - '1'
+macos_machine:
+- x86_64-apple-darwin13.4.0
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -45,7 +49,7 @@ postgresql:
 proj:
 - '9.7'
 python:
-- 3.14.* *_cp314
+- 3.11.* *_cpython
 qt6_main:
 - '6.10'
 qtkeychain:
@@ -53,7 +57,7 @@ qtkeychain:
 sqlite:
 - '3'
 target_platform:
-- linux-aarch64
+- osx-64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
