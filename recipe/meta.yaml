@@ -1,4 +1,4 @@
-{% set version = "3.44.7" %}
+{% set version = "4.0.1" %}
 {% set pyqt_version = "5.15.11" %}
 # https://github.com/qgis/QGIS/issues/61951
 {% set sip_version = "6.10.0" %}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: 1ab06f40600c84e928b4fe22a66997d80973201b10769e7a636e5be83459b814
+  sha256: b827501c58c0c271e7ef3cffcb2204adfeef3eaf9ff7a0ab607f0873de2b7eaf
   patches:
     - 0001-fix-protobuf-23.patch
     - 0002-skip-dot-in-path.patch  # [win]
@@ -19,7 +19,7 @@ source:
     - 0006-use-entrypoints.patch
 
 build:
-  number: 2
+  number: 0
   # pyproj no longer supports py310
   # Segfault on import with OSX, removing for now.
   # hopefully someone who cares abount OSX will step forward
