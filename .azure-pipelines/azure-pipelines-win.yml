@@ -11,23 +11,29 @@ jobs:
       win_64_python3.11.____cpython:
         CONFIG: win_64_python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
+        build_workspace_dir: C:\bld\
         store_build_artifacts: false
+        tools_install_dir: C:\Miniforge
       win_64_python3.12.____cpython:
         CONFIG: win_64_python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
+        build_workspace_dir: C:\bld\
         store_build_artifacts: false
+        tools_install_dir: C:\Miniforge
       win_64_python3.13.____cp313:
         CONFIG: win_64_python3.13.____cp313
         UPLOAD_PACKAGES: 'True'
+        build_workspace_dir: C:\bld\
         store_build_artifacts: false
+        tools_install_dir: C:\Miniforge
       win_64_python3.14.____cp314:
         CONFIG: win_64_python3.14.____cp314
         UPLOAD_PACKAGES: 'True'
+        build_workspace_dir: C:\bld\
         store_build_artifacts: false
+        tools_install_dir: C:\Miniforge
   timeoutInMinutes: 360
   variables:
-    CONDA_BLD_PATH: C:\bld\
-    MINIFORGE_HOME: C:\Miniforge
     UPLOAD_TEMP: D:\\tmp
 
   steps:
@@ -36,8 +42,8 @@ jobs:
         call ".scripts\run_win_build.bat"
       displayName: Run Windows build
       env:
-        MINIFORGE_HOME: $(MINIFORGE_HOME)
-        CONDA_BLD_PATH: $(CONDA_BLD_PATH)
+        MINIFORGE_HOME: $(tools_install_dir)
+        CONDA_BLD_PATH: $(build_workspace_dir)
         PYTHONUNBUFFERED: 1
         CONFIG: $(CONFIG)
         CI: azure
