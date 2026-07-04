@@ -7,9 +7,6 @@ azure:
 bot:
   abi_migration_branches:
   - LTR
-build_platform:
-  linux_aarch64: linux_64
-  osx_arm64: osx_64
 conda_build:
   pkg_format: '2'
 conda_forge_output_validation: true
@@ -17,8 +14,6 @@ github:
   branch_name: main
   tooling_branch_name: main
 provider:
-  linux: azure
-  linux_aarch64: azure
-  osx: azure
-  win: azure
+  linux_aarch64: default
+  osx_arm64: default
 test: native
