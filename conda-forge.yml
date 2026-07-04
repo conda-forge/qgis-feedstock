@@ -1,9 +1,3 @@
-azure:
-  free_disk_space: true
-  settings_win:
-    variables:
-      CONDA_BLD_PATH: C:\bld\
-      MINIFORGE_HOME: C:\Miniforge
 bot:
   abi_migration_branches:
   - LTR
@@ -17,3 +11,5 @@ provider:
   linux_aarch64: default
   osx_arm64: default
 test: native
+workflow_settings:
+  free_disk_space: quick
