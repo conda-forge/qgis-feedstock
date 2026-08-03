@@ -62,7 +62,6 @@ requirements:
     - pyqt6-sip                          # [build_platform == target_platform]
     - pyqt-builder                       # [build_platform == target_platform]
     - qt6-webengine
-    # - pyqt6webengine
     - qt6-multimedia
     - qt6-serialport
     - qt6-positioning
@@ -93,9 +92,10 @@ requirements:
     - libzip
     - libtasn1                               # [osx]
     - qt6-main
-    - pyqt
+    - pyqt6
     - pyqt6-sip
-    # - qt6-webengine
+    - qt6-webengine
+    # - pyqt6webengine
     - qt6-multimedia
     - qt6-serialport
     - qt6-positioning
@@ -133,7 +133,7 @@ requirements:
     - pyyaml
     - yaml
     - owslib
-    - pyqt6webengine
+    # - pyqt6webengine
     - libpdal
     - laz-perf
 
