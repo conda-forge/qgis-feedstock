@@ -1,4 +1,4 @@
-{% set version = "3.40.9" %}
+{% set version = "3.44.11" %}
 {% set pyqt_version = "5.15.11" %}
 # https://github.com/qgis/QGIS/issues/61951
 {% set sip_version = "6.10.0" %}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: 1b9cf895917d21e2cdb6858e079fe35d1c058e731b0cb1a5b42eeaa31dc5a537
+  sha256: ea6ece13cee91eb19b4c1c93c03d3c79880598d397386a8cc69d5a486b2f72c4
   patches:
     - 0001-fix-protobuf-23.patch
     - 0002-skip-dot-in-path.patch  # [win]
@@ -19,9 +19,12 @@ source:
     - 0006-use-entrypoints.patch
 
 build:
-  number: 1
-  # pyproj no longer supports py39
-  skip: true  # [py2k or py<310]
+  number: 0
+  # pyproj no longer supports py310
+  # Segfault on import with OSX, removing for now.
+  # hopefully someone who cares abount OSX will step forward
+  # See https://github.com/conda-forge/qgis-feedstock/pull/505  
+  skip: true  # [py2k or py<311 or osx]
 
 requirements:
   build:
@@ -47,9 +50,10 @@ requirements:
     - libpdal                            # [build_platform != target_platform]
     - libprotobuf                        # [build_platform != target_platform]
   host:
+    - lldb                               # [osx]
     - setuptools
     - sip {{ sip_version }}
-    - python
+    - python                             # [build_platform == target_platform]
     - six
     - flex                               # [unix]
     - bison                              # [unix]
@@ -59,19 +63,19 @@ requirements:
     - icu
     - libzip
     - libprotobuf
-    - libtasn1  # [osx]
+    - libtasn1                           # [osx]
     - exiv2
     # Qt stack.
     - qt-main
-    - pyqt {{ pyqt_version }} 
-    - pyqt5-sip
-    - pyqt-builder
+    - pyqt {{ pyqt_version }}            # [build_platform == target_platform]
+    - pyqt5-sip                          # [build_platform == target_platform]
+    - pyqt-builder                       # [build_platform == target_platform]
     - qtwebkit
     - pyqtwebkit
     - qscintilla2
     - qca
     - qjson
-    - qwt
+    - qwt <6.3.0
     - qtkeychain
     # GDAL stack.
     - libgdal
@@ -81,7 +85,7 @@ requirements:
     # GSL for georeferencer.
     - gsl
     - sqlite
-    - libspatialindex
+    - libspatialindex 2.0
     - libspatialite
     # For PostgreSQL support.
     - postgresql
@@ -112,7 +116,7 @@ requirements:
     - python
     - icu
     - libzip
-    - libtasn1  # [osx]
+    - libtasn1                               # [osx]
     - qt-main
     - pyqt
     - pyqt5-sip
@@ -120,7 +124,7 @@ requirements:
     - qscintilla2
     - qca
     - qjson
-    - qwt
+    - qwt <6.3.0
     - qtkeychain
     - libgdal
     - gdal
@@ -128,7 +132,7 @@ requirements:
     - proj
     - gsl
     - sqlite
-    - libspatialindex
+    - libspatialindex 2.0
     - libspatialite
     - psycopg2
     - postgresql
@@ -154,17 +158,16 @@ requirements:
     - pyqtwebkit
     - libpdal
     - laz-perf
-    - ocl-icd      # [linux]
-    - khronos-opencl-icd-loader      # [win or osx]
+    - ocl-icd                                # [linux]
+    - khronos-opencl-icd-loader              # [win or osx]
 
-  run_constrained:   # [osx]
 test:
   files:
     - test_data
     - test_py_qgis.py
   commands:
-    - {{ RECIPE_DIR }}/run_test.bat  # [win]
-    - bash {{ RECIPE_DIR }}/run_test.sh  # [not win]
+    - {{ RECIPE_DIR }}/run_test.bat          # [win]
+    - bash {{ RECIPE_DIR }}/run_test.sh      # [not win]
 
 about:
   home: http://qgis.org/
