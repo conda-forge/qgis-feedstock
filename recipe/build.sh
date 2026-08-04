@@ -13,6 +13,8 @@
 #   QGIS Travis CI: https://github.com/qgis/QGIS/blob/10044fb1ddef990a1f4f7f4dddb20762077525ae/.ci/travis/linux/docker-build-test.sh
 #   QGIS Docker build: https://github.com/qgis/QGIS/blob/master/.docker/qgis.dockerfile
 
+set -ex
+
 # BUILD
 [[ -d build ]] || mkdir build
 cd build/
@@ -31,9 +33,9 @@ else
   PLATFORM_OPTS=""
   
   # Stolen from PyQt feedstock - sip always looks for g++ it seems
-  ln -s ${GXX} g++ || true
-  ln -s ${GCC} gcc || true
-  ln -s ${GCC_AR} gcc-ar || true
+  ln -s `which ${GXX}` g++ || true
+  ln -s `which ${GCC}` gcc || true
+  ln -s `which ${GCC_AR}` gcc-ar || true
   chmod +x g++ gcc gcc-ar
   export PATH=${PWD}:${PATH}
 fi
