@@ -86,6 +86,8 @@ requirements:
     # Point Clouds. Need only C/C++ package
     - libpdal
     - laz-perf
+    - ocl-icd      # [linux]
+    - khronos-opencl-icd-loader      # [win or osx]
   run:
     - python
     - icu
@@ -136,7 +138,9 @@ requirements:
     # - pyqt6webengine
     - libpdal
     - laz-perf
-
+    - ocl-icd      # [linux]
+    - khronos-opencl-icd-loader      # [win or osx]
+    
 test:
   files:
     - test_data
