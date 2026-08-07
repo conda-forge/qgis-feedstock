@@ -11,65 +11,89 @@ jobs:
       linux_64_python3.11.____cpython:
         CONFIG: linux_64_python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
         docker_run_args: ''
         build_workspace_dir: build_artifacts
+        free_disk_space: skip
+        pagefile_size: 0
+        resize_partitions: false
         store_build_artifacts: false
         tools_install_dir: ~/miniforge3
       linux_64_python3.12.____cpython:
         CONFIG: linux_64_python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
         docker_run_args: ''
         build_workspace_dir: build_artifacts
+        free_disk_space: skip
+        pagefile_size: 0
+        resize_partitions: false
         store_build_artifacts: false
         tools_install_dir: ~/miniforge3
       linux_64_python3.13.____cp313:
         CONFIG: linux_64_python3.13.____cp313
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
         docker_run_args: ''
         build_workspace_dir: build_artifacts
+        free_disk_space: skip
+        pagefile_size: 0
+        resize_partitions: false
         store_build_artifacts: false
         tools_install_dir: ~/miniforge3
       linux_64_python3.14.____cp314:
         CONFIG: linux_64_python3.14.____cp314
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
         docker_run_args: ''
         build_workspace_dir: build_artifacts
+        free_disk_space: skip
+        pagefile_size: 0
+        resize_partitions: false
         store_build_artifacts: false
         tools_install_dir: ~/miniforge3
       linux_aarch64_python3.11.____cpython:
         CONFIG: linux_aarch64_python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
         docker_run_args: ''
         build_workspace_dir: build_artifacts
+        free_disk_space: skip
+        pagefile_size: 0
+        resize_partitions: false
         store_build_artifacts: false
         tools_install_dir: ~/miniforge3
       linux_aarch64_python3.12.____cpython:
         CONFIG: linux_aarch64_python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
         docker_run_args: ''
         build_workspace_dir: build_artifacts
+        free_disk_space: skip
+        pagefile_size: 0
+        resize_partitions: false
         store_build_artifacts: false
         tools_install_dir: ~/miniforge3
       linux_aarch64_python3.13.____cp313:
         CONFIG: linux_aarch64_python3.13.____cp313
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
         docker_run_args: ''
         build_workspace_dir: build_artifacts
+        free_disk_space: skip
+        pagefile_size: 0
+        resize_partitions: false
         store_build_artifacts: false
         tools_install_dir: ~/miniforge3
       linux_aarch64_python3.14.____cp314:
         CONFIG: linux_aarch64_python3.14.____cp314
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
         docker_run_args: ''
         build_workspace_dir: build_artifacts
+        free_disk_space: skip
+        pagefile_size: 0
+        resize_partitions: false
         store_build_artifacts: false
         tools_install_dir: ~/miniforge3
   timeoutInMinutes: 360
@@ -85,15 +109,15 @@ jobs:
     displayName: Configure binfmt_misc
 
   - script: |
-        export MINIFORGE_HOME=$(tools_install_dir)
+        export CI=azure
         export CONDA_BLD_PATH=$(build_workspace_dir)
         export CONDA_FORGE_DOCKER_RUN_ARGS="$(docker_run_args)"
-        export CI=azure
+        export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
+        export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
+        export MINIFORGE_HOME=$(tools_install_dir)
         export flow_run_id=azure_$(Build.BuildNumber).$(System.JobAttempt)
         export remote_url=$(Build.Repository.Uri)
         export sha=$(Build.SourceVersion)
-        export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
-        export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
         if [[ "${BUILD_REASON:-}" == "PullRequest" ]]; then
           export IS_PR_BUILD="True"
         else
