@@ -31,9 +31,9 @@ else
   PLATFORM_OPTS=""
   
   # Stolen from PyQt feedstock - sip always looks for g++ it seems
-  ln -s ${GXX} g++ || true
-  ln -s ${GCC} gcc || true
-  ln -s ${GCC_AR} gcc-ar || true
+  ln -s `which ${GXX}` g++ || true
+  ln -s `which ${GCC}` gcc || true
+  ln -s `which ${GCC_AR}` gcc-ar || true
   chmod +x g++ gcc gcc-ar
   export PATH=${PWD}:${PATH}
 fi
