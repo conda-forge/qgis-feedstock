@@ -50,7 +50,6 @@ requirements:
     - libpdal                            # [build_platform != target_platform]
     - libprotobuf                        # [build_platform != target_platform]
   host:
-    - lldb                               # [osx]
     - setuptools
     - sip {{ sip_version }}
     - python                             # [build_platform == target_platform]
