@@ -19,7 +19,7 @@ source:
     - 0006-use-entrypoints.patch
     # fix segfault on import qgis.core on OSX (link extension modules
     # against Python::Module, not Python::Python / libpython)
-    - 0007-link-python-module.patch
+    - 0007-link-python-module.patch  # [osx]
 
 build:
   number: 0
