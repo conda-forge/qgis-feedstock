@@ -101,8 +101,11 @@ if [ $(uname) == Darwin ]; then
   ln -s $PREFIX/QGIS.app/Contents/MacOS/QGIS $PREFIX/bin/qgis
   ln -s $PREFIX/bin/qgis_process.app/Contents/MacOS/qgis_process $PREFIX/bin/qgis_process
 
-  # Smoke-test the Python bindings
-  PYTHONPATH="$PREFIX/share/qgis/python:$PYTHONPATH" $PYTHON -c 'import qgis.core'
+  # Smoke-test the Python bindings; skipped when cross-compiling since the
+  # target-arch python can't run on the (different-arch) build host.
+  if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" ]]; then
+    PYTHONPATH="$PREFIX/share/qgis/python:$PYTHONPATH" $PYTHON -c 'import qgis.core'
+  fi
 fi
 
 
