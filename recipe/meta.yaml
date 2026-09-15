@@ -22,7 +22,7 @@ source:
     - 0007-link-python-module.patch  # [osx]
 
 build:
-  number: 0
+  number: 1
   # pyproj no longer supports py310
   skip: true  # [py2k or py<311]
 
