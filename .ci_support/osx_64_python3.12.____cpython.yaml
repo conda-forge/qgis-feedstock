@@ -5,7 +5,7 @@ MACOSX_SDK_VERSION:
 c_compiler:
 - clang
 c_compiler_version:
-- '19'
+- '21'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -17,7 +17,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '19'
+- '21'
 exiv2:
 - '0.28'
 expat:
@@ -35,7 +35,7 @@ libgdal:
 libpdal:
 - '2.10'
 libprotobuf:
-- 6.33.5
+- 7.35.1
 libspatialindex:
 - 2.1.0
 libzip:
@@ -49,7 +49,7 @@ pin_run_as_build:
 postgresql:
 - '18'
 proj:
-- '9.8'
+- '9.9'
 pyqt:
 - '5.15'
 python:
