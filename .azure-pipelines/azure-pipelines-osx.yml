@@ -8,16 +8,6 @@ jobs:
     vmImage: $(VMIMAGE)
   strategy:
     matrix:
-      osx_64_python3.11.____cpython:
-        CONFIG: osx_64_python3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
-        build_workspace_dir: ~/miniforge3/conda-bld
-        free_disk_space: quick
-        pagefile_size: 0
-        resize_partitions: false
-        store_build_artifacts: false
-        tools_install_dir: ~/miniforge3
       osx_64_python3.12.____cpython:
         CONFIG: osx_64_python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -42,16 +32,6 @@ jobs:
         CONFIG: osx_64_python3.14.____cp314
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
-        build_workspace_dir: ~/miniforge3/conda-bld
-        free_disk_space: quick
-        pagefile_size: 0
-        resize_partitions: false
-        store_build_artifacts: false
-        tools_install_dir: ~/miniforge3
-      osx_arm64_python3.11.____cpython:
-        CONFIG: osx_arm64_python3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: quick
         pagefile_size: 0
