@@ -20,9 +20,9 @@ source:
     - 0007-gdal-3-13-compat.patch
 
 build:
-  number: 8
-  # pyproj no longer supports py310
-  skip: true  # [py2k or py<311]
+  number: 9
+  # pyproj no longer supports py311
+  skip: true  # [py2k or py<312]
 
 requirements:
   build:
