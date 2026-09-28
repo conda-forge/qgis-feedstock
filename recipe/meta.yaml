@@ -23,8 +23,8 @@ source:
 
 build:
   number: 2
-  # pyproj no longer supports py310
-  skip: true  # [py2k or py<311]
+  # pyproj no longer supports py311
+  skip: true  # [py2k or py<312]
 
 requirements:
   build:
