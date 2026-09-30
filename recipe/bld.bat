@@ -24,10 +24,21 @@ if exist "%QMAKESPEC%" (echo QMAKESPEC dir exists) else (echo QMAKESPEC dir NOT 
 :: "Project ERROR: Could not find feature thread" on Windows. An empty
 :: thread.prf is a safe no-op stand-in (mirrors what a platform not needing
 :: extra pthread-style flags would ship).
-set "QT_MKSPECS_DIR=%PREFIX%\Library\lib\qt6\mkspecs"
-if not exist "%QT_MKSPECS_DIR%\features\thread.prf" (
-    type nul > "%QT_MKSPECS_DIR%\features\thread.prf"
-)
+::
+:: Writing it into %PREFIX%\Library\lib\qt6\mkspecs\features alone was not
+:: enough: qmake only searches the features dirs under its own QT_HOST_DATA
+:: mkspecs root (from qt.conf), which isn't necessarily that dir. So put
+:: the stub in a dir we own and hand it to qmake through the QMAKEFEATURES
+:: env var, which qmake always adds to its feature search path. ninja ->
+:: sip-build -> qmake inherit it.
+set "QT_QMAKE=%PREFIX%\Library\lib\qt6\bin\qmake.exe"
+"%QT_QMAKE%" -query
+set "QGIS_QMAKE_FEATURES=%SRC_DIR%\qmake_features"
+mkdir "%QGIS_QMAKE_FEATURES%"
+type nul > "%QGIS_QMAKE_FEATURES%\thread.prf"
+if errorlevel 1 exit 1
+set "QMAKEFEATURES=%QGIS_QMAKE_FEATURES%"
+echo QMAKEFEATURES=%QMAKEFEATURES%
 
 :: Workaround for this lib being required but not set in cmake
 :: (Seems maybe it used to be?)
