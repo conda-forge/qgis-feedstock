@@ -6,39 +6,15 @@ if errorlevel 1 exit 1
 
 set BUILDCONF=Release
 
-:: Point qmake at qt6-main's mkspecs directly; QMAKESPEC bypasses qt.conf
-:: resolution entirely. https://doc.qt.io/qt-6/qmake-environment-reference.html
-set "QT_CONF_PATH=%PREFIX%\qt6.conf"
-set "QMAKESPEC=%PREFIX%\Library\lib\qt6\mkspecs\win32-msvc"
-
-echo QT_CONF_PATH=%QT_CONF_PATH%
-if exist "%QT_CONF_PATH%" (type "%QT_CONF_PATH%") else (echo QT_CONF_PATH file NOT FOUND)
-echo QMAKESPEC=%QMAKESPEC%
-if exist "%QMAKESPEC%" (echo QMAKESPEC dir exists) else (echo QMAKESPEC dir NOT FOUND)
-
-:: qt6-main's own build (this Qt6 was configured with the "thread" QT_CONFIG
-:: feature on, per mkspecs/qconfig.pri) makes qt.prf add CONFIG += thread to
-:: every project, and sip-build's generated .pro files end up trying to load
-:: it. But qtbase's mkspecs only ships mkspecs/features/unix/thread.prf --
-:: there's no win32 (or platform-agnostic) thread.prf, so qmake fails with
-:: "Project ERROR: Could not find feature thread" on Windows. An empty
-:: thread.prf is a safe no-op stand-in (mirrors what a platform not needing
-:: extra pthread-style flags would ship).
-::
-:: Writing it into %PREFIX%\Library\lib\qt6\mkspecs\features alone was not
-:: enough: qmake only searches the features dirs under its own QT_HOST_DATA
-:: mkspecs root (from qt.conf), which isn't necessarily that dir. So put
-:: the stub in a dir we own and hand it to qmake through the QMAKEFEATURES
-:: env var, which qmake always adds to its feature search path. ninja ->
-:: sip-build -> qmake inherit it.
-set "QT_QMAKE=%PREFIX%\Library\lib\qt6\bin\qmake.exe"
-"%QT_QMAKE%" -query
-set "QGIS_QMAKE_FEATURES=%SRC_DIR%\qmake_features"
-mkdir "%QGIS_QMAKE_FEATURES%"
-type nul > "%QGIS_QMAKE_FEATURES%\thread.prf"
+:: qt6-main ships two identical qmake binaries. The Qt6::qmake CMake target
+:: points at Library\lib\qt6\bin\qmake.exe, which has no qt.conf beside it,
+:: so its QT_HOST_DATA is wrong: qconfig.pri is never loaded and sip-build's
+:: qmake step fails with "Could not find feature thread". Library\bin\qmake6.exe
+:: has a qt6.conf (relocated by conda on install) next to it, so use that one
+:: (needs 0010-allow-qmake-executable-override.patch).
+set "QGIS_QMAKE=%LIBRARY_BIN%\qmake6.exe"
+"%QGIS_QMAKE%" -query QT_HOST_DATA
 if errorlevel 1 exit 1
-set "QMAKEFEATURES=%QGIS_QMAKE_FEATURES%"
-echo QMAKEFEATURES=%QMAKEFEATURES%
 
 :: Workaround for this lib being required but not set in cmake
 :: (Seems maybe it used to be?)
@@ -52,6 +28,7 @@ cmake -G Ninja ^
     -D PYTHON3_EXECUTABLE=%PYTHON% ^
     -D Python3_EXECUTABLE=%PYTHON% ^
     -D Python_EXECUTABLE=%PYTHON% ^
+    -D QMAKE_EXECUTABLE=%QGIS_QMAKE% ^
     -D PYUIC_PROGRAM=%PREFIX%\pyuic6.bat ^
     -D PYRCC_PROGRAM=%PREFIX%\pyrcc6.bat ^
     -D WITH_GUI=TRUE ^

@@ -22,6 +22,9 @@ source:
     # (KhronosGroup/OpenCL-CLHPP#167); conda-forge's clhpp 2.0.16 predates
     # the fix, so on OSX use QGIS's bundled copy with the fix applied.
     - 0009-fix-clhpp-libcxx-cxx20.patch  # [osx]
+    # let bld.bat point sip-build at Library/bin/qmake6.exe, the qmake that
+    # has a working qt6.conf on Windows
+    - 0010-allow-qmake-executable-override.patch  # [win]
 
 build:
   number: 0
