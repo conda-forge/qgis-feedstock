@@ -1,0 +1,21 @@
+Only install macOS app icons when building a mac bundle
+
+images/icons/mac installs the .icns files to ${APP_RESOURCES_DIR}, which
+is only defined when QGIS_MAC_BUNDLE is on. With -DQGIS_MAC_BUNDLE=FALSE
+(plain bin/lib/share layout) CMake fails with
+"install FILES given no DESTINATION!". The icons are only used by the
+app bundle, so skip them otherwise.
+
+diff --git a/images/icons/CMakeLists.txt b/images/icons/CMakeLists.txt
+index 145d50c..aa9c904 100644
+--- a/images/icons/CMakeLists.txt
++++ b/images/icons/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ include(CopyResources)
+ 
+ # OS X app/doc icons
+-if (APPLE)
++if (APPLE AND QGIS_MAC_BUNDLE)
+   add_subdirectory(mac)
+ endif()
+ 
