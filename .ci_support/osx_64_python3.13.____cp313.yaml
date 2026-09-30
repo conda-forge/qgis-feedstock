@@ -27,7 +27,7 @@ gdal:
 geos:
 - 3.14.1
 gsl:
-- '2.7'
+- '2.8'
 icu:
 - '78'
 libgdal:
@@ -47,7 +47,7 @@ pin_run_as_build:
 postgresql:
 - '18'
 proj:
-- '9.8'
+- '9.9'
 python:
 - 3.13.* *_cp313
 qt6_main:
