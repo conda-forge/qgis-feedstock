@@ -13,8 +13,6 @@ set BUILDCONF=Release
 :: has a qt6.conf (relocated by conda on install) next to it, so use that one
 :: (needs 0010-allow-qmake-executable-override.patch).
 set "QGIS_QMAKE=%LIBRARY_BIN%\qmake6.exe"
-"%QGIS_QMAKE%" -query QT_HOST_DATA
-if errorlevel 1 exit 1
 
 :: Workaround for this lib being required but not set in cmake
 :: (Seems maybe it used to be?)
