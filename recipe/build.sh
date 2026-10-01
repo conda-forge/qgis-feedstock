@@ -92,7 +92,6 @@ cmake ${CMAKE_ARGS} \
     $WEBENGINE_OPT \
     -D WITH_PDAL=TRUE \
     -D WITH_EPT=TRUE \
-    -D LazPerf_INCLUDE_DIR=$PREFIX/include \
     $PLATFORM_OPTS \
     ..
 

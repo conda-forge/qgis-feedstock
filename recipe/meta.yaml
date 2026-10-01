@@ -104,7 +104,9 @@ requirements:
     - psycopg2
     # Point Clouds. Need only C/C++ package
     - libpdal
-    - laz-perf
+    # no laz-perf: QGIS builds its own copy (WITH_INTERNAL_LAZPERF, default
+    # on), which needs internal headers the conda package doesn't ship, and
+    # the conda headers clash with it on Windows' include order
     - ocl-icd      # [linux]
     - opencl-headers      # [linux]
     - khronos-opencl-icd-loader      # [win or osx]
@@ -176,7 +178,6 @@ requirements:
     - yaml
     - owslib
     - libpdal
-    - laz-perf
     - ocl-icd                                # [linux]
     - khronos-opencl-icd-loader              # [win or osx]
 
