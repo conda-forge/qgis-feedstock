@@ -1,4 +1,4 @@
-{% set version = "3.44.14" %}
+{% set version = "3.44.15" %}
 {% set pyqt_version = "5.15.11" %}
 # https://github.com/qgis/QGIS/issues/61951
 {% set sip_version = "6.10.0" %}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: e1d670373b2dc6aed2b310c3804b9912217104ff3e8b4617c4650daff1b0e153
+  sha256: 1b508175a27272c68ca0f71f27d2b14711ab47b8ee2c003b56e36138420a75bc
   patches:
     - 0001-fix-protobuf-23.patch
     - 0002-skip-dot-in-path.patch  # [win]
@@ -22,7 +22,7 @@ source:
     - 0007-link-python-module.patch  # [osx]
 
 build:
-  number: 2
+  number: 0
   # pyproj no longer supports py311
   skip: true  # [py2k or py<312]
 
