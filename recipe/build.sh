@@ -13,6 +13,8 @@
 #   QGIS Travis CI: https://github.com/qgis/QGIS/blob/10044fb1ddef990a1f4f7f4dddb20762077525ae/.ci/travis/linux/docker-build-test.sh
 #   QGIS Docker build: https://github.com/qgis/QGIS/blob/master/.docker/qgis.dockerfile
 
+set -ex
+
 # BUILD
 [[ -d build ]] || mkdir build
 cd build/
@@ -98,6 +100,12 @@ if [ $(uname) == Darwin ]; then
   # and create a link into the .app so we can run it.
   ln -s $PREFIX/QGIS.app/Contents/MacOS/QGIS $PREFIX/bin/qgis
   ln -s $PREFIX/bin/qgis_process.app/Contents/MacOS/qgis_process $PREFIX/bin/qgis_process
+
+  # Smoke-test the Python bindings; skipped when cross-compiling since the
+  # target-arch python can't run on the (different-arch) build host.
+  if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" ]]; then
+    PYTHONPATH="$PREFIX/share/qgis/python:$PYTHONPATH" $PYTHON -c 'import qgis.core'
+  fi
 fi
 
 

@@ -1,4 +1,4 @@
-{% set version = "3.40.11" %}
+{% set version = "3.44.15" %}
 {% set pyqt_version = "5.15.11" %}
 # https://github.com/qgis/QGIS/issues/61951
 {% set sip_version = "6.10.0" %}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: cdb9f916cab1a7b3a1d21f02174998f2752befec69e617a2d1fdd241a1a8b7c2
+  sha256: 1b508175a27272c68ca0f71f27d2b14711ab47b8ee2c003b56e36138420a75bc
   patches:
     - 0001-fix-protobuf-23.patch
     - 0002-skip-dot-in-path.patch  # [win]
@@ -17,10 +17,12 @@ source:
     - 0003-workaround-multi-pyqt5.patch
     - 0005-check-locks-not-destroyed.patch
     - 0006-use-entrypoints.patch
-    - 0007-gdal-3-13-compat.patch
+    # fix segfault on import qgis.core on OSX (link extension modules
+    # against Python::Module, not Python::Python / libpython)
+    - 0007-link-python-module.patch  # [osx]
 
 build:
-  number: 9
+  number: 0
   # pyproj no longer supports py311
   skip: true  # [py2k or py<312]
 
@@ -50,7 +52,7 @@ requirements:
   host:
     - setuptools
     - sip {{ sip_version }}
-    - python
+    - python                             # [build_platform == target_platform]
     - six
     - flex                               # [unix]
     - bison                              # [unix]
@@ -60,13 +62,13 @@ requirements:
     - icu
     - libzip
     - libprotobuf
-    - libtasn1  # [osx]
+    - libtasn1                           # [osx]
     - exiv2
     # Qt stack.
     - qt-main
-    - pyqt {{ pyqt_version }} 
-    - pyqt5-sip
-    - pyqt-builder
+    - pyqt {{ pyqt_version }}            # [build_platform == target_platform]
+    - pyqt5-sip                          # [build_platform == target_platform]
+    - pyqt-builder                       # [build_platform == target_platform]
     - qtwebkit
     - pyqtwebkit
     - qscintilla2
@@ -82,7 +84,7 @@ requirements:
     # GSL for georeferencer.
     - gsl
     - sqlite
-    - libspatialindex
+    - libspatialindex 2.0
     - libspatialite
     # For PostgreSQL support.
     - postgresql
@@ -113,7 +115,7 @@ requirements:
     - python
     - icu
     - libzip
-    - libtasn1  # [osx]
+    - libtasn1                               # [osx]
     - qt-main
     - pyqt
     - pyqt5-sip
@@ -129,7 +131,7 @@ requirements:
     - proj
     - gsl
     - sqlite
-    - libspatialindex
+    - libspatialindex 2.0
     - libspatialite
     - psycopg2
     - postgresql
@@ -155,17 +157,16 @@ requirements:
     - pyqtwebkit
     - libpdal
     - laz-perf
-    - ocl-icd      # [linux]
-    - khronos-opencl-icd-loader      # [win or osx]
+    - ocl-icd                                # [linux]
+    - khronos-opencl-icd-loader              # [win or osx]
 
-  run_constrained:   # [osx]
 test:
   files:
     - test_data
     - test_py_qgis.py
   commands:
-    - {{ RECIPE_DIR }}/run_test.bat  # [win]
-    - bash {{ RECIPE_DIR }}/run_test.sh  # [not win]
+    - {{ RECIPE_DIR }}/run_test.bat          # [win]
+    - bash {{ RECIPE_DIR }}/run_test.sh      # [not win]
 
 about:
   home: http://qgis.org/

@@ -26,8 +26,6 @@ libpdal:
 - '2.10'
 libprotobuf:
 - 7.35.1
-libspatialindex:
-- 2.1.0
 libzip:
 - '1'
 pin_run_as_build:

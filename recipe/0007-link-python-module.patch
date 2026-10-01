@@ -1,0 +1,32 @@
+Link SIP Python extension modules against Python::Module instead of
+Python::Python.
+
+Python::Python links the shared libpython into the extension modules.
+On macOS, conda-forge's python executable is statically linked, so the
+extension's libpython.dylib is loaded as a second, uninitialized copy of
+the Python runtime. Its thread state (_Py_tss_tstate) is NULL, so the
+very first call into it (PyModule_Create2 in PyInit__core) dereferences
+tstate->interp and segfaults (EXC_BAD_ACCESS at address 0x10) on
+`import qgis.core`.
+
+Python::Module is the CMake target intended for extension modules: it
+does not link libpython and on Apple platforms passes
+`-undefined dynamic_lookup`, so Python symbols resolve from the host
+interpreter at load time (same as the PyQt5 extension modules).
+On Linux it adds no library and on Windows it still links the import
+library, so behavior there is unchanged.
+
+See https://github.com/conda-forge/qgis-feedstock/pull/505
+
+diff --git a/cmake/SIPMacros.cmake b/cmake/SIPMacros.cmake
+--- a/cmake/SIPMacros.cmake
++++ b/cmake/SIPMacros.cmake
+@@ -193,7 +193,7 @@ MACRO(BUILD_SIP_PYTHON_MODULE MODULE_NAME SIP_FILES EXTRA_OBJECTS)
+   ENDIF (${SIP_VERSION_STR} VERSION_LESS 5.0.0)
+ 
+   SET_TARGET_PROPERTIES(${_logical_name} PROPERTIES CXX_VISIBILITY_PRESET default)
+-  TARGET_LINK_LIBRARIES(${_logical_name} Python::Python)
++  TARGET_LINK_LIBRARIES(${_logical_name} Python::Module)
+   TARGET_LINK_LIBRARIES(${_logical_name} ${EXTRA_LINK_LIBRARIES})
+   SET_TARGET_PROPERTIES(${_logical_name} PROPERTIES PREFIX "" OUTPUT_NAME ${_child_module_name})
+ 
