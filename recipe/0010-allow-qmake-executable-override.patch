@@ -1,0 +1,27 @@
+Allow overriding QMAKE_EXECUTABLE
+
+On conda-forge's Windows qt6-main, Qt6::qmake points at
+Library/lib/qt6/bin/qmake.exe, which has no qt.conf next to it, so its
+QT_HOST_DATA is wrong: qconfig.pri and the module .pri files are never
+loaded and sip-build's qmake step fails with
+"Project ERROR: Could not find feature thread." The identical
+Library/bin/qmake6.exe has a relocated qt6.conf beside it and works.
+Let the recipe pass -DQMAKE_EXECUTABLE to use that one.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0e4ac86..4c336ae 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -650,7 +650,11 @@ if(WITH_CORE)
+   endif()
+ 
+   # get the Qt plugins directory
+-  get_target_property(QMAKE_EXECUTABLE ${QT_VERSION_BASE}::qmake LOCATION)
++  # allow overriding qmake (e.g. -DQMAKE_EXECUTABLE=...) for installs where
++  # the Qt6::qmake target points at a qmake without a usable qt.conf
++  if(NOT QMAKE_EXECUTABLE)
++    get_target_property(QMAKE_EXECUTABLE ${QT_VERSION_BASE}::qmake LOCATION)
++  endif()
+ 
+   execute_process(COMMAND ${QMAKE_EXECUTABLE} -query QT_INSTALL_PLUGINS RESULT_VARIABLE return_code OUTPUT_STRIP_TRAILING_WHITESPACE OUTPUT_VARIABLE DEFAULT_QT_PLUGINS_DIR )
+   set (QT_PLUGINS_DIR ${DEFAULT_QT_PLUGINS_DIR} CACHE STRING "Path to installation directory for Qt Plugins. Defaults to Qt native plugin directory")

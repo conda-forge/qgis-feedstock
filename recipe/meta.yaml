@@ -1,7 +1,4 @@
-{% set version = "3.44.14" %}
-{% set pyqt_version = "5.15.11" %}
-# https://github.com/qgis/QGIS/issues/61951
-{% set sip_version = "6.10.0" %}
+{% set version = "4.2.3" %}
 
 package:
   name: qgis
@@ -9,20 +6,31 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: e1d670373b2dc6aed2b310c3804b9912217104ff3e8b4617c4650daff1b0e153
+  sha256: b044889d895c07d9355512cba76973822830153f6f15feb0d5e00077d3d76e59
   patches:
     - 0001-fix-protobuf-23.patch
     - 0002-skip-dot-in-path.patch  # [win]
-    # remove when https://github.com/conda-forge/pyqt-feedstock/pull/129 merged
-    - 0003-workaround-multi-pyqt5.patch
     - 0005-check-locks-not-destroyed.patch
     - 0006-use-entrypoints.patch
     # fix segfault on import qgis.core on OSX (link extension modules
     # against Python::Module, not Python::Python / libpython)
     - 0007-link-python-module.patch  # [osx]
+    # OpenCL 1.2 target on OSX is incompatible with conda-forge's
+    # khronos-opencl-icd-loader (OpenCL 3.0); see the patch for details.
+    - 0008-macos-opencl-target-version.patch  # [osx]
+    # clhpp's opencl.hpp/cl2.hpp don't build with libc++ in C++20 mode
+    # (KhronosGroup/OpenCL-CLHPP#167); conda-forge's clhpp 2.0.16 predates
+    # the fix, so on OSX use QGIS's bundled copy with the fix applied.
+    - 0009-fix-clhpp-libcxx-cxx20.patch  # [osx]
+    # let bld.bat point sip-build at Library/bin/qmake6.exe, the qmake that
+    # has a working qt6.conf on Windows
+    - 0010-allow-qmake-executable-override.patch  # [win]
+    # build.sh uses -DQGIS_MAC_BUNDLE=FALSE; the .icns install needs the
+    # bundle's APP_RESOURCES_DIR, so skip it without a bundle
+    - 0011-mac-icons-only-in-bundle.patch  # [osx]
 
 build:
-  number: 2
+  number: 0
   # pyproj no longer supports py311
   skip: true  # [py2k or py<312]
 
@@ -38,10 +46,10 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
-    - sip {{ sip_version }}              # [build_platform != target_platform]
+    - sip                                # [build_platform != target_platform]
     - pyqt-builder                       # [build_platform != target_platform]
-    - pyqt5-sip                          # [build_platform != target_platform]
-    - pyqt {{ pyqt_version }}            # [build_platform != target_platform]
+    - pyqt6-sip                          # [build_platform != target_platform]
+    - pyqt6                              # [build_platform != target_platform]
     - qscintilla2                        # [build_platform != target_platform]
     - pkgconfig                          # [build_platform != target_platform]
     - flex                               # [unix and (build_platform != target_platform)]
@@ -51,7 +59,7 @@ requirements:
     - libprotobuf                        # [build_platform != target_platform]
   host:
     - setuptools
-    - sip {{ sip_version }}
+    - sip
     - python                             # [build_platform == target_platform]
     - six
     - flex                               # [unix]
@@ -65,17 +73,22 @@ requirements:
     - libtasn1                           # [osx]
     - exiv2
     # Qt stack.
-    - qt-main
-    - pyqt {{ pyqt_version }}            # [build_platform == target_platform]
-    - pyqt5-sip                          # [build_platform == target_platform]
+    - qt6-main
+    - pyqt6                              # [build_platform == target_platform]
+    - pyqt6-sip                          # [build_platform == target_platform]
     - pyqt-builder                       # [build_platform == target_platform]
-    - qtwebkit
-    - pyqtwebkit
+    # qt6-webengine isn't published for osx-64 (Intel); qt-webengine-feedstock
+    # cross-compiles it from osx-arm64 and Chromium can't cross-compile that way.
+    # https://github.com/conda-forge/qt-webengine-feedstock/pull/98
+    - qt6-webengine                      # [not (osx and x86_64)]
+    - qt6-serialport
+    - qt6-multimedia
+    - qt6-positioning
+    - qt6-3d
     - qscintilla2
-    - qca
-    - qjson
-    - qwt <6.3.0
-    - qtkeychain
+    - qca-qt6
+    - qwt
+    - qtkeychain-qt6
     # GDAL stack.
     - libgdal
     - gdal
@@ -91,9 +104,11 @@ requirements:
     - psycopg2
     # Point Clouds. Need only C/C++ package
     - libpdal
-    - laz-perf
-    - ocl-icd      # [linux]
-    - khronos-opencl-icd-loader      # [win or osx]
+    # no laz-perf: QGIS builds its own copy (WITH_INTERNAL_LAZPERF, default
+    # on), which needs internal headers the conda package doesn't ship, and
+    # the conda headers clash with it on Windows' include order
+    - libopencl-devel
+    - clhpp
     - libgl-devel                            # [linux]
     - libegl-devel                           # [linux]
     - libopengl-devel                        # [linux]
@@ -116,15 +131,21 @@ requirements:
     - icu
     - libzip
     - libtasn1                               # [osx]
-    - qt-main
-    - pyqt
-    - pyqt5-sip
-    - qtwebkit
+    - qt6-main
+    - pyqt6
+    - pyqt6-sip
+    # qt6-webengine isn't published for osx-64 (Intel); qt-webengine-feedstock
+    # cross-compiles it from osx-arm64 and Chromium can't cross-compile that way.
+    # https://github.com/conda-forge/qt-webengine-feedstock/pull/98
+    - qt6-webengine                      # [not (osx and x86_64)]
+    - qt6-serialport
+    - qt6-multimedia
+    - qt6-positioning
+    - qt6-3d
     - qscintilla2
-    - qca
-    - qjson
-    - qwt <6.3.0
-    - qtkeychain
+    - qca-qt6
+    - qwt
+    - qtkeychain-qt6
     - libgdal
     - gdal
     - geos
@@ -154,9 +175,7 @@ requirements:
     - pyyaml
     - yaml
     - owslib
-    - pyqtwebkit
     - libpdal
-    - laz-perf
     - ocl-icd                                # [linux]
     - khronos-opencl-icd-loader              # [win or osx]
 

@@ -25,8 +25,16 @@ export M4="${PREFIX}/bin/m4"
 echo "Current work directory: $(pwd)"
 echo "PREFIX: $PREFIX"
 
+# qt6-webengine isn't published for osx-64 (Intel) yet; see meta.yaml.
+WEBENGINE_OPT="-D WITH_QTWEBENGINE=TRUE"
+
 if [ $(uname) == Darwin ]; then
-  PLATFORM_OPTS="-D WITH_QSPATIALITE=FALSE -D QGIS_MACAPP_FRAMEWORK=FALSE"
+  # QGIS 4 installs into a Contents/{MacOS,Frameworks,Resources} app bundle
+  # layout by default on macOS; use the plain bin/lib/share layout instead.
+  PLATFORM_OPTS="-D WITH_QSPATIALITE=FALSE -D QGIS_MAC_BUNDLE=FALSE"
+  if [[ "$SUBDIR" == "osx-64" ]]; then
+    WEBENGINE_OPT="-D WITH_QTWEBENGINE=FALSE"
+  fi
 else
   # Needed to find libGL.so
   export LDFLAGS="$LDFLAGS -Wl,-rpath-link,${BUILD_PREFIX}/${HOST}/sysroot"
@@ -81,26 +89,16 @@ cmake ${CMAKE_ARGS} \
     -D EXPAT_INCLUDE_DIR=$PREFIX/include \
     -D EXPAT_LIBRARY=$PREFIX/lib/libexpat${SHLIB_EXT} \
     -D WITH_PY_COMPILE=FALSE \
-    -D WITH_QTWEBKIT=TRUE \
+    $WEBENGINE_OPT \
     -D WITH_PDAL=TRUE \
     -D WITH_EPT=TRUE \
-    -D LazPerf_INCLUDE_DIR=$PREFIX/include \
     $PLATFORM_OPTS \
     ..
 
 ninja -j$CPU_COUNT
 ninja install
 
-# QGIS gets bundled as a QGIS.app on MacOS (unless we creeate our own cmake)
-# https://github.com/qgis/QGIS/blob/master/mac/readme.txt
 if [ $(uname) == Darwin ]; then
-  # also create this dir or creating the conda package failes due to broken link
-  mkdir -p $PREFIX/QGIS.app/Contents/MacOS/share
-
-  # and create a link into the .app so we can run it.
-  ln -s $PREFIX/QGIS.app/Contents/MacOS/QGIS $PREFIX/bin/qgis
-  ln -s $PREFIX/bin/qgis_process.app/Contents/MacOS/qgis_process $PREFIX/bin/qgis_process
-
   # Smoke-test the Python bindings; skipped when cross-compiling since the
   # target-arch python can't run on the (different-arch) build host.
   if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" ]]; then
