@@ -107,10 +107,8 @@ requirements:
     # no laz-perf: QGIS builds its own copy (WITH_INTERNAL_LAZPERF, default
     # on), which needs internal headers the conda package doesn't ship, and
     # the conda headers clash with it on Windows' include order
-    - ocl-icd      # [linux]
-    - opencl-headers      # [linux]
-    - khronos-opencl-icd-loader      # [win or osx]
-    - clhpp                                # [not osx]
+    - libopencl-devel
+    - clhpp
     - libgl-devel                            # [linux]
     - libegl-devel                           # [linux]
     - libopengl-devel                        # [linux]
