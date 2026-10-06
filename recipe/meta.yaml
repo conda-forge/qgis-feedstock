@@ -17,11 +17,11 @@ source:
     - 0007-link-python-module.patch  # [osx]
     # OpenCL 1.2 target on OSX is incompatible with conda-forge's
     # khronos-opencl-icd-loader (OpenCL 3.0); see the patch for details.
-    - 0008-macos-opencl-target-version.patch  # [osx]
+    # - 0008-macos-opencl-target-version.patch  # [osx]
     # clhpp's opencl.hpp/cl2.hpp don't build with libc++ in C++20 mode
     # (KhronosGroup/OpenCL-CLHPP#167); conda-forge's clhpp 2.0.16 predates
     # the fix, so on OSX use QGIS's bundled copy with the fix applied.
-    - 0009-fix-clhpp-libcxx-cxx20.patch  # [osx]
+    # - 0009-fix-clhpp-libcxx-cxx20.patch  # [osx]
     # let bld.bat point sip-build at Library/bin/qmake6.exe, the qmake that
     # has a working qt6.conf on Windows
     - 0010-allow-qmake-executable-override.patch  # [win]
