@@ -6,6 +6,14 @@ if errorlevel 1 exit 1
 
 set BUILDCONF=Release
 
+:: qt6-main ships two identical qmake binaries. The Qt6::qmake CMake target
+:: points at Library\lib\qt6\bin\qmake.exe, which has no qt.conf beside it,
+:: so its QT_HOST_DATA is wrong: qconfig.pri is never loaded and sip-build's
+:: qmake step fails with "Could not find feature thread". Library\bin\qmake6.exe
+:: has a qt6.conf (relocated by conda on install) next to it, so use that one
+:: (needs 0010-allow-qmake-executable-override.patch).
+set "QGIS_QMAKE=%LIBRARY_BIN%\qmake6.exe"
+
 :: Workaround for this lib being required but not set in cmake
 :: (Seems maybe it used to be?)
 set _LINK_=Ws2_32.lib
@@ -18,8 +26,9 @@ cmake -G Ninja ^
     -D PYTHON3_EXECUTABLE=%PYTHON% ^
     -D Python3_EXECUTABLE=%PYTHON% ^
     -D Python_EXECUTABLE=%PYTHON% ^
-    -D PYUIC_PROGRAM=%PREFIX%\pyuic5.bat ^
-    -D PYRCC_PROGRAM=%PREFIX%\pyrcc5.bat ^
+    -D QMAKE_EXECUTABLE=%QGIS_QMAKE% ^
+    -D PYUIC_PROGRAM=%PREFIX%\pyuic6.bat ^
+    -D PYRCC_PROGRAM=%PREFIX%\pyrcc6.bat ^
     -D WITH_GUI=TRUE ^
     -D ENABLE_TESTS=FALSE ^
     -D WITH_BINDINGS=TRUE ^
@@ -32,11 +41,10 @@ cmake -G Ninja ^
     -D WITH_QSPATIALITE=FALSE ^
     -D EXPAT_INCLUDE_DIR=%LIBRARY_INC% ^
     -D EXPAT_LIBRARY=%LIBRARY_LIB%\expat.lib ^
-    -D WITH_QTWEBKIT=TRUE ^
+    -D WITH_QTWEBENGINE=TRUE ^
     -D QGIS_INSTALL_SYS_LIBS=FALSE ^
     -D WITH_PDAL=TRUE ^
     -D WITH_EPT=TRUE ^
-    -D LazPerf_INCLUDE_DIR=%LIBRARY_INC% ^
     ..
 if errorlevel 1 exit 1
 
