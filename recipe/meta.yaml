@@ -23,7 +23,7 @@ source:
     - 0011-mac-icons-only-in-bundle.patch  # [osx]
 
 build:
-  number: 0
+  number: 1
   # pyproj no longer supports py311
   skip: true  # [py2k or py<312]
 
