@@ -119,6 +119,7 @@ requirements:
     - xorg-libxcomposite                     # [linux]
     - xorg-libxxf86vm                        # [linux]
     - xorg-xf86vidmodeproto                  # [linux]
+    - wayland-protocols                      # [linux]
   run:
     - python
     - icu
