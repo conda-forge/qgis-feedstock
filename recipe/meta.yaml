@@ -1,4 +1,4 @@
-{% set version = "4.2.3" %}
+{% set version = "4.4.0" %}
 
 package:
   name: qgis
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://qgis.org/downloads/qgis-{{ version }}.tar.bz2
-  sha256: b044889d895c07d9355512cba76973822830153f6f15feb0d5e00077d3d76e59
+  sha256: 1080c2c27e90c77d149ed3fee4f7098847ce4ecb37aec599ed296cd549bda454
   patches:
     - 0001-fix-protobuf-23.patch
     - 0002-skip-dot-in-path.patch  # [win]
@@ -23,7 +23,7 @@ source:
     - 0011-mac-icons-only-in-bundle.patch  # [osx]
 
 build:
-  number: 2
+  number: 0
   # pyproj no longer supports py311
   skip: true  # [py2k or py<312]
 
@@ -119,6 +119,7 @@ requirements:
     - xorg-libxcomposite                     # [linux]
     - xorg-libxxf86vm                        # [linux]
     - xorg-xf86vidmodeproto                  # [linux]
+    - wayland-protocols                      # [linux]
   run:
     - python
     - icu
