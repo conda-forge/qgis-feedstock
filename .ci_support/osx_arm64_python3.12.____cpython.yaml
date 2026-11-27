@@ -3,7 +3,7 @@ MACOSX_SDK_VERSION:
 c_compiler:
 - clang
 c_compiler_version:
-- '21'
+- '22'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -15,7 +15,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '21'
+- '22'
 exiv2:
 - '0.28'
 expat:
@@ -23,7 +23,7 @@ expat:
 gdal:
 - '3.13'
 geos:
-- 3.15.0
+- 3.15.1
 gsl:
 - '2.8'
 icu:
