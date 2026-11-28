@@ -1,5 +1,7 @@
 c_compiler:
-- vs2022
+- vs
+c_compiler_version:
+- '2022'
 c_stdlib:
 - vs
 channel_sources:
@@ -7,7 +9,9 @@ channel_sources:
 channel_targets:
 - conda-forge qgis_ltr
 cxx_compiler:
-- vs2022
+- vs
+cxx_compiler_version:
+- '2022'
 exiv2:
 - '0.28'
 expat:
@@ -19,7 +23,7 @@ geos:
 gsl:
 - '2.8'
 icu:
-- '78'
+- '79'
 libgdal:
 - '3.13'
 libpdal:
@@ -43,7 +47,7 @@ python:
 qt_main:
 - '5.15'
 qtkeychain:
-- '0.17'
+- '0.18'
 sqlite:
 - '3'
 target_platform:
