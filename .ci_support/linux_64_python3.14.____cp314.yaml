@@ -29,7 +29,7 @@ geos:
 gsl:
 - '2.8'
 icu:
-- '78'
+- '79'
 libgdal:
 - '3.13'
 libpdal:
